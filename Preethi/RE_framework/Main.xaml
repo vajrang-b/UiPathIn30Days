@@ -54,7 +54,6 @@
       <AssemblyReference>System.Memory</AssemblyReference>
       <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
       <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
@@ -86,19 +85,17 @@
           <Transition DisplayName="Init success" sap:VirtualizedContainerService.HintSize="450,505" sap2010:WorkflowViewState.IdRef="Transition_1">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <av:PointCollection x:Key="ConnectorLocation">300,150.5 300,180.5 243.4,180.5 243.4,249.5</av:PointCollection>
+                <av:PointCollection x:Key="ConnectorLocation">300,150.5 300,180.5 183.4,180.5 183.4,249.5</av:PointCollection>
                 <x:Int32 x:Key="SrcConnectionPointIndex">39</x:Int32>
                 <x:Int32 x:Key="DestConnectionPointIndex">46</x:Int32>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <Transition.Condition>
-              <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="SystemException is Nothing" />
-            </Transition.Condition>
+            <Transition.Condition>[SystemException is Nothing]</Transition.Condition>
             <Transition.To>
               <State x:Name="__ReferenceID0" DisplayName="Get transaction" sap:VirtualizedContainerService.HintSize="134,61" sap2010:WorkflowViewState.IdRef="State_2">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <av:Point x:Key="ShapeLocation">163,249.5</av:Point>
+                    <av:Point x:Key="ShapeLocation">103,249.5</av:Point>
                     <av:Size x:Key="ShapeSize">134,61</av:Size>
                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
@@ -107,14 +104,12 @@
                   <Transition DisplayName="New transaction" sap2010:WorkflowViewState.IdRef="Transition_2">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <av:PointCollection x:Key="ConnectorLocation">223.3,310.5 223.3,340.5 186.7,340.5 186.7,379.5</av:PointCollection>
+                        <av:PointCollection x:Key="ConnectorLocation">163.3,310.5 163.3,340.5 186.7,340.5 186.7,379.5</av:PointCollection>
                         <x:Int32 x:Key="SrcConnectionPointIndex">35</x:Int32>
                         <x:Int32 x:Key="DestConnectionPointIndex">42</x:Int32>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <Transition.Condition>
-                      <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="TransactionItem isnot nothing" />
-                    </Transition.Condition>
+                    <Transition.Condition>[TransactionItem isnot nothing]</Transition.Condition>
                     <Transition.To>
                       <State x:Name="__ReferenceID3" DisplayName="Process transaction" sap:VirtualizedContainerService.HintSize="134,61" sap2010:WorkflowViewState.IdRef="State_3">
                         <sap:WorkflowViewStateService.ViewState>
@@ -128,7 +123,7 @@
                           <Transition DisplayName="Success" sap:VirtualizedContainerService.HintSize="450,505" sap2010:WorkflowViewState.IdRef="Transition_3">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <av:PointCollection x:Key="ConnectorLocation">247,419.15 327,419.15 327,283.05 297,283.05</av:PointCollection>
+                                <av:PointCollection x:Key="ConnectorLocation">247,419.15 277,419.15 277,283.05 237,283.05</av:PointCollection>
                                 <x:Int32 x:Key="SrcConnectionPointIndex">48</x:Int32>
                                 <x:Int32 x:Key="DestConnectionPointIndex">40</x:Int32>
                               </scg:Dictionary>
@@ -136,14 +131,12 @@
                             <Transition.To>
                               <x:Reference>__ReferenceID0</x:Reference>
                             </Transition.To>
-                            <Transition.Condition>
-                              <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="BusinessRuleException is Nothing And SystemException is Nothing" />
-                            </Transition.Condition>
+                            <Transition.Condition>[BusinessRuleException is Nothing And SystemException is Nothing]</Transition.Condition>
                           </Transition>
                           <Transition DisplayName="Business rule exception" sap2010:WorkflowViewState.IdRef="Transition_4">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <av:PointCollection x:Key="ConnectorLocation">247,385.6 327,385.6 327,267.8 297,267.8</av:PointCollection>
+                                <av:PointCollection x:Key="ConnectorLocation">247,385.6 277,385.6 277,267.8 237,267.8</av:PointCollection>
                                 <x:Int32 x:Key="SrcConnectionPointIndex">4</x:Int32>
                                 <x:Int32 x:Key="DestConnectionPointIndex">20</x:Int32>
                               </scg:Dictionary>
@@ -151,9 +144,7 @@
                             <Transition.To>
                               <x:Reference>__ReferenceID0</x:Reference>
                             </Transition.To>
-                            <Transition.Condition>
-                              <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="BusinessRuleException isnot nothing" />
-                            </Transition.Condition>
+                            <Transition.Condition>[BusinessRuleException isnot nothing]</Transition.Condition>
                           </Transition>
                           <Transition DisplayName="System Exception" sap2010:WorkflowViewState.IdRef="Transition_5">
                             <sap:WorkflowViewStateService.ViewState>
@@ -166,9 +157,7 @@
                             <Transition.To>
                               <x:Reference>__ReferenceID1</x:Reference>
                             </Transition.To>
-                            <Transition.Condition>
-                              <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="SystemException isnot Nothing" />
-                            </Transition.Condition>
+                            <Transition.Condition>[SystemException isnot Nothing]</Transition.Condition>
                           </Transition>
                         </State.Transitions>
                       </State>
@@ -177,14 +166,12 @@
                   <Transition DisplayName="No Data" sap:VirtualizedContainerService.HintSize="450,505" sap2010:WorkflowViewState.IdRef="Transition_6">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <av:PointCollection x:Key="ConnectorLocation">163,292.2 123.6,292.2 123.6,190.5</av:PointCollection>
+                        <av:PointCollection x:Key="ConnectorLocation">103,292.2 73,292.2 73,220.5 123.6,220.5 123.6,190.5</av:PointCollection>
                         <x:Int32 x:Key="SrcConnectionPointIndex">53</x:Int32>
                         <x:Int32 x:Key="DestConnectionPointIndex">71</x:Int32>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <Transition.Condition>
-                      <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="TransactionItem is nothing" />
-                    </Transition.Condition>
+                    <Transition.Condition>[TransactionItem is nothing]</Transition.Condition>
                     <Transition.To>
                       <State x:Name="__ReferenceID2" DisplayName="Final State" sap:VirtualizedContainerService.HintSize="134,61" sap2010:WorkflowViewState.IdRef="State_5" IsFinal="True">
                         <sap:WorkflowViewStateService.ViewState>
@@ -212,9 +199,7 @@
             <Transition.To>
               <x:Reference>__ReferenceID2</x:Reference>
             </Transition.To>
-            <Transition.Condition>
-              <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="SystemException isnot nothing" />
-            </Transition.Condition>
+            <Transition.Condition>[SystemException isnot nothing]</Transition.Condition>
           </Transition>
         </State.Transitions>
       </State>
