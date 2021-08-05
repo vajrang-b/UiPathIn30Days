@@ -104,18 +104,18 @@
     </Assign>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke SHA1_Online_Get_Hash_code workflow" sap:VirtualizedContainerService.HintSize="379,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="SHA1Online\SHA1_Online_Get_Hash_code.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="Client_Information">[ClientID + "-" + ClientName + "-" + ClientCountry]</InArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="HashResult">[HashResult]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="HashResult">
+          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="HashResult" />
+        </OutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_Client_Information">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="clientdetails" />
+        </InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke System1_Update_WorkItems workflow" sap:VirtualizedContainerService.HintSize="379,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="System1\System1_Update_WorkItems.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="comment">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="HashResult" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="status">
-          <Literal x:TypeArguments="x:String">Completed</Literal>
-        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="comment">[HashResult]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="status">Completed</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Navigate_Dashboard workflow" sap:VirtualizedContainerService.HintSize="379,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="System1\Navigate_Dashboard.xaml">
