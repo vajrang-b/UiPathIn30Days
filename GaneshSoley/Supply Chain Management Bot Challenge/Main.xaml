@@ -95,7 +95,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <State x:Name="__ReferenceID0" sap2010:Annotation.AnnotationText="Get the next transaction to be processed." DisplayName="Get Transaction Data" sap:VirtualizedContainerService.HintSize="949.333333333333,1161.33333333333" sap2010:WorkflowViewState.IdRef="State_4">
+    <State x:Name="__ReferenceID0" sap2010:Annotation.AnnotationText="Get the next transaction to be processed." DisplayName="Get Transaction Data" sap:VirtualizedContainerService.HintSize="251.333333333333,115.333333333333" sap2010:WorkflowViewState.IdRef="State_4">
       <State.Entry>
         <Sequence sap2010:Annotation.AnnotationText="Retrieve a new transaction data to be processed.&#xA;The TransactionNumber variable holds the current transaction number and incrementing this variable makes the framework retrieve the next transaction. If the framework is retrying a failed transaction, this variable is not incremented until the maximum number of retry attempts is reached." DisplayName="Retrieve Data" sap:VirtualizedContainerService.HintSize="902.666666666667,732" sap2010:WorkflowViewState.IdRef="Sequence_25">
           <Sequence.Variables>
@@ -526,7 +526,12 @@
                                   <TryCatch.Try>
                                     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke CloseAllApplications workflow" sap:VirtualizedContainerService.HintSize="334,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_21" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Framework\CloseAllApplications.xaml">
                                       <ui:InvokeWorkflowFile.Arguments>
-                                        <scg:Dictionary x:TypeArguments="x:String, Argument" />
+                                        <InArgument x:TypeArguments="ui:Browser" x:Key="in_PAWebAppLookUpPage">
+                                          <mva:VisualBasicValue x:TypeArguments="ui:Browser" ExpressionText="PAWebAppLookUpPage" />
+                                        </InArgument>
+                                        <InArgument x:TypeArguments="ui:Browser" x:Key="in_SCMChallengePage">
+                                          <mva:VisualBasicValue x:TypeArguments="ui:Browser" ExpressionText="SCMChallengePage" />
+                                        </InArgument>
                                       </ui:InvokeWorkflowFile.Arguments>
                                     </ui:InvokeWorkflowFile>
                                   </TryCatch.Try>
@@ -625,7 +630,7 @@
             <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="TransactionItem IsNot Nothing" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_1" />
           </Transition.Condition>
         </Transition>
-        <Transition sap2010:Annotation.AnnotationText="This is a simple mecanism to stop the process.&#xA;In reallife scenario you can stop the process when there is no more data to process or on a schedule." DisplayName="No Data" sap:VirtualizedContainerService.HintSize="707.333333333333,2298" sap2010:WorkflowViewState.IdRef="Transition_7">
+        <Transition sap2010:Annotation.AnnotationText="This is a simple mecanism to stop the process.&#xA;In reallife scenario you can stop the process when there is no more data to process or on a schedule." DisplayName="No Data" sap:VirtualizedContainerService.HintSize="707.333333333333,2280" sap2010:WorkflowViewState.IdRef="Transition_7">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <av:PointCollection x:Key="ConnectorLocation">350,327.666666666666 350,357.666666666666 90,357.666666666666 90,332</av:PointCollection>
@@ -639,19 +644,19 @@
             <x:Reference>__ReferenceID1</x:Reference>
           </Transition.To>
           <Transition.Action>
-            <Sequence sap:VirtualizedContainerService.HintSize="602,1540" sap2010:WorkflowViewState.IdRef="Sequence_30">
+            <Sequence sap:VirtualizedContainerService.HintSize="602,1614.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_30">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:BrowserScope SearchScope="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" Browser="[SCMChallengePage]" BrowserType="Chrome" DisplayName="Attach Browser 'chrome.exe Automation'" sap:VirtualizedContainerService.HintSize="560,1313.33333333333" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="31497b7b79e331dd07de877b7e729a4c">
+              <ui:BrowserScope SearchScope="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" Browser="[SCMChallengePage]" BrowserType="Chrome" DisplayName="Attach Browser 'SCM Challenge'" sap:VirtualizedContainerService.HintSize="560,1295.33333333333" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="31497b7b79e331dd07de877b7e729a4c">
                 <ui:BrowserScope.Body>
                   <ActivityAction x:TypeArguments="x:Object">
                     <ActivityAction.Argument>
                       <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
                     </ActivityAction.Argument>
-                    <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="526,1167.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_29">
+                    <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="526,1149.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_29">
                       <Sequence.Variables>
                         <Variable x:TypeArguments="ui:Image" Name="imgResult" />
                         <Variable x:TypeArguments="ss:SecureString" Name="strGmailPwd" />
@@ -697,9 +702,9 @@
                           </ui:Target>
                         </ui:UiElementExists.Target>
                       </ui:UiElementExists>
-                      <If Condition="[ResultWindow]" sap:VirtualizedContainerService.HintSize="484,783.333333333333" sap2010:WorkflowViewState.IdRef="If_12">
+                      <If Condition="[ResultWindow]" DisplayName="If ResultWindow Exists Take Screenshot and Send Mail" sap:VirtualizedContainerService.HintSize="484,768.666666666667" sap2010:WorkflowViewState.IdRef="If_12">
                         <If.Then>
-                          <Sequence DisplayName="Sequence Result Window Visible" sap:VirtualizedContainerService.HintSize="376,602" sap2010:WorkflowViewState.IdRef="Sequence_31">
+                          <Sequence DisplayName="Sequence Result Window Visible" sap:VirtualizedContainerService.HintSize="376,584" sap2010:WorkflowViewState.IdRef="Sequence_31">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -717,23 +722,113 @@
                                 </ui:Target>
                               </ui:TakeScreenshot.Target>
                             </ui:TakeScreenshot>
-                            <ui:SaveImage DisplayName="Save Image" FileName="Data\Output\SCM-Challenge_Result.png" sap:VirtualizedContainerService.HintSize="334,92" sap2010:WorkflowViewState.IdRef="SaveImage_1" Image="[imgResult]" />
-                            <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="[Config(&quot;GaneshSoley_GMail&quot;).ToString]" DisplayName="Get Credential" FolderPath="[Config(&quot;OrchestratorFolderPath&quot;).ToString]" sap:VirtualizedContainerService.HintSize="334,80.6666666666667" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[strGmailPwd]" Username="[strGmailUserName]" />
-                            <ui:SendMail Bcc="{x:Null}" Body="{x:Null}" Cc="{x:Null}" From="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" Password="{x:Null}" ReplyTo="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Send SMTP Mail Message" Email="[strGmailUserName]" EnableSSL="True" sap:VirtualizedContainerService.HintSize="334,149.333333333333" sap2010:WorkflowViewState.IdRef="SendMail_1" IsBodyHtml="False" Port="465" SecureConnection="Auto" SecurePassword="[strGmailPwd]" Server="smtp.gmail.com" Subject="Supplier Chain Management Bot Challenge Result" To="[Config(&quot;To-Mail&quot;).ToString]">
+                            <ui:SaveImage DisplayName="Save Image" FileName="Data\Output\SCM-Challenge_Result.png" sap:VirtualizedContainerService.HintSize="334,52.6666666666667" sap2010:WorkflowViewState.IdRef="SaveImage_1" Image="[imgResult]">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </ui:SaveImage>
+                            <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="[Config(&quot;GaneshSoley_GMail&quot;).ToString]" DisplayName="Get Credential" FolderPath="[Config(&quot;OrchestratorFolderPath&quot;).ToString]" sap:VirtualizedContainerService.HintSize="334,52.6666666666667" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[strGmailPwd]" Username="[strGmailUserName]">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </ui:GetRobotCredential>
+                            <ui:SendMail Bcc="{x:Null}" Body="{x:Null}" Cc="{x:Null}" From="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" Password="{x:Null}" ReplyTo="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Send SMTP Mail Message" Email="[strGmailUserName]" EnableSSL="True" sap:VirtualizedContainerService.HintSize="334,52.6666666666667" sap2010:WorkflowViewState.IdRef="SendMail_1" IsBodyHtml="False" Port="[CInt(Config(&quot;Gmail_SMTP_Port&quot;).ToString)]" SecureConnection="Auto" SecurePassword="[strGmailPwd]" Server="[Config(&quot;Gmail_SMTP_Server&quot;).ToString]" Subject="Supplier Chain Management Bot Challenge Result" To="[Config(&quot;To-Mail&quot;).ToString]">
                               <ui:SendMail.Files>
                                 <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
-                                  <InArgument x:TypeArguments="x:String">
-                                    <Literal x:TypeArguments="x:String">Data\Output\SCM-Challenge_Result.png</Literal>
-                                  </InArgument>
+                                  <InArgument x:TypeArguments="x:String">Data\Output\SCM-Challenge_Result.png</InArgument>
                                 </scg:List>
                               </ui:SendMail.Files>
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
                             </ui:SendMail>
+                            <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'BUTTON OK'" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="Click_2" KeyModifiers="None" MouseButton="BTN_LEFT">
+                              <ui:Click.CursorPosition>
+                                <ui:CursorPosition Position="Center">
+                                  <ui:CursorPosition.OffsetX>
+                                    <InArgument x:TypeArguments="x:Int32" />
+                                  </ui:CursorPosition.OffsetX>
+                                  <ui:CursorPosition.OffsetY>
+                                    <InArgument x:TypeArguments="x:Int32" />
+                                  </ui:CursorPosition.OffsetY>
+                                </ui:CursorPosition>
+                              </ui:Click.CursorPosition>
+                              <ui:Click.Target>
+                                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="78b03828-70aa-41b1-8aa6-48f871a5d448" InformativeScreenshot="76200edf04ca742f9d13c96ee8480f9d" Selector="&lt;html app='chrome.exe' title='Automation Anywhere Labs - Supply Chain Management' /&gt;&lt;webctrl id='btn-modal' tag='BUTTON' aaname='OK' /&gt;">
+                                  <ui:Target.TimeoutMS>
+                                    <InArgument x:TypeArguments="x:Int32" />
+                                  </ui:Target.TimeoutMS>
+                                  <ui:Target.WaitForReady>
+                                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                                  </ui:Target.WaitForReady>
+                                </ui:Target>
+                              </ui:Click.Target>
+                            </ui:Click>
                           </Sequence>
                         </If.Then>
                       </If>
                     </Sequence>
                   </ActivityAction>
                 </ui:BrowserScope.Body>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:BrowserScope>
+              <ui:BrowserScope BrowserType="{x:Null}" SearchScope="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" Browser="[PAWebAppLookUpPage]" DisplayName="Attach Browser Procurement Anywhere" sap:VirtualizedContainerService.HintSize="560,52.6666666666667" sap2010:WorkflowViewState.IdRef="BrowserScope_2">
+                <ui:BrowserScope.Body>
+                  <ActivityAction x:TypeArguments="x:Object">
+                    <ActivityAction.Argument>
+                      <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+                    </ActivityAction.Argument>
+                    <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="376,198" sap2010:WorkflowViewState.IdRef="Sequence_32">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'Log Out'" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="Click_3" KeyModifiers="None" MouseButton="BTN_LEFT">
+                        <ui:Click.CursorPosition>
+                          <ui:CursorPosition Position="Center">
+                            <ui:CursorPosition.OffsetX>
+                              <InArgument x:TypeArguments="x:Int32" />
+                            </ui:CursorPosition.OffsetX>
+                            <ui:CursorPosition.OffsetY>
+                              <InArgument x:TypeArguments="x:Int32" />
+                            </ui:CursorPosition.OffsetY>
+                          </ui:CursorPosition>
+                        </ui:Click.CursorPosition>
+                        <ui:Click.Target>
+                          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="44d96e39-b4a2-440a-bb58-7a1c548964f2" InformativeScreenshot="547356ce8a14cfcac047464d7a07a5f8" Selector="&lt;html app='chrome.exe' title='Automation Anywhere Labs - PO Tracking Lookup' /&gt;&lt;webctrl tag='A' aaname='                          Log out                     ' /&gt;">
+                            <ui:Target.TimeoutMS>
+                              <InArgument x:TypeArguments="x:Int32" />
+                            </ui:Target.TimeoutMS>
+                            <ui:Target.WaitForReady>
+                              <InArgument x:TypeArguments="ui:WaitForReady" />
+                            </ui:Target.WaitForReady>
+                          </ui:Target>
+                        </ui:Click.Target>
+                      </ui:Click>
+                    </Sequence>
+                  </ActivityAction>
+                </ui:BrowserScope.Body>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
               </ui:BrowserScope>
               <ui:LogMessage DisplayName="Log message (No more transations available)" sap:VirtualizedContainerService.HintSize="560,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_30" Level="Info" Message="[&quot;Process finished due to no more transaction data&quot;]" />
             </Sequence>

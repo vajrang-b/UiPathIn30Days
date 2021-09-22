@@ -9,7 +9,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>666,648</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>666,2562</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="50">
@@ -70,18 +70,19 @@
       <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="476,583.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="606.666666666667,2497.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:Comment DisplayName="Comment (placeholder)" sap:VirtualizedContainerService.HintSize="434,55.3333333333333" sap2010:WorkflowViewState.IdRef="Comment_1" Text="//  Invoke steps of the process" />
-    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="434,300.666666666667" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <ui:Comment DisplayName="Comment (placeholder)" sap:VirtualizedContainerService.HintSize="564.666666666667,55.3333333333333" sap2010:WorkflowViewState.IdRef="Comment_1" Text="//  Invoke steps of the process" />
+    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="564.666666666667,2231.33333333333" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <TryCatch.Variables>
         <Variable x:TypeArguments="x:String" Name="strAgentName" />
         <Variable x:TypeArguments="x:String" Name="strShipDate" />
@@ -90,29 +91,37 @@
         <Variable x:TypeArguments="x:String" Name="strState" />
       </TryCatch.Variables>
       <TryCatch.Try>
-        <Sequence sap:VirtualizedContainerService.HintSize="526,1877.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_9">
+        <Sequence sap:VirtualizedContainerService.HintSize="526,1970" sap2010:WorkflowViewState.IdRef="Sequence_9">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
+          <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="484,52.6666666666667" sap2010:WorkflowViewState.IdRef="CommentOut_7">
+            <ui:CommentOut.Body>
+              <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="376,150.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:NavigateTo Browser="[in_SCMChallengePage]" DisplayName="Navigate To" sap:VirtualizedContainerService.HintSize="334,58.6666666666667" sap2010:WorkflowViewState.IdRef="NavigateTo_1" Url="[in_Config(&quot;BotChallengeURL&quot;).ToString]" />
+              </Sequence>
+            </ui:CommentOut.Body>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:CommentOut>
           <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Capture PO details workflow" sap:VirtualizedContainerService.HintSize="484,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="SCM_Bot-Challenge\Capture PO details.xaml">
             <ui:InvokeWorkflowFile.Arguments>
-              <InArgument x:TypeArguments="x:String" x:Key="in_CurrentPO">
-                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem" />
-              </InArgument>
-              <OutArgument x:TypeArguments="x:String" x:Key="out_ShipDate">
-                <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="strShipDate" />
-              </OutArgument>
-              <OutArgument x:TypeArguments="x:String" x:Key="out_OrderTotal">
-                <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="strOrderTotal" />
-              </OutArgument>
-              <InArgument x:TypeArguments="ui:Browser" x:Key="in_PAWebAppLookUpPage">
-                <mva:VisualBasicValue x:TypeArguments="ui:Browser" ExpressionText="in_PAWebAppLookUpPage" />
-              </InArgument>
-              <OutArgument x:TypeArguments="x:String" x:Key="out_State">
-                <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="strState" />
-              </OutArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_CurrentPO">[in_TransactionItem]</InArgument>
+              <OutArgument x:TypeArguments="x:String" x:Key="out_ShipDate">[strShipDate]</OutArgument>
+              <OutArgument x:TypeArguments="x:String" x:Key="out_OrderTotal">[strOrderTotal]</OutArgument>
+              <InArgument x:TypeArguments="ui:Browser" x:Key="in_PAWebAppLookUpPage">[in_PAWebAppLookUpPage]</InArgument>
+              <OutArgument x:TypeArguments="x:String" x:Key="out_State">[strState]</OutArgument>
             </ui:InvokeWorkflowFile.Arguments>
           </ui:InvokeWorkflowFile>
           <If Condition="[strState Is Nothing]" DisplayName="If State is Nothing" sap:VirtualizedContainerService.HintSize="484,244.666666666667" sap2010:WorkflowViewState.IdRef="If_1">
@@ -122,12 +131,8 @@
           </If>
           <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Get_AgentName workflow" sap:VirtualizedContainerService.HintSize="484,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="SCM_Bot-Challenge\Get_AgentName.xaml">
             <ui:InvokeWorkflowFile.Arguments>
-              <InArgument x:TypeArguments="x:String" x:Key="in_State">
-                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="strState" />
-              </InArgument>
-              <OutArgument x:TypeArguments="x:String" x:Key="out_AgentName">
-                <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="strAgentName" />
-              </OutArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_State">[strState]</InArgument>
+              <OutArgument x:TypeArguments="x:String" x:Key="out_AgentName">[strAgentName]</OutArgument>
             </ui:InvokeWorkflowFile.Arguments>
           </ui:InvokeWorkflowFile>
           <Assign sap:VirtualizedContainerService.HintSize="484,62" sap2010:WorkflowViewState.IdRef="Assign_1">
@@ -375,7 +380,7 @@
         </Sequence>
       </TryCatch.Try>
       <TryCatch.Catches>
-        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,22" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="530.666666666667,22" sap2010:WorkflowViewState.IdRef="Catch`1_1">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -389,10 +394,10 @@
             <Throw Exception="[exception]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_1" />
           </ActivityAction>
         </Catch>
-        <Catch x:TypeArguments="ui:BusinessRuleException" sap:VirtualizedContainerService.HintSize="400,105.333333333333" sap2010:WorkflowViewState.IdRef="Catch`1_2">
+        <Catch x:TypeArguments="ui:BusinessRuleException" sap:VirtualizedContainerService.HintSize="530.666666666667,22" sap2010:WorkflowViewState.IdRef="Catch`1_2">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
