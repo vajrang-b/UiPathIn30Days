@@ -38,3 +38,103 @@
 2. Implement InitiAllApplications.xaml and CloseAllApplicatoins.xaml workflows, linking them in the Config.xlsx fields
 3. Implement GetTransactionData.xaml and SetTransactionStatus.xaml according to the transaction type being used (Orchestrator queues by default)
 4. Implement Process.xaml workflow and invoke other workflows related to the process being automated
+
+
+### Init
+
+    ### First Run
+    1. Read config
+        In: 
+            excelFilePath
+            Settings,Constants
+        Out: 
+            Config
+
+    2.Open SupplyChainManagement
+        In:
+            Url fo SCM Config("SCM_URL")
+
+        Out:
+            list or datatable of PoNumbers
+    
+    3.For each activity
+        (Activity)Add Queue Item
+            Input: PoIndex
+            Input: PoNumber
+        Output: Not required
+
+    4.(Activity) Read Assignments excel Sheet
+        in: FilePath Config("AssignmentFielPath")
+        in: sheetname to read Config("AssignmentSheetName)
+
+   ### Init App Applications
+    1. Login to Procurement managemen
+        in:
+            PM_URL Config("PM_URL")
+            in_PM_AssetName Config(PM_Credentials)
+            
+        out:     Nothing
+
+        *** Open Browser(in_PM_URL)
+            Get Credential Asset(in_PM_AssetName)
+                Out: UserName 
+                out: SecurePassword
+
+            Type Into(Username)
+            Secure Type into(SSecure Password)
+            Click sign in 
+
+                element exists( check for element after login)
+                    or
+                on Element Apper (check for element after login)
+                    Log( Login Successful )
+
+### Get Transaction Data
+
+    1. Get a transaction Item 
+        out: 
+            out_TransactionItem(type: QueueItem) - TransactionItem
+
+
+### Process
+
+   1. ### Find PoNumber Details
+        in:
+            PoNumber -- TransactionItem.SpecificContent("PoNumber")
+        out:
+            out_ShipDate -- strShipDate
+            out_OrderToken -- strOrderToken
+            out_State -- strState
+
+    2. ### Search AgentName
+        in:   
+            in_strState
+
+        out: 
+
+            out_Agentname -- strAgentName   
+
+    3. ### Add Values to SCM
+
+        in:
+            in_PoIndex - 1,2,3,
+
+                Use PoIndex and find dynamic Variable
+                <webctrl id='PONumber{{intPoindex}}' tag='INPUT' />
+
+                or
+
+                for
+                    list.IndexOf(Item) - indexNumber of poNumber
+            in_ShipDate -- strShipDate
+            in_OrderToken -- strOrderToken
+            in_State -- strState -- dr.rows(0)(Key)
+
+
+### End Process
+
+    1. Submit
+    2. take Screenshot
+    3. Sendmail
+
+
