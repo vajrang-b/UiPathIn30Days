@@ -92,8 +92,7 @@
   </TextExpression.ReferencesForImplementation>
   <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="498.4,1187.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
-      <Variable x:TypeArguments="x:String" Name="strCurrencyName" />
-      <Variable x:TypeArguments="sd:DataTable" Name="dt_Top10Data" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dt_TopTenData" />
       <Variable x:TypeArguments="sd:DataTable" Name="dt_AlphabeticalOrder" />
       <Variable x:TypeArguments="x:String" Name="CurrencyName" />
     </Sequence.Variables>
@@ -124,9 +123,6 @@
             <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">
               <mva:VisualBasicValue x:TypeArguments="ui:QueueItem" ExpressionText="in_TransactionItem" />
             </InArgument>
-            <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_top10Data">
-              <mva:VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="dt_Top10Data" />
-            </OutArgument>
             <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_AlphabeticalOrder">
               <mva:VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="dt_AlphabeticalOrder" />
             </OutArgument>
@@ -136,6 +132,9 @@
             <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
               <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
             </InArgument>
+            <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_TopTenData">
+              <mva:VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="dt_TopTenData" />
+            </OutArgument>
           </ui:InvokeWorkflowFile.Arguments>
         </ui:InvokeWorkflowFile>
       </TryCatch.Try>
@@ -151,7 +150,7 @@
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
             </ActivityAction.Argument>
-            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Error" Message="[exception.Message+&quot; at &quot;+ exception.Source]" />
+            <ui:LogMessage DisplayName="Log Message if Exception occurs in Performer Process" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Error" Message="[exception.Message+&quot; at &quot;+ exception.Source]" />
           </ActivityAction>
         </Catch>
       </TryCatch.Catches>
@@ -164,27 +163,27 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <TryCatch.Try>
-        <Sequence sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="Sequence_5">
+        <Sequence DisplayName="Sequence: Contains activities to invoke workflow to write Top 10 data" sap:VirtualizedContainerService.HintSize="380.8,339.2" sap2010:WorkflowViewState.IdRef="Sequence_5">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
           <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke XR_Write_Top_10_Data_To_Excel workflow" sap:VirtualizedContainerService.HintSize="339.2,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="xrates\XR_Write_Top_10_Data_To_Excel.xaml">
             <ui:InvokeWorkflowFile.Arguments>
-              <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_Top10Data">
-                <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="dt_Top10Data" />
-              </InArgument>
               <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
                 <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
               </InArgument>
               <InArgument x:TypeArguments="x:String" x:Key="in_CurrencyName">
                 <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="CurrencyName" />
               </InArgument>
+              <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_TopTenData">
+                <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="dt_TopTenData" />
+              </InArgument>
             </ui:InvokeWorkflowFile.Arguments>
           </ui:InvokeWorkflowFile>
-          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="339.2,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;Top 10 Data written successfully&quot;]" />
+          <ui:LogMessage DisplayName="Log Message: Data written successfully in Excel" sap:VirtualizedContainerService.HintSize="339.2,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;Top 10 Data written successfully&quot;]" />
         </Sequence>
       </TryCatch.Try>
       <TryCatch.Catches>
@@ -199,7 +198,7 @@
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
             </ActivityAction.Argument>
-            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Error" Message="[exception.Message+ &quot; at &quot;+ exception.Source]" />
+            <ui:LogMessage DisplayName="Log Message if any exception occurs during writing data to Excel" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Error" Message="[exception.Message+ &quot; at &quot;+ exception.Source]" />
           </ActivityAction>
         </Catch>
       </TryCatch.Catches>
@@ -212,7 +211,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <TryCatch.Try>
-        <Sequence sap:VirtualizedContainerService.HintSize="420,339.2" sap2010:WorkflowViewState.IdRef="Sequence_6">
+        <Sequence DisplayName="Sequence: Invok workflow to write Alphabetical Order Table Data to Excel" sap:VirtualizedContainerService.HintSize="420,339.2" sap2010:WorkflowViewState.IdRef="Sequence_6">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -220,18 +219,12 @@
           </sap:WorkflowViewStateService.ViewState>
           <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke XR_Write_Alphabetical_Order_Table_Data_Excel workflow" sap:VirtualizedContainerService.HintSize="378.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="xrates\XR_Write_Alphabetical_Order_Table_Data_Excel.xaml">
             <ui:InvokeWorkflowFile.Arguments>
-              <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_AlphabeticalOrder">
-                <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="dt_AlphabeticalOrder" />
-              </InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_CurrencyName">
-                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="CurrencyName" />
-              </InArgument>
-              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
-                <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
-              </InArgument>
+              <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_AlphabeticalOrder">[dt_AlphabeticalOrder]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_CurrencyName">[CurrencyName]</InArgument>
+              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
             </ui:InvokeWorkflowFile.Arguments>
           </ui:InvokeWorkflowFile>
-          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="378.4,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="[&quot;Alphabetical Order Data written successfully&quot;]" />
+          <ui:LogMessage DisplayName="Log Message if Data written successfully" sap:VirtualizedContainerService.HintSize="378.4,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="[&quot;Alphabetical Order Data written successfully&quot;]" />
         </Sequence>
       </TryCatch.Try>
       <TryCatch.Catches>
@@ -246,16 +239,14 @@
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
             </ActivityAction.Argument>
-            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Error" Message="[exception.Message+&quot; at &quot;+exception.Source]" />
+            <ui:LogMessage DisplayName="Log Message if exception occurs during Alphabetical Order Data" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Error" Message="[exception.Message+&quot; at &quot;+exception.Source]" />
           </ActivityAction>
         </Catch>
       </TryCatch.Catches>
     </TryCatch>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Navigate_To_Xrates workflow" sap:VirtualizedContainerService.HintSize="456.8,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="xrates\XR_Navigate_To_Xrates.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Navigate_To_Xrates workflow" sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="xrates\XR_Navigate_To_Xrates.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
-          <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
-        </InArgument>
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
   </Sequence>
