@@ -1,0 +1,124 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Seq_SendMail" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ss="clr-namespace:System.Security;assembly=mscorlib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_mailBodyFile" Type="InArgument(x:String)" />
+    <x:Property Name="in_CredentialName" Type="InArgument(x:String)" />
+    <x:Property Name="in_toRecipent" Type="InArgument(x:String)" />
+    <x:Property Name="in_subject" Type="InArgument(x:String)" />
+    <x:Property Name="in_exportedCSV" Type="InArgument(x:String)" />
+    <x:Property Name="in_screenshot" Type="InArgument(x:String)" />
+    <x:Property Name="in_supplierList" Type="InArgument(x:String)" />
+    <x:Property Name="in_PortNumber_AssetName" Type="InArgument(x:String)" />
+    <x:Property Name="in_portServer_AssetName" Type="InArgument(x:String)" />
+  </x:Members>
+  <this:Seq_SendMail.in_exportedCSV>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Seq_SendMail.in_exportedCSV>
+  <this:Seq_SendMail.in_screenshot>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Seq_SendMail.in_screenshot>
+  <this:Seq_SendMail.in_supplierList>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Seq_SendMail.in_supplierList>
+  <this:Seq_SendMail.in_PortNumber_AssetName>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Seq_SendMail.in_PortNumber_AssetName>
+  <this:Seq_SendMail.in_portServer_AssetName>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Seq_SendMail.in_portServer_AssetName>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>566,1174</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>Seq_SendMail_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="27">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>UiPath.Mail</x:String>
+      <x:String>UiPath.Mail.SMTP.Activities</x:String>
+      <x:String>UiPath.Mail.Activities</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="19">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="This will send a mail to Client" DisplayName="Seq_SendMail" sap:VirtualizedContainerService.HintSize="486,1009.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="ss:SecureString" Name="password" />
+      <Variable x:TypeArguments="x:String" Name="username" />
+      <Variable x:TypeArguments="x:String" Name="bodyOfMail" />
+      <Variable x:TypeArguments="x:Int32" Name="portNumber" />
+      <Variable x:TypeArguments="x:String" Name="serverName" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="444,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;Sending mail&quot;]" />
+    <ui:ReadTextFile Content="[bodyOfMail]" DisplayName="Read Text File" FileName="[in_mailBodyFile]" sap:VirtualizedContainerService.HintSize="444,80.6666666666667" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
+    <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="[in_CredentialName]" DisplayName="Get Credential" sap:VirtualizedContainerService.HintSize="444,80.6666666666667" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[password]" Username="[username]" />
+    <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="[in_PortNumber_AssetName]" DisplayName="Get Asset-Port Number" sap:VirtualizedContainerService.HintSize="444,140.666666666667" sap2010:WorkflowViewState.IdRef="GetRobotAsset_1">
+      <ui:GetRobotAsset.Value>
+        <OutArgument x:TypeArguments="x:Int32">[portNumber]</OutArgument>
+      </ui:GetRobotAsset.Value>
+    </ui:GetRobotAsset>
+    <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="[in_portServer_AssetName]" DisplayName="Get Asset-Port Server Name" sap:VirtualizedContainerService.HintSize="444,140.666666666667" sap2010:WorkflowViewState.IdRef="GetRobotAsset_2">
+      <ui:GetRobotAsset.Value>
+        <OutArgument x:TypeArguments="x:String">[serverName]</OutArgument>
+      </ui:GetRobotAsset.Value>
+    </ui:GetRobotAsset>
+    <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" From="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" Password="{x:Null}" ReplyTo="{x:Null}" TimeoutMS="{x:Null}" Body="[bodyOfMail]" DisplayName="Send SMTP Mail Message" Email="[username]" EnableSSL="True" sap:VirtualizedContainerService.HintSize="444,149.333333333333" sap2010:WorkflowViewState.IdRef="SendMail_1" IsBodyHtml="False" Port="[portNumber]" SecureConnection="Auto" SecurePassword="[password]" Server="[serverName]" Subject="[in_subject]" To="[in_toRecipent]">
+      <ui:SendMail.Files>
+        <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
+          <InArgument x:TypeArguments="x:String">[in_exportedCSV]</InArgument>
+          <InArgument x:TypeArguments="x:String">[in_screenshot]</InArgument>
+          <InArgument x:TypeArguments="x:String">[in_supplierList]</InArgument>
+        </scg:List>
+      </ui:SendMail.Files>
+    </ui:SendMail>
+  </Sequence>
+</Activity>
