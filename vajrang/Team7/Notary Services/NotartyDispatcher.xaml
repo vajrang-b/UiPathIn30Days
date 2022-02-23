@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="AddItemsToQueue" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="871.2,701.6" sap2010:WorkflowViewState.IdRef="AddItemsToQueue_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="AddItemsToQueue" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="971.2,702.4" sap2010:WorkflowViewState.IdRef="AddItemsToQueue_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="27">
       <x:String>System.Activities</x:String>
@@ -54,18 +54,13 @@
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>System.Memory</AssemblyReference>
       <AssemblyReference>UiPath.Excel</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Flowchart DisplayName="AddItemsToQueue" sap:VirtualizedContainerService.HintSize="633.6,636.8" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+  <Flowchart DisplayName="AddItemsToQueue" sap:VirtualizedContainerService.HintSize="633.6,637.6" sap2010:WorkflowViewState.IdRef="Flowchart_1">
     <Flowchart.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="MyDataTable" />
       <Variable x:TypeArguments="sd:DataTable" Name="ErrorDT" />
-      <Variable x:TypeArguments="x:String" Name="QueueName">
-        <Variable.Default>
-          <Literal x:TypeArguments="x:String">NoteQueue</Literal>
-        </Variable.Default>
-      </Variable>
+      <Variable x:TypeArguments="x:String" Default="NoteQueue" Name="QueueName" />
     </Flowchart.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -82,11 +77,11 @@
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <av:Point x:Key="ShapeLocation">200,123.6</av:Point>
-          <av:Size x:Key="ShapeSize">200,52.8</av:Size>
-          <av:PointCollection x:Key="ConnectorLocation">300,176.4 300,223.6</av:PointCollection>
+          <av:Size x:Key="ShapeSize">200,57.6</av:Size>
+          <av:PointCollection x:Key="ConnectorLocation">300,181.2 300,223.6</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:ReadRange AddHeaders="True" DataTable="[MyDataTable]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="Notaries Area of Practice" WorkbookPath="Excel\AP-ADVOCATES.xlsx">
+      <ui:ReadRange AddHeaders="True" DataTable="[MyDataTable]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="200,57.6" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="Notaries Area of Practice" WorkbookPath="Excel\AP-ADVOCATES.xlsx">
         <ui:ReadRange.Range>
           <InArgument x:TypeArguments="x:String">
             <Literal x:TypeArguments="x:String" Value="" />
@@ -103,22 +98,22 @@
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <av:Point x:Key="ShapeLocation">200,223.6</av:Point>
-              <av:Size x:Key="ShapeSize">200,52.8</av:Size>
+              <av:Size x:Key="ShapeSize">200,57.6</av:Size>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[MyDataTable]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="433.6,236" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+          <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[MyDataTable]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="433.6,246.4" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
             <ui:ForEachRow.Body>
               <ActivityAction x:TypeArguments="sd:DataRow">
                 <ActivityAction.Argument>
                   <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
                 </ActivityAction.Argument>
-                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="241.6,115.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
+                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="241.6,116.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" DeferDate="02/19/2022 21:19:00" DisplayName="Add Queue Item" DueDate="[DateTime.Now.AddHours(2)]" sap:VirtualizedContainerService.HintSize="200,22.4" sap2010:WorkflowViewState.IdRef="AddQueueItem_1" Priority="Normal" QueueType="[QueueName]">
+                  <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Add Queue Item" sap:VirtualizedContainerService.HintSize="200,23.2" sap2010:WorkflowViewState.IdRef="AddQueueItem_1" Priority="Normal" QueueType="[QueueName]">
                     <ui:AddQueueItem.ItemInformation>
                       <InArgument x:TypeArguments="x:String" x:Key="SL No">
                         <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="row(&quot;SL.NO.&quot;).ToString" />
@@ -147,21 +142,5 @@
       </FlowStep.Next>
     </FlowStep>
     <x:Reference>__ReferenceID0</x:Reference>
-    <FlowStep>
-      <sap:WorkflowViewStateService.ViewState>
-        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <av:Point x:Key="ShapeLocation">0,23.6</av:Point>
-          <av:Size x:Key="ShapeSize">200,52.8</av:Size>
-          <av:PointCollection x:Key="ConnectorLocation">300,276.4 300,313.6</av:PointCollection>
-        </scg:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
-      <ui:BulkAddQueueItems TimeoutMS="{x:Null}" DisplayName="Bulk Add Queue Items" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="BulkAddQueueItems_1" QueueItemsDataTable="[MyDataTable]" QueueName="[QueueName]" Result="[ErrorDT]">
-        <sap:WorkflowViewStateService.ViewState>
-          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-          </scg:Dictionary>
-        </sap:WorkflowViewStateService.ViewState>
-      </ui:BulkAddQueueItems>
-    </FlowStep>
   </Flowchart>
 </Activity>
