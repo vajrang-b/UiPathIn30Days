@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="615.333333333333,913.333333333333" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="726,803.333333333333" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="26">
       <x:String>System.Activities</x:String>
@@ -30,7 +30,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="25">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="24">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -54,39 +54,179 @@
       <AssemblyReference>System.ValueTuple</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>NPOI</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
       <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap:VirtualizedContainerService.HintSize="376,848.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap:VirtualizedContainerService.HintSize="736,738.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
-      <Variable x:TypeArguments="x:Int32" Name="Int_firstvalue" />
-      <Variable x:TypeArguments="x:Int32" Name="Int_secondvalue" />
-      <Variable x:TypeArguments="x:Int32" Name="Outputvalue" />
+      <Variable x:TypeArguments="x:Double" Name="firstvalue" />
+      <Variable x:TypeArguments="x:Double" Name="secondvalue" />
+      <Variable x:TypeArguments="x:Double" Name="Outputvalue" />
+      <Variable x:TypeArguments="x:String" Name="Operand" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="334,244.666666666667" sap2010:WorkflowViewState.IdRef="InputDialog_1" IsPassword="False" Label="First Value" Title="Enter First Value">
-      <ui:InputDialog.Result>
-        <OutArgument x:TypeArguments="x:Int32">[Int_firstvalue]</OutArgument>
-      </ui:InputDialog.Result>
-    </ui:InputDialog>
-    <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="334,244.666666666667" sap2010:WorkflowViewState.IdRef="InputDialog_3" IsPassword="False" Label="Second Value" Title="Enter Second Value">
-      <ui:InputDialog.Result>
-        <OutArgument x:TypeArguments="x:Int32">[Int_secondvalue]</OutArgument>
-      </ui:InputDialog.Result>
-    </ui:InputDialog>
-    <Assign sap:VirtualizedContainerService.HintSize="334,62" sap2010:WorkflowViewState.IdRef="Assign_1">
-      <Assign.To>
-        <OutArgument x:TypeArguments="x:Int32">[Outputvalue]</OutArgument>
-      </Assign.To>
-      <Assign.Value>
-        <InArgument x:TypeArguments="x:Int32">[Int_firstvalue+Int_secondvalue]</InArgument>
-      </Assign.Value>
-    </Assign>
-    <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="334,85.3333333333333" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[Outputvalue]" />
+    <Flowchart sap:VirtualizedContainerService.HintSize="694,646.666666666667" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          <av:Point x:Key="ShapeLocation">270,2.5</av:Point>
+          <av:Size x:Key="ShapeSize">60,74.6666666666667</av:Size>
+          <av:PointCollection x:Key="ConnectorLocation">300,77.1666666666667 300,127.166666666667</av:PointCollection>
+          <x:Double x:Key="Width">660</x:Double>
+          <x:Double x:Key="Height">611</x:Double>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <Flowchart.StartNode>
+        <x:Reference>__ReferenceID0</x:Reference>
+      </Flowchart.StartNode>
+      <FlowStep x:Name="__ReferenceID0">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">200,127.166666666667</av:Point>
+            <av:Size x:Key="ShapeSize">200,52.6666666666667</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">300,179.833333333333 300,209.833333333333 299.975,209.833333333333 299.975,229.833333333333</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="First Value" sap:VirtualizedContainerService.HintSize="200,52.6666666666667" sap2010:WorkflowViewState.IdRef="InputDialog_1" IsPassword="False" Label="First Value" Title="Enter First Value">
+          <ui:InputDialog.Result>
+            <OutArgument x:TypeArguments="x:Double">[firstvalue]</OutArgument>
+          </ui:InputDialog.Result>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </ui:InputDialog>
+        <FlowStep.Next>
+          <FlowDecision x:Name="__ReferenceID2" Condition="[firstvalue= 0 or Nothing]" DisplayName="Flow Decision" sap:VirtualizedContainerService.HintSize="78.6666666666667,86.6666666666667" sap2010:WorkflowViewState.IdRef="FlowDecision_1" True="{x:Reference __ReferenceID0}">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <av:Point x:Key="ShapeLocation">260.641666666667,229.833333333333</av:Point>
+                <av:Size x:Key="ShapeSize">78.6666666666667,86.6666666666667</av:Size>
+                <av:PointCollection x:Key="TrueConnector">260.641666666667,273.166666666667 170,273.166666666667 170,153.5 200,153.5</av:PointCollection>
+                <av:PointCollection x:Key="FalseConnector">339.308333333333,273.166666666667 369.308333333333,273.166666666667 369.308333333333,270 440,270</av:PointCollection>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <FlowDecision.False>
+              <FlowStep x:Name="__ReferenceID3">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <av:Point x:Key="ShapeLocation">440,243.666666666667</av:Point>
+                    <av:Size x:Key="ShapeSize">200,52.6666666666667</av:Size>
+                    <av:PointCollection x:Key="ConnectorLocation">540,296.333333333333 540,370 400,370</av:PointCollection>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:InputDialog OptionsString="{x:Null}" DisplayName="Operand" sap:VirtualizedContainerService.HintSize="200,52.6666666666667" sap2010:WorkflowViewState.IdRef="InputDialog_4" IsPassword="False" Label="Operand" Options="[{&quot;+&quot;,&quot;-&quot;,&quot;*&quot;,&quot;/&quot;}]" Title="Enter Operand">
+                  <ui:InputDialog.Result>
+                    <OutArgument x:TypeArguments="x:String">[Operand]</OutArgument>
+                  </ui:InputDialog.Result>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:InputDialog>
+                <FlowStep.Next>
+                  <FlowStep x:Name="__ReferenceID1">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <av:Point x:Key="ShapeLocation">200,343.666666666667</av:Point>
+                        <av:Size x:Key="ShapeSize">200,52.6666666666667</av:Size>
+                        <av:PointCollection x:Key="ConnectorLocation">300,396.333333333333 300,426.333333333333 299.975,426.333333333333 299.975,446.333333333333</av:PointCollection>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="200,52.6666666666667" sap2010:WorkflowViewState.IdRef="InputDialog_6" IsPassword="False" Label="Second Value" Title="Enter Second Value">
+                      <ui:InputDialog.Result>
+                        <OutArgument x:TypeArguments="x:Double">[secondvalue]</OutArgument>
+                      </ui:InputDialog.Result>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </ui:InputDialog>
+                    <FlowStep.Next>
+                      <FlowDecision x:Name="__ReferenceID4" Condition="[secondvalue=0 or Nothing]" DisplayName="Flow Decision" sap:VirtualizedContainerService.HintSize="78.6666666666667,86.6666666666667" sap2010:WorkflowViewState.IdRef="FlowDecision_2" True="{x:Reference __ReferenceID1}">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <av:Point x:Key="ShapeLocation">260.641666666667,446.333333333333</av:Point>
+                            <av:Size x:Key="ShapeSize">78.6666666666667,86.6666666666667</av:Size>
+                            <av:PointCollection x:Key="TrueConnector">260.641666666667,489.666666666667 170,489.666666666667 170,370 200,370</av:PointCollection>
+                            <av:PointCollection x:Key="FalseConnector">339.308333333334,489.666666666666 450.895,489.666666666666 450.895,571 420.895,571</av:PointCollection>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <FlowDecision.False>
+                          <FlowStep x:Name="__ReferenceID5">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <av:Point x:Key="ShapeLocation">158.895,540</av:Point>
+                                <av:Size x:Key="ShapeSize">262,62</av:Size>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <Assign sap:VirtualizedContainerService.HintSize="262,62" sap2010:WorkflowViewState.IdRef="Assign_2">
+                              <Assign.To>
+                                <OutArgument x:TypeArguments="x:String">[Result]</OutArgument>
+                              </Assign.To>
+                              <Assign.Value>
+                                <InArgument x:TypeArguments="x:String">[If(Operand.Equals("-"),firstvalue-secondvalue,If(Operand.Equals("+"),firstvalue+secondvalue,If(Operand.Equals("*"),firstvalue*secondvalue,If(Operand.Equals("/"),firstvalue/secondvalue))]</InArgument>
+                              </Assign.Value>
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </Assign>
+                          </FlowStep>
+                        </FlowDecision.False>
+                      </FlowDecision>
+                    </FlowStep.Next>
+                  </FlowStep>
+                </FlowStep.Next>
+              </FlowStep>
+            </FlowDecision.False>
+          </FlowDecision>
+        </FlowStep.Next>
+      </FlowStep>
+      <x:Reference>__ReferenceID2</x:Reference>
+      <x:Reference>__ReferenceID3</x:Reference>
+      <x:Reference>__ReferenceID1</x:Reference>
+      <x:Reference>__ReferenceID4</x:Reference>
+      <FlowStep>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">460,503.666666666667</av:Point>
+            <av:Size x:Key="ShapeSize">200,52.6666666666667</av:Size>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <ui:CommentOut sap:VirtualizedContainerService.HintSize="200,52.6666666666667" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+          <ui:CommentOut.Body>
+            <Sequence DisplayName="Ignored Activities" sap2010:WorkflowViewState.IdRef="Sequence_2">
+              <Switch x:TypeArguments="ui:GenericValue" DisplayName="Switch" Expression="[Operand]" sap:VirtualizedContainerService.HintSize="200,52.6666666666667" sap2010:WorkflowViewState.IdRef="Switch`1_2">
+                <Switch.Default>
+                  <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="334,85.3333333333333" sap2010:WorkflowViewState.IdRef="MessageBox_2" Text="[(firstvalue)+(secondvalue)]" />
+                </Switch.Default>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" x:Key="Subraction" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="334,85.3333333333333" sap2010:WorkflowViewState.IdRef="MessageBox_3" Text="[firstvalue-secondvalue]" />
+                <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" x:Key="Multiply" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="334,85.3333333333333" sap2010:WorkflowViewState.IdRef="MessageBox_4" Text="[firstvalue*secondvalue]" />
+                <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" x:Key="Division" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="334,85.3333333333333" sap2010:WorkflowViewState.IdRef="MessageBox_5" Text="[firstvalue/secondvalue]" />
+              </Switch>
+            </Sequence>
+          </ui:CommentOut.Body>
+        </ui:CommentOut>
+      </FlowStep>
+      <x:Reference>__ReferenceID5</x:Reference>
+    </Flowchart>
   </Sequence>
 </Activity>
