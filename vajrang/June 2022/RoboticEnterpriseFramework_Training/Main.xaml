@@ -6,7 +6,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>900.666666666667,868</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>904,868</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Main2_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="74">
@@ -491,9 +491,15 @@
                                     <ui:LogMessage DisplayName="Log Message screen resolution" sap:VirtualizedContainerService.HintSize="898,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_36" Level="Info" Message="[&quot;The primary screen resolution is: &quot;+Screen.PrimaryScreen.Bounds.Width.ToString+&quot; x &quot;+ Screen.PrimaryScreen.Bounds.Height.ToString]" />
                                     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke InitAllSettings workflow" sap:VirtualizedContainerService.HintSize="898,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_12" UnSafe="False" WorkflowFileName="Framework\InitAllSettings.xaml">
                                       <ui:InvokeWorkflowFile.Arguments>
-                                        <InArgument x:TypeArguments="x:String" x:Key="in_ConfigFile">Data\Config.xlsx</InArgument>
-                                        <InArgument x:TypeArguments="s:String[]" x:Key="in_ConfigSheets">[{"Settings", "Constants"}]</InArgument>
-                                        <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="out_Config">[Config]</OutArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_ConfigFile">
+                                          <Literal x:TypeArguments="x:String">Data\Config.xlsx</Literal>
+                                        </InArgument>
+                                        <InArgument x:TypeArguments="s:String[]" x:Key="in_ConfigSheets">
+                                          <mva:VisualBasicValue x:TypeArguments="s:String[]" ExpressionText="{}{&quot;Settings&quot;, &quot;Constants&quot;}" />
+                                        </InArgument>
+                                        <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="out_Config">
+                                          <mva:VisualBasicReference x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="Config" />
+                                        </OutArgument>
                                       </ui:InvokeWorkflowFile.Arguments>
                                     </ui:InvokeWorkflowFile>
                                     <If sap2010:Annotation.AnnotationText="Overwrite queue name from in configuration file in case the argument in_OrchestratorQueueName is specified.&#xA;This provides backward compatibility with &lt; 2018.3." Condition="[Not String.IsNullOrWhiteSpace(in_OrchestratorQueueName)]" DisplayName="If in_OrchestratorQueueName is specified" sap:VirtualizedContainerService.HintSize="898,150.666666666667" sap2010:WorkflowViewState.IdRef="If_10">
@@ -586,12 +592,8 @@
                                                   </sap:WorkflowViewStateService.ViewState>
                                                   <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Add Queue Item" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="AddQueueItem_1" Priority="Normal" QueueType="[Config(&quot;OrchestratorQueueName&quot;).ToString]" Reference="[CurrentRow(0).ToString+CurrentRow(1).ToString]">
                                                     <ui:AddQueueItem.ItemInformation>
-                                                      <InArgument x:TypeArguments="x:String" x:Key="FileName">
-                                                        <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="CurrentRow(0).ToString" />
-                                                      </InArgument>
-                                                      <InArgument x:TypeArguments="x:String" x:Key="Content">
-                                                        <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="CurrentRow(1).ToString" />
-                                                      </InArgument>
+                                                      <InArgument x:TypeArguments="x:String" x:Key="FileName">[CurrentRow(0).ToString]</InArgument>
+                                                      <InArgument x:TypeArguments="x:String" x:Key="Content">[CurrentRow(1).ToString]</InArgument>
                                                     </ui:AddQueueItem.ItemInformation>
                                                   </ui:AddQueueItem>
                                                 </Sequence>
