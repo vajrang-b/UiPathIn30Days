@@ -1,3 +1,7 @@
+# readme file update in progress
+
+Meanwhile click on the badges and get all updates
+
 ![Github Issues](
 https://img.shields.io/github/issues/vajrang-b/RPA-Developer-in-30-Days
 ) ![GitHub forks](	https://img.shields.io/github/forks/vajrang-b/RPA-Developer-in-30-Days) 
