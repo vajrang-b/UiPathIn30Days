@@ -1,12 +1,9 @@
 <Activity mc:Ignorable="sap sap2010" x:Class="PA_SearchPoNumber" this:PA_SearchPoNumber.in_PO_number="03-594-3533" this:PA_SearchPoNumber.In_PaUrl="https://developer.automationanywhere.com/challenges/AutomationAnywhereLabs-POtrackingLookup.html" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_PO_number" Type="InArgument(x:String)" />
-    <x:Property Name="Out_DtPoRecord" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="Out_DtPoRecord" Type="OutArgument(sd:DataTable)" />
     <x:Property Name="In_PaUrl" Type="InArgument(x:String)" />
   </x:Members>
-  <this:PA_SearchPoNumber.Out_DtPoRecord>
-    <InArgument x:TypeArguments="sd:DataTable" />
-  </this:PA_SearchPoNumber.Out_DtPoRecord>
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
@@ -143,7 +140,7 @@
                 <uix:TargetAnchorable DesignTimeRectangle="38, 584, 885, 138" DesignTimeScaleFactor="1" FriendlyName="'PO Number'" FullSelectorArgument="&lt;webctrl id='dtBasicExample' tag='TABLE' /&gt;" Guid="6311f26b-0c80-40eb-a4f5-9646fdf6c7cb" InformativeScreenshot="ad33945b9d8d572739edb185e87555e3.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Automation Anywhere Labs - PO Tracking Lookup' /&gt;" SearchSteps="Selector" Version="V1" Visibility="Interactive" />
               </uix:NExtractData.Target>
             </uix:NExtractData>
-            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="358,101" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Extracted datatable &quot;+ Out_DtPoRecord.RowCount.ToString]" />
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="358,101" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Extracted datatable Rows &quot;+ Out_DtPoRecord.RowCount.ToString]" />
           </Sequence>
         </ActivityAction>
       </uix:NApplicationCard.Body>
