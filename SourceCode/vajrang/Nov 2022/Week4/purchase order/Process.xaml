@@ -9,7 +9,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>640.8,672</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1158.4,672</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="20">
@@ -36,7 +36,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="84">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="44">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -85,6 +85,8 @@
   <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="440.8,607.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="dtPorecord" />
+      <Variable x:TypeArguments="sd:DataTable" Name="StateAssignment" />
+      <Variable x:TypeArguments="x:String" Name="str_AGENT" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -104,6 +106,12 @@
         <InArgument x:TypeArguments="x:String" x:Key="In_PaUrl">
           <Literal x:TypeArguments="x:String">https://developer.automationanywhere.com/challenges/AutomationAnywhereLabs-POtrackingLookup.html</Literal>
         </InArgument>
+        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_StateAssignment">
+          <VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="StateAssignment" />
+        </InArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_str_Agent">
+          <VisualBasicReference x:TypeArguments="x:String" ExpressionText="str_AGENT" />
+        </OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="AutomationAnywhereChallenge\AAC_FillDetails.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="378.4,123.2" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="AutomationAnywhereChallenge\AAC_FillDetails.xaml">
@@ -116,6 +124,9 @@
         </InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_Idx">
           <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem.SpecificContent(&quot;Idx&quot;).ToString" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_Agent">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="str_AGENT" />
         </InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
