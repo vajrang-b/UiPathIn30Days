@@ -1,5 +1,5 @@
-Usps - https://tools.usps.com/go/TrackConfirmAction_input
-Ups - https://www.ups.com/us/en/Home.page
+Usps - https://tools.usps.com/go/TrackConfirmAction_input - vijaya
+Ups - https://www.ups.com/us/en/Home.page - Dheeraj
 FedEx - https://www.fedex.com/en-us/home.html
 Ontrac - https://www.ontrac.com/tracking.asp
 Speedee delivery - https://speedeedelivery.com/
