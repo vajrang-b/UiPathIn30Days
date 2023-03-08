@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="690,515" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="690,813" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="25">
       <x:String>System.Activities</x:String>
@@ -29,7 +29,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="24">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="48">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -53,11 +53,18 @@
       <AssemblyReference>System.ObjectModel</AssemblyReference>
       <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
       <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="696,748" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
-      <Variable x:TypeArguments="x:String" Name="oprand" />
+      <Variable x:TypeArguments="x:String" Name="operand" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -66,8 +73,8 @@
     </sap:WorkflowViewStateService.ViewState>
     <Flowchart sap:VirtualizedContainerService.HintSize="634,637" sap2010:WorkflowViewState.IdRef="Flowchart_1">
       <Flowchart.Variables>
-        <Variable x:TypeArguments="x:String" Name="intFirstNumber" />
-        <Variable x:TypeArguments="x:String" Name="intSecondNumber" />
+        <Variable x:TypeArguments="x:Int32" Name="intFirstNumber" />
+        <Variable x:TypeArguments="x:Int32" Name="intSecondNumber" />
       </Flowchart.Variables>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -86,12 +93,12 @@
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <av:Point x:Key="ShapeLocation">200,104</av:Point>
             <av:Size x:Key="ShapeSize">200,52</av:Size>
-            <av:PointCollection x:Key="ConnectorLocation">300,156 300,176.5</av:PointCollection>
+            <av:PointCollection x:Key="ConnectorLocation">300,156 300,184</av:PointCollection>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
         <ui:InputDialog Options="{x:Null}" DisplayName="Input Operator" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="InputDialog_1" IsPassword="False" Label="Enter Operator" OptionsString="+;-;*;/;%;++;--" Title="Enter Operator">
           <ui:InputDialog.Result>
-            <OutArgument x:TypeArguments="x:String">[oprand]</OutArgument>
+            <OutArgument x:TypeArguments="x:String">[operand]</OutArgument>
           </ui:InputDialog.Result>
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -101,62 +108,69 @@
           </sap:WorkflowViewStateService.ViewState>
         </ui:InputDialog>
         <FlowStep.Next>
-          <FlowSwitch x:TypeArguments="x:Int32" x:Name="__ReferenceID0" DisplayName="Flow Switch" sap:VirtualizedContainerService.HintSize="70,87" sap2010:WorkflowViewState.IdRef="FlowSwitch`1_1">
-            <FlowSwitch.Default>
-              <FlowStep x:Name="__ReferenceID1">
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <av:Point x:Key="ShapeLocation">210,314</av:Point>
-                    <av:Size x:Key="ShapeSize">200,52</av:Size>
-                    <av:PointCollection x:Key="ConnectorLocation">310,366 310,384</av:PointCollection>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-                <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="Input FirstNumber" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="InputDialog_2" IsPassword="False" Label="Enter FirstNumber" Title="Enter FirstNumber">
-                  <ui:InputDialog.Result>
-                    <OutArgument x:TypeArguments="x:String">[intFirstNumber]</OutArgument>
-                  </ui:InputDialog.Result>
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                </ui:InputDialog>
-                <FlowStep.Next>
-                  <FlowStep x:Name="__ReferenceID2">
-                    <sap:WorkflowViewStateService.ViewState>
-                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <av:Point x:Key="ShapeLocation">210,384</av:Point>
-                        <av:Size x:Key="ShapeSize">200,52</av:Size>
-                      </scg:Dictionary>
-                    </sap:WorkflowViewStateService.ViewState>
-                    <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="Input SecondNumber" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="InputDialog_3" IsPassword="False" Label="Enter SecondNumber" Title="Enter SecondNumber">
-                      <ui:InputDialog.Result>
-                        <OutArgument x:TypeArguments="x:String">[intSecondNumber]</OutArgument>
-                      </ui:InputDialog.Result>
-                      <sap:WorkflowViewStateService.ViewState>
-                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                        </scg:Dictionary>
-                      </sap:WorkflowViewStateService.ViewState>
-                    </ui:InputDialog>
-                  </FlowStep>
-                </FlowStep.Next>
-              </FlowStep>
-            </FlowSwitch.Default>
+          <FlowStep x:Name="__ReferenceID2">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                <av:Point x:Key="ShapeLocation">265,176.5</av:Point>
-                <av:Size x:Key="ShapeSize">70,87</av:Size>
-                <av:PointCollection x:Key="Default">300,263.5 300,293.5 310,293.5 310,314</av:PointCollection>
+                <av:Point x:Key="ShapeLocation">200,184</av:Point>
+                <av:Size x:Key="ShapeSize">200,52</av:Size>
+                <av:PointCollection x:Key="ConnectorLocation">200,210 170,210 170,266.5 310,266.5 310,296.5</av:PointCollection>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-          </FlowSwitch>
+            <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="Input FirstNumber" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="InputDialog_2" IsPassword="False" Label="Enter FirstNumber" Title="Enter FirstNumber">
+              <ui:InputDialog.Result>
+                <OutArgument x:TypeArguments="x:Int32">[intFirstNumber]</OutArgument>
+              </ui:InputDialog.Result>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:InputDialog>
+            <FlowStep.Next>
+              <FlowSwitch x:TypeArguments="x:String" Default="{x:Reference __ReferenceID0}" x:Name="__ReferenceID1" DisplayName="Flow Switch" sap:VirtualizedContainerService.HintSize="70,87" sap2010:WorkflowViewState.IdRef="FlowSwitch`1_2">
+                <FlowSwitch.Expression>
+                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="operand" />
+                </FlowSwitch.Expression>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <av:Point x:Key="ShapeLocation">275,296.5</av:Point>
+                    <av:Size x:Key="ShapeSize">70,87</av:Size>
+                    <av:PointCollection x:Key="Default">292.5,296.5 292.5,266.5 130,266.5 130,434</av:PointCollection>
+                    <av:PointCollection x:Key="+Connector">275,318.25 130,318.25 130,434</av:PointCollection>
+                    <av:PointCollection x:Key="-Connector">275,340 130,340 130,434</av:PointCollection>
+                    <av:PointCollection x:Key="*Connector">275,361.75 130,361.75 130,434</av:PointCollection>
+                    <av:PointCollection x:Key="/Connector">292.5,383.5 292.5,413.5 130,413.5 130,434</av:PointCollection>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <FlowStep x:Key="+" x:Name="__ReferenceID0">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <av:Point x:Key="ShapeLocation">30,434</av:Point>
+                      <av:Size x:Key="ShapeSize">200,52</av:Size>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="Input SecondNumber" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="InputDialog_3" IsPassword="False" Label="Enter SecondNumber" Title="Enter SecondNumber">
+                    <ui:InputDialog.Result>
+                      <OutArgument x:TypeArguments="x:Int32">[intSecondNumber]</OutArgument>
+                    </ui:InputDialog.Result>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:InputDialog>
+                </FlowStep>
+                <x:Reference>__ReferenceID0<x:Key>-</x:Key></x:Reference>
+                <x:Reference>__ReferenceID0<x:Key>*</x:Key></x:Reference>
+                <x:Reference>__ReferenceID0<x:Key>/</x:Key></x:Reference>
+              </FlowSwitch>
+            </FlowStep.Next>
+          </FlowStep>
         </FlowStep.Next>
       </FlowStep>
-      <x:Reference>__ReferenceID0</x:Reference>
       <x:Reference>__ReferenceID1</x:Reference>
       <x:Reference>__ReferenceID2</x:Reference>
+      <x:Reference>__ReferenceID0</x:Reference>
     </Flowchart>
   </Sequence>
 </Activity>
