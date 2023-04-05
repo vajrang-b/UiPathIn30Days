@@ -2,11 +2,8 @@
   <x:Members>
     <x:Property Name="In_SecondNumber" Type="InArgument(x:Int32)" />
     <x:Property Name="In_FirstNumber" Type="InArgument(x:Int32)" />
-    <x:Property Name="Out_SumOfTwoNumbers" Type="InArgument(x:Int32)" />
+    <x:Property Name="Out_SumOfTwoNumbers" Type="OutArgument(x:Int32)" />
   </x:Members>
-  <this:Sum_of_Two_Numbers.Out_SumOfTwoNumbers>
-    <InArgument x:TypeArguments="x:Int32" />
-  </this:Sum_of_Two_Numbers.Out_SumOfTwoNumbers>
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
@@ -65,20 +62,32 @@
       <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Sum_of_Two_Numbers" sap:VirtualizedContainerService.HintSize="496,356" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Given two input arguments as first and second number and logs sum of two numbers." DisplayName="Sum_of_Two_Numbers" sap:VirtualizedContainerService.HintSize="496,468" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Assign sap:VirtualizedContainerService.HintSize="434,86" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <Assign sap2010:Annotation.AnnotationText="Assign Sum of Two Numbers" DisplayName="Assign SumOfTwoNumbers" sap:VirtualizedContainerService.HintSize="434,117" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="x:Int32">[Out_SumOfTwoNumbers]</OutArgument>
       </Assign.To>
       <Assign.Value>
         <InArgument x:TypeArguments="x:Int32">[In_FirstNumber+In_SecondNumber]</InArgument>
       </Assign.Value>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
     </Assign>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,119" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;The Sum of two Numbers are: &quot; +Out_SumOfTwoNumbers.ToString]" />
+    <ui:LogMessage sap2010:Annotation.AnnotationText="This shows a output Value." DisplayName="Log Message Output" sap:VirtualizedContainerService.HintSize="434,150" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;The Sum of two Numbers are: &quot; +Out_SumOfTwoNumbers.ToString]">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:LogMessage>
   </Sequence>
 </Activity>
