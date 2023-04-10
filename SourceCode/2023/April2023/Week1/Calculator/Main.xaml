@@ -1,4 +1,19 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="977.6,752.8" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="user_input" Type="InArgument(x:String)" />
+    <x:Property Name="yesno" Type="InArgument(x:String)" />
+  </x:Members>
+  <this:Main.user_input>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Main.user_input>
+  <this:Main.yesno>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Main.yesno>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>2164,1310.6666666666667</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -26,6 +41,8 @@
       <x:String>GlobalConstantsNamespace</x:String>
       <x:String>System.Runtime.Serialization</x:String>
       <x:String>System.Reflection</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -67,44 +84,257 @@
       <AssemblyReference>System.ObjectModel</AssemblyReference>
       <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
       <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Forms</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="376.8,688" sap2010:WorkflowViewState.IdRef="Sequence_1">
-    <Sequence.Variables>
-      <Variable x:TypeArguments="x:Int32" Name="intResult" />
-    </Sequence.Variables>
+  <Sequence sap2010:Annotation.AnnotationText="Performing the calculator operatins according to the user's input&#xD;&#xA;" DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="472,1246" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Addition.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="333.6,117.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Addition.xaml">
-      <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:Double" x:Key="In_Num1">
-          <Literal x:TypeArguments="x:Double" Value="30" />
+    <ui:InputDialog Options="{x:Null}" DisplayName="choosing the option to perform" sap:VirtualizedContainerService.HintSize="410,54" sap2010:WorkflowViewState.IdRef="InputDialog_1" IsPassword="False" Label="Please choose the activity to be performed: " OptionsString="1.Addition;2.Subtraction;3.Division;4.Multiplication;5.cube_Root;6.Palindrome;7.LCM;8.Percentage;9.Power of a number;10.Square of a number" Title="Calculator Program">
+      <ui:InputDialog.Result>
+        <OutArgument x:TypeArguments="x:String">[user_input]</OutArgument>
+      </ui:InputDialog.Result>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:InputDialog>
+    <Switch x:TypeArguments="x:String" DisplayName="performing the activity" Expression="[user_input]" sap:VirtualizedContainerService.HintSize="410,54" sap2010:WorkflowViewState.IdRef="Switch`1_2">
+      <Switch.Default>
+        <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="334,86.66666666666667" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[&quot;Pick the right option please&quot;]" />
+      </Switch.Default>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="1.Addition" DisplayName="Addition.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="334,115.33333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Addition.xaml">
+        <ui:InvokeWorkflowFile.Arguments>
+          <InArgument x:TypeArguments="x:Double" x:Key="In_Num1">
+            <Literal x:TypeArguments="x:Double" Value="30" />
+          </InArgument>
+          <InArgument x:TypeArguments="x:Double" x:Key="In_Num2">
+            <Literal x:TypeArguments="x:Double" Value="50" />
+          </InArgument>
+          <OutArgument x:TypeArguments="x:Double" x:Key="Out_Sum" />
+        </ui:InvokeWorkflowFile.Arguments>
+      </ui:InvokeWorkflowFile>
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="2.Subtraction" DisplayName="Subtraction.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="334,115.33333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="Subtraction.xaml">
+        <ui:InvokeWorkflowFile.Arguments>
+          <InArgument x:TypeArguments="x:Int32" x:Key="In_Num1">
+            <Literal x:TypeArguments="x:Int32" Value="48" />
+          </InArgument>
+          <InArgument x:TypeArguments="x:Int32" x:Key="In_Num2">
+            <Literal x:TypeArguments="x:Int32" Value="24" />
+          </InArgument>
+          <OutArgument x:TypeArguments="x:Int32" x:Key="Out_SubResult" />
+        </ui:InvokeWorkflowFile.Arguments>
+      </ui:InvokeWorkflowFile>
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="3.Division" DisplayName="Division.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="334,115.33333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="Division.xaml">
+        <ui:InvokeWorkflowFile.Arguments>
+          <OutArgument x:TypeArguments="x:Int32" x:Key="out_Division" />
+          <InArgument x:TypeArguments="x:Int32" x:Key="in_Num1">
+            <Literal x:TypeArguments="x:Int32" Value="4" />
+          </InArgument>
+          <InArgument x:TypeArguments="x:Int32" x:Key="in_Num2">
+            <Literal x:TypeArguments="x:Int32" Value="2" />
+          </InArgument>
+        </ui:InvokeWorkflowFile.Arguments>
+      </ui:InvokeWorkflowFile>
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="4.Multiplication" DisplayName="Multiplication.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="334,115.33333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="Multiplication.xaml">
+        <ui:InvokeWorkflowFile.Arguments>
+          <InArgument x:TypeArguments="x:Int32" x:Key="In_FirstNumber">
+            <Literal x:TypeArguments="x:Int32" Value="12" />
+          </InArgument>
+          <InArgument x:TypeArguments="x:Int32" x:Key="In_SecondNumber">
+            <Literal x:TypeArguments="x:Int32" Value="30" />
+          </InArgument>
+          <OutArgument x:TypeArguments="x:Int32" x:Key="Out_Result" />
+        </ui:InvokeWorkflowFile.Arguments>
+      </ui:InvokeWorkflowFile>
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="5.cube_Root" DisplayName="CubeRoot.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="334,115.33333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_9" UnSafe="False" WorkflowFileName="CubeRoot.xaml">
+        <ui:InvokeWorkflowFile.Arguments>
+          <OutArgument x:TypeArguments="x:Double" x:Key="Out_Cuberoot" />
+          <InArgument x:TypeArguments="x:Double" x:Key="In_Num">
+            <Literal x:TypeArguments="x:Double" Value="125" />
+          </InArgument>
+        </ui:InvokeWorkflowFile.Arguments>
+      </ui:InvokeWorkflowFile>
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="6.Palindrome;" DisplayName="ispalindrome.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="334,115.33333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_10" UnSafe="False" WorkflowFileName="ispalindrome.xaml">
+        <ui:InvokeWorkflowFile.Arguments>
+          <InArgument x:TypeArguments="x:String" x:Key="firstnumber">
+            <Literal x:TypeArguments="x:String">1661</Literal>
+          </InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="strnumber" />
+          <InArgument x:TypeArguments="x:String" x:Key="strreversenumber" />
+        </ui:InvokeWorkflowFile.Arguments>
+      </ui:InvokeWorkflowFile>
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="7.LCM" DisplayName="Lcm of two nums.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="334,115.33333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_11" UnSafe="False" WorkflowFileName="Lcm of two nums.xaml">
+        <ui:InvokeWorkflowFile.Arguments>
+          <InArgument x:TypeArguments="x:Int32" x:Key="Num1">
+            <Literal x:TypeArguments="x:Int32" Value="10" />
+          </InArgument>
+          <InArgument x:TypeArguments="x:Int32" x:Key="Num2">
+            <Literal x:TypeArguments="x:Int32" Value="10" />
+          </InArgument>
+          <OutArgument x:TypeArguments="x:Int32" x:Key="LCM" />
+        </ui:InvokeWorkflowFile.Arguments>
+      </ui:InvokeWorkflowFile>
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="8.Percentage" DisplayName="Percentage.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="334,115.33333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_12" UnSafe="False" WorkflowFileName="Percentage.xaml">
+        <ui:InvokeWorkflowFile.Arguments>
+          <OutArgument x:TypeArguments="x:Double" x:Key="Out_PercentResult" />
+          <InArgument x:TypeArguments="x:Int32" x:Key="in_Num1" />
+          <InArgument x:TypeArguments="x:Int32" x:Key="in_Num2" />
+        </ui:InvokeWorkflowFile.Arguments>
+      </ui:InvokeWorkflowFile>
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="9.Power of a number" DisplayName="Power of a Number.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="334,115.33333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_13" UnSafe="False" WorkflowFileName="Power of a Number.xaml">
+        <ui:InvokeWorkflowFile.Arguments>
+          <InArgument x:TypeArguments="x:Double" x:Key="in_Num1">
+            <Literal x:TypeArguments="x:Double" Value="3" />
+          </InArgument>
+          <InArgument x:TypeArguments="x:Double" x:Key="in_Num2">
+            <Literal x:TypeArguments="x:Double" Value="3.4" />
+          </InArgument>
+          <OutArgument x:TypeArguments="x:Double" x:Key="Out_Result" />
+        </ui:InvokeWorkflowFile.Arguments>
+      </ui:InvokeWorkflowFile>
+      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="10.Square of a number" DisplayName="Square of Number.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="334,115.33333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_14" UnSafe="False" WorkflowFileName="Square of Number.xaml">
+        <ui:InvokeWorkflowFile.Arguments>
+          <InArgument x:TypeArguments="x:Double" x:Key="In_Number">
+            <Literal x:TypeArguments="x:Double" Value="25" />
+          </InArgument>
+          <OutArgument x:TypeArguments="x:Double" x:Key="Out_Result" />
+        </ui:InvokeWorkflowFile.Arguments>
+      </ui:InvokeWorkflowFile>
+    </Switch>
+    <ui:InputDialog Options="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="410,300.6666666666667" sap2010:WorkflowViewState.IdRef="InputDialog_2" IsPassword="False" Label="Do You need to Perform any other activity?" OptionsString="Yes, I want to do; 2. No Thanks">
+      <ui:InputDialog.Result>
+        <OutArgument x:TypeArguments="x:String">[yesno]</OutArgument>
+      </ui:InputDialog.Result>
+      <ui:InputDialog.Title>
+        <InArgument x:TypeArguments="x:String">
+          <Literal x:TypeArguments="x:String" Value="" />
         </InArgument>
-        <InArgument x:TypeArguments="x:Double" x:Key="In_Num2">
-          <Literal x:TypeArguments="x:Double" Value="50" />
-        </InArgument>
-        <OutArgument x:TypeArguments="x:Double" x:Key="Out_Sum">
-          <VisualBasicReference x:TypeArguments="x:Double" ExpressionText="intResult" />
-        </OutArgument>
-      </ui:InvokeWorkflowFile.Arguments>
-    </ui:InvokeWorkflowFile>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="333.6,121.6" sap2010:WorkflowViewState.IdRef="LogMessage_2" Message="[intResult]" />
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Subtraction.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="333.6,117.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Subtraction.xaml">
-      <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:Int32" x:Key="In_Num1">
-          <Literal x:TypeArguments="x:Int32" Value="48" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:Int32" x:Key="In_Num2">
-          <Literal x:TypeArguments="x:Int32" Value="24" />
-        </InArgument>
-        <OutArgument x:TypeArguments="x:Int32" x:Key="Out_SubResult">
-          <VisualBasicReference x:TypeArguments="x:Int32" ExpressionText="intResult" />
-        </OutArgument>
-      </ui:InvokeWorkflowFile.Arguments>
-    </ui:InvokeWorkflowFile>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="333.6,121.6" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[intResult]" />
+      </ui:InputDialog.Title>
+    </ui:InputDialog>
+    <If Condition="[yesno=&quot;Yes, I want to do&quot;]" sap:VirtualizedContainerService.HintSize="410,561.3333333333334" sap2010:WorkflowViewState.IdRef="If_2">
+      <If.Then>
+        <Sequence sap:VirtualizedContainerService.HintSize="304,235.33333333333334" sap2010:WorkflowViewState.IdRef="Sequence_4">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:InputDialog Options="{x:Null}" DisplayName="choosing the option to perform" sap:VirtualizedContainerService.HintSize="262,54" sap2010:WorkflowViewState.IdRef="InputDialog_3" IsPassword="False" Label="Please choose the activity to be performed: " OptionsString="1.Addition;2.Subtraction;3.Division;4.Multiplication;5.cube_Root;6.Palindrome;7.LCM;8.Percentage;9.Power of a number;10.Square of a number" Title="Calculator Program">
+            <ui:InputDialog.Result>
+              <OutArgument x:TypeArguments="x:String">[user_input]</OutArgument>
+            </ui:InputDialog.Result>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:InputDialog>
+          <Switch x:TypeArguments="x:String" DisplayName="performing the activity" Expression="[user_input]" sap:VirtualizedContainerService.HintSize="262,54" sap2010:WorkflowViewState.IdRef="Switch`1_3">
+            <Switch.Default>
+              <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="334,86.66666666666667" sap2010:WorkflowViewState.IdRef="MessageBox_2" Text="[&quot;Pick the right option please&quot;]" />
+            </Switch.Default>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="1.Addition" DisplayName="Addition.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="334,115.33333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_15" UnSafe="False" WorkflowFileName="Addition.xaml">
+              <ui:InvokeWorkflowFile.Arguments>
+                <InArgument x:TypeArguments="x:Double" x:Key="In_Num1">30</InArgument>
+                <InArgument x:TypeArguments="x:Double" x:Key="In_Num2">50</InArgument>
+                <OutArgument x:TypeArguments="x:Double" x:Key="Out_Sum" />
+              </ui:InvokeWorkflowFile.Arguments>
+            </ui:InvokeWorkflowFile>
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="2.Subtraction" DisplayName="Subtraction.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="334,115.33333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_16" UnSafe="False" WorkflowFileName="Subtraction.xaml">
+              <ui:InvokeWorkflowFile.Arguments>
+                <InArgument x:TypeArguments="x:Int32" x:Key="In_Num1">48</InArgument>
+                <InArgument x:TypeArguments="x:Int32" x:Key="In_Num2">24</InArgument>
+                <OutArgument x:TypeArguments="x:Int32" x:Key="Out_SubResult" />
+              </ui:InvokeWorkflowFile.Arguments>
+            </ui:InvokeWorkflowFile>
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="3.Division" DisplayName="Division.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="334,115.33333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_17" UnSafe="False" WorkflowFileName="Division.xaml">
+              <ui:InvokeWorkflowFile.Arguments>
+                <OutArgument x:TypeArguments="x:Int32" x:Key="out_Division" />
+                <InArgument x:TypeArguments="x:Int32" x:Key="in_Num1">4</InArgument>
+                <InArgument x:TypeArguments="x:Int32" x:Key="in_Num2">2</InArgument>
+              </ui:InvokeWorkflowFile.Arguments>
+            </ui:InvokeWorkflowFile>
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="4.Multiplication" DisplayName="Multiplication.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="334,115.33333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_18" UnSafe="False" WorkflowFileName="Multiplication.xaml">
+              <ui:InvokeWorkflowFile.Arguments>
+                <InArgument x:TypeArguments="x:Int32" x:Key="In_FirstNumber">12</InArgument>
+                <InArgument x:TypeArguments="x:Int32" x:Key="In_SecondNumber">30</InArgument>
+                <OutArgument x:TypeArguments="x:Int32" x:Key="Out_Result" />
+              </ui:InvokeWorkflowFile.Arguments>
+            </ui:InvokeWorkflowFile>
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="5.cube_Root" DisplayName="CubeRoot.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="334,115.33333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_19" UnSafe="False" WorkflowFileName="CubeRoot.xaml">
+              <ui:InvokeWorkflowFile.Arguments>
+                <OutArgument x:TypeArguments="x:Double" x:Key="Out_Cuberoot" />
+                <InArgument x:TypeArguments="x:Double" x:Key="In_Num">125</InArgument>
+              </ui:InvokeWorkflowFile.Arguments>
+            </ui:InvokeWorkflowFile>
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="6.Palindrome;" DisplayName="ispalindrome.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="334,115.33333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_20" UnSafe="False" WorkflowFileName="ispalindrome.xaml">
+              <ui:InvokeWorkflowFile.Arguments>
+                <InArgument x:TypeArguments="x:String" x:Key="firstnumber">1661</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="strnumber" />
+                <InArgument x:TypeArguments="x:String" x:Key="strreversenumber" />
+              </ui:InvokeWorkflowFile.Arguments>
+            </ui:InvokeWorkflowFile>
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="7.LCM" DisplayName="Lcm of two nums.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="334,115.33333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_21" UnSafe="False" WorkflowFileName="Lcm of two nums.xaml">
+              <ui:InvokeWorkflowFile.Arguments>
+                <InArgument x:TypeArguments="x:Int32" x:Key="Num1">10</InArgument>
+                <InArgument x:TypeArguments="x:Int32" x:Key="Num2">10</InArgument>
+                <OutArgument x:TypeArguments="x:Int32" x:Key="LCM" />
+              </ui:InvokeWorkflowFile.Arguments>
+            </ui:InvokeWorkflowFile>
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="8.Percentage" DisplayName="Percentage.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="334,115.33333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_22" UnSafe="False" WorkflowFileName="Percentage.xaml">
+              <ui:InvokeWorkflowFile.Arguments>
+                <OutArgument x:TypeArguments="x:Double" x:Key="Out_PercentResult" />
+                <InArgument x:TypeArguments="x:Int32" x:Key="in_Num1" />
+                <InArgument x:TypeArguments="x:Int32" x:Key="in_Num2" />
+              </ui:InvokeWorkflowFile.Arguments>
+            </ui:InvokeWorkflowFile>
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="9.Power of a number" DisplayName="Power of a Number.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="334,115.33333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_23" UnSafe="False" WorkflowFileName="Power of a Number.xaml">
+              <ui:InvokeWorkflowFile.Arguments>
+                <InArgument x:TypeArguments="x:Double" x:Key="in_Num1">3</InArgument>
+                <InArgument x:TypeArguments="x:Double" x:Key="in_Num2">3.4</InArgument>
+                <OutArgument x:TypeArguments="x:Double" x:Key="Out_Result" />
+              </ui:InvokeWorkflowFile.Arguments>
+            </ui:InvokeWorkflowFile>
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="10.Square of a number" DisplayName="Square of Number.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="334,115.33333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_24" UnSafe="False" WorkflowFileName="Square of Number.xaml">
+              <ui:InvokeWorkflowFile.Arguments>
+                <InArgument x:TypeArguments="x:Double" x:Key="In_Number">25</InArgument>
+                <OutArgument x:TypeArguments="x:Double" x:Key="Out_Result" />
+              </ui:InvokeWorkflowFile.Arguments>
+            </ui:InvokeWorkflowFile>
+          </Switch>
+        </Sequence>
+      </If.Then>
+      <If.Else>
+        <Sequence sap:VirtualizedContainerService.HintSize="376,174" sap2010:WorkflowViewState.IdRef="Sequence_5">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="334,86.66666666666667" sap2010:WorkflowViewState.IdRef="MessageBox_3" Text="[&quot;Thanks. Bye-Bye&quot;]" />
+        </Sequence>
+      </If.Else>
+    </If>
   </Sequence>
 </Activity>
