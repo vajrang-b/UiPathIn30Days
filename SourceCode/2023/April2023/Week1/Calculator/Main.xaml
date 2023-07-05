@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="977.6,752.8" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="696,960" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -26,6 +26,7 @@
       <x:String>GlobalConstantsNamespace</x:String>
       <x:String>System.Runtime.Serialization</x:String>
       <x:String>System.Reflection</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -67,44 +68,852 @@
       <AssemblyReference>System.ObjectModel</AssemblyReference>
       <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
       <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="376.8,688" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="706,895" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Int32" Name="intResult" />
+      <Variable x:TypeArguments="x:Boolean" Name="UserInput" />
+      <Variable x:TypeArguments="x:Int32" Name="intOperation" />
+      <Variable x:TypeArguments="x:String" Name="UserOption" />
+      <Variable x:TypeArguments="x:Double" Name="double_Num1" />
+      <Variable x:TypeArguments="x:Double" Name="double_Num2" />
+      <Variable x:TypeArguments="x:String" Name="btnOption" />
+      <Variable x:TypeArguments="x:Int32" Name="intNum2" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Addition.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="333.6,117.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Addition.xaml">
-      <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:Double" x:Key="In_Num1">
-          <Literal x:TypeArguments="x:Double" Value="30" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:Double" x:Key="In_Num2">
-          <Literal x:TypeArguments="x:Double" Value="50" />
-        </InArgument>
-        <OutArgument x:TypeArguments="x:Double" x:Key="Out_Sum">
-          <VisualBasicReference x:TypeArguments="x:Double" ExpressionText="intResult" />
-        </OutArgument>
-      </ui:InvokeWorkflowFile.Arguments>
-    </ui:InvokeWorkflowFile>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="333.6,121.6" sap2010:WorkflowViewState.IdRef="LogMessage_2" Message="[intResult]" />
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Subtraction.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="333.6,117.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Subtraction.xaml">
-      <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:Int32" x:Key="In_Num1">
-          <Literal x:TypeArguments="x:Int32" Value="48" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:Int32" x:Key="In_Num2">
-          <Literal x:TypeArguments="x:Int32" Value="24" />
-        </InArgument>
-        <OutArgument x:TypeArguments="x:Int32" x:Key="Out_SubResult">
-          <VisualBasicReference x:TypeArguments="x:Int32" ExpressionText="intResult" />
-        </OutArgument>
-      </ui:InvokeWorkflowFile.Arguments>
-    </ui:InvokeWorkflowFile>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="333.6,121.6" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[intResult]" />
+    <Flowchart sap2010:Annotation.AnnotationText="Execute main&#xA;ask user what operation must be performed&#xA;depending on selection&#xA; ask user inputs&#xA;perform operation&#xA;give result in message box&#xA;ask if user wants to perform any other operation&#xA;if yes, show options&#xA;if no, close program" DisplayName="Calculator_Flowchart" sap:VirtualizedContainerService.HintSize="644,784" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          <av:Point x:Key="ShapeLocation">270,2.5</av:Point>
+          <av:Size x:Key="ShapeSize">60,75</av:Size>
+          <av:PointCollection x:Key="ConnectorLocation">300,77.5 300,127.5</av:PointCollection>
+          <x:Double x:Key="Width">610</x:Double>
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <Flowchart.StartNode>
+        <x:Reference>__ReferenceID0</x:Reference>
+      </Flowchart.StartNode>
+      <FlowStep x:Name="__ReferenceID0">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">200,127.5</av:Point>
+            <av:Size x:Key="ShapeSize">200,52</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">300,179.5 300,229.5</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="Input Dialog_Select Arthematic operation" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="InputDialog_1" IsPassword="False" Label="[&quot;Select Arthematic Operation&quot;+Environment.NewLine+&quot;1.Add 2.Sub 3.Multiply&quot; + vbNewLine +&quot;4.Division 5.Percent 6.Mod&quot;+ vbNewLine +&quot;7.Cuberoot 8.LCM 9.Power&quot;+ vbNewLine +&quot;10.Square&quot;]" Title="Calculator">
+          <ui:InputDialog.Result>
+            <OutArgument x:TypeArguments="x:Int32">[intOperation]</OutArgument>
+          </ui:InputDialog.Result>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </ui:InputDialog>
+        <FlowStep.Next>
+          <FlowStep x:Name="__ReferenceID1">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <av:Point x:Key="ShapeLocation">200,229.5</av:Point>
+                <av:Size x:Key="ShapeSize">200,52</av:Size>
+                <av:PointCollection x:Key="ConnectorLocation">300,281.5 300,311.5 300.14166666666665,311.5 300.14166666666665,331.5</av:PointCollection>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Switch x:TypeArguments="x:Int32" DisplayName="Switch" Expression="[intOperation]" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="Switch`1_2">
+              <Switch.Default>
+                <Sequence DisplayName="Default sequence" sap:VirtualizedContainerService.HintSize="572,757" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:MessageBox Caption="{x:Null}" sap2010:Annotation.AnnotationText="Display default value." AutoCloseAfter="00:00:00" Buttons="YesNo" ChosenButton="[UserOption]" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="510,116" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[&quot;please enter valid option number.&quot;+vbNewLine+&quot;Do you want to perform another arthematic operation?&quot;]">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:MessageBox>
+                  <If Condition="[UserOption.Equals(&quot;Yes&quot;)]" sap:VirtualizedContainerService.HintSize="510,490" sap2010:WorkflowViewState.IdRef="If_1">
+                    <If.Then>
+                      <Sequence sap:VirtualizedContainerService.HintSize="476,170" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_1">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:Boolean">[UserInput]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                      </Sequence>
+                    </If.Then>
+                    <If.Else>
+                      <Sequence sap:VirtualizedContainerService.HintSize="476,170" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_2">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:Boolean">[UserInput]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                      </Sequence>
+                    </If.Else>
+                  </If>
+                </Sequence>
+              </Switch.Default>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <Sequence x:Key="1" DisplayName="Add" sap:VirtualizedContainerService.HintSize="572,1097" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                <Sequence.Variables>
+                  <Variable x:TypeArguments="x:Double" Name="AddResult" />
+                  <Variable x:TypeArguments="x:Int32" Name="intNum1" />
+                </Sequence.Variables>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="510,239" sap2010:WorkflowViewState.IdRef="InputDialog_2" IsPassword="False" Label="Enter first number" Title="Number1 Input">
+                  <ui:InputDialog.Result>
+                    <OutArgument x:TypeArguments="x:Int32">[intNum1]</OutArgument>
+                  </ui:InputDialog.Result>
+                </ui:InputDialog>
+                <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="510,239" sap2010:WorkflowViewState.IdRef="InputDialog_3" IsPassword="False" Label="Enter second number" Title="Number2 Input">
+                  <ui:InputDialog.Result>
+                    <OutArgument x:TypeArguments="x:Int32">[intNum2]</OutArgument>
+                  </ui:InputDialog.Result>
+                </ui:InputDialog>
+                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Addition.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="510,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Addition.xaml">
+                  <ui:InvokeWorkflowFile.Arguments>
+                    <InArgument x:TypeArguments="x:Double" x:Key="In_Num1">[intNum1]</InArgument>
+                    <InArgument x:TypeArguments="x:Double" x:Key="In_Num2">[intNum2]</InArgument>
+                    <OutArgument x:TypeArguments="x:Double" x:Key="Out_Sum">[AddResult]</OutArgument>
+                  </ui:InvokeWorkflowFile.Arguments>
+                </ui:InvokeWorkflowFile>
+                <ui:MessageBox Caption="{x:Null}" AutoCloseAfter="00:00:00" Buttons="YesNo" ChosenButton="[btnOption]" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="510,85" sap2010:WorkflowViewState.IdRef="MessageBox_3" Text="[&quot;Addition Result: &quot;+AddResult.ToString+vbNewLine+&quot;Do you want to perform any other arthematic operations?&quot;]" />
+                <If Condition="[btnOption.Contains(&quot;Yes&quot;)]" sap:VirtualizedContainerService.HintSize="510,150" sap2010:WorkflowViewState.IdRef="If_2">
+                  <If.Then>
+                    <Sequence sap:VirtualizedContainerService.HintSize="476,170" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_3">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:Boolean">[UserInput]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                    </Sequence>
+                  </If.Then>
+                  <If.Else>
+                    <Sequence sap:VirtualizedContainerService.HintSize="476,170" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_4">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:Boolean">[UserInput]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                    </Sequence>
+                  </If.Else>
+                </If>
+              </Sequence>
+              <Sequence x:Key="2" DisplayName="Sub" sap:VirtualizedContainerService.HintSize="572,1097" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                <Sequence.Variables>
+                  <Variable x:TypeArguments="x:Int32" Name="intNum1" />
+                  <Variable x:TypeArguments="x:Int32" Name="intNum2" />
+                  <Variable x:TypeArguments="x:Double" Name="AddResult" />
+                  <Variable x:TypeArguments="x:Int32" Name="SubResult" />
+                </Sequence.Variables>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="510,239" sap2010:WorkflowViewState.IdRef="InputDialog_4" IsPassword="False" Label="Enter first number" Title="Number1 Input">
+                  <ui:InputDialog.Result>
+                    <OutArgument x:TypeArguments="x:Int32">[intNum1]</OutArgument>
+                  </ui:InputDialog.Result>
+                </ui:InputDialog>
+                <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="510,239" sap2010:WorkflowViewState.IdRef="InputDialog_5" IsPassword="False" Label="Enter second number" Title="Number2 Input">
+                  <ui:InputDialog.Result>
+                    <OutArgument x:TypeArguments="x:Int32">[intNum2]</OutArgument>
+                  </ui:InputDialog.Result>
+                </ui:InputDialog>
+                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Subtraction.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="510,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Subtraction.xaml">
+                  <ui:InvokeWorkflowFile.Arguments>
+                    <InArgument x:TypeArguments="x:Int32" x:Key="In_Num1">[intNum1]</InArgument>
+                    <InArgument x:TypeArguments="x:Int32" x:Key="In_Num2">[intNum2]</InArgument>
+                    <OutArgument x:TypeArguments="x:Int32" x:Key="Out_SubResult">[SubResult]</OutArgument>
+                  </ui:InvokeWorkflowFile.Arguments>
+                </ui:InvokeWorkflowFile>
+                <ui:MessageBox Caption="{x:Null}" AutoCloseAfter="00:00:00" Buttons="YesNo" ChosenButton="[btnOption]" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="510,85" sap2010:WorkflowViewState.IdRef="MessageBox_4" Text="[&quot;Subtraction Result: &quot;+SubResult.ToString+vbNewLine+&quot;Do you want to perform any other arthematic operations?&quot;]" />
+                <If Condition="[btnOption.Contains(&quot;Yes&quot;)]" sap:VirtualizedContainerService.HintSize="510,150" sap2010:WorkflowViewState.IdRef="If_3">
+                  <If.Then>
+                    <Sequence sap:VirtualizedContainerService.HintSize="476,170" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_5">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:Boolean">[UserInput]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                    </Sequence>
+                  </If.Then>
+                  <If.Else>
+                    <Sequence sap:VirtualizedContainerService.HintSize="476,170" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_6">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:Boolean">[UserInput]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                    </Sequence>
+                  </If.Else>
+                </If>
+              </Sequence>
+              <Sequence x:Key="3" DisplayName="Multiplication" sap:VirtualizedContainerService.HintSize="572,1437" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                <Sequence.Variables>
+                  <Variable x:TypeArguments="x:Int32" Name="intNum1" />
+                  <Variable x:TypeArguments="x:Int32" Name="intNum2" />
+                  <Variable x:TypeArguments="x:Double" Name="AddResult" />
+                  <Variable x:TypeArguments="x:Int32" Name="SubResult" />
+                  <Variable x:TypeArguments="x:Int32" Name="MultiplyResult" />
+                </Sequence.Variables>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="510,239" sap2010:WorkflowViewState.IdRef="InputDialog_6" IsPassword="False" Label="Enter first number" Title="Number1 Input">
+                  <ui:InputDialog.Result>
+                    <OutArgument x:TypeArguments="x:Int32">[intNum1]</OutArgument>
+                  </ui:InputDialog.Result>
+                </ui:InputDialog>
+                <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="510,239" sap2010:WorkflowViewState.IdRef="InputDialog_7" IsPassword="False" Label="Enter second number" Title="Number2 Input">
+                  <ui:InputDialog.Result>
+                    <OutArgument x:TypeArguments="x:Int32">[intNum2]</OutArgument>
+                  </ui:InputDialog.Result>
+                </ui:InputDialog>
+                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Multiplication.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="510,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Multiplication.xaml">
+                  <ui:InvokeWorkflowFile.Arguments>
+                    <InArgument x:TypeArguments="x:Int32" x:Key="In_FirstNumber">[intNum1]</InArgument>
+                    <InArgument x:TypeArguments="x:Int32" x:Key="In_SecondNumber">[intNum2]</InArgument>
+                    <OutArgument x:TypeArguments="x:Int32" x:Key="Out_Result">[MultiplyResult]</OutArgument>
+                  </ui:InvokeWorkflowFile.Arguments>
+                </ui:InvokeWorkflowFile>
+                <ui:MessageBox Caption="{x:Null}" AutoCloseAfter="00:00:00" Buttons="YesNo" ChosenButton="[btnOption]" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="510,85" sap2010:WorkflowViewState.IdRef="MessageBox_5" Text="[&quot;Multiplication Result: &quot;+MultiplyResult.ToString+vbNewLine+&quot;Do you want to perform any other arthematic operations?&quot;]" />
+                <If Condition="[btnOption.Contains(&quot;Yes&quot;)]" sap:VirtualizedContainerService.HintSize="510,490" sap2010:WorkflowViewState.IdRef="If_4">
+                  <If.Then>
+                    <Sequence sap:VirtualizedContainerService.HintSize="476,170" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_7">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:Boolean">[UserInput]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                    </Sequence>
+                  </If.Then>
+                  <If.Else>
+                    <Sequence sap:VirtualizedContainerService.HintSize="476,170" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_8">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:Boolean">[UserInput]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                    </Sequence>
+                  </If.Else>
+                </If>
+              </Sequence>
+              <Sequence x:Key="4" DisplayName="Division" sap:VirtualizedContainerService.HintSize="572,1437" sap2010:WorkflowViewState.IdRef="Sequence_15">
+                <Sequence.Variables>
+                  <Variable x:TypeArguments="x:Int32" Name="intNum1" />
+                  <Variable x:TypeArguments="x:Int32" Name="intNum2" />
+                  <Variable x:TypeArguments="x:Double" Name="AddResult" />
+                  <Variable x:TypeArguments="x:Int32" Name="SubResult" />
+                  <Variable x:TypeArguments="x:Int32" Name="MultiplyResult" />
+                  <Variable x:TypeArguments="x:Int32" Name="DivisionResult" />
+                </Sequence.Variables>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="510,239" sap2010:WorkflowViewState.IdRef="InputDialog_8" IsPassword="False" Label="Enter first number" Title="Number1 Input">
+                  <ui:InputDialog.Result>
+                    <OutArgument x:TypeArguments="x:Int32">[intNum1]</OutArgument>
+                  </ui:InputDialog.Result>
+                </ui:InputDialog>
+                <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="510,239" sap2010:WorkflowViewState.IdRef="InputDialog_9" IsPassword="False" Label="Enter second number" Title="Number2 Input">
+                  <ui:InputDialog.Result>
+                    <OutArgument x:TypeArguments="x:Int32">[intNum2]</OutArgument>
+                  </ui:InputDialog.Result>
+                </ui:InputDialog>
+                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Division.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="510,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="Division.xaml">
+                  <ui:InvokeWorkflowFile.Arguments>
+                    <OutArgument x:TypeArguments="x:Int32" x:Key="out_Division">[DivisionResult]</OutArgument>
+                    <InArgument x:TypeArguments="x:Int32" x:Key="in_Num1">[intNum1]</InArgument>
+                    <InArgument x:TypeArguments="x:Int32" x:Key="in_Num2">[intNum2]</InArgument>
+                  </ui:InvokeWorkflowFile.Arguments>
+                </ui:InvokeWorkflowFile>
+                <ui:MessageBox Caption="{x:Null}" AutoCloseAfter="00:00:00" Buttons="YesNo" ChosenButton="[btnOption]" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="510,85" sap2010:WorkflowViewState.IdRef="MessageBox_6" Text="[&quot;Division Result: &quot;+DivisionResult.ToString+vbNewLine+&quot;Do you want to perform any other arthematic operations?&quot;]" />
+                <If Condition="[btnOption.Contains(&quot;Yes&quot;)]" sap:VirtualizedContainerService.HintSize="510,490" sap2010:WorkflowViewState.IdRef="If_5">
+                  <If.Then>
+                    <Sequence sap:VirtualizedContainerService.HintSize="476,170" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_9">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:Boolean">[UserInput]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                    </Sequence>
+                  </If.Then>
+                  <If.Else>
+                    <Sequence sap:VirtualizedContainerService.HintSize="476,170" sap2010:WorkflowViewState.IdRef="Sequence_18">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_10">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:Boolean">[UserInput]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                    </Sequence>
+                  </If.Else>
+                </If>
+              </Sequence>
+              <Sequence x:Key="5" DisplayName="Percent" sap:VirtualizedContainerService.HintSize="572,1437" sap2010:WorkflowViewState.IdRef="Sequence_16">
+                <Sequence.Variables>
+                  <Variable x:TypeArguments="x:Int32" Name="intNum1" />
+                  <Variable x:TypeArguments="x:Int32" Name="intNum2" />
+                  <Variable x:TypeArguments="x:Double" Name="AddResult" />
+                  <Variable x:TypeArguments="x:Int32" Name="SubResult" />
+                  <Variable x:TypeArguments="x:Int32" Name="MultiplyResult" />
+                  <Variable x:TypeArguments="x:Int32" Name="DivisionResult" />
+                  <Variable x:TypeArguments="x:Double" Name="PercentResult" />
+                </Sequence.Variables>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="510,239" sap2010:WorkflowViewState.IdRef="InputDialog_10" IsPassword="False" Label="Enter first number" Title="Number1 Input">
+                  <ui:InputDialog.Result>
+                    <OutArgument x:TypeArguments="x:Int32">[intNum1]</OutArgument>
+                  </ui:InputDialog.Result>
+                </ui:InputDialog>
+                <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="510,239" sap2010:WorkflowViewState.IdRef="InputDialog_11" IsPassword="False" Label="Enter second number" Title="Number2 Input">
+                  <ui:InputDialog.Result>
+                    <OutArgument x:TypeArguments="x:Int32">[intNum2]</OutArgument>
+                  </ui:InputDialog.Result>
+                </ui:InputDialog>
+                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Percentage.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="510,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Percentage.xaml">
+                  <ui:InvokeWorkflowFile.Arguments>
+                    <OutArgument x:TypeArguments="x:Double" x:Key="Out_PercentResult">[PercentResult]</OutArgument>
+                    <InArgument x:TypeArguments="x:Int32" x:Key="in_Num1">[intNum1]</InArgument>
+                    <InArgument x:TypeArguments="x:Int32" x:Key="in_Num2">[intNum2]</InArgument>
+                  </ui:InvokeWorkflowFile.Arguments>
+                </ui:InvokeWorkflowFile>
+                <ui:MessageBox Caption="{x:Null}" AutoCloseAfter="00:00:00" Buttons="YesNo" ChosenButton="[btnOption]" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="510,85" sap2010:WorkflowViewState.IdRef="MessageBox_7" Text="[&quot;Percent Result: &quot;+PercentResult.ToString+vbNewLine+&quot;Do you want to perform any other arthematic operations?&quot;]" />
+                <If Condition="[btnOption.Contains(&quot;Yes&quot;)]" sap:VirtualizedContainerService.HintSize="510,490" sap2010:WorkflowViewState.IdRef="If_6">
+                  <If.Then>
+                    <Sequence sap:VirtualizedContainerService.HintSize="476,170" sap2010:WorkflowViewState.IdRef="Sequence_19">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_11">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:Boolean">[UserInput]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                    </Sequence>
+                  </If.Then>
+                  <If.Else>
+                    <Sequence sap:VirtualizedContainerService.HintSize="476,170" sap2010:WorkflowViewState.IdRef="Sequence_20">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_12">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:Boolean">[UserInput]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                    </Sequence>
+                  </If.Else>
+                </If>
+              </Sequence>
+              <Sequence x:Key="6" DisplayName="Mod" sap:VirtualizedContainerService.HintSize="572,1437" sap2010:WorkflowViewState.IdRef="Sequence_21">
+                <Sequence.Variables>
+                  <Variable x:TypeArguments="x:Int32" Name="intNum1" />
+                  <Variable x:TypeArguments="x:Int32" Name="intNum2" />
+                  <Variable x:TypeArguments="x:Double" Name="AddResult" />
+                  <Variable x:TypeArguments="x:Int32" Name="SubResult" />
+                  <Variable x:TypeArguments="x:Int32" Name="MultiplyResult" />
+                  <Variable x:TypeArguments="x:Int32" Name="DivisionResult" />
+                  <Variable x:TypeArguments="x:Double" Name="PercentResult" />
+                  <Variable x:TypeArguments="x:Int32" Name="ModResult" />
+                </Sequence.Variables>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="510,239" sap2010:WorkflowViewState.IdRef="InputDialog_12" IsPassword="False" Label="Enter first number" Title="Number1 Input">
+                  <ui:InputDialog.Result>
+                    <OutArgument x:TypeArguments="x:Int32">[intNum1]</OutArgument>
+                  </ui:InputDialog.Result>
+                </ui:InputDialog>
+                <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="510,239" sap2010:WorkflowViewState.IdRef="InputDialog_13" IsPassword="False" Label="Enter second number" Title="Number2 Input">
+                  <ui:InputDialog.Result>
+                    <OutArgument x:TypeArguments="x:Int32">[intNum2]</OutArgument>
+                  </ui:InputDialog.Result>
+                </ui:InputDialog>
+                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Mod Operation.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="510,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="Mod Operation.xaml">
+                  <ui:InvokeWorkflowFile.Arguments>
+                    <InArgument x:TypeArguments="x:Int32" x:Key="Num1">
+                      <VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="intNum1" />
+                    </InArgument>
+                    <InArgument x:TypeArguments="x:Int32" x:Key="Num2">
+                      <VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="intNum2" />
+                    </InArgument>
+                    <OutArgument x:TypeArguments="x:Int32" x:Key="Out_mod">
+                      <VisualBasicReference x:TypeArguments="x:Int32" ExpressionText="ModResult" />
+                    </OutArgument>
+                  </ui:InvokeWorkflowFile.Arguments>
+                </ui:InvokeWorkflowFile>
+                <ui:MessageBox Caption="{x:Null}" AutoCloseAfter="00:00:00" Buttons="YesNo" ChosenButton="[btnOption]" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="510,85" sap2010:WorkflowViewState.IdRef="MessageBox_8" Text="[&quot;Mod Result: &quot;+ModResult.ToString+vbNewLine+&quot;Do you want to perform any other arthematic operations?&quot;]" />
+                <If Condition="[btnOption.Contains(&quot;Yes&quot;)]" sap:VirtualizedContainerService.HintSize="510,490" sap2010:WorkflowViewState.IdRef="If_7">
+                  <If.Then>
+                    <Sequence sap:VirtualizedContainerService.HintSize="476,170" sap2010:WorkflowViewState.IdRef="Sequence_25">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_13">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:Boolean">[UserInput]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                    </Sequence>
+                  </If.Then>
+                  <If.Else>
+                    <Sequence sap:VirtualizedContainerService.HintSize="476,170" sap2010:WorkflowViewState.IdRef="Sequence_26">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_14">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:Boolean">[UserInput]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                    </Sequence>
+                  </If.Else>
+                </If>
+              </Sequence>
+              <Sequence x:Key="7" DisplayName="CubeRoot" sap:VirtualizedContainerService.HintSize="572,988" sap2010:WorkflowViewState.IdRef="Sequence_22">
+                <Sequence.Variables>
+                  <Variable x:TypeArguments="x:Int32" Name="intNum1" />
+                  <Variable x:TypeArguments="x:Int32" Name="intNum2" />
+                  <Variable x:TypeArguments="x:Double" Name="AddResult" />
+                  <Variable x:TypeArguments="x:Int32" Name="SubResult" />
+                  <Variable x:TypeArguments="x:Int32" Name="MultiplyResult" />
+                  <Variable x:TypeArguments="x:Int32" Name="DivisionResult" />
+                  <Variable x:TypeArguments="x:Double" Name="PercentResult" />
+                  <Variable x:TypeArguments="x:Double" Name="CubeRootResult" />
+                </Sequence.Variables>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="510,239" sap2010:WorkflowViewState.IdRef="InputDialog_14" IsPassword="False" Label="Enter number" Title="Number Input">
+                  <ui:InputDialog.Result>
+                    <OutArgument x:TypeArguments="x:Double">[double_Num1]</OutArgument>
+                  </ui:InputDialog.Result>
+                </ui:InputDialog>
+                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="CubeRoot.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="510,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="CubeRoot.xaml">
+                  <ui:InvokeWorkflowFile.Arguments>
+                    <OutArgument x:TypeArguments="x:Double" x:Key="Out_Cuberoot">[CubeRootResult]</OutArgument>
+                    <InArgument x:TypeArguments="x:Double" x:Key="In_Num">[double_Num1]</InArgument>
+                  </ui:InvokeWorkflowFile.Arguments>
+                </ui:InvokeWorkflowFile>
+                <ui:MessageBox Caption="{x:Null}" AutoCloseAfter="00:00:00" Buttons="YesNo" ChosenButton="[btnOption]" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="510,85" sap2010:WorkflowViewState.IdRef="MessageBox_9" Text="[&quot;CubeRoot Result: &quot;+CubeRootResult.ToString+vbNewLine+&quot;Do you want to perform any other arthematic operations?&quot;]" />
+                <If Condition="[btnOption.Contains(&quot;Yes&quot;)]" sap:VirtualizedContainerService.HintSize="510,320" sap2010:WorkflowViewState.IdRef="If_8">
+                  <If.Then>
+                    <Sequence sap:VirtualizedContainerService.HintSize="476,170" sap2010:WorkflowViewState.IdRef="Sequence_27">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_15">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:Boolean">[UserInput]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                    </Sequence>
+                  </If.Then>
+                  <If.Else>
+                    <Sequence sap:VirtualizedContainerService.HintSize="476,170" sap2010:WorkflowViewState.IdRef="Sequence_28">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_16">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:Boolean">[UserInput]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                    </Sequence>
+                  </If.Else>
+                </If>
+              </Sequence>
+              <Sequence x:Key="8" DisplayName="LCM" sap:VirtualizedContainerService.HintSize="572,1267" sap2010:WorkflowViewState.IdRef="Sequence_23">
+                <Sequence.Variables>
+                  <Variable x:TypeArguments="x:Int32" Name="intNum1" />
+                  <Variable x:TypeArguments="x:Int32" Name="intNum2" />
+                  <Variable x:TypeArguments="x:Double" Name="AddResult" />
+                  <Variable x:TypeArguments="x:Int32" Name="SubResult" />
+                  <Variable x:TypeArguments="x:Int32" Name="MultiplyResult" />
+                  <Variable x:TypeArguments="x:Int32" Name="DivisionResult" />
+                  <Variable x:TypeArguments="x:Double" Name="PercentResult" />
+                  <Variable x:TypeArguments="x:Int32" Name="LCMResult" />
+                </Sequence.Variables>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="510,239" sap2010:WorkflowViewState.IdRef="InputDialog_15" IsPassword="False" Label="Enter first number" Title="Number1 Input">
+                  <ui:InputDialog.Result>
+                    <OutArgument x:TypeArguments="x:Int32">[intNum1]</OutArgument>
+                  </ui:InputDialog.Result>
+                </ui:InputDialog>
+                <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="510,239" sap2010:WorkflowViewState.IdRef="InputDialog_16" IsPassword="False" Label="Enter second number" Title="Number2 Input">
+                  <ui:InputDialog.Result>
+                    <OutArgument x:TypeArguments="x:Int32">[intNum2]</OutArgument>
+                  </ui:InputDialog.Result>
+                </ui:InputDialog>
+                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Lcm of two nums.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="510,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="Lcm of two nums.xaml">
+                  <ui:InvokeWorkflowFile.Arguments>
+                    <InArgument x:TypeArguments="x:Int32" x:Key="Num1">[intNum1]</InArgument>
+                    <InArgument x:TypeArguments="x:Int32" x:Key="Num2">[intNum2]</InArgument>
+                    <OutArgument x:TypeArguments="x:Int32" x:Key="LCM">[LCMResult]</OutArgument>
+                  </ui:InvokeWorkflowFile.Arguments>
+                </ui:InvokeWorkflowFile>
+                <ui:MessageBox Caption="{x:Null}" AutoCloseAfter="00:00:00" Buttons="YesNo" ChosenButton="[btnOption]" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="510,85" sap2010:WorkflowViewState.IdRef="MessageBox_10" Text="[&quot;LCM Result: &quot;+LCMResult.ToString+vbNewLine+&quot;Do you want to perform any other arthematic operations?&quot;]" />
+                <If Condition="[btnOption.Contains(&quot;Yes&quot;)]" sap:VirtualizedContainerService.HintSize="510,320" sap2010:WorkflowViewState.IdRef="If_9">
+                  <If.Then>
+                    <Sequence sap:VirtualizedContainerService.HintSize="476,170" sap2010:WorkflowViewState.IdRef="Sequence_29">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_17">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:Boolean">[UserInput]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                    </Sequence>
+                  </If.Then>
+                  <If.Else>
+                    <Sequence sap:VirtualizedContainerService.HintSize="476,170" sap2010:WorkflowViewState.IdRef="Sequence_30">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_18">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:Boolean">[UserInput]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                    </Sequence>
+                  </If.Else>
+                </If>
+              </Sequence>
+              <Sequence x:Key="9" DisplayName="Power" sap:VirtualizedContainerService.HintSize="572,1267" sap2010:WorkflowViewState.IdRef="Sequence_24">
+                <Sequence.Variables>
+                  <Variable x:TypeArguments="x:Int32" Name="intNum1" />
+                  <Variable x:TypeArguments="x:Int32" Name="intNum2" />
+                  <Variable x:TypeArguments="x:Double" Name="AddResult" />
+                  <Variable x:TypeArguments="x:Int32" Name="SubResult" />
+                  <Variable x:TypeArguments="x:Int32" Name="MultiplyResult" />
+                  <Variable x:TypeArguments="x:Int32" Name="DivisionResult" />
+                  <Variable x:TypeArguments="x:Double" Name="PercentResult" />
+                  <Variable x:TypeArguments="x:Double" Name="CubeResult" />
+                  <Variable x:TypeArguments="x:Double" Name="PowerResult" />
+                </Sequence.Variables>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="510,239" sap2010:WorkflowViewState.IdRef="InputDialog_17" IsPassword="False" Label="Enter first number" Title="Number1 Input">
+                  <ui:InputDialog.Result>
+                    <OutArgument x:TypeArguments="x:Double">[double_Num1]</OutArgument>
+                  </ui:InputDialog.Result>
+                </ui:InputDialog>
+                <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="510,239" sap2010:WorkflowViewState.IdRef="InputDialog_18" IsPassword="False" Label="Enter second number" Title="Number2 Input">
+                  <ui:InputDialog.Result>
+                    <OutArgument x:TypeArguments="x:Double">[double_Num2]</OutArgument>
+                  </ui:InputDialog.Result>
+                </ui:InputDialog>
+                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Power of a Number.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="510,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_9" UnSafe="False" WorkflowFileName="Power of a Number.xaml">
+                  <ui:InvokeWorkflowFile.Arguments>
+                    <InArgument x:TypeArguments="x:Double" x:Key="in_Num1">[double_Num1]</InArgument>
+                    <InArgument x:TypeArguments="x:Double" x:Key="in_Num2">[double_Num2]</InArgument>
+                    <OutArgument x:TypeArguments="x:Double" x:Key="Out_Result">[PowerResult]</OutArgument>
+                  </ui:InvokeWorkflowFile.Arguments>
+                </ui:InvokeWorkflowFile>
+                <ui:MessageBox Caption="{x:Null}" AutoCloseAfter="00:00:00" Buttons="YesNo" ChosenButton="[btnOption]" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="510,85" sap2010:WorkflowViewState.IdRef="MessageBox_11" Text="[&quot;Power Result: &quot;+PowerResult.ToString+vbNewLine+&quot;Do you want to perform any other arthematic operations?&quot;]" />
+                <If Condition="[btnOption.Contains(&quot;Yes&quot;)]" sap:VirtualizedContainerService.HintSize="510,320" sap2010:WorkflowViewState.IdRef="If_10">
+                  <If.Then>
+                    <Sequence sap:VirtualizedContainerService.HintSize="476,170" sap2010:WorkflowViewState.IdRef="Sequence_31">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_19">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:Boolean">[UserInput]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                    </Sequence>
+                  </If.Then>
+                  <If.Else>
+                    <Sequence sap:VirtualizedContainerService.HintSize="476,170" sap2010:WorkflowViewState.IdRef="Sequence_32">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_20">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:Boolean">[UserInput]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                    </Sequence>
+                  </If.Else>
+                </If>
+              </Sequence>
+              <Sequence x:Key="10" DisplayName="Square" sap:VirtualizedContainerService.HintSize="572,988" sap2010:WorkflowViewState.IdRef="Sequence_33">
+                <Sequence.Variables>
+                  <Variable x:TypeArguments="x:Int32" Name="intNum1" />
+                  <Variable x:TypeArguments="x:Int32" Name="intNum2" />
+                  <Variable x:TypeArguments="x:Double" Name="AddResult" />
+                  <Variable x:TypeArguments="x:Int32" Name="SubResult" />
+                  <Variable x:TypeArguments="x:Int32" Name="MultiplyResult" />
+                  <Variable x:TypeArguments="x:Int32" Name="DivisionResult" />
+                  <Variable x:TypeArguments="x:Double" Name="PercentResult" />
+                  <Variable x:TypeArguments="x:Double" Name="SquareResult" />
+                </Sequence.Variables>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="510,239" sap2010:WorkflowViewState.IdRef="InputDialog_19" IsPassword="False" Label="Enter number" Title="Number Input">
+                  <ui:InputDialog.Result>
+                    <OutArgument x:TypeArguments="x:Double">[double_Num1]</OutArgument>
+                  </ui:InputDialog.Result>
+                </ui:InputDialog>
+                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Square of Number.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="510,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_10" UnSafe="False" WorkflowFileName="Square of Number.xaml">
+                  <ui:InvokeWorkflowFile.Arguments>
+                    <InArgument x:TypeArguments="x:Double" x:Key="In_Number">[double_Num1]</InArgument>
+                    <OutArgument x:TypeArguments="x:Double" x:Key="Out_Result">[SquareResult]</OutArgument>
+                  </ui:InvokeWorkflowFile.Arguments>
+                </ui:InvokeWorkflowFile>
+                <ui:MessageBox Caption="{x:Null}" AutoCloseAfter="00:00:00" Buttons="YesNo" ChosenButton="[btnOption]" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="510,85" sap2010:WorkflowViewState.IdRef="MessageBox_12" Text="[&quot;Square Result: &quot;+SquareResult.ToString+vbNewLine+&quot;Do you want to perform any other arthematic operations?&quot;]" />
+                <If Condition="[btnOption.Contains(&quot;Yes&quot;)]" sap:VirtualizedContainerService.HintSize="510,320" sap2010:WorkflowViewState.IdRef="If_11">
+                  <If.Then>
+                    <Sequence sap:VirtualizedContainerService.HintSize="476,170" sap2010:WorkflowViewState.IdRef="Sequence_34">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_21">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:Boolean">[UserInput]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                    </Sequence>
+                  </If.Then>
+                  <If.Else>
+                    <Sequence sap:VirtualizedContainerService.HintSize="476,170" sap2010:WorkflowViewState.IdRef="Sequence_35">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_22">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:Boolean">[UserInput]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                    </Sequence>
+                  </If.Else>
+                </If>
+              </Sequence>
+            </Switch>
+            <FlowStep.Next>
+              <FlowDecision x:Name="__ReferenceID2" Condition="[UserInput]" DisplayName="Flow Decision" sap:VirtualizedContainerService.HintSize="79,87" sap2010:WorkflowViewState.IdRef="FlowDecision_1" True="{x:Reference __ReferenceID0}">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <av:Point x:Key="ShapeLocation">260.64166666666665,331.5</av:Point>
+                    <av:Size x:Key="ShapeSize">79,87</av:Size>
+                    <av:PointCollection x:Key="TrueConnector">260.64166666666665,375 170,375 170,153.5 200,153.5</av:PointCollection>
+                    <av:PointCollection x:Key="FalseConnector">339.64166666666665,375 389.64166666666665,375</av:PointCollection>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <FlowDecision.False>
+                  <FlowStep x:Name="__ReferenceID3">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <av:Point x:Key="ShapeLocation">389.64166666666665,349</av:Point>
+                        <av:Size x:Key="ShapeSize">200,52</av:Size>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="MessageBox_13" Text="[&quot;Thank you!!&quot;]">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </ui:MessageBox>
+                  </FlowStep>
+                </FlowDecision.False>
+              </FlowDecision>
+            </FlowStep.Next>
+          </FlowStep>
+        </FlowStep.Next>
+      </FlowStep>
+      <x:Reference>__ReferenceID1</x:Reference>
+      <x:Reference>__ReferenceID2</x:Reference>
+      <x:Reference>__ReferenceID3</x:Reference>
+    </Flowchart>
   </Sequence>
 </Activity>
