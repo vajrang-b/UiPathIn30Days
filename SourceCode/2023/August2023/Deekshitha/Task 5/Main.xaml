@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1130.4,2688" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1130.4,2844" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -30,6 +30,9 @@
       <x:String>UiPath.Excel</x:String>
       <x:String>UiPath.Excel.Activities.Business</x:String>
       <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -80,21 +83,19 @@
       <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
       <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>Microsoft.Win32.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <Sequence sap2010:Annotation.AnnotationText="Generating Date and Time using different types of syntaxs" DisplayName="Generate Date &amp; Time" sap:VirtualizedContainerService.HintSize="496,2623.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="s:DateTime" Name="Date_Time" />
-      <Variable x:TypeArguments="s:DateTime" Name="Date_Time2" />
-      <Variable x:TypeArguments="s:DateTime" Name="Date_Time3" />
-      <Variable x:TypeArguments="s:DateTime" Name="Date_Time4" />
-      <Variable x:TypeArguments="s:DateTime" Name="Date_Time5" />
-      <Variable x:TypeArguments="s:DateTime" Name="Date_Time6" />
-      <Variable x:TypeArguments="s:DateTime" Name="Date_Time7" />
-      <Variable x:TypeArguments="s:DateTime" Name="Date_Time8" />
-      <Variable x:TypeArguments="s:DateTime" Name="Date_Time9" />
-      <Variable x:TypeArguments="s:DateTime" Name="Date_Time10" />
-      <Variable x:TypeArguments="s:DateTime" Name="Date_Time11" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -113,84 +114,84 @@
     <WriteLine DisplayName="Syntax 1 Result" sap:VirtualizedContainerService.HintSize="433.6,90.4" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[Date_Time.ToString + &quot;  --&gt;Synatx 1&quot;]" />
     <Assign DisplayName="Syntax 2 " sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_2">
       <Assign.To>
-        <OutArgument x:TypeArguments="s:DateTime">[Date_Time2]</OutArgument>
+        <OutArgument x:TypeArguments="s:DateTime">[Date_Time]</OutArgument>
       </Assign.To>
       <Assign.Value>
         <InArgument x:TypeArguments="s:DateTime">[Now]</InArgument>
       </Assign.Value>
     </Assign>
-    <WriteLine DisplayName="Syntax 2 Result" sap:VirtualizedContainerService.HintSize="433.6,90.4" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="[Date_Time2.ToLongDateString + &quot; Syntax 2&quot;]" />
+    <WriteLine DisplayName="Syntax 2 Result" sap:VirtualizedContainerService.HintSize="433.6,90.4" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="[Date_Time.ToLongDateString + &quot; Syntax 2&quot;]" />
     <Assign DisplayName="Syntax 3" sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_3">
       <Assign.To>
-        <OutArgument x:TypeArguments="s:DateTime">[Date_Time3]</OutArgument>
+        <OutArgument x:TypeArguments="s:DateTime">[Date_Time]</OutArgument>
       </Assign.To>
       <Assign.Value>
         <InArgument x:TypeArguments="s:DateTime">[Now]</InArgument>
       </Assign.Value>
     </Assign>
-    <WriteLine DisplayName="Syntax 3 Result" sap:VirtualizedContainerService.HintSize="433.6,90.4" sap2010:WorkflowViewState.IdRef="WriteLine_3" Text="[Date_Time3.ToLongTimeString + &quot; Syntax 3&quot;]" />
+    <WriteLine DisplayName="Syntax 3 Result" sap:VirtualizedContainerService.HintSize="433.6,90.4" sap2010:WorkflowViewState.IdRef="WriteLine_3" Text="[Date_Time.ToLongTimeString + &quot; Syntax 3&quot;]" />
     <Assign DisplayName="Syntax 4" sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_4">
       <Assign.To>
-        <OutArgument x:TypeArguments="s:DateTime">[Date_Time4]</OutArgument>
+        <OutArgument x:TypeArguments="s:DateTime">[Date_Time]</OutArgument>
       </Assign.To>
       <Assign.Value>
         <InArgument x:TypeArguments="s:DateTime">[Now]</InArgument>
       </Assign.Value>
     </Assign>
-    <WriteLine DisplayName="Sytax 4 Result" sap:VirtualizedContainerService.HintSize="433.6,90.4" sap2010:WorkflowViewState.IdRef="WriteLine_4" Text="[Date_Time4.ToShortDateString + &quot; --&gt;Synatx 4&quot;]" />
+    <WriteLine DisplayName="Sytax 4 Result" sap:VirtualizedContainerService.HintSize="433.6,90.4" sap2010:WorkflowViewState.IdRef="WriteLine_4" Text="[Date_Time.ToShortDateString + &quot; --&gt;Synatx 4&quot;]" />
     <Assign DisplayName="Syntax 5" sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_5">
       <Assign.To>
-        <OutArgument x:TypeArguments="s:DateTime">[Date_Time5]</OutArgument>
+        <OutArgument x:TypeArguments="s:DateTime">[Date_Time]</OutArgument>
       </Assign.To>
       <Assign.Value>
         <InArgument x:TypeArguments="s:DateTime">[Now]</InArgument>
       </Assign.Value>
     </Assign>
-    <WriteLine DisplayName="Syntax 5 Result" sap:VirtualizedContainerService.HintSize="433.6,90.4" sap2010:WorkflowViewState.IdRef="WriteLine_5" Text="[Date_Time5.ToShortTimeString + &quot; --&gt;Synatx 5&quot;]" />
+    <WriteLine DisplayName="Syntax 5 Result" sap:VirtualizedContainerService.HintSize="433.6,90.4" sap2010:WorkflowViewState.IdRef="WriteLine_5" Text="[Date_Time.ToShortTimeString + &quot; --&gt;Synatx 5&quot;]" />
     <Assign DisplayName="Syntax 6" sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_7">
       <Assign.To>
-        <OutArgument x:TypeArguments="s:DateTime">[Date_Time7]</OutArgument>
+        <OutArgument x:TypeArguments="s:DateTime">[Date_Time]</OutArgument>
       </Assign.To>
       <Assign.Value>
         <InArgument x:TypeArguments="s:DateTime">[Now]</InArgument>
       </Assign.Value>
     </Assign>
-    <WriteLine DisplayName="Syntax 6 Result" sap:VirtualizedContainerService.HintSize="433.6,90.4" sap2010:WorkflowViewState.IdRef="WriteLine_7" Text="[Date_Time7.ToString(&quot;ddd&quot;) + &quot; --&gt;Synatx 6&quot;]" />
+    <WriteLine DisplayName="Syntax 6 Result" sap:VirtualizedContainerService.HintSize="433.6,90.4" sap2010:WorkflowViewState.IdRef="WriteLine_7" Text="[Date_Time.ToString(&quot;ddd&quot;) + &quot; --&gt;Synatx 6&quot;]" />
     <Assign DisplayName="Syntax 7 " sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_8">
       <Assign.To>
-        <OutArgument x:TypeArguments="s:DateTime">[Date_Time8]</OutArgument>
+        <OutArgument x:TypeArguments="s:DateTime">[Date_Time]</OutArgument>
       </Assign.To>
       <Assign.Value>
         <InArgument x:TypeArguments="s:DateTime">[Now]</InArgument>
       </Assign.Value>
     </Assign>
-    <WriteLine DisplayName="Syntax 7 Result" sap:VirtualizedContainerService.HintSize="433.6,90.4" sap2010:WorkflowViewState.IdRef="WriteLine_8" Text="[Date_Time8.ToString(&quot;dddd&quot;) + &quot; --&gt;Synatx 7&quot;]" />
+    <WriteLine DisplayName="Syntax 7 Result" sap:VirtualizedContainerService.HintSize="433.6,90.4" sap2010:WorkflowViewState.IdRef="WriteLine_8" Text="[Date_Time.ToString(&quot;dddd&quot;) + &quot; --&gt;Synatx 7&quot;]" />
     <Assign DisplayName="Syntax 8" sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_9">
       <Assign.To>
-        <OutArgument x:TypeArguments="s:DateTime">[Date_Time9]</OutArgument>
+        <OutArgument x:TypeArguments="s:DateTime">[Date_Time]</OutArgument>
       </Assign.To>
       <Assign.Value>
         <InArgument x:TypeArguments="s:DateTime">[Now]</InArgument>
       </Assign.Value>
     </Assign>
-    <WriteLine DisplayName="Syntax 8 Result" sap:VirtualizedContainerService.HintSize="433.6,90.4" sap2010:WorkflowViewState.IdRef="WriteLine_9" Text="[Date_Time9.ToString(&quot;tt &quot;) + &quot; --&gt;Syntax 8&quot;]" />
+    <WriteLine DisplayName="Syntax 8 Result" sap:VirtualizedContainerService.HintSize="433.6,90.4" sap2010:WorkflowViewState.IdRef="WriteLine_9" Text="[Date_Time.ToString(&quot;tt &quot;) + &quot; --&gt;Syntax 8&quot;]" />
     <Assign DisplayName="Syntax 9" sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_10">
       <Assign.To>
-        <OutArgument x:TypeArguments="s:DateTime">[Date_Time10]</OutArgument>
+        <OutArgument x:TypeArguments="s:DateTime">[Date_Time]</OutArgument>
       </Assign.To>
       <Assign.Value>
         <InArgument x:TypeArguments="s:DateTime">[Now]</InArgument>
       </Assign.Value>
     </Assign>
-    <WriteLine DisplayName="Syntax 9 Result" sap:VirtualizedContainerService.HintSize="433.6,90.4" sap2010:WorkflowViewState.IdRef="WriteLine_10" Text="[Date_Time10.ToString(&quot;yyyy&quot;) + &quot; --&gt;Synatx 9&quot;]" />
+    <WriteLine DisplayName="Syntax 9 Result" sap:VirtualizedContainerService.HintSize="433.6,90.4" sap2010:WorkflowViewState.IdRef="WriteLine_10" Text="[Date_Time.ToString(&quot;yyyy&quot;) + &quot; --&gt;Synatx 9&quot;]" />
     <Assign DisplayName="Syntax 10" sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_11">
       <Assign.To>
-        <OutArgument x:TypeArguments="s:DateTime">[Date_Time11]</OutArgument>
+        <OutArgument x:TypeArguments="s:DateTime">[Date_Time]</OutArgument>
       </Assign.To>
       <Assign.Value>
         <InArgument x:TypeArguments="s:DateTime">[Now]</InArgument>
       </Assign.Value>
     </Assign>
-    <WriteLine DisplayName="Syntax 10 Result" sap:VirtualizedContainerService.HintSize="433.6,90.4" sap2010:WorkflowViewState.IdRef="WriteLine_11" Text="[Date_Time11.ToString(&quot;yy&quot;) + &quot; --&gt;Synatx 10&quot;]" />
+    <WriteLine DisplayName="Syntax 10 Result" sap:VirtualizedContainerService.HintSize="433.6,90.4" sap2010:WorkflowViewState.IdRef="WriteLine_11" Text="[Date_Time.ToString(&quot;yy&quot;) + &quot; --&gt;Synatx 10&quot;]" />
   </Sequence>
 </Activity>
