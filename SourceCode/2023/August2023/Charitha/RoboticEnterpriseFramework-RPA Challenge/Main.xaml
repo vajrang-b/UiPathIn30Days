@@ -6,7 +6,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>693.3333333333334,869.3333333333334</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>694,869.3333333333334</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Main2_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -236,7 +236,7 @@
         <Transition DisplayName="New Transaction" sap:VirtualizedContainerService.HintSize="451.3333333333333,897.3333333333334" sap2010:WorkflowViewState.IdRef="Transition_6">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <av:PointCollection x:Key="ConnectorLocation">349.99999999999966,328.99999999999966 349.99999999999966,358.99999999999966 349.66666666666634,358.99999999999966 349.66666666666634,440.666666666667</av:PointCollection>
+              <av:PointCollection x:Key="ConnectorLocation">349.99999999999966,328.99999999999966 349.99999999999966,440.666666666667</av:PointCollection>
               <x:Int32 x:Key="SrcConnectionPointIndex">39</x:Int32>
               <x:Int32 x:Key="DestConnectionPointIndex">38</x:Int32>
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -245,7 +245,7 @@
           <Transition.To>
             <State x:Name="__ReferenceID2" sap2010:Annotation.AnnotationText="Process a single transaction. &#xA;The result of the processing can be: 1) Success, 2) Business Exception, 3) System Exception. &#xA;In the case of a system exception, the transaction can be automatically retried." DisplayName="Process Transaction" sap:VirtualizedContainerService.HintSize="231.33333333333334,200" sap2010:WorkflowViewState.IdRef="State_3">
               <State.Entry>
-                <TryCatch DisplayName="Try to process transaction" sap:VirtualizedContainerService.HintSize="534.6666666666666,850.6666666666666" sap2010:WorkflowViewState.IdRef="TryCatch_9">
+                <TryCatch DisplayName="Try to process transaction" sap:VirtualizedContainerService.HintSize="539.3333333333334,1008.6666666666666" sap2010:WorkflowViewState.IdRef="TryCatch_9">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -253,13 +253,13 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                   <TryCatch.Try>
-                    <Sequence DisplayName="Process the current TransactionItem" sap:VirtualizedContainerService.HintSize="496,586.6666666666666" sap2010:WorkflowViewState.IdRef="Sequence_28">
+                    <Sequence DisplayName="Process the current TransactionItem" sap:VirtualizedContainerService.HintSize="500.6666666666667,746" sap2010:WorkflowViewState.IdRef="Sequence_28">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <Assign DisplayName="Assign BusinessException" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_25">
+                      <Assign DisplayName="Assign BusinessException" sap:VirtualizedContainerService.HintSize="438.6666666666667,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_25">
                         <Assign.To>
                           <OutArgument x:TypeArguments="ui:BusinessRuleException">[BusinessException]</OutArgument>
                         </Assign.To>
@@ -267,13 +267,13 @@
                           <InArgument x:TypeArguments="ui:BusinessRuleException">[Nothing]</InArgument>
                         </Assign.Value>
                       </Assign>
-                      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Process workflow" sap:VirtualizedContainerService.HintSize="434,115.33333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_24" UnSafe="False" WorkflowFileName="Framework\Process.xaml">
+                      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Process workflow" sap:VirtualizedContainerService.HintSize="438.6666666666667,115.33333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_24" UnSafe="False" WorkflowFileName="Framework\Process.xaml">
                         <ui:InvokeWorkflowFile.Arguments>
                           <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">[TransactionItem]</InArgument>
                           <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[Config]</InArgument>
                         </ui:InvokeWorkflowFile.Arguments>
                       </ui:InvokeWorkflowFile>
-                      <TryCatch DisplayName="Try Catch Set Transaction Status (Success)" sap:VirtualizedContainerService.HintSize="434,195.33333333333334" sap2010:WorkflowViewState.IdRef="TryCatch_10">
+                      <TryCatch DisplayName="Try Catch Set Transaction Status (Success)" sap:VirtualizedContainerService.HintSize="438.6666666666667,354.6666666666667" sap2010:WorkflowViewState.IdRef="TryCatch_10">
                         <TryCatch.Try>
                           <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke SetTransactionStatus (Success)" sap:VirtualizedContainerService.HintSize="334,115.33333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_26" UnSafe="False" WorkflowFileName="Framework\SetTransactionStatus.xaml">
                             <ui:InvokeWorkflowFile.Arguments>
@@ -291,7 +291,7 @@
                           </ui:InvokeWorkflowFile>
                         </TryCatch.Try>
                         <TryCatch.Catches>
-                          <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,22" sap2010:WorkflowViewState.IdRef="Catch`1_11">
+                          <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404.6666666666667,22" sap2010:WorkflowViewState.IdRef="Catch`1_11">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -310,7 +310,7 @@
                     </Sequence>
                   </TryCatch.Try>
                   <TryCatch.Catches>
-                    <Catch x:TypeArguments="ui:BusinessRuleException" sap:VirtualizedContainerService.HintSize="403.2,22.4" sap2010:WorkflowViewState.IdRef="Catch`1_9">
+                    <Catch x:TypeArguments="ui:BusinessRuleException" sap:VirtualizedContainerService.HintSize="505.3333333333333,22" sap2010:WorkflowViewState.IdRef="Catch`1_9">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -321,14 +321,14 @@
                         <ActivityAction.Argument>
                           <DelegateInArgument x:TypeArguments="ui:BusinessRuleException" Name="Exception" />
                         </ActivityAction.Argument>
-                        <Sequence DisplayName="Handle Business Exception" sap:VirtualizedContainerService.HintSize="476.8,548" sap2010:WorkflowViewState.IdRef="Sequence_29">
+                        <Sequence DisplayName="Handle Business Exception" sap:VirtualizedContainerService.HintSize="495.3333333333333,567.3333333333334" sap2010:WorkflowViewState.IdRef="Sequence_29">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                               <x:Boolean x:Key="IsPinned">False</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <Assign DisplayName="Set transaction status to BusinessRuleException" sap:VirtualizedContainerService.HintSize="433.6,69.6" sap2010:WorkflowViewState.IdRef="Assign_26">
+                          <Assign DisplayName="Set transaction status to BusinessRuleException" sap:VirtualizedContainerService.HintSize="438.6666666666667,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_26">
                             <Assign.To>
                               <OutArgument x:TypeArguments="ui:BusinessRuleException">[BusinessException]</OutArgument>
                             </Assign.To>
@@ -336,7 +336,7 @@
                               <InArgument x:TypeArguments="ui:BusinessRuleException">[Exception]</InArgument>
                             </Assign.Value>
                           </Assign>
-                          <TryCatch DisplayName="Try Catch Set Transaction Status (BRE)" sap:VirtualizedContainerService.HintSize="433.6,347.2" sap2010:WorkflowViewState.IdRef="TryCatch_11">
+                          <TryCatch DisplayName="Try Catch Set Transaction Status (BRE)" sap:VirtualizedContainerService.HintSize="438.6666666666667,195.33333333333334" sap2010:WorkflowViewState.IdRef="TryCatch_11">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -344,7 +344,7 @@
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
                             <TryCatch.Try>
-                              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke SetTransactionStatus (BRE)" sap:VirtualizedContainerService.HintSize="333.6,123.2" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_28" UnSafe="False" WorkflowFileName="Framework\SetTransactionStatus.xaml">
+                              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke SetTransactionStatus (BRE)" sap:VirtualizedContainerService.HintSize="334,115.33333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_28" UnSafe="False" WorkflowFileName="Framework\SetTransactionStatus.xaml">
                                 <ui:InvokeWorkflowFile.Arguments>
                                   <InArgument x:TypeArguments="ui:BusinessRuleException" x:Key="in_BusinessException">[BusinessException]</InArgument>
                                   <InArgument x:TypeArguments="x:String" x:Key="in_TransactionField1">[TransactionField1]</InArgument>
@@ -360,10 +360,10 @@
                               </ui:InvokeWorkflowFile>
                             </TryCatch.Try>
                             <TryCatch.Catches>
-                              <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,172.8" sap2010:WorkflowViewState.IdRef="Catch`1_12">
+                              <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,22" sap2010:WorkflowViewState.IdRef="Catch`1_12">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
@@ -379,7 +379,7 @@
                         </Sequence>
                       </ActivityAction>
                     </Catch>
-                    <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="403.2,22.4" sap2010:WorkflowViewState.IdRef="Catch`1_10">
+                    <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="505.3333333333333,22" sap2010:WorkflowViewState.IdRef="Catch`1_10">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -390,13 +390,13 @@
                         <ActivityAction.Argument>
                           <DelegateInArgument x:TypeArguments="s:Exception" Name="Exception" />
                         </ActivityAction.Argument>
-                        <Sequence DisplayName="Handle System Exception" sap:VirtualizedContainerService.HintSize="476.8,548" sap2010:WorkflowViewState.IdRef="Sequence_30">
+                        <Sequence DisplayName="Handle System Exception" sap:VirtualizedContainerService.HintSize="495.3333333333333,567.3333333333334" sap2010:WorkflowViewState.IdRef="Sequence_30">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <Assign DisplayName="Set transaction status to SystemException" sap:VirtualizedContainerService.HintSize="433.6,69.6" sap2010:WorkflowViewState.IdRef="Assign_27">
+                          <Assign DisplayName="Set transaction status to SystemException" sap:VirtualizedContainerService.HintSize="438.6666666666667,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_27">
                             <Assign.To>
                               <OutArgument x:TypeArguments="s:Exception">[SystemException]</OutArgument>
                             </Assign.To>
@@ -404,9 +404,9 @@
                               <InArgument x:TypeArguments="s:Exception">[Exception]</InArgument>
                             </Assign.Value>
                           </Assign>
-                          <TryCatch DisplayName="Try Catch SetTransactionStatus (SE)" sap:VirtualizedContainerService.HintSize="433.6,347.2" sap2010:WorkflowViewState.IdRef="TryCatch_12">
+                          <TryCatch DisplayName="Try Catch SetTransactionStatus (SE)" sap:VirtualizedContainerService.HintSize="438.6666666666667,195.33333333333334" sap2010:WorkflowViewState.IdRef="TryCatch_12">
                             <TryCatch.Try>
-                              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke SetTransactionStatus (SE)" sap:VirtualizedContainerService.HintSize="333.6,123.2" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_29" UnSafe="False" WorkflowFileName="Framework\SetTransactionStatus.xaml">
+                              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke SetTransactionStatus (SE)" sap:VirtualizedContainerService.HintSize="334,115.33333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_29" UnSafe="False" WorkflowFileName="Framework\SetTransactionStatus.xaml">
                                 <ui:InvokeWorkflowFile.Arguments>
                                   <InArgument x:TypeArguments="ui:BusinessRuleException" x:Key="in_BusinessException">[Nothing]</InArgument>
                                   <InArgument x:TypeArguments="x:String" x:Key="in_TransactionField1">[TransactionField1]</InArgument>
@@ -422,10 +422,10 @@
                               </ui:InvokeWorkflowFile>
                             </TryCatch.Try>
                             <TryCatch.Catches>
-                              <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,172.8" sap2010:WorkflowViewState.IdRef="Catch`1_13">
+                              <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,22" sap2010:WorkflowViewState.IdRef="Catch`1_13">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
@@ -458,7 +458,7 @@
                 <Transition DisplayName="System Exception" sap:VirtualizedContainerService.HintSize="451.333333333333,521.333333333333" sap2010:WorkflowViewState.IdRef="Transition_4">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <av:PointCollection x:Key="ConnectorLocation">303.733333333333,640.666666666667 303.733333333333,666.0666666666666 507,666.0666666666666 507,66.06666666666666 477,66.06666666666666</av:PointCollection>
+                      <av:PointCollection x:Key="ConnectorLocation">303.733333333333,640.666666666667 303.733333333333,666.0666666666666 505.6666666666667,666.0666666666666 505.6666666666667,66.06666666666666 475.66666666666663,66.06666666666666</av:PointCollection>
                       <x:Int32 x:Key="SrcConnectionPointIndex">23</x:Int32>
                       <x:Int32 x:Key="DestConnectionPointIndex">40</x:Int32>
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -466,9 +466,9 @@
                   </sap:WorkflowViewStateService.ViewState>
                   <Transition.Condition>[SystemException IsNot Nothing]</Transition.Condition>
                   <Transition.To>
-                    <State x:Name="__ReferenceID3" sap2010:Annotation.AnnotationText="Read configuration file and initialize applications used in the process." DisplayName="Initialization" sap:VirtualizedContainerService.HintSize="707.3333333333334,4863.333333333333" sap2010:WorkflowViewState.IdRef="State_2">
+                    <State x:Name="__ReferenceID3" sap2010:Annotation.AnnotationText="Read configuration file and initialize applications used in the process." DisplayName="Initialization" sap:VirtualizedContainerService.HintSize="707.3333333333334,4782" sap2010:WorkflowViewState.IdRef="State_2">
                       <State.Entry>
-                        <TryCatch DisplayName="Try initializing settings and applications" sap:VirtualizedContainerService.HintSize="660.6666666666666,4432.666666666667" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+                        <TryCatch DisplayName="Try initializing settings and applications" sap:VirtualizedContainerService.HintSize="660.6666666666666,4351.333333333333" sap2010:WorkflowViewState.IdRef="TryCatch_2">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -476,7 +476,7 @@
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                           <TryCatch.Try>
-                            <Sequence DisplayName="Load configurations and open applications" sap:VirtualizedContainerService.HintSize="622,4193.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                            <Sequence DisplayName="Load configurations and open applications" sap:VirtualizedContainerService.HintSize="622,4112" sap2010:WorkflowViewState.IdRef="Sequence_4">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -491,7 +491,7 @@
                                   <InArgument x:TypeArguments="s:Exception">[Nothing]</InArgument>
                                 </Assign.Value>
                               </Assign>
-                              <If sap2010:Annotation.AnnotationText="An uninitialized Config dictionary indicates that it is the first run of the process." Condition="[Config is Nothing]" DisplayName="If first run, read local configuration file" sap:VirtualizedContainerService.HintSize="560,3390.6666666666665" sap2010:WorkflowViewState.IdRef="If_1">
+                              <If sap2010:Annotation.AnnotationText="An uninitialized Config dictionary indicates that it is the first run of the process." Condition="[Config is Nothing]" DisplayName="If first run, read local configuration file" sap:VirtualizedContainerService.HintSize="560,3309.3333333333335" sap2010:WorkflowViewState.IdRef="If_1">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -707,9 +707,9 @@
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <av:Point x:Key="ShapeLocation">223,6.66666666666666</av:Point>
-                          <av:Size x:Key="ShapeSize">254,108</av:Size>
+                          <av:Size x:Key="ShapeSize">252.66666666666666,108</av:Size>
                           <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                          <x:Double x:Key="StateContainerWidth">220</x:Double>
+                          <x:Double x:Key="StateContainerWidth">218.66666666666674</x:Double>
                           <x:Double x:Key="StateContainerHeight">25</x:Double>
                           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                         </scg:Dictionary>
@@ -777,7 +777,7 @@
                                                 <uix:NGetText.Target>
                                                   <uix:TargetAnchorable BrowserURL="https://rpachallenge.com/" CvType="AnyWordGroup" DesignTimeRectangle="562, 427, 1392, 45" DesignTimeScaleFactor="1.5" ElementType="Text" FriendlyName="'Your success'" FullSelectorArgument="&lt;webctrl class='message2' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl class='message2' tag='DIV' type='' /&gt;" Guid="0f01e7fe-00b1-43ae-bb3a-6e807540766d" InformativeScreenshot="20db8c8dd3c2d620e77f34e541c9309e.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Rpa Challenge' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive">
                                                     <uix:TargetAnchorable.Anchors>
-                                                      <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                                                      <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
                                                         <uix:Target CvTextArgument="Congratulations!" CvType="Text" DesignTimeRectangle="562, 346, 1392, 81" ElementType="Text" FriendlyName="'Congratulations!'" FullSelectorArgument="&lt;webctrl aaname='Congratulations!' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Congratulations!' tag='DIV' type='' class='message1 teal-text text-darken-2' check:innerText='Congratulations!' /&gt;" ImageBase64="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" SearchSteps="FuzzySelector, Image, CV" />
                                                       </scg:List>
                                                     </uix:TargetAnchorable.Anchors>
@@ -866,7 +866,7 @@
                 <Transition sap2010:Annotation.AnnotationText="Business Rule Exception" DisplayName="Business Exception" sap:VirtualizedContainerService.HintSize="448.8,537.6" sap2010:WorkflowViewState.IdRef="Transition_1">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <av:PointCollection x:Key="ConnectorLocation">361.5666666666664,640.666666666667 361.5666666666664,667.333333333333 505.6666666666664,667.333333333333 505.6666666666664,247.333333333333 475.66666666666634,247.333333333333</av:PointCollection>
+                      <av:PointCollection x:Key="ConnectorLocation">361.5666666666664,640.666666666667 361.5666666666664,667.333333333333 505.66666666666634,667.333333333333 505.66666666666634,247.333333333333 475.66666666666634,247.333333333333</av:PointCollection>
                       <x:Int32 x:Key="SrcConnectionPointIndex">43</x:Int32>
                       <x:Int32 x:Key="DestConnectionPointIndex">20</x:Int32>
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -881,7 +881,7 @@
                 <Transition sap2010:Annotation.AnnotationText="There is no need for any action in case of successful transaction.&#xA;The process should simply go to next transaction." DisplayName="Success" sap:VirtualizedContainerService.HintSize="452,553.6" sap2010:WorkflowViewState.IdRef="Transition_5">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <av:PointCollection x:Key="ConnectorLocation">407.83333333333303,640.666666666667 407.83333333333303,653.9999999999997 505.6666666666664,653.9999999999997 505.6666666666664,293.99999999999966 475.66666666666634,293.99999999999966</av:PointCollection>
+                      <av:PointCollection x:Key="ConnectorLocation">407.83333333333303,640.666666666667 407.83333333333303,653.9999999999997 505.66666666666634,653.9999999999997 505.66666666666634,293.99999999999966 475.66666666666634,293.99999999999966</av:PointCollection>
                       <x:Int32 x:Key="SrcConnectionPointIndex">59</x:Int32>
                       <x:Int32 x:Key="DestConnectionPointIndex">52</x:Int32>
                       <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -928,26 +928,14 @@
       <Variable x:TypeArguments="ui:QueueItem" sap2010:Annotation.AnnotationText="Transaction item to be processed. The type of this variable can be changed to match the transaction type in the process. For example, when processing data from a spreadsheet that is read into a DataTable, this type can be changed to DataRow. " Name="TransactionItem" />
       <Variable x:TypeArguments="s:Exception" sap2010:Annotation.AnnotationText="Used during transitions between states to represent exceptions other than business exceptions." Name="SystemException" />
       <Variable x:TypeArguments="ui:BusinessRuleException" sap2010:Annotation.AnnotationText="Used during transitions between states and represents a situation that does not conform to the rules of the process being automated." Name="BusinessException" />
-      <Variable x:TypeArguments="x:Int32" sap2010:Annotation.AnnotationText="Sequential counter of transaction items." Name="TransactionNumber">
-        <Variable.Default>
-          <Literal x:TypeArguments="x:Int32" Value="1" />
-        </Variable.Default>
-      </Variable>
+      <Variable x:TypeArguments="x:Int32" sap2010:Annotation.AnnotationText="Sequential counter of transaction items." Default="1" Name="TransactionNumber" />
       <Variable x:TypeArguments="scg:Dictionary(x:String, x:Object)" sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="Config" />
-      <Variable x:TypeArguments="x:Int32" sap2010:Annotation.AnnotationText="Used to control the number of attempts of retrying the transaction processing in case of system exceptions." Name="RetryNumber">
-        <Variable.Default>
-          <Literal x:TypeArguments="x:Int32" />
-        </Variable.Default>
-      </Variable>
+      <Variable x:TypeArguments="x:Int32" sap2010:Annotation.AnnotationText="Used to control the number of attempts of retrying the transaction processing in case of system exceptions." Default="0" Name="RetryNumber" />
       <Variable x:TypeArguments="x:String" sap2010:Annotation.AnnotationText="Optionally used to include additional information about the transaction item." Name="TransactionField2" />
       <Variable x:TypeArguments="x:String" sap2010:Annotation.AnnotationText="Optionally used to include additional information about the transaction item." Name="TransactionField1" />
       <Variable x:TypeArguments="x:String" sap2010:Annotation.AnnotationText="Transaction ID used for information and logging purposes. Ideally, the ID should be unique for each transaction. " Name="TransactionID" />
       <Variable x:TypeArguments="sd:DataTable" sap2010:Annotation.AnnotationText="Used in case transactions are stored in a DataTable, for example, after being retrieved from a spreadsheet." Name="dt_TransactionData" />
-      <Variable x:TypeArguments="x:Int32" sap2010:Annotation.AnnotationText="Used to control the number of consecutive system exceptions." Name="ConsecutiveSystemExceptions">
-        <Variable.Default>
-          <Literal x:TypeArguments="x:Int32" />
-        </Variable.Default>
-      </Variable>
+      <Variable x:TypeArguments="x:Int32" sap2010:Annotation.AnnotationText="Used to control the number of consecutive system exceptions." Default="0" Name="ConsecutiveSystemExceptions" />
     </StateMachine.Variables>
   </StateMachine>
 </Activity>
