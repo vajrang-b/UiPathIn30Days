@@ -70,7 +70,7 @@
       <AssemblyReference>UiPath.Platform</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Store the values in the Array " DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="496,1209.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Store string values in an Array  " DisplayName="Arrays" sap:VirtualizedContainerService.HintSize="496,1209.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="FirstName" />
       <Variable x:TypeArguments="x:String" Name="SecondName" />
@@ -88,12 +88,12 @@
         <OutArgument x:TypeArguments="x:String">[FirstName]</OutArgument>
       </ui:InputDialog.Result>
     </ui:InputDialog>
-    <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="433.6,241.6" sap2010:WorkflowViewState.IdRef="InputDialog_2" IsPassword="False" Label="2nd Name" Title="Enter the 2nd Name">
+    <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="Provide second name details" sap:VirtualizedContainerService.HintSize="433.6,241.6" sap2010:WorkflowViewState.IdRef="InputDialog_2" IsPassword="False" Label="2nd Name" Title="Enter the 2nd Name">
       <ui:InputDialog.Result>
         <OutArgument x:TypeArguments="x:String">[SecondName]</OutArgument>
       </ui:InputDialog.Result>
     </ui:InputDialog>
-    <Assign sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <Assign DisplayName="Assigning 2 values to an Array Variable" sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="s:String[]">[Name]</OutArgument>
       </Assign.To>
@@ -101,7 +101,7 @@
         <InArgument x:TypeArguments="s:String[]">[{FirstName, SecondName}]</InArgument>
       </Assign.Value>
     </Assign>
-    <Assign sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_2">
+    <Assign DisplayName="Assigning Array using index to an output variable" sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_2">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[Output]</OutArgument>
       </Assign.To>
@@ -109,7 +109,7 @@
         <InArgument x:TypeArguments="x:String">[Name(0) + " " + Name(1)]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="433.6,85.6" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[Output]" />
-    <ui:WriteTextFile File="{x:Null}" DisplayName="Write Text File" FileName="ArrayName.txt" sap:VirtualizedContainerService.HintSize="433.6,134.4" sap2010:WorkflowViewState.IdRef="WriteTextFile_1" Text="[Output]" />
+    <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Prints the Array Data in Message box" sap:VirtualizedContainerService.HintSize="433.6,85.6" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[Output]" />
+    <ui:WriteTextFile File="{x:Null}" DisplayName="Prints the Array values in to a text file" FileName="ArrayName.txt" sap:VirtualizedContainerService.HintSize="433.6,134.4" sap2010:WorkflowViewState.IdRef="WriteTextFile_1" Text="[Output]" />
   </Sequence>
 </Activity>
