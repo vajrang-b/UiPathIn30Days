@@ -89,8 +89,8 @@
   </TextExpression.ReferencesForImplementation>
   <Sequence sap2010:Annotation.AnnotationText="Generating data table from text file" DisplayName="Generate data table form text file" sap:VirtualizedContainerService.HintSize="449.6,667.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
-      <Variable x:TypeArguments="x:String" Name="Dt_details" />
       <Variable x:TypeArguments="sd:DataTable" Name="Dt_output" />
+      <Variable x:TypeArguments="x:String" Name="Details" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -98,14 +98,14 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:ReadTextFile File="{x:Null}" sap2010:Annotation.AnnotationText="" Content="[Dt_details]" DisplayName="Read Text File - Reads all the data from text file" FileName="Student_details.txt" sap:VirtualizedContainerService.HintSize="387.2,80.8" sap2010:WorkflowViewState.IdRef="ReadTextFile_1">
+    <ui:ReadTextFile File="{x:Null}" sap2010:Annotation.AnnotationText="" Content="[Details]" DisplayName="Read Text File - Reads all the data from text file" FileName="Student_details.txt" sap:VirtualizedContainerService.HintSize="387.2,80.8" sap2010:WorkflowViewState.IdRef="ReadTextFile_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsAnnotationDocked">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:ReadTextFile>
-    <ui:GenerateDataTable ColumnSizes="{x:Null}" Positions="{x:Null}" sap2010:Annotation.AnnotationText="We can test the outcome of the data by providing appropriate details as per data in options." AutoDetectTypes="False" CSVParsing="False" ColumnSeparators="," DataTable="[Dt_output]" DisplayName="Generate Data Table From Text - generates data table from structured text" sap:VirtualizedContainerService.HintSize="387.2,247.2" sap2010:WorkflowViewState.IdRef="GenerateDataTable_1" Input="[Dt_details]" NewLineSeparator="&#xA;" UseColumnHeader="True">
+    <ui:GenerateDataTable ColumnSizes="{x:Null}" Positions="{x:Null}" sap2010:Annotation.AnnotationText="We can test the outcome of the data by providing appropriate details as per data in options." AutoDetectTypes="False" CSVParsing="False" ColumnSeparators="," DataTable="[Dt_output]" DisplayName="Generate Data Table From Text - generates data table from structured text" sap:VirtualizedContainerService.HintSize="387.2,247.2" sap2010:WorkflowViewState.IdRef="GenerateDataTable_1" Input="[Details]" NewLineSeparator="&#xA;" UseColumnHeader="True">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
