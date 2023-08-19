@@ -101,7 +101,7 @@
       <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Task20" sap:VirtualizedContainerService.HintSize="668,1735" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Read the excel (consists of Lower Letters), and type into website (Vajrang.org - Uppercase Task) and get the result and write into one excel" DisplayName="Task20" sap:VirtualizedContainerService.HintSize="668,1817" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="Dt_Input" />
       <Variable x:TypeArguments="x:String" Name="Output" />
@@ -110,6 +110,7 @@
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:ReadRange AddHeaders="True" DataTable="[Dt_Input]" DisplayName="Read the Excel data using Read Range Workbook" sap:VirtualizedContainerService.HintSize="606,88" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="Sheet1" WorkbookPath="Lowercase.xlsx">
@@ -119,7 +120,7 @@
         </InArgument>
       </ui:ReadRange.Range>
     </ui:ReadRange>
-    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Open Browser Vajrang.com using Use Browser Chrome: XPERIENCE AI - Uppercase" sap:VirtualizedContainerService.HintSize="606,1496" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" ScopeGuid="211841cc-066f-4b35-a406-7b703a777673" Version="V2">
+    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Open Browser Vajrang.com using Use Browser Chrome: XPERIENCE AI - Uppercase" sap:VirtualizedContainerService.HintSize="606,1536" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" ScopeGuid="211841cc-066f-4b35-a406-7b703a777673" Version="V2">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
@@ -174,7 +175,7 @@
                       </Assign.Value>
                     </Assign>
                     <ui:WriteCell Cell="[&quot;B&quot;+vIncrement.ToString]" DisplayName="Write the data in Excel useing Write Cell Workbook" sap:VirtualizedContainerService.HintSize="434,116" sap2010:WorkflowViewState.IdRef="WriteCell_1" SheetName="Sheet1" Text="[Output]" WorkbookPath="Lowercase.xlsx" />
-                    <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Reset form'" sap:VirtualizedContainerService.HintSize="434,157" sap2010:WorkflowViewState.IdRef="NClick_1" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="211841cc-066f-4b35-a406-7b703a777673" Version="V3">
+                    <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="before Every Action we click the Reset button useing Click 'Reset form'" sap:VirtualizedContainerService.HintSize="434,157" sap2010:WorkflowViewState.IdRef="NClick_1" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="211841cc-066f-4b35-a406-7b703a777673" Version="V3">
                       <uix:NClick.Target>
                         <uix:TargetAnchorable BrowserURL="https://1606892497-atari-embeds.googleusercontent.com/embeds/16cb204cf3a9d4d223a0a3fd8b0eec5d/inner-frame-minified.html?jsh=m%3B%2F_%2Fscs%2Fabc-static%2F_%2Fjs%2Fk%3Dgapi.lb.en.S9zOXUg9rrA.O%2Fd%3D1%2Frs%3DAHpOoo-AXjUK4hNAaKzui0P9Fr9nG2_yZQ%2Fm%3D__features__" CvElementArea="644, 601, 84, 24" CvTextArea="653, 605, 66, 13" CvTextArgument="Reset form" CvType="Button" DesignTimeRectangle="646, 602, 81, 21" DesignTimeScaleFactor="1" ElementType="Button" FriendlyName="'Reset form'" FullSelectorArgument="&lt;webctrl id='5e51ed3ccc33c7e1_13' tag='IFRAME' /&gt;&lt;webctrl id='innerFrame' tag='IFRAME' /&gt;&lt;webctrl id='userHtmlFrame' tag='IFRAME' /&gt;&lt;webctrl id='fcf-button' tag='BUTTON' /&gt;" FuzzySelectorArgument="&lt;webctrl id='5e51ed3ccc33c7e1_13' tag='IFRAME' /&gt;&lt;webctrl id='innerFrame' tag='IFRAME' /&gt;&lt;webctrl id='userHtmlFrame' tag='IFRAME' /&gt;&lt;webctrl id='fcf-button' tag='BUTTON' type='reset' class='fcf-btn fcf-btn-primary fcf-btn-lg fcf-btn-block' aaname='Reset form' check:innerText='Reset form' /&gt;" Guid="7f5d9105-ac85-4970-97bd-68c688dd2aab" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAFUAAAAZCAYAAABAb2JNAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAG5SURBVGhD7ZlLjoMwDEC5IFJPwwJxipnZwUmoeowu2FRzgrIZaZaZOB9wEpMCTdAgefGkkmBsP5wu2uL35ymYtLDUDExSvx+D+Pr8EFVVMRsBb+AvkAobt9tNjOPIbAS8gb9AKhinAph1gD+WmhiWmoGdUnvRFIUoCJordf+RDKK9mHrqntjPz1tSfYFDV8pmGtGjtfTQuSeuzQE1xEkq9WXDSVgh9dKKgdo7iOxS9fSa4+g129dmndij49DRlgT51ZTa/VK0d73u5EFfCbBe1o0oYR1y3Fv5WcZ183PKbnBqgesp3wJJpQbH3zuKqjnblDdRqkFbcCxuzaSiWFXTlEfH2jxaNqpXSfVqRPcH/S3wllT79mbm6QAcUYAq2hRlCqbkROM2SdWTjZ+FJbsvS2In1fbgX3svbIlEk2qOJS7QO6qkeCPWop/3Km6L1PDeE0md1/BUBBMXAR+teNwWqaeeVINKulwEFoebm+6115G4bVL9PO6LP4fU6ej6QmANQAVKVFMLe2viyGkmGnfyIIn/TCoTg6VmgKVmgKVmgJTKv/zvZ/GXf/6Paj/gjfyPikkHS03OU/wB1OenNgjHSk0AAAAASUVORK5CYII=" InformativeScreenshot="417fe73b8f4a53a4633ad4259c4e1de5.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='XPERIENCE AI - Uppercase' /&gt;" SearchSteps="FuzzySelector, Image, CV" Version="V2" Visibility="Interactive" />
                       </uix:NClick.Target>
