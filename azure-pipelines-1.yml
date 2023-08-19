@@ -6,14 +6,14 @@
 trigger:
 - main
 
-pool: CloudVM
+pool:
+  vmImage: CPC-vajra-0MG29
 
 steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
-  
-- task: UiPathRunJob@3
-  inputs:
-    orchestratorConnection: 'UiPath Test Connection'
-    processName: 'vajrang_logtime'
-    folderName: 'Shared'
+
+- script: |
+    echo Add other tasks to build, test, and deploy your project.
+    echo See https://aka.ms/yaml
+  displayName: 'Run a multi-line script'
