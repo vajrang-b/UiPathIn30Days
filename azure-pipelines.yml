@@ -5,6 +5,7 @@
 
 trigger:
 - main
+- pull_request
 
 pool: CloudVM
 
@@ -31,6 +32,7 @@ steps:
       Write-Host "Hello World"
 
 - task: GitHubComment@0
+  condition: eq(variables['Build.Reason'], 'PullRequest')
   inputs:
     gitHubConnection: 'vajrang-b'
     repositoryName: 'vajrang-b/RPA-Developer-in-30-Days'
