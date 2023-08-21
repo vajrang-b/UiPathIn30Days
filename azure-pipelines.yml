@@ -22,7 +22,7 @@ steps:
     script: |
       echo Write your commands here
       echo Hello world
-      echo $(System.PullRequest.PullRequestId)
+      echo $(System.PullRequest.PullRequestNumber)
 - task: PowerShell@2
   inputs:
     targetType: 'inline'
@@ -34,5 +34,5 @@ steps:
   inputs:
     gitHubConnection: 'vajrang-b'
     repositoryName: 'vajrang-b/RPA-Developer-in-30-Days'
-    id: $(System.PullRequest.PullRequestId)
+    id: $(System.PullRequest.PullRequestNumber)
     comment: 'Hi from pipeline'
