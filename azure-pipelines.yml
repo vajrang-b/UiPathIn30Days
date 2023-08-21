@@ -22,16 +22,17 @@ steps:
     script: |
       echo Write your commands here
       echo Hello world
+      echo "Pull Request ID: $(System.PullRequest.PullRequestId)"
 - task: PowerShell@2
   inputs:
     targetType: 'inline'
     script: |
-      # Write your PowerShell commands here.
-      
+      # Write your PowerShell commands here.      
       Write-Host "Hello World"
+
 - task: GitHubComment@0
   inputs:
     gitHubConnection: 'vajrang-b'
     repositoryName: 'vajrang-b/RPA-Developer-in-30-Days'
-    id: '904'
+    id: $(System.PullRequest.PullRequestId)
     comment: 'Hi from pipeline'
