@@ -1,8 +1,9 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Sequence_Email" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mg="clr-namespace:Microsoft.Graph;assembly=Microsoft.Graph" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uma="clr-namespace:UiPath.MicrosoftOffice365.Activities;assembly=UiPath.MicrosoftOffice365.Activities" xmlns:umam="clr-namespace:UiPath.MicrosoftOffice365.Activities.Mail;assembly=UiPath.MicrosoftOffice365.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Sequence_Email" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mg="clr-namespace:Microsoft.Graph;assembly=Microsoft.Graph" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uma="clr-namespace:UiPath.MicrosoftOffice365.Activities;assembly=UiPath.MicrosoftOffice365.Activities" xmlns:umam="clr-namespace:UiPath.MicrosoftOffice365.Activities.Mail;assembly=UiPath.MicrosoftOffice365.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
-    <x:Property Name="dt_TableExtraction" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="dataFile" Type="InArgument(x:String)" />
+    <x:Property Name="statusFile" Type="InArgument(x:String)" />
   </x:Members>
-  <sap:VirtualizedContainerService.HintSize>1435,932</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1435,1103</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -110,55 +111,68 @@
       <AssemblyReference>UiPath.MicrosoftOffice365.Activities</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
       <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>System.CodeDom</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Forms</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap:VirtualizedContainerService.HintSize="654,867" sap2010:WorkflowViewState.IdRef="Sequence_35">
+  <Sequence DisplayName="Send Email Sequence" sap:VirtualizedContainerService.HintSize="592,1038" sap2010:WorkflowViewState.IdRef="Sequence_37">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence sap:VirtualizedContainerService.HintSize="592,756" sap2010:WorkflowViewState.IdRef="Sequence_33">
-      <Sequence.Variables>
-        <Variable x:TypeArguments="x:String" Name="strResult" />
-      </Sequence.Variables>
-      <sap:WorkflowViewStateService.ViewState>
-        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-        </scg:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
-      <uma:Office365ApplicationScope CertificateAsBase64="{x:Null}" CertificatePassword="{x:Null}" ContinueOnError="{x:Null}" OAuth2Username="{x:Null}" Password="{x:Null}" SecureApplicationSecret="{x:Null}" SecurePassword="{x:Null}" Timeout="{x:Null}" Username="{x:Null}" ApplicationId="f978db09-02de-4c0a-9a15-dc35f3dfa13d" ApplicationSecret="SxJ8Q~BzuRkCHribGn.26UiBRV~mQni-IP7QrcCJ" AuthenticationType="ApplicationIdAndSecret" DisplayName="Microsoft Office 365 Scope" Environment="Global" sap:VirtualizedContainerService.HintSize="530,553" sap2010:WorkflowViewState.IdRef="Office365ApplicationScope_1" OAuthApplication="UiPath" Services="Mail" Tenant="8366e150-0aca-4c85-8d61-222ded741873">
-        <uma:Office365ApplicationScope.Body>
-          <ActivityAction x:TypeArguments="mg:GraphServiceClient">
-            <ActivityAction.Argument>
-              <DelegateInArgument x:TypeArguments="mg:GraphServiceClient" Name="ParentScope" />
-            </ActivityAction.Argument>
-            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="496,466" sap2010:WorkflowViewState.IdRef="Sequence_34">
+    <uma:Office365ApplicationScope CertificateAsBase64="{x:Null}" CertificatePassword="{x:Null}" ContinueOnError="{x:Null}" OAuth2Username="{x:Null}" Password="{x:Null}" SecureApplicationSecret="{x:Null}" SecurePassword="{x:Null}" Timeout="{x:Null}" Username="{x:Null}" ApplicationId="f978db09-02de-4c0a-9a15-dc35f3dfa13d" ApplicationSecret="SxJ8Q~BzuRkCHribGn.26UiBRV~mQni-IP7QrcCJ" AuthenticationType="ApplicationIdAndSecret" DisplayName="Microsoft Office 365 Scope" Environment="Global" sap:VirtualizedContainerService.HintSize="530,774" sap2010:WorkflowViewState.IdRef="Office365ApplicationScope_2" OAuthApplication="UiPath" Services="Mail" Tenant="8366e150-0aca-4c85-8d61-222ded741873">
+      <uma:Office365ApplicationScope.Body>
+        <ActivityAction x:TypeArguments="mg:GraphServiceClient">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="mg:GraphServiceClient" Name="ParentScope" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="496,647" sap2010:WorkflowViewState.IdRef="Sequence_39">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <umam:SendMail AttachmentsCollection="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" From="{x:Null}" ReplyTo="{x:Null}" Account="IronMan_Robot@vajrang.org" Body="[&quot;Hello!&quot; + vbNewLine + &quot;Please find attached Status Report and Data Report.&quot; + vbNewLine +&quot;Regards :)&quot;]" DisplayName="Send Mail" sap:VirtualizedContainerService.HintSize="434,355" sap2010:WorkflowViewState.IdRef="SendMail_2" Importance="Normal" IsBodyHTML="False" IsDraft="False" Subject="Roboyo Project - Status Report &amp; Data Report" To="[{&quot;swethavj4@gmail.com&quot;,&quot;IronMan_Robot@vajrang.org&quot;}]">
+              <umam:SendMail.Attachments>
+                <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
+                  <InArgument x:TypeArguments="x:String">
+                    <Literal x:TypeArguments="x:String">Data\Output\Status Report.xlsx</Literal>
+                  </InArgument>
+                  <InArgument x:TypeArguments="x:String">
+                    <Literal x:TypeArguments="x:String">Data\output\Data Report.xlsx</Literal>
+                  </InArgument>
+                </scg:List>
+              </umam:SendMail.Attachments>
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <umam:SendMail AttachmentsCollection="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" From="{x:Null}" ReplyTo="{x:Null}" Account="IronMan_Robot@vajrang.org" Body=" Sending Email" DisplayName="Send Mail" sap:VirtualizedContainerService.HintSize="434,355" sap2010:WorkflowViewState.IdRef="SendMail_1" Importance="Normal" IsBodyHTML="False" IsDraft="False" Subject="Report" To="[{&quot;swethavj4@gmail.com&quot;}]">
-                <umam:SendMail.Attachments>
-                  <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
-                </umam:SendMail.Attachments>
-              </umam:SendMail>
-            </Sequence>
-          </ActivityAction>
-        </uma:Office365ApplicationScope.Body>
-      </uma:Office365ApplicationScope>
-      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke CloseAllApplications workflow" sap:VirtualizedContainerService.HintSize="530,52" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_21" UnSafe="False" WorkflowFileName="Framework\CloseAllApplications.xaml">
-        <ui:InvokeWorkflowFile.Arguments>
-          <scg:Dictionary x:TypeArguments="x:String, Argument" />
-        </ui:InvokeWorkflowFile.Arguments>
-        <sap:WorkflowViewStateService.ViewState>
-          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-            <x:Boolean x:Key="IsPinned">False</x:Boolean>
-          </scg:Dictionary>
-        </sap:WorkflowViewStateService.ViewState>
-      </ui:InvokeWorkflowFile>
-    </Sequence>
+            </umam:SendMail>
+            <ui:LogMessage DisplayName="Log Message _ Email" sap:VirtualizedContainerService.HintSize="434,141" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Email Sent&quot;]" />
+          </Sequence>
+        </ActivityAction>
+      </uma:Office365ApplicationScope.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </uma:Office365ApplicationScope>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke CloseAllApplications workflow" sap:VirtualizedContainerService.HintSize="530,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_22" UnSafe="False" WorkflowFileName="Framework\CloseAllApplications.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <scg:Dictionary x:TypeArguments="x:String, Argument" />
+      </ui:InvokeWorkflowFile.Arguments>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:InvokeWorkflowFile>
   </Sequence>
 </Activity>
