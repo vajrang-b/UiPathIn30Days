@@ -86,7 +86,7 @@
       <AssemblyReference>UiPath.Workflow</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Create a separate sequence for Add and Sub and invoke xaml files into one sequence by using Arguments(Read input values from the excel)&#xD;&#xA;" DisplayName="Main Sequence - Invoke workflow is used here in the sequence" sap:VirtualizedContainerService.HintSize="572.8,1852" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Create a separate sequence for Add and Sub and invoke xaml files into one sequence by using Arguments(Read input values from the excel)&#xA;" DisplayName="Main Sequence - Invoke workflow is used here in the sequence" sap:VirtualizedContainerService.HintSize="572.8,1852" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="dt_value" />
     </Sequence.Variables>
@@ -139,29 +139,17 @@
             </Assign>
             <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Addition.xaml - Invoke Workflow File and passes arguments from one sequence to another" sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Addition.xaml">
               <ui:InvokeWorkflowFile.Arguments>
-                <InArgument x:TypeArguments="x:Int32" x:Key="In_Num1">
-                  <VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="Num1" />
-                </InArgument>
-                <InArgument x:TypeArguments="x:Int32" x:Key="In_Num2">
-                  <VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="Num2" />
-                </InArgument>
-                <OutArgument x:TypeArguments="x:Int32" x:Key="Out_Add_Result">
-                  <VisualBasicReference x:TypeArguments="x:Int32" ExpressionText="AddResult" />
-                </OutArgument>
+                <InArgument x:TypeArguments="x:Int32" x:Key="In_Num1">[Num1]</InArgument>
+                <InArgument x:TypeArguments="x:Int32" x:Key="In_Num2">[Num2]</InArgument>
+                <OutArgument x:TypeArguments="x:Int32" x:Key="Out_Add_Result">[AddResult]</OutArgument>
               </ui:InvokeWorkflowFile.Arguments>
             </ui:InvokeWorkflowFile>
-            <ui:LogMessage DisplayName="Log Message - check the message based on level" sap:VirtualizedContainerService.HintSize="433.6,142.4" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[AddResult]" />
+            <ui:LogMessage DisplayName="Log Message - Displays the output in output panel based on level" sap:VirtualizedContainerService.HintSize="433.6,142.4" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[AddResult]" />
             <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Substraction.xaml - Invoke Workflow File and passes arguments from one sequence to another sequence" sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Substraction.xaml">
               <ui:InvokeWorkflowFile.Arguments>
-                <InArgument x:TypeArguments="x:Int32" x:Key="In_Num1">
-                  <VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="Num1" />
-                </InArgument>
-                <InArgument x:TypeArguments="x:Int32" x:Key="In_Num2">
-                  <VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="Num2" />
-                </InArgument>
-                <OutArgument x:TypeArguments="x:Int32" x:Key="Out_Sub_Result">
-                  <VisualBasicReference x:TypeArguments="x:Int32" ExpressionText="SubResult" />
-                </OutArgument>
+                <InArgument x:TypeArguments="x:Int32" x:Key="In_Num1">[Num1]</InArgument>
+                <InArgument x:TypeArguments="x:Int32" x:Key="In_Num2">[Num2]</InArgument>
+                <OutArgument x:TypeArguments="x:Int32" x:Key="Out_Sub_Result">[SubResult]</OutArgument>
               </ui:InvokeWorkflowFile.Arguments>
             </ui:InvokeWorkflowFile>
             <ui:LogMessage DisplayName="Log Message - checks the messages based on level" sap:VirtualizedContainerService.HintSize="433.6,142.4" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[SubResult]" />
@@ -173,7 +161,7 @@
                 <InArgument x:TypeArguments="x:Object">[AddResult]</InArgument>
               </Assign.Value>
             </Assign>
-            <Assign sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_4">
+            <Assign DisplayName="Assign - result of invoked workfile output is written to a variable" sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_4">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:Object">[CurrentRow("SubResult")]</OutArgument>
               </Assign.To>
