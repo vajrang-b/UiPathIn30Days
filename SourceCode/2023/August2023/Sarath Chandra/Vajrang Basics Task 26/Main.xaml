@@ -71,7 +71,7 @@
       <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="A State Machine is the third type of automation workflow in UiPath that is used to perform a set of activities based on an Event Trigger.&#xD;&#xA;&#xD;&#xA;Definition: A state machine is a type of automation that uses a finite number of states in its execution. It can go into a state when it is triggered by an activity, and it exits that state when another activity is triggered.&#xD;&#xA;&#xD;&#xA;In this process, we shall let the computer generate a Random Number and Ask the user to Guess that Random Number" DisplayName="Intorduction to State Machine" sap:VirtualizedContainerService.HintSize="450,457" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="A State Machine is the third type of automation workflow in UiPath that is used to perform a set of activities based on an Event Trigger.&#xA;&#xA;Definition: A state machine is a type of automation that uses a finite number of states in its execution. It can go into a state when it is triggered by an activity, and it exits that state when another activity is triggered.&#xA;&#xA;In this process, we shall let the computer generate a Random Number and Ask the user to Guess that Random Number" DisplayName="Intorduction to State Machine" sap:VirtualizedContainerService.HintSize="450,457" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Int32" Name="RandomNum" />
       <Variable x:TypeArguments="x:Int32" Name="UserNum" />
@@ -82,7 +82,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <StateMachine InitialState="{x:Reference __ReferenceID2}" sap2010:Annotation.AnnotationText="State Machine activity contains 3 parts mainly. Start, State and Final State.&#xD;&#xA;&#xD;&#xA;Start=Initialization&#xD;&#xA;State=Sequence of activities based on a Condition&#xD;&#xA;Final State= Final State to exit the State Machine." DisplayName="Guess Your Lucky Number" sap:VirtualizedContainerService.HintSize="388,199" sap2010:WorkflowViewState.IdRef="StateMachine_1">
+    <StateMachine InitialState="{x:Reference __ReferenceID2}" sap2010:Annotation.AnnotationText="State Machine activity contains 3 parts mainly. Start, State and Final State.&#xA;&#xA;Start=Initialization&#xA;State=Sequence of activities based on a Condition&#xA;Final State= Final State to exit the State Machine." DisplayName="Guess Your Lucky Number" sap:VirtualizedContainerService.HintSize="634,1178" sap2010:WorkflowViewState.IdRef="StateMachine_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -93,7 +93,7 @@
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <State x:Name="__ReferenceID2" sap2010:Annotation.AnnotationText="Each of the State has three parts i.e. Entry, Exit and Transition(s).&#xD;&#xA;&#xD;&#xA;Entry=Activities that should be performed when this State is starting to executing.&#xD;&#xA;&#xD;&#xA;Exit= Activities that should be performed while exiting this State.&#xD;&#xA;&#xD;&#xA;Transition(s)= Transitions are expanded when you double-click them, just like the State activity. They contain three sections, Trigger, Condition and Action, that enable you to add a trigger for the next state, or add a condition under which an activity or sequence is to be executed." DisplayName="Random Number" sap:VirtualizedContainerService.HintSize="134,614" sap2010:WorkflowViewState.IdRef="State_1">
+      <State x:Name="__ReferenceID2" sap2010:Annotation.AnnotationText="Each of the State has three parts i.e. Entry, Exit and Transition(s).&#xA;&#xA;Entry=Activities that should be performed when this State is starting to executing.&#xA;&#xA;Exit= Activities that should be performed while exiting this State.&#xA;&#xA;Transition(s)= Transitions are expanded when you double-click them, just like the State activity. They contain three sections, Trigger, Condition and Action, that enable you to add a trigger for the next state, or add a condition under which an activity or sequence is to be executed." DisplayName="Random Number" sap:VirtualizedContainerService.HintSize="134,614" sap2010:WorkflowViewState.IdRef="State_1">
         <State.Entry>
           <Assign sap2010:Annotation.AnnotationText="New Random().Next(1,10) is the syntax to generate a random number between 1,10" DisplayName="Generating a Random Number" sap:VirtualizedContainerService.HintSize="434,124" sap2010:WorkflowViewState.IdRef="Assign_1">
             <Assign.To>
@@ -164,9 +164,7 @@
                     <Transition.Action>
                       <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Try Greater" sap:VirtualizedContainerService.HintSize="334,85" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[&quot;Please Enter a Greater Number&quot;]" />
                     </Transition.Action>
-                    <Transition.Condition>
-                      <VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="UserNum&lt;RandomNum" />
-                    </Transition.Condition>
+                    <Transition.Condition>[UserNum&lt;RandomNum]</Transition.Condition>
                   </Transition>
                   <Transition DisplayName="Try Lesser" sap:VirtualizedContainerService.HintSize="450,507" sap2010:WorkflowViewState.IdRef="Transition_4">
                     <sap:WorkflowViewStateService.ViewState>
@@ -180,11 +178,9 @@
                       <x:Reference>__ReferenceID0</x:Reference>
                     </Transition.To>
                     <Transition.Action>
-                      <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="334,85" sap2010:WorkflowViewState.IdRef="MessageBox_2" Text="[&quot;Please enter a lesser value&quot;]" />
+                      <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Try Lesser" sap:VirtualizedContainerService.HintSize="334,85" sap2010:WorkflowViewState.IdRef="MessageBox_2" Text="[&quot;Please enter a lesser value&quot;]" />
                     </Transition.Action>
-                    <Transition.Condition>
-                      <VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="UserNum&gt;RandomNum" />
-                    </Transition.Condition>
+                    <Transition.Condition>[UserNum&gt;RandomNum]</Transition.Condition>
                   </Transition>
                   <Transition DisplayName="Matched" sap:VirtualizedContainerService.HintSize="450,507" sap2010:WorkflowViewState.IdRef="Transition_5">
                     <sap:WorkflowViewStateService.ViewState>
@@ -208,9 +204,7 @@
                     <Transition.Action>
                       <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Number Matched" sap:VirtualizedContainerService.HintSize="334,85" sap2010:WorkflowViewState.IdRef="MessageBox_3" Text="[&quot;You've Guessed the Right Number:&quot;+RandomNum.ToString]" />
                     </Transition.Action>
-                    <Transition.Condition>
-                      <VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="UserNum=RandomNum" />
-                    </Transition.Condition>
+                    <Transition.Condition>[UserNum=RandomNum]</Transition.Condition>
                   </Transition>
                 </State.Transitions>
               </State>
