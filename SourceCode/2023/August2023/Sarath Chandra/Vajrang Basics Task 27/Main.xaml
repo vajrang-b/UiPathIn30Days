@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1412,1617" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1412,1942" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -86,7 +86,7 @@
       <AssemblyReference>UiPath.Workflow</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="In this process, we are going to perform basic add &amp; sub for two numbers from an excel.&#xD;&#xA;However, we shall create two separate sequences for Add and Sub and use arguments to pass the variable values through sequences." DisplayName="Arguments &amp; Invoke WorkFlow" sap:VirtualizedContainerService.HintSize="572,1877" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="In this process, we are going to perform basic add &amp; sub for two numbers from an excel.&#xA;However, we shall create two separate sequences for Add and Sub and use arguments to pass the variable values through sequences." DisplayName="Arguments &amp; Invoke WorkFlow" sap:VirtualizedContainerService.HintSize="572,1877" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="Dt_Math" />
       <Variable x:TypeArguments="x:Int32" Name="Num1" />
@@ -98,7 +98,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:ReadRange AddHeaders="True" sap2010:Annotation.AnnotationText="We have created an excel file with two columns of numbers and two columns for results.&#xD;&#xA;Numbers are already passed and we are going to find the results and print them back to excel." DataTable="[Dt_Math]" DisplayName="Creating a DataTable" sap:VirtualizedContainerService.HintSize="510,160" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="Sheet1" WorkbookPath="Math.xlsx">
+    <ui:ReadRange AddHeaders="True" sap2010:Annotation.AnnotationText="We have created an excel file with two columns of numbers and two columns for results.&#xA;Numbers are already passed and we are going to find the results and print them back to excel." DataTable="[Dt_Math]" DisplayName="Creating a DataTable" sap:VirtualizedContainerService.HintSize="510,160" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="Sheet1" WorkbookPath="Math.xlsx">
       <ui:ReadRange.Range>
         <InArgument x:TypeArguments="x:String">
           <Literal x:TypeArguments="x:String" Value="" />
@@ -144,15 +144,9 @@
             </Assign>
             <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Invoke Workflow File means that we pull in a sequence from the same project and import the arguments created in that sequence and provide values to those arguments in the main sequence" DisplayName="Addition.xaml - Invoking addition logic" sap:VirtualizedContainerService.HintSize="434,185" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Addition.xaml">
               <ui:InvokeWorkflowFile.Arguments>
-                <InArgument x:TypeArguments="x:Int32" x:Key="In_AddNum1">
-                  <VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="Num1" />
-                </InArgument>
-                <InArgument x:TypeArguments="x:Int32" x:Key="In_AddNum2">
-                  <VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="Num2" />
-                </InArgument>
-                <OutArgument x:TypeArguments="x:Int32" x:Key="Out_AddResult">
-                  <VisualBasicReference x:TypeArguments="x:Int32" ExpressionText="AddResult" />
-                </OutArgument>
+                <InArgument x:TypeArguments="x:Int32" x:Key="In_AddNum1">[Num1]</InArgument>
+                <InArgument x:TypeArguments="x:Int32" x:Key="In_AddNum2">[Num2]</InArgument>
+                <OutArgument x:TypeArguments="x:Int32" x:Key="Out_AddResult">[AddResult]</OutArgument>
               </ui:InvokeWorkflowFile.Arguments>
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -162,15 +156,9 @@
             </ui:InvokeWorkflowFile>
             <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Invoke Workflow File activity means that we pull in a sequence from the same project and import the arguments created in that sequence and provide values to those arguments in the main sequence" DisplayName="Substraction.xaml - Invoking substraction logic" sap:VirtualizedContainerService.HintSize="434,185" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Substraction.xaml">
               <ui:InvokeWorkflowFile.Arguments>
-                <InArgument x:TypeArguments="x:Int32" x:Key="In_SubNum1">
-                  <VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="Num1" />
-                </InArgument>
-                <InArgument x:TypeArguments="x:Int32" x:Key="In_SubNum2">
-                  <VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="Num2" />
-                </InArgument>
-                <OutArgument x:TypeArguments="x:Int32" x:Key="Out_SubResult">
-                  <VisualBasicReference x:TypeArguments="x:Int32" ExpressionText="SubResult" />
-                </OutArgument>
+                <InArgument x:TypeArguments="x:Int32" x:Key="In_SubNum1">[Num1]</InArgument>
+                <InArgument x:TypeArguments="x:Int32" x:Key="In_SubNum2">[Num2]</InArgument>
+                <OutArgument x:TypeArguments="x:Int32" x:Key="Out_SubResult">[SubResult]</OutArgument>
               </ui:InvokeWorkflowFile.Arguments>
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -198,7 +186,7 @@
         </ActivityAction>
       </ui:ForEachRow.Body>
     </ui:ForEachRow>
-    <ui:WriteRange AddHeaders="True" DataTable="[Dt_Math]" DisplayName="Write Range Workbook" sap:VirtualizedContainerService.HintSize="510,116" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="Sheet2" WorkbookPath="Math.xlsx">
+    <ui:WriteRange AddHeaders="True" DataTable="[Dt_Math]" DisplayName="Writing to Excel " sap:VirtualizedContainerService.HintSize="510,116" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="Sheet2" WorkbookPath="Math.xlsx">
       <ui:WriteRange.StartingCell>
         <InArgument x:TypeArguments="x:String">
           <Literal x:TypeArguments="x:String" Value="" />
