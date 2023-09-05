@@ -7,7 +7,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>840.6666666666666,4454</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>821.6,4233.6</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="50">
@@ -126,7 +126,7 @@
       <x:Boolean x:Key="ShouldExpandAll">True</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="850.6666666666666,4389.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="832,4168.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataRow" Name="NewRow" />
       <Variable x:TypeArguments="x:String" Name="FileName" />
@@ -137,8 +137,8 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message Process Start" sap:VirtualizedContainerService.HintSize="788.6666666666666,144.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Started Process&quot;]" />
-    <Assign sap:VirtualizedContainerService.HintSize="788.6666666666666,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <ui:LogMessage DisplayName="Log Message Process Start" sap:VirtualizedContainerService.HintSize="788.8,142.4" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Started Process&quot;]" />
+    <Assign sap:VirtualizedContainerService.HintSize="788.8,81.6" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="sd:DataRow">[NewRow]</OutArgument>
       </Assign.To>
@@ -146,17 +146,17 @@
         <InArgument x:TypeArguments="sd:DataRow">[in_out_dtReport.NewRow()]</InArgument>
       </Assign.Value>
     </Assign>
-    <If Condition="[path.GetExtension(in_TransactionItem.ToString()).ToLower = &quot;.pdf&quot;]" sap:VirtualizedContainerService.HintSize="788.6666666666666,3890" sap2010:WorkflowViewState.IdRef="If_1">
+    <If Condition="[path.GetExtension(in_TransactionItem.ToString()).ToLower = &quot;.pdf&quot;]" sap:VirtualizedContainerService.HintSize="788.8,3775.2" sap2010:WorkflowViewState.IdRef="If_1">
       <If.Then>
-        <Sequence sap:VirtualizedContainerService.HintSize="754.6666666666666,3526.6666666666665" sap2010:WorkflowViewState.IdRef="Sequence_2">
+        <Sequence sap:VirtualizedContainerService.HintSize="755.2,3592" sap2010:WorkflowViewState.IdRef="Sequence_2">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="712.6666666666666,3439.3333333333335" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+          <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="712,3502.4" sap2010:WorkflowViewState.IdRef="TryCatch_1">
             <TryCatch.Try>
-              <Sequence sap:VirtualizedContainerService.HintSize="674,2726.6666666666665" sap2010:WorkflowViewState.IdRef="Sequence_4">
+              <Sequence sap:VirtualizedContainerService.HintSize="655.2,2798.4" sap2010:WorkflowViewState.IdRef="Sequence_4">
                 <Sequence.Variables>
                   <Variable x:TypeArguments="x:String" Name="pdftext" />
                   <Variable x:TypeArguments="s:String[]" Name="arr_formats" />
@@ -166,10 +166,10 @@
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ui:ReadPDFText PreserveFormatting="{x:Null}" DisplayName="Read PDF Text" FileName="[in_TransactionItem.ToString]" sap:VirtualizedContainerService.HintSize="612,84" sap2010:WorkflowViewState.IdRef="ReadPDFText_1" Range="All" Text="[pdftext]" />
-                <If Condition="[pdftext.Length() = 0]" sap:VirtualizedContainerService.HintSize="612,1018" sap2010:WorkflowViewState.IdRef="If_3">
+                <ui:ReadPDFText PreserveFormatting="{x:Null}" DisplayName="Read PDF Text" FileName="[in_TransactionItem.ToString]" sap:VirtualizedContainerService.HintSize="612,83.2" sap2010:WorkflowViewState.IdRef="ReadPDFText_1" Range="All" Text="[pdftext]" />
+                <If Condition="[pdftext.Length() = 0]" sap:VirtualizedContainerService.HintSize="612,834.4" sap2010:WorkflowViewState.IdRef="If_3">
                   <If.Then>
-                    <Sequence sap:VirtualizedContainerService.HintSize="476,661.3333333333334" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                    <Sequence sap:VirtualizedContainerService.HintSize="476.8,651.2" sap2010:WorkflowViewState.IdRef="Sequence_7">
                       <Sequence.Variables>
                         <Variable x:TypeArguments="x:String" Name="OutPutOCR" />
                       </Sequence.Variables>
@@ -178,7 +178,7 @@
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <Assign sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_3">
+                      <Assign sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_3">
                         <Assign.To>
                           <OutArgument x:TypeArguments="x:Object">[NewRow("Status")]</OutArgument>
                         </Assign.To>
@@ -186,7 +186,7 @@
                           <InArgument x:TypeArguments="x:Object">["Failed"]</InArgument>
                         </Assign.Value>
                       </Assign>
-                      <Assign sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_4">
+                      <Assign sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_4">
                         <Assign.To>
                           <OutArgument x:TypeArguments="x:Object">[NewRow("Reason")]</OutArgument>
                         </Assign.To>
@@ -194,8 +194,8 @@
                           <InArgument x:TypeArguments="x:Object">[("Unable to get the information from pdf"+ in_TransactionItem.Tostring())]</InArgument>
                         </Assign.Value>
                       </Assign>
-                      <ui:AddDataRow ArrayRow="{x:Null}" DataRow="[NewRow]" DataTable="[in_out_dtReport]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="434,191.33333333333334" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
-                      <Throw Exception="[new BusinessRuleException(&quot;Unable to read pdf with image format&quot;+in_TransactionItem.ToString)]" sap:VirtualizedContainerService.HintSize="434,92" sap2010:WorkflowViewState.IdRef="Throw_1" />
+                      <ui:AddDataRow ArrayRow="{x:Null}" DataRow="[NewRow]" DataTable="[in_out_dtReport]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="433.6,188" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
+                      <Throw Exception="[new BusinessRuleException(&quot;Unable to read pdf with image format&quot;+in_TransactionItem.ToString)]" sap:VirtualizedContainerService.HintSize="433.6,90.4" sap2010:WorkflowViewState.IdRef="Throw_1" />
                     </Sequence>
                   </If.Then>
                   <If.Else>
@@ -216,8 +216,8 @@
                     </Sequence>
                   </If.Else>
                 </If>
-                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="612,144.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[pdftext.Length()]" />
-                <Assign DisplayName="Assign Date Format" sap:VirtualizedContainerService.HintSize="612,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_16">
+                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="612,142.4" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[pdftext.Length()]" />
+                <Assign DisplayName="Assign Date Format" sap:VirtualizedContainerService.HintSize="612,81.6" sap2010:WorkflowViewState.IdRef="Assign_16">
                   <Assign.To>
                     <OutArgument x:TypeArguments="s:String[]">[arr_formats]</OutArgument>
                   </Assign.To>
@@ -225,13 +225,13 @@
                     <InArgument x:TypeArguments="s:String[]">[{"MM/dd/yyyy","dd.MM.yyyy","dd/MM/yyyy","MM.dd.yyyy"}]</InArgument>
                   </Assign.Value>
                 </Assign>
-                <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="Iterate For Each value" sap:VirtualizedContainerService.HintSize="612,892.6666666666666" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[in_Config(&quot;FieldsToExtract&quot;).Tostring.Split(&quot;,&quot;c)]">
+                <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="Iterate For Each value" sap:VirtualizedContainerService.HintSize="612,1176" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[in_Config(&quot;FieldsToExtract&quot;).Tostring.Split(&quot;,&quot;c)]">
                   <ui:ForEach.Body>
                     <ActivityAction x:TypeArguments="x:String">
                       <ActivityAction.Argument>
                         <DelegateInArgument x:TypeArguments="x:String" Name="currentItem" />
                       </ActivityAction.Argument>
-                      <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="538.6666666666666,702.6666666666666" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                      <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="540,958.4" sap2010:WorkflowViewState.IdRef="Sequence_10">
                         <Sequence.Variables>
                           <Variable x:TypeArguments="x:String" Name="strFirstMatch" />
                           <Variable x:TypeArguments="scg:IEnumerable(str:Match)" Name="matchValue" />
@@ -247,10 +247,10 @@
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <ui:Matches BuilderPattern="(?&lt;=Invoice [Nn]umber).*?(?=\s*Order [Nn]umber)" DisplayName="Find Matching Patterns" FirstMatch="[strFirstMatch]" sap:VirtualizedContainerService.HintSize="496.6666666666667,60" sap2010:WorkflowViewState.IdRef="Matches_1" Input="[pdftext]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;ADV&quot;,&quot;OperationName&quot;:&quot;Advanced&quot;,&quot;OperationValue&quot;:&quot;(?&lt;=Invoice [Nn]umber).*?(?=\\s*Order [Nn]umber)&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="(?&lt;=Invoice [Nn]umber).*?(?=\s*Order [Nn]umber)" RegexOption="IgnoreCase, Compiled" Result="[matchValue]" />
-                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="496.6666666666667,144.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="[UiPath.Core.Activities.LogLevel.Error]" Message="[currentItem+&quot;-&quot;+strFirstMatch]" />
-                        <Switch x:TypeArguments="x:String" DisplayName="Switch" Expression="[currentItem.ToString]" sap:VirtualizedContainerService.HintSize="496.6666666666667,330.6666666666667" sap2010:WorkflowViewState.IdRef="Switch`1_3">
-                          <Assign x:Key="InvoiceNumber" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_17">
+                        <ui:Matches BuilderPattern="(?&lt;=Invoice [Nn]umber).*?(?=\s*Order [Nn]umber)" DisplayName="Find Matching Patterns" FirstMatch="[strFirstMatch]" sap:VirtualizedContainerService.HintSize="496.8,60" sap2010:WorkflowViewState.IdRef="Matches_1" Input="[pdftext]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;ADV&quot;,&quot;OperationName&quot;:&quot;Advanced&quot;,&quot;OperationValue&quot;:&quot;(?&lt;=Invoice [Nn]umber).*?(?=\\s*Order [Nn]umber)&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="[in_Config(currentItem).ToString()]" RegexOption="IgnoreCase, Compiled" Result="[matchValue]" />
+                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="496.8,142.4" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="[UiPath.Core.Activities.LogLevel.Error]" Message="[currentItem+&quot;-&quot;+strFirstMatch]" />
+                        <Switch x:TypeArguments="x:String" DisplayName="Switch" Expression="[currentItem.ToString]" sap:VirtualizedContainerService.HintSize="496.8,586.4" sap2010:WorkflowViewState.IdRef="Switch`1_3">
+                          <Assign x:Key="InvoiceNumber" sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_17">
                             <Assign.To>
                               <OutArgument x:TypeArguments="x:String">[InvoiceNumber]</OutArgument>
                             </Assign.To>
@@ -258,7 +258,7 @@
                               <InArgument x:TypeArguments="x:String">[strFirstMatch]</InArgument>
                             </Assign.Value>
                           </Assign>
-                          <Assign x:Key="OrderNumber" sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_18">
+                          <Assign x:Key="OrderNumber" sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_18">
                             <Assign.To>
                               <OutArgument x:TypeArguments="x:String">[OrderNumber]</OutArgument>
                             </Assign.To>
