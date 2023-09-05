@@ -20,6 +20,7 @@ steps:
 #     processName: 'vajrang_logtime'
 #     folderName: 'Shared'
 - task: CmdLine@2
+  condition: eq(variables['Build.Reason'], 'PullRequest')
   inputs:
     script: |
       echo Write your commands here
