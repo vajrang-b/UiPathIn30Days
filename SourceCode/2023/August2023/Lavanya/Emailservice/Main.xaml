@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="647,729" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mg="clr-namespace:Microsoft.Graph;assembly=Microsoft.Graph" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:uma="clr-namespace:UiPath.MicrosoftOffice365.Activities;assembly=UiPath.MicrosoftOffice365.Activities" xmlns:umam="clr-namespace:UiPath.MicrosoftOffice365.Activities.Mail;assembly=UiPath.MicrosoftOffice365.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="634,1165" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mg="clr-namespace:Microsoft.Graph;assembly=Microsoft.Graph" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uma="clr-namespace:UiPath.MicrosoftOffice365.Activities;assembly=UiPath.MicrosoftOffice365.Activities" xmlns:umam="clr-namespace:UiPath.MicrosoftOffice365.Activities.Mail;assembly=UiPath.MicrosoftOffice365.Activities" xmlns:umm="clr-namespace:UiPath.MicrosoftOffice365.Models;assembly=UiPath.MicrosoftOffice365" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -37,6 +37,10 @@
       <x:String>System.Reflection</x:String>
       <x:String>UiPath.Shared.Services.Graph.Mail.Contracts</x:String>
       <x:String>UiPath.Mail.Activities</x:String>
+      <x:String>UiPath.Mail</x:String>
+      <x:String>UiPath.Mail.Activities.Utils</x:String>
+      <x:String>UiPath.Mail.Activities.Business.HtmlEditor</x:String>
+      <x:String>UiPath.Mail.Activities.Business</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -99,29 +103,46 @@
       <AssemblyReference>UiPath.Mail.Activities.Design</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="592,664" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="644,1100" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <uma:Office365ApplicationScope CertificateAsBase64="{x:Null}" CertificatePassword="{x:Null}" ContinueOnError="{x:Null}" OAuth2Username="{x:Null}" Password="{x:Null}" SecureApplicationSecret="{x:Null}" SecurePassword="{x:Null}" Timeout="{x:Null}" ApplicationId="f978db09-02de-4c0a-9a15-dc35f3dfa13d" ApplicationSecret="- SxJ8Q~BzuRkCHribGn.26UiBRV~mQni-IP7QrcCJ &#xA;&#xA; " AuthenticationType="ApplicationIdAndSecret" DisplayName="Microsoft Office 365 Scope" Environment="Global" sap:VirtualizedContainerService.HintSize="530,553" sap2010:WorkflowViewState.IdRef="Office365ApplicationScope_1" OAuthApplication="UiPath" Services="Mail" Tenant="8366e150-0aca-4c85-8d61-222ded741873 " Username="IronMan_Robot@vajrang.org">
+    <uma:Office365ApplicationScope CertificateAsBase64="{x:Null}" CertificatePassword="{x:Null}" ContinueOnError="{x:Null}" OAuth2Username="{x:Null}" Password="{x:Null}" SecureApplicationSecret="{x:Null}" SecurePassword="{x:Null}" Timeout="{x:Null}" ApplicationId="f978db09-02de-4c0a-9a15-dc35f3dfa13d " ApplicationSecret="YoB8Q~ja6Aqg6CVe9J7yuaub4uMZEiOXDs0dvagJ" AuthenticationType="ApplicationIdAndSecret" DisplayName="Microsoft Office 365 Scope" Environment="Global" sap:VirtualizedContainerService.HintSize="582,989" sap2010:WorkflowViewState.IdRef="Office365ApplicationScope_1" OAuthApplication="UiPath" Services="Mail" Tenant="8366e150-0aca-4c85-8d61-222ded741873" Username="IronMan_Robot@vajrang.org">
       <uma:Office365ApplicationScope.Body>
         <ActivityAction x:TypeArguments="mg:GraphServiceClient">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="mg:GraphServiceClient" Name="ParentScope" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="496,466" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="548,902" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:String" Name="Result" />
+              <Variable x:TypeArguments="umm:Office365Message[]" Name="str_result" />
+            </Sequence.Variables>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <umam:SendMail AttachmentsCollection="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" From="{x:Null}" ReplyTo="{x:Null}" Account="IronMan_Robot@vajrang.org" Body="Hiiii" DisplayName="Send Mail" sap:VirtualizedContainerService.HintSize="434,355" sap2010:WorkflowViewState.IdRef="SendMail_1" Importance="Normal" IsBodyHTML="False" IsDraft="False" Subject="Result" To="[{&quot;lavanya220490@gmail.com&quot;}]">
+            <umam:SendMail AttachmentsCollection="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" From="{x:Null}" ReplyTo="{x:Null}" Account="IronMan_Robot@vajrang.org" Body="Hiiii" DisplayName="Send Mail" sap:VirtualizedContainerService.HintSize="486,355" sap2010:WorkflowViewState.IdRef="SendMail_1" Importance="Normal" IsBodyHTML="False" IsDraft="False" Subject="send email" To="[{&quot;lavanyachigurupati77@gmail.com&quot;}]">
               <umam:SendMail.Attachments>
                 <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
               </umam:SendMail.Attachments>
             </umam:SendMail>
+            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="486,215" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+              <ui:CommentOut.Body>
+                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,136" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <umam:GetMail EmailId="{x:Null}" Query="{x:Null}" Account="IronMan_Robot@vajrang.org" DisplayName="Get Mail" GetAsHTML="False" sap:VirtualizedContainerService.HintSize="388,25" sap2010:WorkflowViewState.IdRef="GetMail_2" MailFolder="Inbox" MarkAsRead="False" OnlyUnreadMessages="True" OrderByDate="NewestFirst" Results="[str_result]" Top="2" />
+                </Sequence>
+              </ui:CommentOut.Body>
+            </ui:CommentOut>
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="486,141" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[str_result]" />
           </Sequence>
         </ActivityAction>
       </uma:Office365ApplicationScope.Body>
