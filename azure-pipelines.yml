@@ -5,6 +5,7 @@
 
 trigger:
 - main
+- pull_request
 
 pool: CloudVM
 
@@ -22,7 +23,7 @@ steps:
     script: |
       echo Write your commands here
       echo Hello world
-      echo $(System.PullRequest.PullRequestId)
+      echo $(System.PullRequest.PullRequestNumber)
 - task: PowerShell@2
   inputs:
     targetType: 'inline'
@@ -31,8 +32,9 @@ steps:
       Write-Host "Hello World"
 
 - task: GitHubComment@0
+  condition: eq(variables['Build.Reason'], 'PullRequest')
   inputs:
     gitHubConnection: 'vajrang-b'
     repositoryName: 'vajrang-b/RPA-Developer-in-30-Days'
-    id: $(System.PullRequest.PullRequestId)
-    comment: 'Hi from pipeline'
+    id: $(System.PullRequest.PullRequestNumber)
+    comment: 'Congratulations on creating a pr, your code will be reviewed soon'
