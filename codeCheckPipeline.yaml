@@ -10,8 +10,13 @@
 pool: CloudVM
 
 steps:
-- script: echo Hello, world!
-- script: echo ${{ substring(variables['Build.SourceVersion'], 0, 7) }}
+- script: |
+      echo $(Build.SourceVersion)
+      set TestVar=$(Build.SourceVersion)
+      set MyCustomVar=%TestVar:~0,7%
+      echo %MyCustomVar%
+      displayName: 'Process Build.SourceVersion'
+
 - script: echo $(githubPat)
   displayName: 'Run a one-line script'
   
@@ -20,6 +25,7 @@ steps:
 #     orchestratorConnection: 'UiPath Test Connection'
 #     processName: 'vajrang_logtime'
 #     folderName: 'Shared'
+
 - task: CmdLine@2
   condition: eq(variables['Build.Reason'], 'PullRequest')
   inputs:
