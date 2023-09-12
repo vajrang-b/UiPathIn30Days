@@ -37,16 +37,10 @@ steps:
     GITHUB_PAT: $(githubPat)
 
 - task: PowerShell@2
-         displayName: 'PowerShell Script'
-         inputs:
-           targetType: filePath
-           filePath: './Scripts/validator.ps1'
-  
-# - task: UiPathRunJob@3
-#   inputs:
-#     orchestratorConnection: 'UiPath Test Connection'
-#     processName: 'vajrang_logtime'
-#     folderName: 'Shared'
+  displayName: 'Execute Repository PowerShell Script'
+  inputs:
+    targetType: filePath
+    filePath: './Scripts/validator.ps1' # Replace this with the relative path to your script in the repository
 
 - task: CmdLine@2
   condition: eq(variables['Build.Reason'], 'PullRequest')
