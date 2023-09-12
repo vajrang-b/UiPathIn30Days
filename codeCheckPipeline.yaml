@@ -17,6 +17,11 @@ steps:
       echo %MyCustomVar%
 - script: echo $(githubPat)
   displayName: 'Run a one-line script'
+
+- powershell: |
+    $response = Invoke-WebRequest -Uri 'https://api.github.com/repos/vajrang-b/RPA-Developer-in-30-Days/commits/%MyCustomVar%' -Method GET -Headers @{ "Authorization" = "Bearer $(githubPat)" } 
+    Write-Output $response.Content
+  displayName: 'Make HTTP Request with PowerShell'
   
 # - task: UiPathRunJob@3
 #   inputs:
