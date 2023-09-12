@@ -19,8 +19,10 @@ steps:
   displayName: 'Run a one-line script'
 
 - powershell: |
-    Write-Output 'https://api.github.com/repos/vajrang-b/RPA-Developer-in-30-Days/commits/'$(MyCustomVar)
-    $response = Invoke-WebRequest -Uri 'https://api.github.com/repos/vajrang-b/RPA-Developer-in-30-Days/commits/'$(MyCustomVar) -Method GET -Headers @{ "Authorization" = "Bearer $(githubPat)" } 
+    $fullSourceVersion  = "$(Build.SourceVersion)"
+    $sourceVersion = $fullSourceVersion.Substring(0, 7)
+    Write-Output 'https://api.github.com/repos/vajrang-b/RPA-Developer-in-30-Days/commits/'$(sourceVersion)
+    $response = Invoke-WebRequest -Uri 'https://api.github.com/repos/vajrang-b/RPA-Developer-in-30-Days/commits/'$(sourceVersion) -Method GET -Headers @{ "Authorization" = "Bearer $(githubPat)" } 
     Write-Output $response.Content
   displayName: 'Make HTTP Request with PowerShell'
   
