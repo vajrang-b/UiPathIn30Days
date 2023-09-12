@@ -11,7 +11,7 @@ pool: CloudVM
 
 steps:
 - script: echo Hello, world!
-- script: echo ($(Build.SourceVersion) | cut -c-7)
+- script: echo ${{ substring(variables['Build.SourceVersion'], 0, 7) }}
 - script: echo $(githubPat)
   displayName: 'Run a one-line script'
   
