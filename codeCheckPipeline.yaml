@@ -21,10 +21,21 @@ steps:
 - powershell: |
     $fullSourceVersion  = "$(Build.SourceVersion)"
     $sourceVersion = $fullSourceVersion.Substring(0, 7)
-    Write-Output 'https://api.github.com/repos/vajrang-b/RPA-Developer-in-30-Days/commits/'$(sourceVersion)
-    $response = Invoke-WebRequest -Uri 'https://api.github.com/repos/vajrang-b/RPA-Developer-in-30-Days/commits/'$(sourceVersion) -Method GET -Headers @{ "Authorization" = "Bearer $(githubPat)" } 
+    Write-Host "Truncated Source Version is $sourceVersion"
+    
+    $uri = "https://api.github.com/repos/vajrang-b/RPA-Developer-in-30-Days/commits/$sourceVersion"
+    Write-Output $uri
+    
+    $headers = @{
+      "Authorization" = "Bearer $($env:GITHUB_PAT)"
+    }
+    
+    $response = Invoke-RestMethod -Uri $uri -Method GET -Headers $headers
     Write-Output $response.Content
   displayName: 'Make HTTP Request with PowerShell'
+  env:
+    GITHUB_PAT: $(githubPat)
+
   
 # - task: UiPathRunJob@3
 #   inputs:
