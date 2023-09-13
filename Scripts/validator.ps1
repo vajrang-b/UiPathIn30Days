@@ -1,15 +1,19 @@
 param (
     [string]$pull_number,
-    [string]$YOUR_PERSONAL_ACCESS_TOKEN
+    [string]$YOUR_PERSONAL_ACCESS_TOKEN,
+    [string]$GptApiKey
+
     )
     
     # Import the script containing the Run-UiPathAnalyze function
     # Dot-source the script with the relative path
-. UiPathAnalyze.ps1
+. $PSScriptRoot\UiPathAnalyze.ps1
+. $PSScriptRoot\GenerateGptResponse.ps1
+
 
 # Check if required parameters are provided
 if (-not $pull_number -or -not $YOUR_PERSONAL_ACCESS_TOKEN) {
-    Write-Host "Usage: script.ps1 -pull_number <pull_number> -YOUR_PERSONAL_ACCESS_TOKEN <access_token>"
+    Write-Host "Usage: script.ps1 -pull_number <pull_number> -YOUR_PERSONAL_ACCESS_TOKEN <access_token> -GptApiKey <GptApiKey>" 
     exit 1
 }
 
@@ -38,6 +42,9 @@ foreach ($project in $fileNames) {
     Write-Output $ProjectPath
     $Comment = UiPathAnalyze -ProjectJsonPath $ProjectPath
     Write-Host $Comment
+    $GptComment = GenerateGptResponse -GptApiKey $GptApiKey -errorDetails  $Comment 
+    Write-Host $GptComment
+
    # Add-GitHubPRComment -Token $YOUR_PERSONAL_ACCESS_TOKEN -Owner $Owner -Repo $Repo -PullRequestId $PullRequestId -Comment $Comment
     #downloadProjectDependencies -ProjectJsonPath $ProjectPath
 }
