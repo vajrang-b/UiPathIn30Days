@@ -18,7 +18,7 @@ function GenerateGptResponse {
         "messages" = @(
             @{
                 "role"    = "system"
-                "content" = "you are worlds best code validator generate simple summary of errors to guide developer on correcting the error."
+                "content" = "you are worlds best code validator generate simple summary of errors to guide developer on correcting the error in pure english summary."
             },
             @{
                 "role"    = "user"
@@ -34,10 +34,10 @@ function GenerateGptResponse {
     }
     
     # Send the request using Invoke-RestMethod
-    $response = Invoke-RestMethod -Uri $apiUrl -Method Post -Headers $headers -Body $requestBody
+    $gptresponse = Invoke-RestMethod -Uri $apiUrl -Method Post -Headers $headers -Body $requestBody
 
     # Extract the generated text from the response
-    $generatedText = $response.choices[0].text
+    $generatedText =   $gptresponse.choices[0].message.content
 
     # Display the generated text
     Write-Host "Generated Text: $generatedText"

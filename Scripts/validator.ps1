@@ -9,6 +9,7 @@ param (
     # Dot-source the script with the relative path
 . $PSScriptRoot\UiPathAnalyze.ps1
 . $PSScriptRoot\GenerateGptResponse.ps1
+. $PSScriptRoot\GitHubFunctions.ps1
 
 
 # Check if required parameters are provided
@@ -19,22 +20,21 @@ if (-not $pull_number -or -not $YOUR_PERSONAL_ACCESS_TOKEN) {
 
 $githubOwner = "vajrang-b"
 $githubRepoName = "RPA-Developer-in-30-Days"
-$githubApiUrl = "https://api.github.com/repos/$githubOwner/$githubRepoName/pulls/$pull_number/files"
-$RepoLocalpath = "E:\RPA-Developer-in-30-Days"
+$RepoLocalpath = "E:\RPA-Developer-in-30-Days_Devops"
 
-
-
-$response = Invoke-WebRequest -Uri $githubApiUrl
+$responseFilesChanged = @()
+$responseFilesChanged = Add-GitHubPRComment -Token $YOUR_PERSONAL_ACCESS_TOKEN -Owner $githubOwner -Repo $githubRepoName -PullRequestId $pull_number
 
 # Convert the JSON response content to PowerShell objects
-$responseContent = $response.Content | ConvertFrom-Json
-$responseContent.Length
+$responseFilesChanged.Length
 
-# Filter and extract file names using Where-Object
-$fileNames = $responseContent | Where-Object { $_.filename -like "*project.json*" } | ForEach-Object { $_.filename }
+$fileNames = $responseFilesChanged
 
 # Display the list of filtered file names
 Write-Output $fileNames
+
+if ($fileNames.Length -ge 0 ) {
+    <# Action to perform if the condition is true #>
 
 
 foreach ($project in $fileNames) {
@@ -46,10 +46,17 @@ foreach ($project in $fileNames) {
     Write-Host $GptComment
 
    # Add-GitHubPRComment -Token $YOUR_PERSONAL_ACCESS_TOKEN -Owner $Owner -Repo $Repo -PullRequestId $PullRequestId -Comment $Comment
+
+   $AddCommentResponse = Add-GitHubPRComment -Token $YOUR_PERSONAL_ACCESS_TOKEN -Owner $githubOwner -Repo $githubRepoName -PullRequestId $pull_number -Comment $GptComment
+   Write-Host $AddCommentResponse
     #downloadProjectDependencies -ProjectJsonPath $ProjectPath
 }
-
-
+}else {
+    $GptComment = "Cannot perform automated review, team will manually verify your code"
+    $AddCommentResponse = Add-GitHubPRComment -Token $YOUR_PERSONAL_ACCESS_TOKEN -Owner $githubOwner -Repo $githubRepoName -PullRequestId $pull_number -Comment $GptComment
+    Write-Host $AddCommentResponse
+     <# Action when all if and elseif conditions are false #>
+}
 # Usage:
 # Add-GitHubPRComment -Token "YOUR_GITHUB_TOKEN" -Owner "OWNER_NAME" -Repo "REPO_NAME" -PullRequestId PR_NUMBER -Comment "YOUR_COMMENT"
 
