@@ -1,62 +1,52 @@
+param (
+    [string]$pull_number,
+    [string]$YOUR_PERSONAL_ACCESS_TOKEN
+    )
+    
+    # Import the script containing the Run-UiPathAnalyze function
+    # Dot-source the script with the relative path
+. UiPathAnalyze.ps1
 
-# $uri = "https://api.github.com/repos/vajrang-b/RPA-Developer-in-30-Days/pulls/:pull_number/files"
-
-$uri = "https://api.github.com/repos/vajrang-b/RPA-Developer-in-30-Days/commits/$sourceVersion"
-
-$headers = @{
-    "Authorization" = "Bearer YOUR_PERSONAL_ACCESS_TOKEN"
+# Check if required parameters are provided
+if (-not $pull_number -or -not $YOUR_PERSONAL_ACCESS_TOKEN) {
+    Write-Host "Usage: script.ps1 -pull_number <pull_number> -YOUR_PERSONAL_ACCESS_TOKEN <access_token>"
+    exit 1
 }
 
-# $response = Invoke-WebRequest -Uri $uri -Headers $headers
+$githubOwner = "vajrang-b"
+$githubRepoName = "RPA-Developer-in-30-Days"
+$githubApiUrl = "https://api.github.com/repos/$githubOwner/$githubRepoName/pulls/$pull_number/files"
+$RepoLocalpath = "E:\RPA-Developer-in-30-Days"
 
-$response = Invoke-WebRequest -Uri $uri
+
+
+$response = Invoke-WebRequest -Uri $githubApiUrl
 
 # Convert the JSON response content to PowerShell objects
 $responseContent = $response.Content | ConvertFrom-Json
+$responseContent.Length
 
 # Filter and extract file names using Where-Object
-$fileNames = $responseContent |
-    Where-Object { $_.filename -eq "package.json" } |  # Filter for "package.json" files
-    ForEach-Object { $_.filename }
+$fileNames = $responseContent | Where-Object { $_.filename -like "*project.json*" } | ForEach-Object { $_.filename }
 
 # Display the list of filtered file names
-$fileNames
+Write-Output $fileNames
 
 
-function Add-GitHubPRComment {
-    param(
-        [Parameter(Mandatory=$true)]
-        [string]$Token,          # Your GitHub Personal Access Token (PAT)
-
-        [Parameter(Mandatory=$true)]
-        [string]$Owner,          # Repository owner (username or organization name)
-
-        [Parameter(Mandatory=$true)]
-        [string]$Repo,           # Repository name
-
-        [Parameter(Mandatory=$true)]
-        [int]$PullRequestId,     # PR number
-
-        [Parameter(Mandatory=$true)]
-        [string]$Comment         # The comment text you want to add
-    )
-
-    $uri = "https://api.github.com/repos/$Owner/$Repo/issues/$PullRequestId/comments"
-
-    $headers = @{
-        "Authorization" = "Bearer $Token"
-        "User-Agent" = "PowerShellScript"
-        "Accept" = "application/vnd.github.v3+json"
-    }
-
-    $body = @{
-        "body" = $Comment
-    } | ConvertTo-Json
-
-    $response = Invoke-RestMethod -Uri $uri -Method Post -Headers $headers -Body $body
-
-    return $response
+foreach ($project in $fileNames) {
+    $ProjectPath = Join-Path -Path $RepoLocalpath -ChildPath $project
+    Write-Output $ProjectPath
+    $Comment = UiPathAnalyze -ProjectJsonPath $ProjectPath
+    Write-Host $Comment
+   # Add-GitHubPRComment -Token $YOUR_PERSONAL_ACCESS_TOKEN -Owner $Owner -Repo $Repo -PullRequestId $PullRequestId -Comment $Comment
+    #downloadProjectDependencies -ProjectJsonPath $ProjectPath
 }
+
 
 # Usage:
 # Add-GitHubPRComment -Token "YOUR_GITHUB_TOKEN" -Owner "OWNER_NAME" -Repo "REPO_NAME" -PullRequestId PR_NUMBER -Comment "YOUR_COMMENT"
+
+
+# adding nuget to local 
+#nuget.exe install UiPath.System.Activities -Version 21.10.2 -Source https://www.myget.org/F/workflow/api/v3/index.json
+
