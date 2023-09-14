@@ -36,7 +36,7 @@ function Add-GitHubPRComment {
     return $response
 }
 
-function Add-GitHubPRComment {
+function Get-GitHubPrFiles {
 
     param(
         [Parameter(Mandatory = $true)]
@@ -100,3 +100,38 @@ foreach ($file in $changedProjectJsonFiles) {
 
 return [array]$changedProjectJsonFiles
 }
+
+function Close-GitHubPullRequest {
+    param (
+        [string]$Owner,
+        [string]$Repository,
+        [string]$AccessToken,
+        [int]$PullRequestNumber
+    )
+
+    # Construct the API URL for the specific PR
+    $Url = "https://api.github.com/repos/$Owner/$Repository/pulls/$PullRequestNumber"
+
+    # Create the JSON payload to close the PR
+    $Payload = @{
+        state = "closed"
+    } | ConvertTo-Json
+
+    try {
+        # Send the PATCH request to close the PR
+        $Response = Invoke-RestMethod -Uri $Url -Headers @{
+            Authorization = "token $AccessToken"
+        } -Method Patch -Body $Payload -ContentType "application/json"
+
+        if ($Response) {
+            Write-Output "PR $PullRequestNumber has been closed successfully."
+        } else {
+            Write-Output "Failed to close PR $PullRequestNumber."
+        }
+    } catch {
+        Write-Output "An error occurred: $_"
+    }
+}
+
+# Example usage:
+# Close-GitHubPullRequest -Owner "yourusername" -Repository "yourrepository" -AccessToken "YOUR_PERSONAL_ACCESS_TOKEN" -PullRequestNumber 123
