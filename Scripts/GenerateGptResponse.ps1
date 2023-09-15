@@ -27,7 +27,7 @@ function GenerateGptResponse {
                 "role"    = "system"
                 "content" = "Tone : Conversational, Spartan, Use less corporate jargon,
                 you are jarvis for ironman, 
-                generate simple summary of errors and correcting the errors in english language, 
+                generate simple summary of errors and how to correct them using your existing knowledge in uipath, 
                 group together based on file names  
                 it must be posted to github comment for pr "
             },
