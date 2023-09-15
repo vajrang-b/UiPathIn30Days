@@ -26,17 +26,15 @@ function CleanAnyalyseResults {
         if ($propertyName -like "*-ErrorSeverity") {
             $ErrorSeverity = $_.Value
         }
-
-        if ($propertyName -like "*-FilePath") {
-            $filePath = $_.Value
-            
+        elseif ($propertyName -like "*-FilePath") {
+            $filePath = $_.Value            
         }
-
-        if ($propertyName -like "*-Description") {
+        elseif ($propertyName -like "*-Description") {
             $description = $_.Value
         }
         elseif ($propertyName -like "*-Recommendation") {
             $recommendation = $_.Value
+
             if ($null -eq $recommendation) {
                 $recommendation = "_"
             }
@@ -51,6 +49,7 @@ function CleanAnyalyseResults {
                 Description    = $description
                 Recommendation = $recommendation
             }
+        Write-Host "Generated descriptionRecommendation: $descriptionRecommendation"
 
             # Add the custom object to the hashtable using the FileName as the key
             if ($ErrorSeverity -ne "Info") {
@@ -66,6 +65,8 @@ function CleanAnyalyseResults {
                 else {
                     $descriptionRecommendations[$FileName] = @($descriptionRecommendation)
                 }
+        Write-Host "Generated descriptionRecommendations: $descriptionRecommendations"
+
             }
         }
     }

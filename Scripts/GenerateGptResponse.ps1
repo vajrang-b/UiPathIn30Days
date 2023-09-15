@@ -25,10 +25,7 @@ function GenerateGptResponse {
         "messages" = @(
             @{
                 "role"    = "system"
-                "content" = "you are jarvis for ironman, 
-                generate simple summary of errors and how to correct them in not more than 20 words, 
-                group together based on file names  
-                it must be posted to github comment for pr "
+                "content" = "you are jarvis for ironman, generate simple summary of errors and how to correct them in not more than 20 words, group together based on file names it must be posted to github comment for pr "
             },
             @{
                 "role"    = "user"
@@ -43,7 +40,7 @@ function GenerateGptResponse {
         "Authorization" = "Bearer $GptApiKey"
     }
     
-    Write-Host "Generated messages: $messages"
+    # Write-Host "Generated messages: $messages"
 
     # Send the request using Invoke-RestMethod
     $gptresponse = Invoke-RestMethod -Uri $apiUrl -Method Post -Headers $headers -Body $requestBody
@@ -52,7 +49,7 @@ function GenerateGptResponse {
     $generatedText = $gptresponse.choices[0].message.content
 
     # Display the generated text
-    Write-Host "Generated Text: $generatedText"
+    # Write-Host "Generated Text: $generatedText"
 
     return $generatedText 
 }
