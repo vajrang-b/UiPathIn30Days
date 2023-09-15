@@ -49,7 +49,7 @@ function CleanAnyalyseResults {
                 Description    = $description
                 Recommendation = $recommendation
             }
-        Write-Host "Generated descriptionRecommendation: $descriptionRecommendation"
+            Write-Host "Generated descriptionRecommendation: $descriptionRecommendation"
 
             # Add the custom object to the hashtable using the FileName as the key
             if ($ErrorSeverity -ne "Info") {
@@ -65,8 +65,12 @@ function CleanAnyalyseResults {
                 else {
                     $descriptionRecommendations[$FileName] = @($descriptionRecommendation)
                 }
-        Write-Host "Generated descriptionRecommendations: $descriptionRecommendations"
+                Write-Host "Generated descriptionRecommendations: $descriptionRecommendations"
 
+            }
+            else {
+                Write-Host "exempt descriptionRecommendations: $ErrorSeverity"
+                
             }
         }
     }
