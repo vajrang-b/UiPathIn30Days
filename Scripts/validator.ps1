@@ -39,7 +39,7 @@ $fileNames = $responseFilesChanged
 # Display the list of filtered file names
 Write-Output "files changed $fileNames"
 
-if ($fileNames.Length -ge 0 ) {
+if ($count -ge 0 ) {
     <# Action to perform if the condition is true #>
 
 
