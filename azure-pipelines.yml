@@ -12,8 +12,8 @@ pool:
 
 variables:
   currentDirectory: '$(System.DefaultWorkingDirectory)'
-  githubPat: $(githubPat)  # Map the githubPat variable from the library.
-  openAiGptPat: $(openAiGptPat)  # Map the openAiGptPat variable from the library.
+  YOUR_PERSONAL_ACCESS_TOKEN: $(githubPat)  # Map the githubPat variable from the library.
+  GptApiKey: $(openAiGptPat)  # Map the openAiGptPat variable from the library.
   # Define a pipeline variable 'currentDirectory' and set it to the default working directory.
 
 jobs:
@@ -31,7 +31,7 @@ jobs:
       filePath: './Scripts/validator.ps1'
       # Run a PowerShell script file located at './Scripts/validator.ps1'.
 
-      arguments: '-pull_number $(System.PullRequest.PullRequestNumber) -YOUR_PERSONAL_ACCESS_TOKEN $(githubPat) -GptApiKey $(openAiGptPat) -currentDirectory "$(currentDirectory)"'
+      arguments: '-pull_number $(System.PullRequest.PullRequestNumber) -YOUR_PERSONAL_ACCESS_TOKEN $(YOUR_PERSONAL_ACCESS_TOKEN) -GptApiKey $(GptApiKey) -currentDirectory "$(currentDirectory)"'
       # Pass command-line arguments to the PowerShell script. Placeholders like $(System.PullRequest.PullRequestNumber), $(githubPat), and $(openAiGptPat) will be replaced with actual values during execution.
       # Also, include the current working directory as an argument.
 
