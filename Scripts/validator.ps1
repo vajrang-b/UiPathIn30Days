@@ -57,7 +57,7 @@ if ($count -gt 0 ) {
         Write-Host $GptComment
 
         # Add-GitHubPRComment -Token $YOUR_PERSONAL_ACCESS_TOKEN -Owner $Owner -Repo $Repo -PullRequestId $PullRequestId -Comment $Comment
-
+        $GptComment = ($project, $GptComment) -join "`n"
         $AddCommentResponse = Add-GitHubPRComment -Token $YOUR_PERSONAL_ACCESS_TOKEN -Owner $githubOwner -Repo $githubRepoName -PullRequestId $pull_number -Comment $GptComment
         Write-Host $AddCommentResponse
         #downloadProjectDependencies -ProjectJsonPath $ProjectPath
