@@ -2,7 +2,9 @@ param (
     [string]$pull_number,
     [string]$YOUR_PERSONAL_ACCESS_TOKEN,
     [string]$GptApiKey,
-    [string]$currentDirectory
+    [string]$currentDirectory,
+    [string]$systemRole
+
 )
     
 # Import the script containing the Run-UiPathAnalyze function
@@ -53,7 +55,7 @@ if ($count -gt 0 ) {
         Write-Output "Install Dependencies completed"
         $Comment = UiPathAnalyze -ProjectJsonPath $ProjectPath
         Write-Host $Comment
-        $GptComment = GenerateGptResponse -GptApiKey $GptApiKey -errorDetails  $Comment 
+        $GptComment = GenerateGptResponse -GptApiKey $GptApiKey -errorDetails  $Comment -systemRole $systemRole
         Write-Host $GptComment
 
         # Add-GitHubPRComment -Token $YOUR_PERSONAL_ACCESS_TOKEN -Owner $Owner -Repo $Repo -PullRequestId $PullRequestId -Comment $Comment
