@@ -60,7 +60,7 @@ if ($count -gt 0 ) {
 }
 else {
     Write-Host "no project files are in review"
-    $GptComment = "An expert need to review your code and it will be done before next sun raise :)"
+    $GptComment = "An expert need to review your code and it will be done before next sunrise :)"
     $AddCommentResponse = Add-GitHubPRComment -Token $YOUR_PERSONAL_ACCESS_TOKEN -Owner $githubOwner -Repo $githubRepoName -PullRequestId $pull_number -Comment $GptComment
     Write-Host $AddCommentResponse
     <# Action when all if and elseif conditions are false #>
