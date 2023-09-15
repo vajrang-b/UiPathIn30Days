@@ -25,8 +25,14 @@ $RepoLocalpath = $currentDirectory
 $responseFilesChanged = @()
 $responseFilesChanged = Get-GitHubPrFiles -Token $YOUR_PERSONAL_ACCESS_TOKEN -Owner $githubOwner -Repo $githubRepoName -PullRequestId $pull_number
 
-# Convert the JSON response content to PowerShell objects
-"count of project json files changed $responseFilesChanged.Length"
+# Assuming $responseFilesChanged contains the list of changed files
+
+# Calculate the count of project JSON files changed
+$count = $responseFilesChanged.Length
+
+# Print the count in a readable format
+Write-Host "Count of project JSON files changed: $count"
+
 
 $fileNames = $responseFilesChanged
 
