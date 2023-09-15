@@ -1,40 +1,38 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
-
 trigger:
-- main
-- pull_request
+  branches:
+    exclude:
+    - '*'  # Exclude pushes to all branches.
+  paths:
+    exclude:
+    - '*'  # Exclude changes to all files.
+  pr:
+    - 'main'  # Trigger the pipeline when there is a pull request targeting the 'main' branch.
 
-pool: CloudVM
+pool:
+  name: CloudVM
+  # Specify the agent pool named 'CloudVM' for job execution.
 
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
-  
-# - task: UiPathRunJob@3
-#   inputs:
-#     orchestratorConnection: 'UiPath Test Connection'
-#     processName: 'vajrang_logtime'
-#     folderName: 'Shared'
-- task: CmdLine@2
-  inputs:
-    script: |
-      echo Write your commands here
-      echo Hello world
-      echo $(System.PullRequest.PullRequestNumber)
-- task: PowerShell@2
-  inputs:
-    targetType: 'inline'
-    script: |
-      # Write your PowerShell commands here.      
-      Write-Host "Hello World"
+variables:
+  currentDirectory: '$(System.DefaultWorkingDirectory)'
+  # Define a pipeline variable 'currentDirectory' and set it to the default working directory.
 
-- task: GitHubComment@0
+jobs:
+- job: executeRepositoryScript
   condition: eq(variables['Build.Reason'], 'PullRequest')
-  inputs:
-    gitHubConnection: 'vajrang-b'
-    repositoryName: 'vajrang-b/RPA-Developer-in-30-Days'
-    id: $(System.PullRequest.PullRequestNumber)
-    comment: 'Congratulations on creating a pr, your code will be reviewed soon'
+  # Define a job named 'executeRepositoryScript' that runs only when the build reason is a pull request.
+
+  displayName: 'Execute Repository PowerShell Script'
+  # Provide a human-readable name for the job.
+
+  steps:
+  - task: PowerShell@2
+    inputs:
+      targetType: filePath
+      filePath: './Scripts/validator.ps1'
+      # Run a PowerShell script file located at './Scripts/validator.ps1'.
+
+      arguments: '-pull_number $(System.PullRequest.PullRequestNumber) -YOUR_PERSONAL_ACCESS_TOKEN $(githubPat) -GptApiKey $(openAiGptPat) -currentDirectory "$(currentDirectory)"'
+      # Pass command-line arguments to the PowerShell script. Placeholders like $(System.PullRequest.PullRequestNumber), $(githubPat), and $(openAiGptPat) will be replaced with actual values during execution.
+      # Also, include the current working directory as an argument.
+
+      # This YAML code sets up a job that executes a PowerShell script when triggered by a pull request.
