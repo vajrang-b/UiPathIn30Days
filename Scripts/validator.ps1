@@ -39,10 +39,10 @@ $fileNames = $responseFilesChanged
 # Display the list of filtered file names
 Write-Output "files changed $fileNames"
 
-if ($count -ge 0 ) {
+Write-Host "Count value: $count"
+
+if ($count -gt 0 ) {
     <# Action to perform if the condition is true #>
-
-
     foreach ($project in $fileNames) {
         $ProjectPath = Join-Path -Path $RepoLocalpath -ChildPath $project
         Write-Output "project path is $ProjectPath"
