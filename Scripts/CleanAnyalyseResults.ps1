@@ -31,7 +31,8 @@ function CleanAnyalyseResults {
             $filePath = $_.Value
             if ($null -eq $filePath) {
                 $FileName = "NoFile"
-            } else {
+            }
+            else {
                 $FileName = Split-Path -Path $filePath -Leaf
             }
         }
@@ -43,7 +44,8 @@ function CleanAnyalyseResults {
             $recommendation = $_.Value
             if ($null -eq $recommendation) {
                 $recommendation = "_"
-            } else {
+            }
+            else {
                
                 $recommendation = $recommendation -replace '\[Learn more\..*$', ''
             }
