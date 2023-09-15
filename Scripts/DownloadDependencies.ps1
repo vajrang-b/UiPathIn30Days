@@ -32,7 +32,7 @@ function Install-UiPathProjectDependencies {
 
     # Local NuGet feed directory (usually this is the default directory for user-wide NuGet packages)
     # $packageDestination = "$env:USERPROFILE\.nuget\packages"
-    $packageDestination = "C:\Users\Vajrangbilllakurthi\.nuget"
+    $packageDestination = "C:\Users\Vajrangbilllakurthi\.nuget\packages"
 
 
     # NuGet package source URL
