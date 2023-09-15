@@ -4,7 +4,7 @@
 # https://aka.ms/yaml
 
 trigger:
-# - main
+ - main
  - pull_request
 
 pool: CloudVM
@@ -32,15 +32,22 @@ steps:
     
     $response = Invoke-RestMethod -Uri $uri -Method GET -Headers $headers
     Write-Output $response.files
+
   displayName: 'Make HTTP Request with PowerShell'
   env:
     GITHUB_PAT: $(githubPat)
 
 - task: PowerShell@2
+  condition: eq(variables['Build.Reason'], 'PullRequest')
   displayName: 'Execute Repository PowerShell Script'
   inputs:
     targetType: filePath
-    filePath: './Scripts/validator.ps1' # Replace this with the relative path to your script in the repository
+    filePath: './Scripts/validator.ps1'
+    arguments: '-pull_number $(System.PullRequest.PullRequestNumber) -YOUR_PERSONAL_ACCESS_TOKEN $($env:GITHUB_PAT) -GptApiKey $($env:GptApiKey)'
+  env:
+    pull_number: $(pull_number)
+    GITHUB_PAT: $(githubPat)
+    GptApiKey: $(openAiGptPat) # Replace this with the relative path to your script in the repository
 
 - task: CmdLine@2
   condition: eq(variables['Build.Reason'], 'PullRequest')
@@ -56,10 +63,10 @@ steps:
       # Write your PowerShell commands here.      
       Write-Host "Hello World"
 
-- task: GitHubComment@0
-  condition: eq(variables['Build.Reason'], 'PullRequest')
-  inputs:
-    gitHubConnection: 'vajrang-b'
-    repositoryName: 'vajrang-b/RPA-Developer-in-30-Days'
-    id: $(System.PullRequest.PullRequestNumber)
-    comment: 'Congratulations on creating a pr, your code will be reviewed soon'
+# - task: GitHubComment@0
+#   condition: eq(variables['Build.Reason'], 'PullRequest')
+#   inputs:
+#     gitHubConnection: 'vajrang-b'
+#     repositoryName: 'vajrang-b/RPA-Developer-in-30-Days'
+#     id: $(System.PullRequest.PullRequestNumber)
+#     comment: 'Congratulations on creating a pr, your code will be reviewed soon'
