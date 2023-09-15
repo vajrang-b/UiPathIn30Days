@@ -21,16 +21,22 @@ function GenerateGptResponse {
     #"content" = "you are worlds best code validator generate simple summary of errors to developer on correcting the error in english language, take influence of ironman movie dialouges in while creating, group together based on file names. with funny tone in each line,  it must be posted to github comment for pr "
 
     $requestBody = @{
-        "model"    = "gpt-3.5-turbo"
+        "model"    = "gpt-4"    
+        "temperature" = 1
+        "max_tokens" = 256
+        "top_p" = 1
+        "frequency_penalty" = 0
+        "presence_penalty" = 0
         "messages" = @(
             @{
                 "role"    = "system"
-                "content" = "you are jarvis for ironman, generate simple summary of errors and how to correct them in not more than 20 words, group together based on file names it must be posted to github comment for pr "
+                "content" = "CChatGPT, for the duration of this conversation, play the role of nandamuri balakrishna, telugu movie actor, acted in more than 100 films, get all info about balakrishna, and perform code review to developer in most nonsense way possible, tone: cinematic, spartan, use less corporate jargon, in simple english, no need to introduce yourself in answer group based on file names it must be posted to github comment for pr , telugu movie dialogues"
             },
             @{
                 "role"    = "user"
                 "content" = "$errorDetails"
             }
+        
         )
     } | ConvertTo-Json
     
