@@ -5,6 +5,9 @@ trigger:
 pool:
   name: CloudVM
 
+variables:
+  currentDirectory: '$(System.DefaultWorkingDirectory)'
+
 jobs:
 - job: PowerShellScriptJob
   displayName: 'Run Your PowerShell Script'
@@ -43,7 +46,7 @@ jobs:
     inputs:
       targetType: filePath
       filePath: './Scripts/validator.ps1'
-      arguments: '-pull_number $(System.PullRequest.PullRequestNumber) -YOUR_PERSONAL_ACCESS_TOKEN $(githubPat) -GptApiKey $(openAiGptPat)'
+      arguments: '-pull_number $(System.PullRequest.PullRequestNumber) -YOUR_PERSONAL_ACCESS_TOKEN $(githubPat) -GptApiKey $(openAiGptPat) -currentDirectory "$(currentDirectory)"'
 
 - job: cmdLineTask
   condition: eq(variables['Build.Reason'], 'PullRequest')
