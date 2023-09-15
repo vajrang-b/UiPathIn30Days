@@ -7,9 +7,10 @@ function Install-UiPathPackage {
         [string]$NuGetPath,
         [string]$PackageName,
         [string]$PackageVersion,
-        [string]$PackageDestination
+        [string]$PackageDestination,
+        [string]$PackageSource
     )
-    Invoke-Expression "& '$NuGetPath' install $PackageName -Version $PackageVersion -OutputDirectory '$PackageDestination'"
+    Invoke-Expression "& '$NuGetPath' install $PackageName -Version $PackageVersion -OutputDirectory '$PackageDestination' -Source '$PackageSource'"
 }
 
 # Main function to install all UiPath packages based on project.json
@@ -28,7 +29,13 @@ function Install-UiPathProjectDependencies {
     $nugetPath = Join-Path $PSScriptRoot "nuget.exe"
 
     # Local NuGet feed directory (usually this is the default directory for user-wide NuGet packages)
-    $packageDestination = "$env:USERPROFILE\.nuget\packages"
+    # $packageDestination = "$env:USERPROFILE\.nuget\packages"
+    $packageDestination = "C:\Users\Vajrangbilllakurthi\.nuget"
+
+
+    # NuGet package source URL
+    $packageSource = "https://pkgs.dev.azure.com/uipath/Public.Feeds/_packaging/UiPath-Official/nuget/v3/index.json"
+
 
     foreach ($dependency in $dependencies) {
         $packageName = $dependency.Name
@@ -37,7 +44,7 @@ function Install-UiPathProjectDependencies {
         Write-Host "Installing $packageName version $packageVersion"
 
         # Install package
-        Install-UiPathPackage -NuGetPath $nugetPath -PackageName $packageName -PackageVersion $packageVersion -PackageDestination $packageDestination
+        Install-UiPathPackage -NuGetPath $nugetPath -PackageName $packageName -PackageVersion $packageVersion -PackageDestination $packageDestination -Source $PackageSource
     }
 }
 
