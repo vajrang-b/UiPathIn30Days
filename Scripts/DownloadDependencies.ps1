@@ -1,47 +1,55 @@
-# DownloadDependencies.ps1
-
-# Function to download a UiPath library
-function DownloadUiPathLibrary {
-    param (
-        [Parameter(Mandatory=$true)]
-        [string]
-        $LibraryName,
-
-        [Parameter(Mandatory=$false)]
-        [string]
-        $PackageSource = "https://www.myget.org/F/workflow/"
+# Function to install UiPath package using NuGet CLI
+param(
+    [string]$projectJsonPath
+)
+function Install-UiPathPackage {
+    param(
+        [string]$NuGetPath,
+        [string]$PackageName,
+        [string]$PackageVersion,
+        [string]$PackageDestination,
+        [string]$PackageSource
     )
 
-    # Construct the command
-    $command = "'C:\Program Files\UiPath\Studio\UiRobot.exe' pack download -p '$LibraryName' -s '$PackageSource'"
 
-    # Debugging: Show what will be executed
-    Write-Host "Executing: $command"
-
-    # Execute the command
-    Invoke-Expression -Command $command
+    Invoke-Expression "& '$NuGetPath' install $PackageName -Version $PackageVersion -OutputDirectory '$PackageDestination' -Source '$PackageSource' -Force"
 }
 
-# Function to download project dependencies
-function DownloadProjectDependencies {
-    param (
-        [Parameter()]
-        [string]
-        $ProjectJsonPath
+# Main function to install all UiPath packages based on project.json
+function Install-UiPathProjectDependencies {
+    param(
+        [string]$projectJsonPath
     )
 
-    # Read the project.json file
-    $projectJson = Get-Content -Path $ProjectJsonPath | ConvertFrom-Json
+    # Read project.json content into a PowerShell object
+    $projectJsonContent = Get-Content $projectJsonPath | ConvertFrom-Json
 
-    # Extract dependency names
-    $libraries = $projectJson.dependencies.PSObject.Properties | ForEach-Object { $_.Name } 
+    # Navigate through dependencies
+    $dependencies = $projectJsonContent.dependencies.PSObject.Properties
 
-    # Output the names
-    Write-Output "Libraries are: $libraries"
+    # Path to nuget.exe (nuget will be in the same folder as the script)
+    $nugetPath = Join-Path $PSScriptRoot "nuget.exe"
 
-    # Loop through the list of libraries and download each one
-    foreach ($library in $libraries) {
-        DownloadUiPathLibrary -LibraryName $library
+    # Local NuGet feed directory (usually this is the default directory for user-wide NuGet packages)
+    $packageDestination = "$env:USERPROFILE\.nuget\packages"
+    #$packageDestination = "C:\Users\Vajrangbilllakurthi\.nuget\packages"
+
+
+    # NuGet package source URL
+    $packageSource = "https://pkgs.dev.azure.com/uipath/Public.Feeds/_packaging/UiPath-Official/nuget/v3/index.json"
+
+
+    foreach ($dependency in $dependencies) {
+        $packageName = $dependency.Name
+        $packageVersion = $dependency.Value.Trim('[', ']')  # Remove brackets to get the version number
+
+        Write-Host "Installing $packageName version $packageVersion"
+
+        # Install package
+        Install-UiPathPackage -NuGetPath $nugetPath -PackageName $packageName -PackageVersion $packageVersion -PackageDestination $packageDestination -PackageSource $packageSource
     }
 }
+
+# Example usage:
+# Replace with the path to your project.json file
 
