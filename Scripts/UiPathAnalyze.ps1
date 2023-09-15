@@ -22,6 +22,7 @@ function UiPathAnalyze {
 
     # Capture the output of Invoke-Expression
     $output = Invoke-Expression -Command $command
+    Write-Host "retrieved errors $output"
     $cleanResponse = CleanAnyalyseResults -RawAnalysisResults $output
 
     return $cleanResponse
