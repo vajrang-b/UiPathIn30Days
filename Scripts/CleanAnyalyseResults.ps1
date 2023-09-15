@@ -46,8 +46,8 @@ function CleanAnyalyseResults {
 
             # Create a custom object containing description and recommendation
             $descriptionRecommendation = [PSCustomObject]@{
-                Description    = $description
-                Recommendation = $recommendation
+                D = $description
+                R = $recommendation
             }
             Write-Host "Generated descriptionRecommendation: $descriptionRecommendation"
 

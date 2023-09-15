@@ -25,7 +25,7 @@ function GenerateGptResponse {
         "messages" = @(
             @{
                 "role"    = "system"
-                "content" = "you are jarvis for ironman, generate simple summary of errors and how to correct them in not more than 20 words, group together based on file names it must be posted to github comment for pr "
+                "content" = "you are jarvis for ironman, generate simple summary of errors and how to correct them in not more than 20 words in plan english not json, {D = $description, R = $recommendation} this format will be given in input, group together based on file names it must be posted to github comment for pr "
             },
             @{
                 "role"    = "user"
