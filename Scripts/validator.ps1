@@ -2,7 +2,9 @@ param (
     [string]$pull_number,
     [string]$YOUR_PERSONAL_ACCESS_TOKEN,
     [string]$GptApiKey,
-    [string]$currentDirectory
+    [string]$currentDirectory,
+    [string]$systemRole
+
 )
     
 # Import the script containing the Run-UiPathAnalyze function
@@ -13,6 +15,7 @@ param (
 . $PSScriptRoot\GenerateGptResponse.ps1
 . $PSScriptRoot\GitHubFunctions.ps1
 
+Write-Host "current System role $systemRole"
 
 # Check if required parameters are provided
 if (-not $pull_number -or -not $YOUR_PERSONAL_ACCESS_TOKEN) {
@@ -53,7 +56,7 @@ if ($count -gt 0 ) {
         Write-Output "Install Dependencies completed"
         $Comment = UiPathAnalyze -ProjectJsonPath $ProjectPath
         Write-Host $Comment
-        $GptComment = GenerateGptResponse -GptApiKey $GptApiKey -errorDetails  $Comment 
+        $GptComment = GenerateGptResponse -GptApiKey $GptApiKey -errorDetails  $Comment -systemRole $systemRole
         Write-Host $GptComment
 
         # Add-GitHubPRComment -Token $YOUR_PERSONAL_ACCESS_TOKEN -Owner $Owner -Repo $Repo -PullRequestId $PullRequestId -Comment $Comment
