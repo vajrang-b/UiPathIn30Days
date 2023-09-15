@@ -29,7 +29,11 @@ function CleanAnyalyseResults {
 
         if ($propertyName -like "*-FilePath") {
             $filePath = $_.Value
-            $FileName = Split-Path -Path $filePath -Leaf
+            if ($null -eq $filePath) {
+                $FileName = "NoFile"
+            } else {
+                $FileName = Split-Path -Path $filePath -Leaf
+            }
         }
 
         if ($propertyName -like "*-Description") {
@@ -37,9 +41,13 @@ function CleanAnyalyseResults {
         }
         elseif ($propertyName -like "*-Recommendation") {
             $recommendation = $_.Value
-
+            if ($null -eq $recommendation) {
+                $recommendation = "_"
+            } else {
+               
+                $recommendation = $recommendation -replace '\[Learn more\..*$', ''
+            }
             # Remove all characters after "[Learn more.]" including "[Learn more.]"
-            $recommendation = $recommendation -replace '\[Learn more\..*$', ''
 
             # Create a custom object containing description and recommendation
             $descriptionRecommendation = [PSCustomObject]@{
