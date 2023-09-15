@@ -23,6 +23,17 @@ jobs:
   # Provide a human-readable name for the job.
 
   steps:
+  - script: echo "Debug: Print all available environment variables"
+      displayName: 'Debug: Print Environment Variables'
+      env:
+        ALL_VARIABLES_JSON: $(Agent.JobStatus)
+  - script: echo $(ALL_VARIABLES_JSON)
+    displayName: 'Debug: Actual Value of ALL_VARIABLES_JSON'
+  # - script: echo $(githubPat)  # Uncomment this line cautiously. It will expose the PAT in logs.
+  # - script: echo $(openAiGptPat)  # Uncomment this line cautiously. It will expose the API Key in logs.
+  - script: echo $(currentDirectory)
+    displayName: 'Debug: Print currentDirectory'
+
   - task: PowerShell@2
     inputs:
       targetType: filePath
