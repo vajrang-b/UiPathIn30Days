@@ -26,12 +26,12 @@ $responseFilesChanged = @()
 $responseFilesChanged = Get-GitHubPrFiles -Token $YOUR_PERSONAL_ACCESS_TOKEN -Owner $githubOwner -Repo $githubRepoName -PullRequestId $pull_number
 
 # Convert the JSON response content to PowerShell objects
-$responseFilesChanged.Length
+"count of project json files changed $responseFilesChanged.Length"
 
 $fileNames = $responseFilesChanged
 
 # Display the list of filtered file names
-Write-Output $fileNames
+Write-Output "files changed $fileNames"
 
 if ($fileNames.Length -ge 0 ) {
     <# Action to perform if the condition is true #>
@@ -53,6 +53,7 @@ if ($fileNames.Length -ge 0 ) {
     }
 }
 else {
+    Write-Host "no project files are in review"
     $GptComment = "Cannot perform automated review, team will manually verify your code"
     $AddCommentResponse = Add-GitHubPRComment -Token $YOUR_PERSONAL_ACCESS_TOKEN -Owner $githubOwner -Repo $githubRepoName -PullRequestId $pull_number -Comment $GptComment
     Write-Host $AddCommentResponse
