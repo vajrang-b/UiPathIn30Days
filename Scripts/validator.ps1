@@ -1,8 +1,8 @@
 param (
     [string]$pull_number,
     [string]$YOUR_PERSONAL_ACCESS_TOKEN,
-    [string]$GptApiKey
-
+    [string]$GptApiKey,
+    [string]$currentDirectory
 )
     
 # Import the script containing the Run-UiPathAnalyze function
@@ -20,7 +20,7 @@ if (-not $pull_number -or -not $YOUR_PERSONAL_ACCESS_TOKEN) {
 
 $githubOwner = "vajrang-b"
 $githubRepoName = "RPA-Developer-in-30-Days"
-$RepoLocalpath = "E:\RPA-Developer-in-30-Days_Devops"
+$RepoLocalpath = $currentDirectory
 
 $responseFilesChanged = @()
 $responseFilesChanged = Get-GitHubPrFiles -Token $YOUR_PERSONAL_ACCESS_TOKEN -Owner $githubOwner -Repo $githubRepoName -PullRequestId $pull_number
@@ -39,7 +39,7 @@ if ($fileNames.Length -ge 0 ) {
 
     foreach ($project in $fileNames) {
         $ProjectPath = Join-Path -Path $RepoLocalpath -ChildPath $project
-        Write-Output $ProjectPath
+        Write-Output "project path is $ProjectPath"
         $Comment = UiPathAnalyze -ProjectJsonPath $ProjectPath
         Write-Host $Comment
         $GptComment = GenerateGptResponse -GptApiKey $GptApiKey -errorDetails  $Comment 
