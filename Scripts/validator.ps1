@@ -7,6 +7,8 @@ param (
     
 # Import the script containing the Run-UiPathAnalyze function
 # Dot-source the script with the relative path
+
+. $PSScriptRoot\DownloadDependencies.ps1
 . $PSScriptRoot\UiPathAnalyze.ps1
 . $PSScriptRoot\GenerateGptResponse.ps1
 . $PSScriptRoot\GitHubFunctions.ps1
@@ -46,6 +48,9 @@ if ($count -gt 0 ) {
     foreach ($project in $fileNames) {
         $ProjectPath = Join-Path -Path $RepoLocalpath -ChildPath $project
         Write-Output "project path is $ProjectPath"
+        Write-Output "Install Dependencies started"
+        Install-UiPathProjectDependencies -projectJsonPath $ProjectPath
+        Write-Output "Install Dependencies completed"
         $Comment = UiPathAnalyze -ProjectJsonPath $ProjectPath
         Write-Host $Comment
         $GptComment = GenerateGptResponse -GptApiKey $GptApiKey -errorDetails  $Comment 
