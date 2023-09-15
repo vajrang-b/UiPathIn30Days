@@ -1,40 +1,24 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
-
 trigger:
-- main
-- pull_request
+  branches:
+    exclude:
+    - main
+  paths:
+    exclude:
+    - '*'
 
-pool: CloudVM
+pool:
+  name: CloudVM
 
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
-  
-# - task: UiPathRunJob@3
-#   inputs:
-#     orchestratorConnection: 'UiPath Test Connection'
-#     processName: 'vajrang_logtime'
-#     folderName: 'Shared'
-- task: CmdLine@2
-  inputs:
-    script: |
-      echo Write your commands here
-      echo Hello world
-      echo $(System.PullRequest.PullRequestNumber)
-- task: PowerShell@2
-  inputs:
-    targetType: 'inline'
-    script: |
-      # Write your PowerShell commands here.      
-      Write-Host "Hello World"
+variables:
+  currentDirectory: '$(System.DefaultWorkingDirectory)'
 
-- task: GitHubComment@0
+jobs:
+- job: executeRepositoryScript
   condition: eq(variables['Build.Reason'], 'PullRequest')
-  inputs:
-    gitHubConnection: 'vajrang-b'
-    repositoryName: 'vajrang-b/RPA-Developer-in-30-Days'
-    id: $(System.PullRequest.PullRequestNumber)
-    comment: 'Congratulations on creating a pr, your code will be reviewed soon'
+  displayName: 'Execute Repository  PowerShell Script'
+  steps:
+  - task: PowerShell@2
+    inputs:
+      targetType: filePath
+      filePath: './Scripts/validator.ps1'
+      arguments: '-pull_number $(System.PullRequest.PullRequestNumber) -YOUR_PERSONAL_ACCESS_TOKEN $(githubPat) -GptApiKey $(openAiGptPat) -currentDirectory "$(currentDirectory)"'
