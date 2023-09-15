@@ -12,7 +12,7 @@ function Install-UiPathPackage {
     )
 
 
-    Invoke-Expression "& '$NuGetPath' install $PackageName -Version $PackageVersion -OutputDirectory '$PackageDestination' -Source '$PackageSource'"
+    Invoke-Expression "& '$NuGetPath' install $PackageName -Version $PackageVersion -OutputDirectory '$PackageDestination' -Source '$PackageSource' -Force"
 }
 
 # Main function to install all UiPath packages based on project.json
