@@ -29,12 +29,7 @@ function CleanAnyalyseResults {
 
         if ($propertyName -like "*-FilePath") {
             $filePath = $_.Value
-            if ($null -eq $filePath) {
-                $FileName = "NoFile"
-            }
-            else {
-                $FileName = Split-Path -Path $filePath -Leaf
-            }
+            
         }
 
         if ($propertyName -like "*-Description") {
@@ -59,6 +54,12 @@ function CleanAnyalyseResults {
 
             # Add the custom object to the hashtable using the FileName as the key
             if ($ErrorSeverity -ne "Info") {
+                if ($null -eq $filePath) {
+                    $FileName = "NoFile"
+                }
+                else {
+                    $FileName = Split-Path -Path $filePath -Leaf
+                }
                 if ($descriptionRecommendations.ContainsKey($FileName)) {
                     $descriptionRecommendations[$FileName] += $descriptionRecommendation
                 }
