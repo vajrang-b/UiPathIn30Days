@@ -15,6 +15,7 @@ param (
 . $PSScriptRoot\GenerateGptResponse.ps1
 . $PSScriptRoot\GitHubFunctions.ps1
 
+Write-Host "current System role $systemRole"
 
 # Check if required parameters are provided
 if (-not $pull_number -or -not $YOUR_PERSONAL_ACCESS_TOKEN) {
