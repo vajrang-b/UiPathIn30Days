@@ -10,6 +10,8 @@ function Install-UiPathPackage {
         [string]$PackageDestination,
         [string]$PackageSource
     )
+
+
     Invoke-Expression "& '$NuGetPath' install $PackageName -Version $PackageVersion -OutputDirectory '$PackageDestination' -Source '$PackageSource'"
 }
 
@@ -44,7 +46,7 @@ function Install-UiPathProjectDependencies {
         Write-Host "Installing $packageName version $packageVersion"
 
         # Install package
-        Install-UiPathPackage -NuGetPath $nugetPath -PackageName $packageName -PackageVersion $packageVersion -PackageDestination $packageDestination -Source $PackageSource
+        Install-UiPathPackage -NuGetPath $nugetPath -PackageName $packageName -PackageVersion $packageVersion -PackageDestination $packageDestination -PackageSource $packageSource
     }
 }
 
