@@ -84,7 +84,9 @@ while ($true) {
     }
 
     # Filter and add only the 'project.json' files from the current page to the list
-    $projectJsonFilesOnPage = $response | Where-Object { $_.filename -like "*project.json*" } | ForEach-Object { $_.filename }
+    $projectJsonFilesOnPage = $response |Where-Object { 
+        ($_.filename -like "*project.json*") -and ($_.status -ne "removed") 
+    }| ForEach-Object { $_.filename }
 
     # Add the filtered files to the collection
     $changedProjectJsonFiles += [array]$projectJsonFilesOnPage
