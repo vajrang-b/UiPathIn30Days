@@ -1,94 +1,65 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
-
 trigger:
- - main
- - pull_request
+- main
+- pull_request
 
-pool: CloudVM
+pool:
+  name: CloudVM
 
-steps:
-- script: |
-      echo $(Build.SourceVersion)
-      set TestVar=$(Build.SourceVersion)
-      set MyCustomVar=%TestVar:~0,7%
-      echo %MyCustomVar%
-- script: echo $(githubPat)
-  displayName: 'Run a one-line script'
+variables:
+  currentDirectory: '$(System.DefaultWorkingDirectory)'
 
+jobs:
+# - job: PowerShellScriptJob
+#   displayName: 'Run Your PowerShell Script'
+#   steps:
+#   - powershell: |
+#       # Your PowerShell script here
+#       Write-Host "Executing script in the working directory: $PWD" 
+#     displayName: 'Run PowerShell Inline Script'
 
-  jobs:
-- job: PowerShellJob
-  steps:
-  - powershell: |
-      # Set the working directory to the Agent.BuildDirectory
-      $workingDirectory = "$(Agent.BuildDirectory)"
-      Set-Location -Path $workingDirectory
-
-      # Check the current working directory
-      Write-Host "Current working directory: $PWD"
-  displayName: 'Set Working Directory'
-  continueOnError: true # Continue on error to ensure the directory is set
-
-- job: RunYourTasks
-  dependsOn: PowerShellJob
-  steps:
-  - task: PowerShell@2
-    displayName: 'Run Your PowerShell Script'
-    inputs:
-      targetType: 'inline'
-      script: |
-        # Your PowerShell script here
-        Write-Host "Executing script in the working directory: $PWD"
-
-- powershell: |
-    $fullSourceVersion  = "$(Build.SourceVersion)"
-    $sourceVersion = $fullSourceVersion.Substring(0, 7)
-    Write-Host "Truncated Source Version is $sourceVersion"
+# - job: powershellHttp
+#   displayName: 'Make HTTP Request with PowerShell'
+#   steps:
+#   - powershell: |
+#       $fullSourceVersion  = "$(Build.SourceVersion)"
+#       $sourceVersion = $fullSourceVersion.Substring(0, 7)
+#       Write-Host "Truncated Source Version is $sourceVersion"
     
-    $uri = "https://api.github.com/repos/vajrang-b/RPA-Developer-in-30-Days/commits/$sourceVersion"
-    Write-Output $uri
+#       $uri = "https://api.github.com/repos/vajrang-b/RPA-Developer-in-30-Days/commits/$sourceVersion"
+#       Write-Output $uri
     
-    $headers = @{
-      "Authorization" = "Bearer $($env:GITHUB_PAT)"
-    }
+#       $headers = @{
+#         "Authorization" = "Bearer $($env:GITHUB_PAT)"
+#       }
     
-    $response = Invoke-RestMethod -Uri $uri -Method GET -Headers $headers
-    Write-Output $response.files
+#       $response = Invoke-RestMethod -Uri $uri -Method GET -Headers $headers
+#       Write-Output $response.files
+#     displayName: 'PowerShell HTTP Request'
+#     env:
+#       GITHUB_PAT: $(githubPat)
 
-  displayName: 'Make HTTP Request with PowerShell'
-  env:
-    GITHUB_PAT: $(githubPat)
-
-- task: PowerShell@2
+- job: executeRepositoryScript
   condition: eq(variables['Build.Reason'], 'PullRequest')
   displayName: 'Execute Repository PowerShell Script'
-  inputs:
-    targetType: filePath
-    filePath: './Scripts/validator.ps1'
-    arguments: '-pull_number $(System.PullRequest.PullRequestNumber) -YOUR_PERSONAL_ACCESS_TOKEN $(githubPat) -GptApiKey $(openAiGptPat)'
+  steps:
+  - task: PowerShell@2
+    inputs:
+      targetType: filePath
+      filePath: './Scripts/validator.ps1'
+      arguments: '-pull_number $(System.PullRequest.PullRequestNumber) -YOUR_PERSONAL_ACCESS_TOKEN $(githubPat) -GptApiKey $(openAiGptPat) -currentDirectory "$(currentDirectory)"'
 
-
-- task: CmdLine@2
-  condition: eq(variables['Build.Reason'], 'PullRequest')
-  inputs:
-    script: |
-      echo Write your commands here
-      echo Hello world
-      echo $(System.PullRequest.PullRequestNumber)
-- task: PowerShell@2
-  inputs:
-    targetType: 'inline'
-    script: |
-      # Write your PowerShell commands here.      
-      Write-Host "Hello World"
-
-# - task: GitHubComment@0
+# - job: cmdLineTask
 #   condition: eq(variables['Build.Reason'], 'PullRequest')
-#   inputs:
-#     gitHubConnection: 'vajrang-b'
-#     repositoryName: 'vajrang-b/RPA-Developer-in-30-Days'
-#     id: $(System.PullRequest.PullRequestNumber)
-#     comment: 'Congratulations on creating a pr, your code will be reviewed soon'
+#   displayName: 'Command Line Task'
+#   steps:
+#   - script: |
+#       echo Write your commands here
+#       echo Hello world
+#       echo $(System.PullRequest.PullRequestNumber)
+
+# - job: simplePowerShellTask
+#   displayName: 'Simple PowerShell Task'
+#   steps:
+#   - powershell: |
+#       # Write your PowerShell commands here.      
+#       Write-Host "Hello World"

@@ -1,8 +1,8 @@
 param (
     [string]$pull_number,
     [string]$YOUR_PERSONAL_ACCESS_TOKEN,
-    [string]$GptApiKey
-
+    [string]$GptApiKey,
+    [string]$currentDirectory
 )
     
 # Import the script containing the Run-UiPathAnalyze function
@@ -20,26 +20,32 @@ if (-not $pull_number -or -not $YOUR_PERSONAL_ACCESS_TOKEN) {
 
 $githubOwner = "vajrang-b"
 $githubRepoName = "RPA-Developer-in-30-Days"
-$RepoLocalpath = "E:\RPA-Developer-in-30-Days_Devops"
+$RepoLocalpath = $currentDirectory
 
 $responseFilesChanged = @()
 $responseFilesChanged = Get-GitHubPrFiles -Token $YOUR_PERSONAL_ACCESS_TOKEN -Owner $githubOwner -Repo $githubRepoName -PullRequestId $pull_number
 
-# Convert the JSON response content to PowerShell objects
-$responseFilesChanged.Length
+# Assuming $responseFilesChanged contains the list of changed files
+
+# Calculate the count of project JSON files changed
+$count = $responseFilesChanged.Length
+
+# Print the count in a readable format
+Write-Host "Count of project JSON files changed: $count"
+
 
 $fileNames = $responseFilesChanged
 
 # Display the list of filtered file names
-Write-Output $fileNames
+Write-Output "files changed $fileNames"
 
-if ($fileNames.Length -ge 0 ) {
+Write-Host "Count value: $count"
+
+if ($count -gt 0 ) {
     <# Action to perform if the condition is true #>
-
-
     foreach ($project in $fileNames) {
         $ProjectPath = Join-Path -Path $RepoLocalpath -ChildPath $project
-        Write-Output $ProjectPath
+        Write-Output "project path is $ProjectPath"
         $Comment = UiPathAnalyze -ProjectJsonPath $ProjectPath
         Write-Host $Comment
         $GptComment = GenerateGptResponse -GptApiKey $GptApiKey -errorDetails  $Comment 
@@ -53,7 +59,8 @@ if ($fileNames.Length -ge 0 ) {
     }
 }
 else {
-    $GptComment = "Cannot perform automated review, team will manually verify your code"
+    Write-Host "no project files are in review"
+    $GptComment = "An expert need to review your code and it will be done before next sunrise :)"
     $AddCommentResponse = Add-GitHubPRComment -Token $YOUR_PERSONAL_ACCESS_TOKEN -Owner $githubOwner -Repo $githubRepoName -PullRequestId $pull_number -Comment $GptComment
     Write-Host $AddCommentResponse
     <# Action when all if and elseif conditions are false #>
