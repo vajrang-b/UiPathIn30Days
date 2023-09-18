@@ -95,7 +95,7 @@ function Get-GitHubPrFiles {
         # Filter out empty filenames from the list
         $projectJsonFilesOnPage = $projectJsonFilesOnPage | Where-Object { $_ -ne "" }
 
-        Write-Host "after filtering empty paths $projectJsonFilesOnPage.Length"
+        Write-Host "after filtering empty paths $($projectJsonFilesOnPage.Length)"
         # Add the filtered files to the collection
         $changedProjectJsonFiles += [array]$projectJsonFilesOnPage
 
