@@ -97,8 +97,11 @@ function Get-GitHubPrFiles {
 
         Write-Host "after filtering empty paths $($projectJsonFilesOnPage.Length)"
         # Add the filtered files to the collection
-        $changedProjectJsonFiles += [array]$projectJsonFilesOnPage
 
+        if ($projectJsonFilesOnPage.Length -ne 0) {
+            Write-Host "adding $($projectJsonFilesOnPage.Length) files to existing $($changedProjectJsonFiles.Length) in  changedProjectJsonFiles "
+            $changedProjectJsonFiles += [array]$projectJsonFilesOnPage
+        }
         # Increment the page counter
         $page++
     }
