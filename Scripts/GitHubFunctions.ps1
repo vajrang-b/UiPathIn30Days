@@ -85,7 +85,7 @@ function Get-GitHubPrFiles {
 
         # Filter and add only the 'project.json' files from the current page to the list
         $projectJsonFilesOnPage = $response | Where-Object { 
-            ($null -ne $_.filename) -and ("" -ne $_.filename) -and ($_.filename -like "*project.json*") -and ($_.status -ne "removed") 
+            ($null -ne $_.filename.Trim()) -and ("" -ne $_.filename.Trim()) -and ($_.filename -like "*project.json*") -and ($_.status -ne "removed") 
         } | ForEach-Object { $_.filename }
 
         # Add the filtered files to the collection
