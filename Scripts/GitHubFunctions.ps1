@@ -89,10 +89,11 @@ function Get-GitHubPrFiles {
             ($null -ne $_.filename.Trim()) -and ("" -ne $_.filename.Trim()) -and ($_.filename -like "*project.json*") -and ($_.status -ne "removed") 
         } | ForEach-Object { $_.filename.Trim() }
         
-        
+        Write-Host $projectJsonFilesOnPage
         # Filter out empty filenames from the list
         $projectJsonFilesOnPage = $projectJsonFilesOnPage | Where-Object { $_ -ne "" }
         
+        Write-Host $projectJsonFilesOnPage
         # Add the filtered files to the collection
         $changedProjectJsonFiles += [array]$projectJsonFilesOnPage
 
