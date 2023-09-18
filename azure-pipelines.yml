@@ -14,7 +14,7 @@ variables:
 
 jobs:
 - job: executeRepositoryScript
-  condition: eq(variables['Build.Reason'], 'PullRequest')
+  condition:  or(eq(variables['Build.Reason'], 'PullRequest'), eq(variables['Build.Reason'], 'Manual'))
   displayName: 'Execute Repository  PowerShell Script'
   steps:
   - task: PowerShell@2
