@@ -1,16 +1,21 @@
 param (
     [string]$pull_number,
     [string]$YOUR_PERSONAL_ACCESS_TOKEN,
-    [string]$GptApiKey
+    [string]$GptApiKey,
+    [string]$currentDirectory,
+    [string]$systemRole
 
 )
     
 # Import the script containing the Run-UiPathAnalyze function
 # Dot-source the script with the relative path
+
+. $PSScriptRoot\DownloadDependencies.ps1
 . $PSScriptRoot\UiPathAnalyze.ps1
 . $PSScriptRoot\GenerateGptResponse.ps1
 . $PSScriptRoot\GitHubFunctions.ps1
 
+Write-Host "current System role $systemRole"
 
 # Check if required parameters are provided
 if (-not $pull_number -or -not $YOUR_PERSONAL_ACCESS_TOKEN) {
@@ -20,40 +25,50 @@ if (-not $pull_number -or -not $YOUR_PERSONAL_ACCESS_TOKEN) {
 
 $githubOwner = "vajrang-b"
 $githubRepoName = "RPA-Developer-in-30-Days"
-$RepoLocalpath = "E:\RPA-Developer-in-30-Days_Devops"
+$RepoLocalpath = $currentDirectory
 
 $responseFilesChanged = @()
 $responseFilesChanged = Get-GitHubPrFiles -Token $YOUR_PERSONAL_ACCESS_TOKEN -Owner $githubOwner -Repo $githubRepoName -PullRequestId $pull_number
 
-# Convert the JSON response content to PowerShell objects
-$responseFilesChanged.Length
+# Assuming $responseFilesChanged contains the list of changed files
+
+# Calculate the count of project JSON files changed
+$count = $responseFilesChanged.Length
+
+# Print the count in a readable format
+Write-Host "Count of project JSON files changed: $count"
+
 
 $fileNames = $responseFilesChanged
 
 # Display the list of filtered file names
-Write-Output $fileNames
+Write-Output "files changed $fileNames"
 
-if ($fileNames.Length -ge 0 ) {
+Write-Host "Count value: $count"
+
+if ($count -gt 0 ) {
     <# Action to perform if the condition is true #>
-
-
     foreach ($project in $fileNames) {
         $ProjectPath = Join-Path -Path $RepoLocalpath -ChildPath $project
-        Write-Output $ProjectPath
+        Write-Output "project path is $ProjectPath"
+        Write-Output "Install Dependencies started"
+        Install-UiPathProjectDependencies -projectJsonPath $ProjectPath
+        Write-Output "Install Dependencies completed"
         $Comment = UiPathAnalyze -ProjectJsonPath $ProjectPath
         Write-Host $Comment
-        $GptComment = GenerateGptResponse -GptApiKey $GptApiKey -errorDetails  $Comment 
+        $GptComment = GenerateGptResponse -GptApiKey $GptApiKey -errorDetails  $Comment -systemRole $systemRole
         Write-Host $GptComment
 
         # Add-GitHubPRComment -Token $YOUR_PERSONAL_ACCESS_TOKEN -Owner $Owner -Repo $Repo -PullRequestId $PullRequestId -Comment $Comment
-
+        $GptComment = ($project, $GptComment) -join "`n"
         $AddCommentResponse = Add-GitHubPRComment -Token $YOUR_PERSONAL_ACCESS_TOKEN -Owner $githubOwner -Repo $githubRepoName -PullRequestId $pull_number -Comment $GptComment
         Write-Host $AddCommentResponse
         #downloadProjectDependencies -ProjectJsonPath $ProjectPath
     }
 }
 else {
-    $GptComment = "Cannot perform automated review, team will manually verify your code"
+    Write-Host "no project files are in review"
+    $GptComment = "An expert need to review your code and it will be done before next sunrise :)"
     $AddCommentResponse = Add-GitHubPRComment -Token $YOUR_PERSONAL_ACCESS_TOKEN -Owner $githubOwner -Repo $githubRepoName -PullRequestId $pull_number -Comment $GptComment
     Write-Host $AddCommentResponse
     <# Action when all if and elseif conditions are false #>
