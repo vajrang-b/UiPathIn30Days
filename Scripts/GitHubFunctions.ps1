@@ -53,54 +53,65 @@ function Get-GitHubPrFiles {
 
     )
 
-# Usage:
-# Add-GitHubPRComment -Token "YOUR_GITHUB_TOKEN" -Owner "OWNER_NAME" -Repo "REPO_NAME" -PullRequestId PR_NUMBER -Comment "YOUR_COMMENT"
-# Define the URL of the GitHub API endpoint for the pull request files
-$apiUrl = "https://api.github.com/repos/$Owner/$Repo/pulls/$PullRequestId/files"
+    # Usage:
+    # Add-GitHubPRComment -Token "YOUR_GITHUB_TOKEN" -Owner "OWNER_NAME" -Repo "REPO_NAME" -PullRequestId PR_NUMBER -Comment "YOUR_COMMENT"
+    # Define the URL of the GitHub API endpoint for the pull request files
+    $apiUrl = "https://api.github.com/repos/$Owner/$Repo/pulls/$PullRequestId/files"
 
 
-# Create a headers hashtable with the required Authorization header
-$headers = @{
-    "Authorization" = "Bearer $Token"
-    "User-Agent"    = "PowerShell-GitHub-Request"
-}
-
-# Initialize variables for pagination
-$page = 1
-$perPage = 100  # Adjust this value as needed (GitHub's max is typically 100 per page)
-$changedProjectJsonFiles = @()
-
-# Loop to retrieve all pages of files
-while ($true) {
-    # Add page query parameter to the API URL
-    $pagedUrl = $apiUrl + "?page=$page&per_page=$perPage"
-
-    # Make a GET request to the paged URL
-    $response = Invoke-RestMethod -Uri $pagedUrl -Headers $headers -Method Get
-
-    # Check if the response is empty (no more pages)
-    if ($response.Count -eq 0) {
-        break
+    # Create a headers hashtable with the required Authorization header
+    $headers = @{
+        "Authorization" = "Bearer $Token"
+        "User-Agent"    = "PowerShell-GitHub-Request"
     }
 
-    # Filter and add only the 'project.json' files from the current page to the list
-    $projectJsonFilesOnPage = $response |Where-Object { 
-        ($_.filename -like "*project.json*") -and ($_.status -ne "removed") 
-    }| ForEach-Object { $_.filename }
+    # Initialize variables for pagination
+    $page = 1
+    $perPage = 100  # Adjust this value as needed (GitHub's max is typically 100 per page)
+    $changedProjectJsonFiles = @()
 
-    # Add the filtered files to the collection
-    $changedProjectJsonFiles += [array]$projectJsonFilesOnPage
+    # Loop to retrieve all pages of files
+    while ($true) {
+        # Add page query parameter to the API URL
+        $pagedUrl = $apiUrl + "?page=$page&per_page=$perPage"
 
-    # Increment the page counter
-    $page++
-}
+        # Make a GET request to the paged URL
+        $response = Invoke-RestMethod -Uri $pagedUrl -Headers $headers -Method Get
 
-# Display the filenames of 'project.json' files that have changed
-foreach ($file in $changedProjectJsonFiles) {
-    Write-Host "Changed project.json File: $file"
-}
+        # Check if the response is empty (no more pages)
+        if ($response.Count -eq 0) {
+            break
+        }
+        
+        
+        # Filter and add only the 'project.json' files from the current page to the list
+        $projectJsonFilesOnPage = $response | Where-Object { 
+            ($null -ne $_.filename.Trim()) -and ("" -ne $_.filename.Trim()) -and ($_.filename -like "*project.json*") -and ($_.status -ne "removed") 
+        } | ForEach-Object { $_.filename.Trim() }
+        
+      
+        Write-Host "before  filtering empty paths $projectJsonFilesOnPage"
 
-return [array]$changedProjectJsonFiles
+        # Filter out empty filenames from the list
+        $projectJsonFilesOnPage = $projectJsonFilesOnPage | Where-Object { $_ -ne "" }
+
+        Write-Host "after filtering empty paths  $($projectJsonFilesOnPage.Length)"
+        # Add the filtered files to thecollection
+
+        if ($projectJsonFilesOnPage.Length -ne 0) {
+            Write-Host "adding $($projectJsonFilesOnPage.Length) files to existing $($changedProjectJsonFiles.Length) in  changedProjectJsonFiles "
+            $changedProjectJsonFiles += [array]$projectJsonFilesOnPage
+        }
+        # Increment the page counter
+        $page++
+    }
+
+    # Display the filenames of 'project.json' files that have changed
+    foreach ($file in $changedProjectJsonFiles) {
+        Write-Host "Changed project.json File: $file"
+    }
+
+    return [array]$changedProjectJsonFiles
 }
 
 function Close-GitHubPullRequest {
@@ -127,10 +138,12 @@ function Close-GitHubPullRequest {
 
         if ($Response) {
             Write-Output "PR $PullRequestNumber has been closed successfully."
-        } else {
+        }
+        else {
             Write-Output "Failed to close PR $PullRequestNumber."
         }
-    } catch {
+    }
+    catch {
         Write-Output "An error occurred: $_"
     }
 }
