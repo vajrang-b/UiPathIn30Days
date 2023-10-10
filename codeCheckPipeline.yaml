@@ -1,0 +1,65 @@
+trigger:
+- main
+- pull_request
+
+pool:
+  name: CloudVM
+
+variables:
+  currentDirectory: '$(System.DefaultWorkingDirectory)'
+
+jobs:
+# - job: PowerShellScriptJob
+#   displayName: 'Run Your PowerShell Script'
+#   steps:
+#   - powershell: |
+#       # Your PowerShell script here
+#       Write-Host "Executing script in the working directory: $PWD" 
+#     displayName: 'Run PowerShell Inline Script'
+
+# - job: powershellHttp
+#   displayName: 'Make HTTP Request with PowerShell'
+#   steps:
+#   - powershell: |
+#       $fullSourceVersion  = "$(Build.SourceVersion)"
+#       $sourceVersion = $fullSourceVersion.Substring(0, 7)
+#       Write-Host "Truncated Source Version is $sourceVersion"
+    
+#       $uri = "https://api.github.com/repos/vajrang-b/RPA-Developer-in-30-Days/commits/$sourceVersion"
+#       Write-Output $uri
+    
+#       $headers = @{
+#         "Authorization" = "Bearer $($env:GITHUB_PAT)"
+#       }
+    
+#       $response = Invoke-RestMethod -Uri $uri -Method GET -Headers $headers
+#       Write-Output $response.files
+#     displayName: 'PowerShell HTTP Request'
+#     env:
+#       GITHUB_PAT: $(githubPat)
+
+- job: executeRepositoryScript
+  condition: eq(variables['Build.Reason'], 'PullRequest')
+  displayName: 'Execute Repository PowerShell Script'
+  steps:
+  - task: PowerShell@2
+    inputs:
+      targetType: filePath
+      filePath: './Scripts/validator.ps1'
+      arguments: '-pull_number $(System.PullRequest.PullRequestNumber) -YOUR_PERSONAL_ACCESS_TOKEN $(githubPat) -GptApiKey $(openAiGptPat) -currentDirectory "$(currentDirectory)"'
+
+# - job: cmdLineTask
+#   condition: eq(variables['Build.Reason'], 'PullRequest')
+#   displayName: 'Command Line Task'
+#   steps:
+#   - script: |
+#       echo Write your commands here
+#       echo Hello world
+#       echo $(System.PullRequest.PullRequestNumber)
+
+# - job: simplePowerShellTask
+#   displayName: 'Simple PowerShell Task'
+#   steps:
+#   - powershell: |
+#       # Write your PowerShell commands here.      
+#       Write-Host "Hello World"
