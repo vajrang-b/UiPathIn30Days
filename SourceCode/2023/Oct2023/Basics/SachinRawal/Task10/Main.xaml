@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="664,944" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="664,888" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -69,13 +69,13 @@
       <AssemblyReference>System.Private.Uri</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="601,879" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="601,823" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence sap:VirtualizedContainerService.HintSize="559,791" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <Sequence DisplayName="Weekdays Sequence" sap:VirtualizedContainerService.HintSize="559,735" sap2010:WorkflowViewState.IdRef="Sequence_2">
       <Sequence.Variables>
         <Variable x:TypeArguments="x:Int32" Name="Weekday" />
       </Sequence.Variables>
@@ -84,22 +84,32 @@
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="497,239" sap2010:WorkflowViewState.IdRef="InputDialog_1" IsPassword="False" Label="[&quot;Choose the Weekday&quot;+vbNewLine+&quot;1-Monday&quot;+vbNewLine+&quot;2-Tuesday&quot;+vbNewLine+&quot;3-Wednesday&quot;+vbNewLine+&quot;4-Thursday&quot;+vbNewLine+&quot;5-Friday&quot;+vbNewLine+&quot;6-Saturday&quot;+vbNewLine+&quot;7-Sunday&quot;]" Title="Weekdays">
+      <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" sap2010:Annotation.AnnotationText="Choose or Input the Weekday and using VBNewLine Variable. " DisplayName="Select Weekdays" sap:VirtualizedContainerService.HintSize="497,281" sap2010:WorkflowViewState.IdRef="InputDialog_1" IsPassword="False" Label="[&quot;Choose the Weekday&quot;+vbNewLine+&quot;1-Monday&quot;+vbNewLine+&quot;2-Tuesday&quot;+vbNewLine+&quot;3-Wednesday&quot;+vbNewLine+&quot;4-Thursday&quot;+vbNewLine+&quot;5-Friday&quot;+vbNewLine+&quot;6-Saturday&quot;+vbNewLine+&quot;7-Sunday&quot;]" Title="Weekdays">
         <ui:InputDialog.Result>
           <OutArgument x:TypeArguments="x:Int32">[Weekday]</OutArgument>
         </ui:InputDialog.Result>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
       </ui:InputDialog>
-      <Switch x:TypeArguments="x:Int32" DisplayName="Switch" Expression="[Weekday]" sap:VirtualizedContainerService.HintSize="497,401" sap2010:WorkflowViewState.IdRef="Switch`1_1">
+      <Switch x:TypeArguments="x:Int32" sap2010:Annotation.AnnotationText="Using Switch Activity to identify the weekday choosen by user" DisplayName="Using Switch Activity" Expression="[Weekday]" sap:VirtualizedContainerService.HintSize="497,303" sap2010:WorkflowViewState.IdRef="Switch`1_1">
         <Switch.Default>
-          <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="334,85" sap2010:WorkflowViewState.IdRef="MessageBox_8" Text="[&quot;No Weekday is choosen&quot;]" />
+          <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Default Message" sap:VirtualizedContainerService.HintSize="334,85" sap2010:WorkflowViewState.IdRef="MessageBox_8" Text="[&quot;No Weekday is choosen&quot;]" />
         </Switch.Default>
-        <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" x:Key="1" AutoCloseAfter="00:00:00" sap:VirtualizedContainerService.HintSize="334,85" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[&quot;You have choosen, 1-Monday&quot;]" />
-        <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" x:Key="2" AutoCloseAfter="00:00:00" sap:VirtualizedContainerService.HintSize="334,85" sap2010:WorkflowViewState.IdRef="MessageBox_2" Text="[&quot;You have choosen, 2-Tuesday&quot;]" />
-        <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" x:Key="3" AutoCloseAfter="00:00:00" sap:VirtualizedContainerService.HintSize="334,85" sap2010:WorkflowViewState.IdRef="MessageBox_3" Text="[&quot;You have choosen, 3-Wednesday&quot;]" />
-        <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" x:Key="4" AutoCloseAfter="00:00:00" sap:VirtualizedContainerService.HintSize="334,85" sap2010:WorkflowViewState.IdRef="MessageBox_4" Text="[&quot;You have choosen, 4-Thursday&quot;]" />
-        <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" x:Key="5" AutoCloseAfter="00:00:00" sap:VirtualizedContainerService.HintSize="334,85" sap2010:WorkflowViewState.IdRef="MessageBox_5" Text="[&quot;You have choosen, 5-Friday&quot;]" />
-        <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" x:Key="6" AutoCloseAfter="00:00:00" sap:VirtualizedContainerService.HintSize="334,85" sap2010:WorkflowViewState.IdRef="MessageBox_6" Text="[&quot;You have choosen, 6-Saturday&quot;]" />
-        <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" x:Key="7" AutoCloseAfter="00:00:00" sap:VirtualizedContainerService.HintSize="334,85" sap2010:WorkflowViewState.IdRef="MessageBox_7" Text="[&quot;You have choosen, 7-Sunday&quot;]" />
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" x:Key="1" AutoCloseAfter="00:00:00" DisplayName="Display Weekday" sap:VirtualizedContainerService.HintSize="334,85" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[&quot;You have choosen, 1-Monday&quot;]" />
+        <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" x:Key="2" AutoCloseAfter="00:00:00" DisplayName="Display Weekday" sap:VirtualizedContainerService.HintSize="334,85" sap2010:WorkflowViewState.IdRef="MessageBox_2" Text="[&quot;You have choosen, 2-Tuesday&quot;]" />
+        <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" x:Key="3" AutoCloseAfter="00:00:00" DisplayName="Display Weekday" sap:VirtualizedContainerService.HintSize="334,85" sap2010:WorkflowViewState.IdRef="MessageBox_3" Text="[&quot;You have choosen, 3-Wednesday&quot;]" />
+        <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" x:Key="4" AutoCloseAfter="00:00:00" DisplayName="Display Weekday" sap:VirtualizedContainerService.HintSize="334,85" sap2010:WorkflowViewState.IdRef="MessageBox_4" Text="[&quot;You have choosen, 4-Thursday&quot;]" />
+        <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" x:Key="5" AutoCloseAfter="00:00:00" DisplayName="Display Weekday" sap:VirtualizedContainerService.HintSize="334,85" sap2010:WorkflowViewState.IdRef="MessageBox_5" Text="[&quot;You have choosen, 5-Friday&quot;]" />
+        <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" x:Key="6" AutoCloseAfter="00:00:00" DisplayName="Display Weekday" sap:VirtualizedContainerService.HintSize="334,85" sap2010:WorkflowViewState.IdRef="MessageBox_6" Text="[&quot;You have choosen, 6-Saturday&quot;]" />
+        <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" x:Key="7" AutoCloseAfter="00:00:00" DisplayName="Display Weekday" sap:VirtualizedContainerService.HintSize="334,85" sap2010:WorkflowViewState.IdRef="MessageBox_7" Text="[&quot;You have choosen, 7-Sunday&quot;]" />
       </Switch>
     </Sequence>
   </Sequence>
