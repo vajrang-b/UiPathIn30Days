@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="786.4,1203.2" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="786.4,1073.6" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -71,13 +71,13 @@
       <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="602.4,1138.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="602.4,1008.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence sap:VirtualizedContainerService.HintSize="559.2,1048.8" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <Sequence sap:VirtualizedContainerService.HintSize="559.2,919.2" sap2010:WorkflowViewState.IdRef="Sequence_2">
       <Sequence.Variables>
         <Variable x:TypeArguments="x:Int32" Name="weekday" />
       </Sequence.Variables>
@@ -86,12 +86,12 @@
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="User_Input_Dialog_of Weekday" sap:VirtualizedContainerService.HintSize="496.8,241.6" sap2010:WorkflowViewState.IdRef="InputDialog_1" IsPassword="False" Label="[&quot;Enter the weekday name&quot;+vbNewLine+&quot;1-Sunday&quot;+vbNewLine+&quot;2-Monday&quot;+vbNewLine+&quot;3-Tuesday&quot;+vbNewLine+&quot;4-Wednesday&quot;+vbNewLine+&quot;5-Thursday&quot;+vbnewline+&quot;6-Friday&quot;+vbNewLine+&quot;7-Saturday&quot;]" Title="Weekdays">
+      <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="496.8,241.6" sap2010:WorkflowViewState.IdRef="InputDialog_1" IsPassword="False" Label="[&quot;Enter the weekday name&quot;+vbNewLine+&quot;1-Sunday&quot;+vbNewLine+&quot;2-Monday&quot;+vbNewLine+&quot;3-Tuesday&quot;+vbNewLine+&quot;4-Wednesday&quot;+vbNewLine+&quot;5-Thursday&quot;+vbnewline+&quot;6-Friday&quot;+vbNewLine+&quot;7-Saturday&quot;]" Title="Weekdays">
         <ui:InputDialog.Result>
           <OutArgument x:TypeArguments="x:Int32">[weekday]</OutArgument>
         </ui:InputDialog.Result>
       </ui:InputDialog>
-      <Switch x:TypeArguments="x:Int32" sap2010:Annotation.AnnotationText="Use each case to get the exact user input" DisplayName="Switch_to_Select_Case" Expression="[weekday]" sap:VirtualizedContainerService.HintSize="496.8,441.6" sap2010:WorkflowViewState.IdRef="Switch`1_1">
+      <Switch x:TypeArguments="x:Int32" sap2010:Annotation.AnnotationText="Use each case to get the exact user input" DisplayName="Switch" Expression="[weekday]" sap:VirtualizedContainerService.HintSize="496.8,312" sap2010:WorkflowViewState.IdRef="Switch`1_1">
         <Switch.Default>
           <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="333.6,85.6" sap2010:WorkflowViewState.IdRef="MessageBox_3" Text="[&quot;No Day is entered&quot;]" />
         </Switch.Default>
@@ -108,7 +108,7 @@
         <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" x:Key="6" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="333.6,85.6" sap2010:WorkflowViewState.IdRef="MessageBox_8" Text="[&quot;Day 6 is entered&quot;]" />
         <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" x:Key="7" AutoCloseAfter="00:00:00" sap:VirtualizedContainerService.HintSize="333.6,85.6" sap2010:WorkflowViewState.IdRef="MessageBox_9" Text="[&quot;Day 7 is entered&quot;]" />
       </Switch>
-      <ui:LogMessage sap2010:Annotation.AnnotationText="It displays the final output after the user input is done." DisplayName="Display the Final message" sap:VirtualizedContainerService.HintSize="496.8,173.6" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;User selected number 1-7 is displayed&quot;]">
+      <ui:LogMessage sap2010:Annotation.AnnotationText="It displays the final output after the user input is done." DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="496.8,173.6" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;User selected number 1-7 is displayed&quot;]">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
