@@ -68,7 +68,7 @@
       <AssemblyReference>System.Private.Uri</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Flowchart DisplayName="Flowchart1" sap:VirtualizedContainerService.HintSize="614.4,614.4" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+  <Flowchart DisplayName="Flowchart1" sap:VirtualizedContainerService.HintSize="644.8,614.4" sap2010:WorkflowViewState.IdRef="Flowchart_1">
     <Flowchart.Variables>
       <Variable x:TypeArguments="x:String" Name="FruitName" />
     </Flowchart.Variables>
@@ -78,47 +78,75 @@
         <av:Point x:Key="ShapeLocation">270,2.5</av:Point>
         <av:Size x:Key="ShapeSize">60,75.2</av:Size>
         <av:PointCollection x:Key="ConnectorLocation">300,77.7 300,107.7 310,107.7 310,143.6</av:PointCollection>
+        <x:Double x:Key="Width">630</x:Double>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <Flowchart.StartNode>
-      <x:Reference>__ReferenceID1</x:Reference>
+      <x:Reference>__ReferenceID2</x:Reference>
     </Flowchart.StartNode>
-    <FlowStep x:Name="__ReferenceID1">
+    <FlowStep x:Name="__ReferenceID2">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <av:Point x:Key="ShapeLocation">210,143.6</av:Point>
-          <av:Size x:Key="ShapeSize">200,52.8</av:Size>
-          <av:PointCollection x:Key="ConnectorLocation">310,196.39999999999998 310,303.6</av:PointCollection>
+          <av:Size x:Key="ShapeSize">200,84</av:Size>
+          <av:PointCollection x:Key="ConnectorLocation">310,227.6 310,257.6 300,257.6 300,308</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="InputDialog_1" IsPassword="False" Label="[&quot;Enter Fruit Name&quot;+vbNewLine+&quot;1-Mango&quot;+vbNewLine+&quot;2-Apple&quot;+vbNewLine+&quot;3-Grapes&quot;]" Title="Fruits Details">
+      <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" sap2010:Annotation.AnnotationText="Enter the user Inputs" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="200,84" sap2010:WorkflowViewState.IdRef="InputDialog_1" IsPassword="False" Label="[&quot;Enter Fruit Name&quot;+vbNewLine+&quot;1-Mango&quot;+vbNewLine+&quot;2-Apple&quot;+vbNewLine+&quot;3-Grapes&quot;]" Title="Fruits Details">
         <ui:InputDialog.Result>
           <OutArgument x:TypeArguments="x:String">[FruitName]</OutArgument>
         </ui:InputDialog.Result>
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </ui:InputDialog>
       <FlowStep.Next>
-        <FlowStep x:Name="__ReferenceID0">
+        <FlowStep x:Name="__ReferenceID1">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <av:Point x:Key="ShapeLocation">210,303.6</av:Point>
-              <av:Size x:Key="ShapeSize">200,52.8</av:Size>
+              <av:Point x:Key="ShapeLocation">200,308</av:Point>
+              <av:Size x:Key="ShapeSize">200,84</av:Size>
+              <av:PointCollection x:Key="ConnectorLocation">300,392 300,422 290,422 290,483.59999999999997</av:PointCollection>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[FruitName]">
+          <Switch x:TypeArguments="x:String" sap2010:Annotation.AnnotationText="Give the cases for each word" DisplayName="Switch" Expression="[FruitName]" sap:VirtualizedContainerService.HintSize="200,84" sap2010:WorkflowViewState.IdRef="Switch`1_2">
+            <Switch.Default>
+              <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="333.6,85.6" sap2010:WorkflowViewState.IdRef="MessageBox_5" Text="[&quot;No Item selected&quot;]" />
+            </Switch.Default>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-          </ui:MessageBox>
+            <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" x:Key="Mango" AutoCloseAfter="00:00:00" DisplayName="Mango_MessageBox" sap:VirtualizedContainerService.HintSize="333.6,85.6" sap2010:WorkflowViewState.IdRef="MessageBox_2" Text="[&quot;Mango is selected&quot;]" />
+            <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" x:Key="Apple" AutoCloseAfter="00:00:00" DisplayName="Apple_MessageBox" sap:VirtualizedContainerService.HintSize="333.6,85.6" sap2010:WorkflowViewState.IdRef="MessageBox_3" Text="[&quot;Apple is selected&quot;]" />
+            <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" x:Key="Grapes" AutoCloseAfter="00:00:00" DisplayName="Grapes_MessageBox" sap:VirtualizedContainerService.HintSize="333.6,85.6" sap2010:WorkflowViewState.IdRef="MessageBox_4" Text="[&quot;Grapes is selected&quot;]" />
+          </Switch>
+          <FlowStep.Next>
+            <FlowStep x:Name="__ReferenceID0">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <av:Point x:Key="ShapeLocation">190,483.59999999999997</av:Point>
+                  <av:Size x:Key="ShapeSize">200,84</av:Size>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" sap2010:Annotation.AnnotationText="All data Executed" AutoCloseAfter="00:00:00" DisplayName="Message Box to end" sap:VirtualizedContainerService.HintSize="200,84" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[&quot;Process is end&quot;]">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:MessageBox>
+            </FlowStep>
+          </FlowStep.Next>
         </FlowStep>
       </FlowStep.Next>
     </FlowStep>
     <x:Reference>__ReferenceID0</x:Reference>
+    <x:Reference>__ReferenceID1</x:Reference>
   </Flowchart>
 </Activity>
