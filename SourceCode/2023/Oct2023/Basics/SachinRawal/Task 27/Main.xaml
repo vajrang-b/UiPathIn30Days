@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="664,1836" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="664,2002" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -93,13 +93,13 @@
       <AssemblyReference>UiPath.Workflow</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="614,1771" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="614,1937" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence sap2010:Annotation.AnnotationText="We are creating a sequence for addition and substraction using the Arguments and also Invoking the other sequences to Main Sequence " DisplayName="Sequence for Addition &amp; Substraction" sap:VirtualizedContainerService.HintSize="572,1787" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <Sequence sap2010:Annotation.AnnotationText="We are creating a sequence for addition and substraction using the Arguments and also Invoking the other sequences to Main Sequence " DisplayName="Sequence for Addition &amp; Substraction" sap:VirtualizedContainerService.HintSize="572,1849" sap2010:WorkflowViewState.IdRef="Sequence_2">
       <Sequence.Variables>
         <Variable x:TypeArguments="sd:DataTable" Name="dt_Numbers" />
       </Sequence.Variables>
@@ -116,7 +116,7 @@
           </InArgument>
         </ui:ReadRange.Range>
       </ui:ReadRange>
-      <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_Numbers]" DisplayName="For Each Row in Number Excel" sap:VirtualizedContainerService.HintSize="510,1350" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+      <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="Loop for Columns in Excel" DataTable="[dt_Numbers]" DisplayName="For Each Row in Number Excel" sap:VirtualizedContainerService.HintSize="510,1381" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
         <ui:ForEachRow.Body>
           <ActivityAction x:TypeArguments="sd:DataRow">
             <ActivityAction.Argument>
@@ -152,15 +152,9 @@
               </Assign>
               <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Invoking the addition Sequence to Main Sequence" DisplayName="Invoke Addition WorkFlow " sap:VirtualizedContainerService.HintSize="434,144" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Addition.xaml">
                 <ui:InvokeWorkflowFile.Arguments>
-                  <InArgument x:TypeArguments="x:Int32" x:Key="in_Number1">
-                    <VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="Number1" />
-                  </InArgument>
-                  <InArgument x:TypeArguments="x:Int32" x:Key="in_Number2">
-                    <VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="Number2" />
-                  </InArgument>
-                  <OutArgument x:TypeArguments="x:Int32" x:Key="Out_AddResult">
-                    <VisualBasicReference x:TypeArguments="x:Int32" ExpressionText="AddResult" />
-                  </OutArgument>
+                  <InArgument x:TypeArguments="x:Int32" x:Key="in_Number1">[Number1]</InArgument>
+                  <InArgument x:TypeArguments="x:Int32" x:Key="in_Number2">[Number2]</InArgument>
+                  <OutArgument x:TypeArguments="x:Int32" x:Key="Out_AddResult">[AddResult]</OutArgument>
                 </ui:InvokeWorkflowFile.Arguments>
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -171,15 +165,9 @@
               <WriteLine DisplayName="Write Addition Result" sap:VirtualizedContainerService.HintSize="434,90" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[AddResult.ToString]" />
               <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Invoking the Substraction Sequence to Main" DisplayName="Invoke Substraction WorkFlow " sap:VirtualizedContainerService.HintSize="434,144" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Subtraction.xaml">
                 <ui:InvokeWorkflowFile.Arguments>
-                  <InArgument x:TypeArguments="x:Int32" x:Key="in_Number3">
-                    <VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="Number1" />
-                  </InArgument>
-                  <InArgument x:TypeArguments="x:Int32" x:Key="in_Number4">
-                    <VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="Number2" />
-                  </InArgument>
-                  <OutArgument x:TypeArguments="x:Int32" x:Key="out_Sub_Result">
-                    <VisualBasicReference x:TypeArguments="x:Int32" ExpressionText="SubResult" />
-                  </OutArgument>
+                  <InArgument x:TypeArguments="x:Int32" x:Key="in_Number3">[Number1]</InArgument>
+                  <InArgument x:TypeArguments="x:Int32" x:Key="in_Number4">[Number2]</InArgument>
+                  <OutArgument x:TypeArguments="x:Int32" x:Key="out_Sub_Result">[SubResult]</OutArgument>
                 </ui:InvokeWorkflowFile.Arguments>
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -207,8 +195,19 @@
             </Sequence>
           </ActivityAction>
         </ui:ForEachRow.Body>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
       </ui:ForEachRow>
-      <ui:WriteRange AddHeaders="True" DataTable="[dt_Numbers]" DisplayName="Write Results in Number Excel" sap:VirtualizedContainerService.HintSize="510,116" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="Sheet1" StartingCell="A1" WorkbookPath="Numbers.xlsx" />
+      <ui:WriteRange AddHeaders="True" sap2010:Annotation.AnnotationText="Writing results in Excel" DataTable="[dt_Numbers]" DisplayName="Write Results in Number Excel" sap:VirtualizedContainerService.HintSize="510,147" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="Sheet1" StartingCell="A1" WorkbookPath="Numbers.xlsx">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </ui:WriteRange>
     </Sequence>
   </Sequence>
 </Activity>
