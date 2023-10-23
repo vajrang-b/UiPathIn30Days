@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="664,1888.0000000000002" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Drawing;assembly=System.Drawing.Common" xmlns:sd1="clr-namespace:System.Drawing;assembly=System.Drawing.Primitives" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:upap="clr-namespace:UiPath.PDF.Activities.PDF;assembly=UiPath.PDF.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="664,1874" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Drawing;assembly=System.Drawing.Common" xmlns:sd1="clr-namespace:System.Drawing;assembly=System.Drawing.Primitives" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:upap="clr-namespace:UiPath.PDF.Activities.PDF;assembly=UiPath.PDF.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -95,7 +95,7 @@
       <AssemblyReference>System.Private.Uri</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="492,1823" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="492,1809" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="Readpdf" />
       <Variable x:TypeArguments="x:String" Name="PdfTextOCR" />
@@ -105,15 +105,15 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence sap2010:Annotation.AnnotationText="In this sequence we are creating and writing the pdf documents." DisplayName="Sequence for Reading &amp; writing PDF Document" sap:VirtualizedContainerService.HintSize="450,898" sap2010:WorkflowViewState.IdRef="Sequence_6">
+    <Sequence sap2010:Annotation.AnnotationText="In this sequence we are creating and writing the pdf documents." DisplayName="Sequence for Reading &amp; writing PDF Document" sap:VirtualizedContainerService.HintSize="450,891" sap2010:WorkflowViewState.IdRef="Sequence_6">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:ReadPDFText PreserveFormatting="{x:Null}" DisplayName="Reading PDF " FileName="SamplePdf1_12mb_6pages.pdf" sap:VirtualizedContainerService.HintSize="388,83" sap2010:WorkflowViewState.IdRef="ReadPDFText_2" Range="All" Text="[Readpdf]" />
-      <ui:ReadPDFWithOCR DegreeOfParallelism="-1" DisplayName="Read PDF With OCR" FileName="SamplePdf1_12mb_6pages.pdf" sap:VirtualizedContainerService.HintSize="388,158" sap2010:WorkflowViewState.IdRef="ReadPDFWithOCR_2" ImageDpi="150" Range="All" Text="[PdfTextOCR]">
+      <ui:ReadPDFText PreserveFormatting="{x:Null}" DisplayName="Reading PDF " FileName="SamplePdf1_12mb_6pages.pdf" sap:VirtualizedContainerService.HintSize="388,82" sap2010:WorkflowViewState.IdRef="ReadPDFText_2" Range="All" Text="[Readpdf]" />
+      <ui:ReadPDFWithOCR DegreeOfParallelism="-1" DisplayName="Reading PDF With OCR" FileName="SamplePdf1_12mb_6pages.pdf" sap:VirtualizedContainerService.HintSize="388,157" sap2010:WorkflowViewState.IdRef="ReadPDFWithOCR_2" ImageDpi="150" Range="All" Text="[PdfTextOCR]">
         <ui:ReadPDFWithOCR.OCREngine>
           <ActivityFunc x:TypeArguments="sd:Image, scg:IEnumerable(scg:KeyValuePair(sd1:Rectangle, x:String))">
             <ActivityFunc.Argument>
@@ -123,11 +123,11 @@
           </ActivityFunc>
         </ui:ReadPDFWithOCR.OCREngine>
       </ui:ReadPDFWithOCR>
-      <ui:WriteTextFile File="{x:Null}" DisplayName="Writing into Text File" FileName="ReadText.txt" sap:VirtualizedContainerService.HintSize="388,135" sap2010:WorkflowViewState.IdRef="WriteTextFile_3" Text="[PdfTextOCR]" />
-      <upap:ExportPDFPageAsImage DisplayName="Exporting PDF Page As Image" FileName="Get_Started_With_Smallpdf.pdf" sap:VirtualizedContainerService.HintSize="388,137" sap2010:WorkflowViewState.IdRef="ExportPDFPageAsImage_1" ImageDpi="150" OutputFileName="ConvertedPdf.png" PageNumber="1" />
-      <upap:ExtractImagesFromPDF DisplayName="Extracting Images From given PDF" FileName="SamplePdf1_12mb_6pages.pdf" sap:VirtualizedContainerService.HintSize="388,83" sap2010:WorkflowViewState.IdRef="ExtractImagesFromPDF_1" OutputFolderName="ImageOutput" />
+      <ui:WriteTextFile File="{x:Null}" DisplayName="Writing into Text File" FileName="ReadText.txt" sap:VirtualizedContainerService.HintSize="388,133" sap2010:WorkflowViewState.IdRef="WriteTextFile_3" Text="[PdfTextOCR]" />
+      <upap:ExportPDFPageAsImage DisplayName="Exporting PDF Page As Image" FileName="Get_Started_With_Smallpdf.pdf" sap:VirtualizedContainerService.HintSize="388,135" sap2010:WorkflowViewState.IdRef="ExportPDFPageAsImage_1" ImageDpi="150" OutputFileName="ConvertedPdf.png" PageNumber="1" />
+      <upap:ExtractImagesFromPDF DisplayName="Extracting Images From given PDF" FileName="SamplePdf1_12mb_6pages.pdf" sap:VirtualizedContainerService.HintSize="388,82" sap2010:WorkflowViewState.IdRef="ExtractImagesFromPDF_1" OutputFolderName="ImageOutput" />
     </Sequence>
-    <Sequence DisplayName="Sequence for PDF Activities" sap:VirtualizedContainerService.HintSize="450,797" sap2010:WorkflowViewState.IdRef="Sequence_5">
+    <Sequence DisplayName="Sequence for PDF Activities" sap:VirtualizedContainerService.HintSize="450,790" sap2010:WorkflowViewState.IdRef="Sequence_5">
       <Sequence.Variables>
         <Variable x:TypeArguments="x:Int32" Name="PageCount" />
       </Sequence.Variables>
@@ -137,29 +137,29 @@
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <upap:ExtractPDFPageRange sap2010:Annotation.AnnotationText="Exteracting the ranged document from Given PDF" DisplayName="Extracting PDF Page Range" FileName="SamplePdf1_12mb_6pages.pdf" sap:VirtualizedContainerService.HintSize="388,137" sap2010:WorkflowViewState.IdRef="ExtractPDFPageRange_1" OutputFileName="RangeText.pdf" Range="1-2">
+      <upap:ExtractPDFPageRange sap2010:Annotation.AnnotationText="Exteracting the ranged document from Given PDF" DisplayName="Extracting PDF Page Range" FileName="SamplePdf1_12mb_6pages.pdf" sap:VirtualizedContainerService.HintSize="388,135" sap2010:WorkflowViewState.IdRef="ExtractPDFPageRange_1" OutputFileName="RangeText.pdf" Range="1-2">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsAnnotationDocked">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </upap:ExtractPDFPageRange>
-      <upap:GetPDFPageCount sap2010:Annotation.AnnotationText="Counting the range of PDF" DisplayName="Get PDF Page Count" FileName="SamplePdf1_12mb_6pages.pdf" sap:VirtualizedContainerService.HintSize="388,83" sap2010:WorkflowViewState.IdRef="GetPDFPageCount_1" PageCount="[PageCount]">
+      <upap:GetPDFPageCount sap2010:Annotation.AnnotationText="Counting the range of PDF" DisplayName="Getting PDF Page Count" FileName="SamplePdf1_12mb_6pages.pdf" sap:VirtualizedContainerService.HintSize="388,82" sap2010:WorkflowViewState.IdRef="GetPDFPageCount_1" PageCount="[PageCount]">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsAnnotationDocked">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </upap:GetPDFPageCount>
-      <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Display Message" sap:VirtualizedContainerService.HintSize="388,86" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[PageCount]" />
-      <upap:JoinPDF sap2010:Annotation.AnnotationText="Joining 2 pdf documents" DisplayName="Joiing PDF Files" FileList="[{&quot;C:\Users\Sachin - Uipath\Documents\GitHub\RPA-Developer-in-30-Days\SourceCode\2023\Oct2023\Basics\SachinRawal\Task28\Get_Started_With_Smallpdf.pdf&quot;,&quot;C:\Users\Sachin - Uipath\Documents\GitHub\RPA-Developer-in-30-Days\SourceCode\2023\Oct2023\Basics\SachinRawal\Task28\SamplePdf1_12mb_6pages.pdf&quot;}]" sap:VirtualizedContainerService.HintSize="388,83" sap2010:WorkflowViewState.IdRef="JoinPDF_1" OutputFileName="Joinpdf.pdf">
+      <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Display Message" sap:VirtualizedContainerService.HintSize="388,85" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[PageCount]" />
+      <upap:JoinPDF sap2010:Annotation.AnnotationText="Joining 2 pdf documents" DisplayName="Joiing PDF Files" FileList="[{&quot;C:\Users\Sachin - Uipath\Documents\GitHub\RPA-Developer-in-30-Days\SourceCode\2023\Oct2023\Basics\SachinRawal\Task28\Get_Started_With_Smallpdf.pdf&quot;,&quot;C:\Users\Sachin - Uipath\Documents\GitHub\RPA-Developer-in-30-Days\SourceCode\2023\Oct2023\Basics\SachinRawal\Task28\SamplePdf1_12mb_6pages.pdf&quot;}]" sap:VirtualizedContainerService.HintSize="388,82" sap2010:WorkflowViewState.IdRef="JoinPDF_1" OutputFileName="Joinpdf.pdf">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsAnnotationDocked">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </upap:JoinPDF>
-      <upap:ManagePDFPassword sap2010:Annotation.AnnotationText="Providing the pdf with passwords" DisplayName="Managing PDF Password" FileName="Get_Started_With_Smallpdf.pdf" sap:VirtualizedContainerService.HintSize="388,137" sap2010:WorkflowViewState.IdRef="ManagePDFPassword_1" NewUserPassword="12345" OutputFileName="passwordpdf.pdf">
+      <upap:ManagePDFPassword sap2010:Annotation.AnnotationText="Providing the pdf with passwords" DisplayName="Managing PDF Password" FileName="Get_Started_With_Smallpdf.pdf" sap:VirtualizedContainerService.HintSize="388,135" sap2010:WorkflowViewState.IdRef="ManagePDFPassword_1" NewUserPassword="12345" OutputFileName="passwordpdf.pdf">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsAnnotationDocked">False</x:Boolean>
