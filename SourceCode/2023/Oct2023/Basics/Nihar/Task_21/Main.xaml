@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="763.2,1605.6" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="755.2,2153.6" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -93,58 +93,62 @@
       <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="655.2,1540.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="755.2,2088.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="dt_CityTempdata" />
       <Variable x:TypeArguments="ui:Browser" Name="brw_URL" />
       <Variable x:TypeArguments="x:Int32" Name="Cell_ID" />
+      <Variable x:TypeArguments="x:String" Name="dt_getText" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence sap:VirtualizedContainerService.HintSize="612,1451.2" sap2010:WorkflowViewState.IdRef="Sequence_3">
+    <Sequence sap:VirtualizedContainerService.HintSize="712,1999.2" sap2010:WorkflowViewState.IdRef="Sequence_3">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:ReadRange AddHeaders="True" DataTable="[dt_CityTempdata]" DisplayName="Read Range Workbook" sap:VirtualizedContainerService.HintSize="549.6,88" sap2010:WorkflowViewState.IdRef="ReadRange_2" Range="A1" SheetName="Sheet1" WorkbookPath="City_Tempdata.xlsx" />
-      <ui:OpenBrowser AutomaticallyDownloadWebDriver="{x:Null}" CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" BrowserType="Chrome" ContinueOnError="True" DisplayName="Open Browser" sap:VirtualizedContainerService.HintSize="549.6,1211.2" sap2010:WorkflowViewState.IdRef="OpenBrowser_2" UiBrowser="[brw_URL]" Url="https://www.google.com/search?q=temperature&amp;oq=temperature&amp;gs_lcrp=EgZjaHJvbWUyEQgAEEUYORhDGIMBGLEDGIoFMgYIARAjGCcyBggCEEUYQDIMCAMQABhDGLEDGIoFMgkIBBAAGEMYigUyDAgFEAAYQxixAxiKBTIPCAYQABhDGIMBGLEDGIoFMgkIBxAAGEMYigXSAQk2OTYxajFqMTWoAgCwAgA&amp;sourceid=chrome&amp;ie=UTF-8">
+      <ui:ReadRange AddHeaders="True" sap2010:Annotation.AnnotationText="&quot;This Activity reads the values from the workbook&quot;" DataTable="[dt_CityTempdata]" DisplayName="Read Range Workbook_values in Excel" sap:VirtualizedContainerService.HintSize="649.6,119.2" sap2010:WorkflowViewState.IdRef="ReadRange_2" Range="A1" SheetName="Sheet1" WorkbookPath="City_Tempdata.xlsx">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </ui:ReadRange>
+      <ui:OpenBrowser AutomaticallyDownloadWebDriver="{x:Null}" CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" BrowserType="Chrome" ContinueOnError="True" DisplayName="Open Browser_URL to get Temperature" sap:VirtualizedContainerService.HintSize="649.6,1545.6" sap2010:WorkflowViewState.IdRef="OpenBrowser_2" UiBrowser="[brw_URL]" Url="https://www.google.com/search?q=temperature&amp;oq=temperature&amp;gs_lcrp=EgZjaHJvbWUyEQgAEEUYORhDGIMBGLEDGIoFMgYIARAjGCcyBggCEEUYQDIMCAMQABhDGLEDGIoFMgkIBBAAGEMYigUyDAgFEAAYQxixAxiKBTIPCAYQABhDGIMBGLEDGIoFMgkIBxAAGEMYigXSAQk2OTYxajFqMTWoAgCwAgA&amp;sourceid=chrome&amp;ie=UTF-8">
         <ui:OpenBrowser.Body>
           <ActivityAction x:TypeArguments="x:Object">
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
             </ActivityAction.Argument>
-            <Sequence sap:VirtualizedContainerService.HintSize="516,1085.6" sap2010:WorkflowViewState.IdRef="Sequence_7">
+            <Sequence sap:VirtualizedContainerService.HintSize="616,1420" sap2010:WorkflowViewState.IdRef="Sequence_7">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="472.8,996" sap2010:WorkflowViewState.IdRef="Sequence_5">
+              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="572.8,1330.4" sap2010:WorkflowViewState.IdRef="Sequence_5">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="[Cell_ID]" DataTable="[dt_CityTempdata]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="410.4,728" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+                <ui:ForEachRow ColumnNames="{x:Null}" sap2010:Annotation.AnnotationText="&quot;Thsi activity loops each record from the respective Coloumn&quot;" CurrentIndex="[Cell_ID]" DataTable="[dt_CityTempdata]" DisplayName="For Each Row in Data Table_Loops the values from WB" sap:VirtualizedContainerService.HintSize="510.4,1218.4" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
                   <ui:ForEachRow.Body>
                     <ActivityAction x:TypeArguments="sd:DataRow">
                       <ActivityAction.Argument>
                         <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
                       </ActivityAction.Argument>
-                      <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="376.8,540" sap2010:WorkflowViewState.IdRef="Sequence_6">
-                        <Sequence.Variables>
-                          <Variable x:TypeArguments="x:String" Name="dt_getText" />
-                        </Sequence.Variables>
+                      <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="476.8,999.2" sap2010:WorkflowViewState.IdRef="Sequence_6">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" ContinueOnError="True" DisplayName="Type Into 'TEXTAREA  APjFqb'" sap:VirtualizedContainerService.HintSize="333.6,156" sap2010:WorkflowViewState.IdRef="TypeInto_7" Text="[CurrentRow.Item(&quot;City_Name&quot;).ToString+ &quot;[k(enter)]&quot;]">
+                        <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" sap2010:Annotation.AnnotationText="&quot;This activity types each city name&quot;" ContinueOnError="True" DisplayName="Type Into 'TEXTAREA  APjFqb'_City Name" sap:VirtualizedContainerService.HintSize="433.6,187.2" sap2010:WorkflowViewState.IdRef="TypeInto_7" Text="[CurrentRow.Item(&quot;City_Name&quot;).ToString+ &quot;[k(enter)]&quot;]">
                           <ui:TypeInto.Target>
                             <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="2cb60d06-4d07-4d74-b12c-9c1c5811ff78" InformativeScreenshot="d3757cec69558efe9cde759cb2ac1132" Selector="&lt;webctrl id='APjFqb' tag='TEXTAREA' /&gt;">
                               <ui:Target.TimeoutMS>
@@ -155,8 +159,13 @@
                               </ui:Target.WaitForReady>
                             </ui:Target>
                           </ui:TypeInto.Target>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
                         </ui:TypeInto>
-                        <ui:GetValue ContinueOnError="True" DisplayName="Get Text 'DIV'" sap:VirtualizedContainerService.HintSize="333.6,107.2" sap2010:WorkflowViewState.IdRef="GetValue_4">
+                        <ui:GetValue sap2010:Annotation.AnnotationText="&quot;This activity captures the temperature of each city&quot;" ContinueOnError="True" DisplayName="Get Text 'DIV'_Takes output" sap:VirtualizedContainerService.HintSize="433.6,138.4" sap2010:WorkflowViewState.IdRef="GetValue_4">
                           <ui:GetValue.Target>
                             <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="dfdffab9-c22d-4856-aee1-f4f63e3a743c" InformativeScreenshot="fd136aa2a36b1d8998c3c5ebe2b699d8" Selector="&lt;webctrl css-selector='body&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div' parentid='wob_wc' tag='DIV' /&gt;">
                               <ui:Target.TimeoutMS>
@@ -170,8 +179,13 @@
                           <ui:GetValue.Value>
                             <OutArgument x:TypeArguments="x:String">[dt_getText]</OutArgument>
                           </ui:GetValue.Value>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
                         </ui:GetValue>
-                        <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" ContinueOnError="True" DisplayName="Click 'PATH'" sap:VirtualizedContainerService.HintSize="333.6,107.2" sap2010:WorkflowViewState.IdRef="Click_5" KeyModifiers="None" MouseButton="BTN_LEFT">
+                        <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" sap2010:Annotation.AnnotationText="&quot;This activity helps to close or reset the page&quot;" ClickType="CLICK_SINGLE" ContinueOnError="True" DisplayName="Click 'PATH'_to close" sap:VirtualizedContainerService.HintSize="433.6,138.4" sap2010:WorkflowViewState.IdRef="Click_5" KeyModifiers="None" MouseButton="BTN_LEFT">
                           <ui:Click.CursorPosition>
                             <ui:CursorPosition Position="Center">
                               <ui:CursorPosition.OffsetX>
@@ -192,17 +206,47 @@
                               </ui:Target.WaitForReady>
                             </ui:Target>
                           </ui:Click.Target>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
                         </ui:Click>
+                        <Assign sap2010:Annotation.AnnotationText="&quot;This activity assigns the variable to the workbook to add the output values to it&quot;" DisplayName="Assign_variable to the cell" sap:VirtualizedContainerService.HintSize="433.6,125.6" sap2010:WorkflowViewState.IdRef="Assign_1">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:Int32">[Cell_ID]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:Int32">[Cell_ID+2]</InArgument>
+                          </Assign.Value>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </Assign>
+                        <ui:WriteCell sap2010:Annotation.AnnotationText="&quot;This activity writes the fetched data froma website to the respective cell&quot;" Cell="[&quot;B&quot;+Cell_ID.ToString]" DisplayName="Write Cell Workbook_into the cell" sap:VirtualizedContainerService.HintSize="433.6,160" sap2010:WorkflowViewState.IdRef="WriteCell_1" SheetName="Sheet1" Text="[dt_getText]" WorkbookPath="City_Tempdata.xlsx">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </ui:WriteCell>
                       </Sequence>
                     </ActivityAction>
                   </ui:ForEachRow.Body>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
                 </ui:ForEachRow>
-                <ui:WriteRange AddHeaders="False" DataTable="[dt_CityTempdata]" DisplayName="Write Range Workbook" sap:VirtualizedContainerService.HintSize="410.4,116" sap2010:WorkflowViewState.IdRef="WriteRange_3" SheetName="Sheet2" StartingCell="A1" WorkbookPath="City_Tempdata.xlsx" />
               </Sequence>
             </Sequence>
           </ActivityAction>
         </ui:OpenBrowser.Body>
       </ui:OpenBrowser>
+      <ui:LogMessage DisplayName="Final stage_Log Message" sap:VirtualizedContainerService.HintSize="649.6,142.4" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;City temperature data has been captured&quot;]" />
     </Sequence>
   </Sequence>
 </Activity>
