@@ -108,7 +108,7 @@
         </InArgument>
       </ui:ReadRange.Range>
     </ui:ReadRange>
-    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="Looping all the values from excel using activity&#xD;&#xA;' For Each Row in Datatable' " DataTable="[dt_ExtractedData]" DisplayName="Looping all the values from excel using For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="510,1620" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="Looping all the values from excel using activity&#xA;' For Each Row in Datatable' " DataTable="[dt_ExtractedData]" DisplayName="Looping all the values from excel using For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="510,1620" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd:DataRow">
           <ActivityAction.Argument>
@@ -186,15 +186,9 @@
             <WriteLine DisplayName="Printing the result the result in o/p using Write Line" sap:VirtualizedContainerService.HintSize="434,90" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[additionresult.ToString]" />
             <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Creating and Importing arguments and assigning values(variables) to arguments to perform substraction operation" DisplayName="(selecting invoke work flow from activity panel) Substraction.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="434,170" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Substraction.xaml">
               <ui:InvokeWorkflowFile.Arguments>
-                <InArgument x:TypeArguments="x:Int32" x:Key="in_num1">
-                  <VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="Num1" />
-                </InArgument>
-                <InArgument x:TypeArguments="x:Int32" x:Key="in_num2">
-                  <VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="Num2" />
-                </InArgument>
-                <OutArgument x:TypeArguments="x:Int32" x:Key="out_subResult">
-                  <VisualBasicReference x:TypeArguments="x:Int32" ExpressionText="subResult" />
-                </OutArgument>
+                <InArgument x:TypeArguments="x:Int32" x:Key="in_num1">[Num1]</InArgument>
+                <InArgument x:TypeArguments="x:Int32" x:Key="in_num2">[Num2]</InArgument>
+                <OutArgument x:TypeArguments="x:Int32" x:Key="out_subResult">[subResult]</OutArgument>
               </ui:InvokeWorkflowFile.Arguments>
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
