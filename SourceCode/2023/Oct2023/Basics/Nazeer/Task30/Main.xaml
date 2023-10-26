@@ -101,7 +101,7 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Task Started Log Message" sap:VirtualizedContainerService.HintSize="491.2,142.4" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Task Throw Error Condition  Started&quot;]" />
-    <ui:RetryScope DisplayName="Retry Scope" sap:VirtualizedContainerService.HintSize="491.2,376" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="2" RetryInterval="00:00:02">
+    <ui:RetryScope DisplayName="To Retry Scope" sap:VirtualizedContainerService.HintSize="491.2,376" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="2" RetryInterval="00:00:02">
       <ui:RetryScope.ActivityBody>
         <ActivityAction>
           <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="449.6,200" sap2010:WorkflowViewState.IdRef="Sequence_5">
@@ -110,7 +110,7 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:ReadRange AddHeaders="True" DataTable="[dt_ExcelData]" DisplayName="Read Range Workbook" sap:VirtualizedContainerService.HintSize="387.2,88" sap2010:WorkflowViewState.IdRef="ReadRange_3" SheetName="Sheet1" WorkbookPath="Bank Balance.xlsx">
+            <ui:ReadRange AddHeaders="True" DataTable="[dt_ExcelData]" DisplayName="Read Excel Workbook" sap:VirtualizedContainerService.HintSize="387.2,88" sap2010:WorkflowViewState.IdRef="ReadRange_3" SheetName="Sheet1" WorkbookPath="Bank Balance.xlsx">
               <ui:ReadRange.Range>
                 <InArgument x:TypeArguments="x:String">
                   <Literal x:TypeArguments="x:String" Value="" />
@@ -124,14 +124,14 @@
         <ActivityFunc x:TypeArguments="x:Boolean" />
       </ui:RetryScope.Condition>
     </ui:RetryScope>
-    <ui:ReadRange AddHeaders="True" DataTable="[dt_ExcelData]" DisplayName="Read Range Workbook" sap:VirtualizedContainerService.HintSize="491.2,88" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="Sheet1" WorkbookPath="Bank Balance.xlsx">
+    <ui:ReadRange AddHeaders="True" DataTable="[dt_ExcelData]" DisplayName="Read Data From Excel" sap:VirtualizedContainerService.HintSize="491.2,88" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="Sheet1" WorkbookPath="Bank Balance.xlsx">
       <ui:ReadRange.Range>
         <InArgument x:TypeArguments="x:String">
           <Literal x:TypeArguments="x:String" Value="" />
         </InArgument>
       </ui:ReadRange.Range>
     </ui:ReadRange>
-    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_ExcelData]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="491.2,941.6" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_ExcelData]" DisplayName="Loop For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="491.2,941.6" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd:DataRow">
           <ActivityAction.Argument>
@@ -143,7 +143,7 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <If Condition="[cint(CurrentRow(0))&lt;100]" sap:VirtualizedContainerService.HintSize="411.2,664" sap2010:WorkflowViewState.IdRef="If_1">
+            <If Condition="[cint(CurrentRow(0))&lt;100]" DisplayName="If Condition" sap:VirtualizedContainerService.HintSize="411.2,664" sap2010:WorkflowViewState.IdRef="If_1">
               <If.Then>
                 <Sequence sap:VirtualizedContainerService.HintSize="377.6,305.6" sap2010:WorkflowViewState.IdRef="Sequence_3">
                   <sap:WorkflowViewStateService.ViewState>
@@ -151,8 +151,8 @@
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="334.4,85.6" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[&quot;Bank Balance &lt;  100&quot;]" />
-                  <Throw Exception="[New BusinessRuleException(&quot;Given Amount Is Less Than 100. Please Maintain Sufficent Balance&quot;)]" sap:VirtualizedContainerService.HintSize="334.4,90.4" sap2010:WorkflowViewState.IdRef="Throw_1" />
+                  <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:02" DisplayName="Then Message Box" sap:VirtualizedContainerService.HintSize="334.4,85.6" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[&quot;Bank Balance &lt;  100&quot;]" />
+                  <Throw DisplayName="To Throw" Exception="[New BusinessRuleException(&quot;Given Amount Is Less Than 100. Please Maintain Sufficent Balance&quot;)]" sap:VirtualizedContainerService.HintSize="334.4,90.4" sap2010:WorkflowViewState.IdRef="Throw_1" />
                 </Sequence>
               </If.Then>
               <If.Else>
@@ -162,7 +162,7 @@
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="333.6,85.6" sap2010:WorkflowViewState.IdRef="MessageBox_2" Text="[&quot;Bank Balance &gt; 100&quot;]" />
+                  <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:02" DisplayName="Else Message Box" sap:VirtualizedContainerService.HintSize="333.6,85.6" sap2010:WorkflowViewState.IdRef="MessageBox_2" Text="[&quot;Bank Balance &gt; 100&quot;]" />
                 </Sequence>
               </If.Else>
             </If>
