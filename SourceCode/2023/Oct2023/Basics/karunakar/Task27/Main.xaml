@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="872,2122" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="960,2152" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -88,7 +88,7 @@
       <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Create a separate sequence for Add and Sub and invoke xaml files into one sequence by using Arguments(Read input values from the excel)" DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="572,2057" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Create a separate sequence for Add and Sub and invoke xaml files into one sequence by using Arguments(Read input values from the excel)" DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="572,2087" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="dt_ExtractedData" />
       <Variable x:TypeArguments="x:Int32" Name="Num1" />
@@ -108,13 +108,13 @@
         </InArgument>
       </ui:ReadRange.Range>
     </ui:ReadRange>
-    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="Looping all the values from excel using activity&#xA;' For Each Row in Datatable' " DataTable="[dt_ExtractedData]" DisplayName="Looping all the values from excel using For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="510,1620" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="Looping all the values from excel using activity&#xA;' For Each Row in Datatable' " DataTable="[dt_ExtractedData]" DisplayName="Looping all the values from excel using For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="510,1650" sap2010:WorkflowViewState.IdRef="ForEachRow_3">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd:DataRow">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
           </ActivityAction.Argument>
-          <Sequence sap2010:Annotation.AnnotationText="" DisplayName="Body" sap:VirtualizedContainerService.HintSize="476,1392" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence sap2010:Annotation.AnnotationText="" DisplayName="Body" sap:VirtualizedContainerService.HintSize="476,1422" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:Int32" Name="additionresult" />
             </Sequence.Variables>
@@ -158,33 +158,16 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:InvokeWorkflowFile>
-            <ui:CommentOut DisplayName=" commented Comment Out" sap:VirtualizedContainerService.HintSize="434,52" sap2010:WorkflowViewState.IdRef="CommentOut_4">
-              <ui:CommentOut.Body>
-                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="496,193" sap2010:WorkflowViewState.IdRef="Sequence_6">
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                  <Assign DisplayName="assigning value to row using Assign" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_7">
-                    <Assign.To>
-                      <OutArgument x:TypeArguments="x:Object">[CurrentRow("AddResult")]</OutArgument>
-                    </Assign.To>
-                    <Assign.Value>
-                      <InArgument x:TypeArguments="x:Object">[additionresult]</InArgument>
-                    </Assign.Value>
-                  </Assign>
-                </Sequence>
-              </ui:CommentOut.Body>
-              <sap:WorkflowViewStateService.ViewState>
-                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                </scg:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
-            </ui:CommentOut>
-            <WriteLine DisplayName="Printing the result the result in o/p using Write Line" sap:VirtualizedContainerService.HintSize="434,90" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[additionresult.ToString]" />
-            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Creating and Importing arguments and assigning values(variables) to arguments to perform substraction operation" DisplayName="(selecting invoke work flow from activity panel) Substraction.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="434,170" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Substraction.xaml">
+            <Assign DisplayName="assigning value to row using Assign" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_9">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:Object">[CurrentRow("AddResult")]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:Object">[additionresult]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <WriteLine DisplayName="Printing the result the result in o/p using Write Line" sap:VirtualizedContainerService.HintSize="434,90" sap2010:WorkflowViewState.IdRef="WriteLine_3" Text="[additionresult.ToString]" />
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Creating and Importing arguments and assigning values(variables) to arguments to perform substraction operation" DisplayName="(selecting invoke work flow from activity panel) Substraction.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="434,170" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Substraction.xaml">
               <ui:InvokeWorkflowFile.Arguments>
                 <InArgument x:TypeArguments="x:Int32" x:Key="in_num1">[Num1]</InArgument>
                 <InArgument x:TypeArguments="x:Int32" x:Key="in_num2">[Num2]</InArgument>
@@ -196,8 +179,8 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:InvokeWorkflowFile>
-            <WriteLine DisplayName="To Print result the result in o/p using Write Line" sap:VirtualizedContainerService.HintSize="434,90" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="[subResult.ToString]" />
-            <Assign sap2010:Annotation.AnnotationText="storing the result got from o/p argument to variable  in current row of datatable using assign activity" DisplayName="To store add result in currentrow of datatable using Assign" sap:VirtualizedContainerService.HintSize="434,124" sap2010:WorkflowViewState.IdRef="Assign_8">
+            <WriteLine DisplayName="To Print result the result in o/p using Write Line" sap:VirtualizedContainerService.HintSize="434,90" sap2010:WorkflowViewState.IdRef="WriteLine_4" Text="[subResult.ToString]" />
+            <Assign sap2010:Annotation.AnnotationText="storing the result got from o/p argument to variable  in current row of datatable using assign activity" DisplayName="To store add result in currentrow of datatable using Assign" sap:VirtualizedContainerService.HintSize="434,124" sap2010:WorkflowViewState.IdRef="Assign_10">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:Object">[CurrentRow("AddResult")]</OutArgument>
               </Assign.To>
@@ -210,7 +193,7 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </Assign>
-            <Assign sap2010:Annotation.AnnotationText="storing the result got from o/p argument to variable  in a current row of datatable using assign activity" DisplayName="To store sub result in currentrow of datatable using Assign" sap:VirtualizedContainerService.HintSize="434,124" sap2010:WorkflowViewState.IdRef="Assign_5">
+            <Assign sap2010:Annotation.AnnotationText="storing the result got from o/p argument to variable  in a current row of datatable using assign activity" DisplayName="To store sub result in currentrow of datatable using Assign" sap:VirtualizedContainerService.HintSize="434,124" sap2010:WorkflowViewState.IdRef="Assign_11">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:Object">[CurrentRow("subresult")]</OutArgument>
               </Assign.To>
@@ -232,6 +215,6 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:ForEachRow>
-    <ui:WriteRange AddHeaders="True" DataTable="[dt_ExtractedData]" DisplayName="To write the values in excel using Write Range Workbook" sap:VirtualizedContainerService.HintSize="510,116" sap2010:WorkflowViewState.IdRef="WriteRange_2" SheetName="sheet1" StartingCell="A1" WorkbookPath="Task27.xlsx.xlsx" />
+    <ui:WriteRange AddHeaders="True" DataTable="[dt_ExtractedData]" DisplayName="To write the values in excel using Write Range Workbook" sap:VirtualizedContainerService.HintSize="510,116" sap2010:WorkflowViewState.IdRef="WriteRange_3" SheetName="sheet1" StartingCell="A1" WorkbookPath="Task27.xlsx.xlsx" />
   </Sequence>
 </Activity>
