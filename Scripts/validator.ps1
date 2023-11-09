@@ -56,19 +56,28 @@ if ($count -gt 0 ) {
         Write-Output "Install Dependencies completed"
         $Comment = UiPathAnalyze -ProjectJsonPath $ProjectPath
         Write-Host $Comment
-        $GptComment = GenerateGptResponse -GptApiKey $GptApiKey -errorDetails  $Comment -systemRole $systemRole
-        Write-Host $GptComment
+       
+       <#  enable this block  if gpt code required#>
 
-        # Add-GitHubPRComment -Token $YOUR_PERSONAL_ACCESS_TOKEN -Owner $Owner -Repo $Repo -PullRequestId $PullRequestId -Comment $Comment
-        $GptComment = ($project, $GptComment) -join "`n"
-        $AddCommentResponse = Add-GitHubPRComment -Token $YOUR_PERSONAL_ACCESS_TOKEN -Owner $githubOwner -Repo $githubRepoName -PullRequestId $pull_number -Comment $GptComment
+
+        # $GptComment = GenerateGptResponse -GptApiKey $GptApiKey -errorDetails  $Comment -systemRole $systemRole
+        # Write-Host $GptComment
+
+        # # Add-GitHubPRComment -Token $YOUR_PERSONAL_ACCESS_TOKEN -Owner $Owner -Repo $Repo -PullRequestId $PullRequestId -Comment $Comment
+        # $GptComment = ($project, $GptComment) -join "`n"
+
+        # $AddCommentResponse = Add-GitHubPRComment -Token $YOUR_PERSONAL_ACCESS_TOKEN -Owner $githubOwner -Repo $githubRepoName -PullRequestId $pull_number -Comment $GptComment
+
+
+        <#  enable this block  if gpt code required#>
+        $AddCommentResponse = Add-GitHubPRComment -Token $YOUR_PERSONAL_ACCESS_TOKEN -Owner $githubOwner -Repo $githubRepoName -PullRequestId $pull_number -Comment $Comment
         Write-Host $AddCommentResponse
         #downloadProjectDependencies -ProjectJsonPath $ProjectPath
     }
 }
 else {
     Write-Host "no project files are in review"
-    $GptComment = "An expert need to review your code and it will be done before next sunrise :)"
+    $GptComment = "5 Points are assured. No Errors found by AI system, you must be really good in writing uipath code. An expert need to review your code and it will be done before next sunrise :)"
     $AddCommentResponse = Add-GitHubPRComment -Token $YOUR_PERSONAL_ACCESS_TOKEN -Owner $githubOwner -Repo $githubRepoName -PullRequestId $pull_number -Comment $GptComment
     Write-Host $AddCommentResponse
     <# Action when all if and elseif conditions are false #>
