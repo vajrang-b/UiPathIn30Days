@@ -74,11 +74,11 @@
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="496,1301" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
-      <Variable x:TypeArguments="x:Int32" Name="NumValue_1" />
-      <Variable x:TypeArguments="x:Int32" Name="NumValue_2" />
       <Variable x:TypeArguments="x:Int32" Name="NumSum" />
       <Variable x:TypeArguments="x:Int32" Name="NumSub" />
       <Variable x:TypeArguments="x:Int32" Name="NumMult" />
+      <Variable x:TypeArguments="x:Int32" Name="NumOne" />
+      <Variable x:TypeArguments="x:Int32" Name="NumTwo" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -87,12 +87,12 @@
     </sap:WorkflowViewStateService.ViewState>
     <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="User Input 1" sap:VirtualizedContainerService.HintSize="434,239" sap2010:WorkflowViewState.IdRef="InputDialog_1" IsPassword="False" Label="Please enter the Number" Title="Number">
       <ui:InputDialog.Result>
-        <OutArgument x:TypeArguments="x:Int32">[NumValue_1]</OutArgument>
+        <OutArgument x:TypeArguments="x:Int32">[NumOne]</OutArgument>
       </ui:InputDialog.Result>
     </ui:InputDialog>
     <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="User Input 2" sap:VirtualizedContainerService.HintSize="434,239" sap2010:WorkflowViewState.IdRef="InputDialog_2" IsPassword="False" Label="Please enter the  number" Title="Number">
       <ui:InputDialog.Result>
-        <OutArgument x:TypeArguments="x:Int32">[NumValue_2]</OutArgument>
+        <OutArgument x:TypeArguments="x:Int32">[NumTwo]</OutArgument>
       </ui:InputDialog.Result>
     </ui:InputDialog>
     <Assign DisplayName="Multiplication" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_1">
@@ -100,7 +100,7 @@
         <OutArgument x:TypeArguments="x:Int32">[NumMult]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="x:Int32">[NumValue_1*NumValue_2]</InArgument>
+        <InArgument x:TypeArguments="x:Int32">[NumOne*NumTwo]</InArgument>
       </Assign.Value>
     </Assign>
     <Assign DisplayName="Sum" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_2">
@@ -108,7 +108,7 @@
         <OutArgument x:TypeArguments="x:Int32">[NumSum]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="x:Int32">[NumValue_1+NumValue_2]</InArgument>
+        <InArgument x:TypeArguments="x:Int32">[NumOne+NumTwo]</InArgument>
       </Assign.Value>
     </Assign>
     <Assign DisplayName="Assign Sub" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_3">
@@ -116,7 +116,7 @@
         <OutArgument x:TypeArguments="x:Int32">[NumSub]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="x:Int32">[NumValue_1-NumValue_2]</InArgument>
+        <InArgument x:TypeArguments="x:Int32">[NumOne-NumTwo]</InArgument>
       </Assign.Value>
     </Assign>
     <ui:LogMessage DisplayName="Addition Log" sap:VirtualizedContainerService.HintSize="434,141" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Addition  : &quot;+NumSum.ToString]" />
