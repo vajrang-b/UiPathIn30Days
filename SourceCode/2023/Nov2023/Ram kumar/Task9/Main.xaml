@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="592,869" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="592,694" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -26,7 +26,7 @@
       <x:String>GlobalVariablesNamespace</x:String>
       <x:String>GlobalConstantsNamespace</x:String>
       <x:String>System.Reflection</x:String>
-      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>UiPath.Platform.ResourceHandling</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -69,29 +69,14 @@
       <AssemblyReference>System.ComponentModel</AssemblyReference>
       <AssemblyReference>System.Memory</AssemblyReference>
       <AssemblyReference>System.Private.Uri</AssemblyReference>
-      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
-      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
-      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
-      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
-      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
-      <AssemblyReference>System.Linq.Parallel</AssemblyReference>
-      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
-      <AssemblyReference>System.Linq.Queryable</AssemblyReference>
-      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
-      <AssemblyReference>System.Collections</AssemblyReference>
-      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
-      <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <sap:WorkflowViewStateService.ViewState>
-    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-      <x:Boolean x:Key="ShouldExpandAll">True</x:Boolean>
-    </scg:Dictionary>
-  </sap:WorkflowViewStateService.ViewState>
-  <Sequence sap2010:Annotation.AnnotationText="This Task is to Display names by using index" DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="496,804" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="This Task is to read values from user and store in Array and Write array values to text file" DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="496,1147" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="StrVariable1" />
+      <Variable x:TypeArguments="x:String" Name="StrVariable2" />
       <Variable x:TypeArguments="s:String[]" Name="ArrayStrings" />
-      <Variable x:TypeArguments="ui:GenericValue" Name="Index" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -99,31 +84,25 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Assign DisplayName="Array of name" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="First Name" sap:VirtualizedContainerService.HintSize="434,239" sap2010:WorkflowViewState.IdRef="InputDialog_1" IsPassword="False" Label="PleaseEnter First Name" Title="First Name">
+      <ui:InputDialog.Result>
+        <OutArgument x:TypeArguments="x:String">[StrVariable1]</OutArgument>
+      </ui:InputDialog.Result>
+    </ui:InputDialog>
+    <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="Last Name" sap:VirtualizedContainerService.HintSize="434,239" sap2010:WorkflowViewState.IdRef="InputDialog_2" IsPassword="False" Label="Please Enter Last Name" Title="Last Name">
+      <ui:InputDialog.Result>
+        <OutArgument x:TypeArguments="x:String">[StrVariable2]</OutArgument>
+      </ui:InputDialog.Result>
+    </ui:InputDialog>
+    <Assign DisplayName="Assign Values to Array" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="s:String[]">[ArrayStrings]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="s:String[]">[{"Ram","Chaitanya","Prasad"}]</InArgument>
+        <InArgument x:TypeArguments="s:String[]">[{StrVariable1,StrVariable2}]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:ForEach x:TypeArguments="x:Int32" CurrentIndex="[Index]" DisplayName="Index " sap:VirtualizedContainerService.HintSize="434,540" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[Enumerable.Range(0,ArrayStrings.Length)]">
-      <ui:ForEach.Body>
-        <ActivityAction x:TypeArguments="x:Int32">
-          <ActivityAction.Argument>
-            <DelegateInArgument x:TypeArguments="x:Int32" Name="Index" />
-          </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="376,354" sap2010:WorkflowViewState.IdRef="Sequence_2">
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-            <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Display Names" sap:VirtualizedContainerService.HintSize="334,85" sap2010:WorkflowViewState.IdRef="MessageBox_2" Text="[ArrayStrings(Index)]" />
-            <ui:LogMessage DisplayName="Names Log" sap:VirtualizedContainerService.HintSize="334,141" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Name : &quot;+ArrayStrings(Index)]" />
-          </Sequence>
-        </ActivityAction>
-      </ui:ForEach.Body>
-    </ui:ForEach>
+    <ui:WriteTextFile File="{x:Null}" DisplayName="Writing Text to File" FileName="values.txt" sap:VirtualizedContainerService.HintSize="434,133" sap2010:WorkflowViewState.IdRef="WriteTextFile_1" Text="[ArrayStrings(0)+&quot; &quot;+ArrayStrings(1)]" />
+    <ui:LogMessage DisplayName="Array Log" sap:VirtualizedContainerService.HintSize="434,141" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[ArrayStrings(0)+&quot; &quot;+ArrayStrings(1)]" />
   </Sequence>
 </Activity>
