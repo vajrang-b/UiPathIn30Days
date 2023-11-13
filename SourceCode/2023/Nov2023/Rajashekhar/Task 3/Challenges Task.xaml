@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="674,765" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Challenges_Task" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="674,329" sap2010:WorkflowViewState.IdRef="Challenges_Task_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -34,8 +34,6 @@
     <sco:Collection x:TypeArguments="AssemblyReference">
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
-      <AssemblyReference>PresentationCore</AssemblyReference>
-      <AssemblyReference>PresentationFramework</AssemblyReference>
       <AssemblyReference>System</AssemblyReference>
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
@@ -55,20 +53,11 @@
       <AssemblyReference>System.Xml.Linq</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities</AssemblyReference>
       <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
-      <AssemblyReference>WindowsBase</AssemblyReference>
       <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
       <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
       <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
       <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
       <AssemblyReference>UiPath.Workflow</AssemblyReference>
-      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
-      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
-      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
-      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
-      <AssemblyReference>System.CodeDom</AssemblyReference>
-      <AssemblyReference>Microsoft.VisualBasic.Forms</AssemblyReference>
-      <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
-      <AssemblyReference>UiPath.Platform</AssemblyReference>
       <AssemblyReference>NPOI</AssemblyReference>
       <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
       <AssemblyReference>System.Memory.Data</AssemblyReference>
@@ -78,9 +67,17 @@
       <AssemblyReference>System.ComponentModel</AssemblyReference>
       <AssemblyReference>System.Memory</AssemblyReference>
       <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.CodeDom</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Forms</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="The task is for Date and Time Variables " DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="496,700" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="This sequence indicates Date &amp; Time Task Creation " DisplayName="Challenges_Task" sap:VirtualizedContainerService.HintSize="496,527" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="s:DateTime" Name="D_Date" />
     </Sequence.Variables>
@@ -90,16 +87,15 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_2">
       <Assign.To>
         <OutArgument x:TypeArguments="s:DateTime">[D_Date]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="s:DateTime">[Now]</InArgument>
+        <InArgument x:TypeArguments="s:DateTime">[DateTime.Now]</InArgument>
       </Assign.Value>
     </Assign>
-    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="434,90" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[D_Date.ToString]" />
-    <ui:WriteTextFile File="{x:Null}" DisplayName="Write Text File" FileName="Date.txt" sap:VirtualizedContainerService.HintSize="434,133" sap2010:WorkflowViewState.IdRef="WriteTextFile_1" Text="[D_Date.ToString()+D_Date.ToShortDateString()+D_Date.now.ToLongTimeString()+D_Date.now.ToShortDateString()+D_Date.now.ToShortTimeString()+D_Date.now.ToString()+D_Date.now.ToString(&quot;ddd&quot;)+D_Date.now.ToString(&quot;dddd&quot;)+D_Date.now.ToString(&quot;tt &quot;)+D_Date.now.ToString(&quot;yyyy&quot;)+D_Date.now.ToString(&quot;yy&quot;)]" />
-    <ui:AppendLine File="{x:Null}" DisplayName="Append Line" FileName="Date.txt" sap:VirtualizedContainerService.HintSize="434,133" sap2010:WorkflowViewState.IdRef="AppendLine_1" Text="[D_Date.ToString()+D_Date.ToShortDateString()+D_Date.now.ToLongTimeString()+D_Date.now.ToShortDateString()+D_Date.now.ToShortTimeString()+D_Date.now.ToString()+D_Date.now.ToString(&quot;ddd&quot;)+D_Date.now.ToString(&quot;dddd&quot;)+D_Date.now.ToString(&quot;tt &quot;)+D_Date.now.ToString(&quot;yyyy&quot;)+D_Date.now.ToString(&quot;yy&quot;)]" UseDefaultEncoding="False" />
+    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="434,90" sap2010:WorkflowViewState.IdRef="WriteLine_3" Text="[D_Date.ToString+&#xD;&#xA;(&quot;D1:&quot;+D_Date.now.ToLongDateString())+&#xD;&#xA;(&quot;D2:&quot;+D_Date.now.ToLongTimeString())+&#xD;&#xA;(&quot;D3:&quot;+D_Date.now.ToShortDateString())+&#xD;&#xA;(&quot;D4:&quot;+D_Date.now.ToShortTimeString())+&#xD;&#xA;(&quot;D5:&quot;+D_Date.now.ToString())+&#xD;&#xA;(&quot;D6:&quot;+D_Date.now.ToString(&quot;ddd&quot;))+&#xD;&#xA;(&quot;D7:&quot;+D_Date.now.ToString(&quot;dddd&quot;))+&#xD;&#xA;(&quot;D8:&quot;+D_Date.now.ToString(&quot;tt &quot;))+&#xD;&#xA;(&quot;D9:&quot;+D_Date.now.ToString(&quot;yyyy&quot;))+&#xD;&#xA;(&quot;D10:&quot;+D_Date.now.ToString(&quot;yy&quot;))]" />
+    <ui:AppendLine File="{x:Null}" DisplayName="Append Line" FileName="DateTime.txt" sap:VirtualizedContainerService.HintSize="434,133" sap2010:WorkflowViewState.IdRef="AppendLine_2" Text="[D_Date.ToString+&#xD;&#xA;(&quot;D1:&quot;+D_Date.now.ToLongDateString())+&#xD;&#xA;(&quot;D2:&quot;+D_Date.now.ToLongTimeString())+&#xD;&#xA;(&quot;D3:&quot;+D_Date.now.ToShortDateString())+&#xD;&#xA;(&quot;D4:&quot;+D_Date.now.ToShortTimeString())+&#xD;&#xA;(&quot;D5:&quot;+D_Date.now.ToString())+&#xD;&#xA;(&quot;D6:&quot;+D_Date.now.ToString(&quot;ddd&quot;))+&#xD;&#xA;(&quot;D7:&quot;+D_Date.now.ToString(&quot;dddd&quot;))+&#xD;&#xA;(&quot;D8:&quot;+D_Date.now.ToString(&quot;tt &quot;))+&#xD;&#xA;(&quot;D9:&quot;+D_Date.now.ToString(&quot;yyyy&quot;))+&#xD;&#xA;(&quot;D10:&quot;+D_Date.now.ToString(&quot;yy&quot;))]" UseDefaultEncoding="False" />
   </Sequence>
 </Activity>
