@@ -26,6 +26,7 @@
       <x:String>GlobalVariablesNamespace</x:String>
       <x:String>GlobalConstantsNamespace</x:String>
       <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -68,14 +69,29 @@
       <AssemblyReference>System.ComponentModel</AssemblyReference>
       <AssemblyReference>System.Memory</AssemblyReference>
       <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Linq.Parallel</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>System.Linq.Queryable</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
-      <AssemblyReference>GlobalVariablesT1PNoYwrqg</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="This task is assign values to array and display array item by index" DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="496,655" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <sap:WorkflowViewStateService.ViewState>
+    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+      <x:Boolean x:Key="ShouldExpandAll">True</x:Boolean>
+    </scg:Dictionary>
+  </sap:WorkflowViewStateService.ViewState>
+  <Sequence sap2010:Annotation.AnnotationText="This Task is to Display names by using index" DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="496,804" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
-      <Variable x:TypeArguments="s:Int32[]" Name="ArrayInt" />
+      <Variable x:TypeArguments="s:String[]" Name="ArrayStrings" />
+      <Variable x:TypeArguments="ui:GenericValue" Name="Index" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -83,16 +99,31 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Assign DisplayName="Assign values to ArrayInt" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <Assign DisplayName="Array of name" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
-        <OutArgument x:TypeArguments="s:Int32[]">[ArrayInt]</OutArgument>
+        <OutArgument x:TypeArguments="s:String[]">[ArrayStrings]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="s:Int32[]">[{20,100,50,40}]</InArgument>
+        <InArgument x:TypeArguments="s:String[]">[{"Ram","Chaitanya","Prasad"}]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:LogMessage DisplayName="Task Log" sap:VirtualizedContainerService.HintSize="434,141" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;This task is get item from array by using index&quot;]" />
-    <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Display the Array item" sap:VirtualizedContainerService.HintSize="434,85" sap2010:WorkflowViewState.IdRef="MessageBox_3" Text="[ArrayInt(0)]" />
-    <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Display the Array item" sap:VirtualizedContainerService.HintSize="434,85" sap2010:WorkflowViewState.IdRef="MessageBox_4" Text="[ArrayInt(2)]" />
+    <ui:ForEach x:TypeArguments="x:Int32" CurrentIndex="[Index]" DisplayName="Index " sap:VirtualizedContainerService.HintSize="434,540" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[Enumerable.Range(0,ArrayStrings.Length)]">
+      <ui:ForEach.Body>
+        <ActivityAction x:TypeArguments="x:Int32">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Int32" Name="Index" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="376,354" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Display Names" sap:VirtualizedContainerService.HintSize="334,85" sap2010:WorkflowViewState.IdRef="MessageBox_2" Text="[ArrayStrings(Index)]" />
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,141" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Name : &quot;+ArrayStrings(Index)]" />
+          </Sequence>
+        </ActivityAction>
+      </ui:ForEach.Body>
+    </ui:ForEach>
   </Sequence>
 </Activity>
