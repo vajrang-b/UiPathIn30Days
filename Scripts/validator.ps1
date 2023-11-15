@@ -56,12 +56,21 @@ if ($count -gt 0 ) {
         Write-Output "Install Dependencies completed"
         $Comment = UiPathAnalyze -ProjectJsonPath $ProjectPath
         Write-Host $Comment
-        $GptComment = GenerateGptResponse -GptApiKey $GptApiKey -errorDetails  $Comment -systemRole $systemRole
-        Write-Host $GptComment
+       
+       <#  enable this block  if gpt code required#>
 
-        # Add-GitHubPRComment -Token $YOUR_PERSONAL_ACCESS_TOKEN -Owner $Owner -Repo $Repo -PullRequestId $PullRequestId -Comment $Comment
-        $GptComment = ($project, $GptComment) -join "`n"
-        $AddCommentResponse = Add-GitHubPRComment -Token $YOUR_PERSONAL_ACCESS_TOKEN -Owner $githubOwner -Repo $githubRepoName -PullRequestId $pull_number -Comment $GptComment
+
+        # $GptComment = GenerateGptResponse -GptApiKey $GptApiKey -errorDetails  $Comment -systemRole $systemRole
+        # Write-Host $GptComment
+
+        # # Add-GitHubPRComment -Token $YOUR_PERSONAL_ACCESS_TOKEN -Owner $Owner -Repo $Repo -PullRequestId $PullRequestId -Comment $Comment
+        # $GptComment = ($project, $GptComment) -join "`n"
+
+        # $AddCommentResponse = Add-GitHubPRComment -Token $YOUR_PERSONAL_ACCESS_TOKEN -Owner $githubOwner -Repo $githubRepoName -PullRequestId $pull_number -Comment $GptComment
+
+
+        <#  enable this block  if gpt code required#>
+        $AddCommentResponse = Add-GitHubPRComment -Token $YOUR_PERSONAL_ACCESS_TOKEN -Owner $githubOwner -Repo $githubRepoName -PullRequestId $pull_number -Comment $Comment
         Write-Host $AddCommentResponse
         #downloadProjectDependencies -ProjectJsonPath $ProjectPath
     }
