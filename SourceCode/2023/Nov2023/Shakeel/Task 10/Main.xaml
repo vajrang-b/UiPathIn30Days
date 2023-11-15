@@ -74,7 +74,7 @@
   </TextExpression.ReferencesForImplementation>
   <Sequence sap2010:Annotation.AnnotationText="Based on user selection from 1 to 7, the message box will to be displayed" DisplayName="Task 10" sap:VirtualizedContainerService.HintSize="450,470" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
-      <Variable x:TypeArguments="x:Int32" Name="Str_userinput" />
+      <Variable x:TypeArguments="x:Int32" Name="strUserinput" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -92,7 +92,7 @@
     </ui:LogMessage>
     <ui:InputDialog Options="{x:Null}" DisplayName="Multi Choice Numbers" sap:VirtualizedContainerService.HintSize="388,52" sap2010:WorkflowViewState.IdRef="InputDialog_3" IsPassword="False" Label=" Please select number from 1 to 7" OptionsString="1;2;3;4;5;6;7" Title=" Please select from drop down">
       <ui:InputDialog.Result>
-        <OutArgument x:TypeArguments="x:Int32">[Str_userinput]</OutArgument>
+        <OutArgument x:TypeArguments="x:Int32">[strUserinput]</OutArgument>
       </ui:InputDialog.Result>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -101,7 +101,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:InputDialog>
-    <Switch x:TypeArguments="x:Int32" DisplayName="Display message box based on Selection" Expression="[str_userinput]" sap:VirtualizedContainerService.HintSize="388,52" sap2010:WorkflowViewState.IdRef="Switch`1_1">
+    <Switch x:TypeArguments="x:Int32" DisplayName="Display message box based on Selection" Expression="[strUserinput]" sap:VirtualizedContainerService.HintSize="388,52" sap2010:WorkflowViewState.IdRef="Switch`1_1">
       <Switch.Default>
         <ui:LogMessage DisplayName="Log Error when no selection" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Error]" Message="[&quot;No input selected&quot;]">
           <sap:WorkflowViewStateService.ViewState>
