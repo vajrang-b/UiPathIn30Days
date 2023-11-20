@@ -88,7 +88,7 @@
       <AssemblyReference>UiPath.Excel</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="450,588" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Generate Data Table from txt file and load the data to excel sheet" DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="450,619" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="o_student" />
       <Variable x:TypeArguments="sd:DataTable" Name="dt_datatable" />
@@ -96,10 +96,11 @@
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:ReadTextFile File="{x:Null}" Content="[o_student]" DisplayName="Read Text File" FileName="Text File.txt" sap:VirtualizedContainerService.HintSize="388,80" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
-    <ui:GenerateDataTable ColumnSizes="{x:Null}" NewLineSeparator="{x:Null}" Positions="{x:Null}" AutoDetectTypes="False" CSVParsing="True" ColumnSeparators=";" DataTable="[dt_datatable]" DisplayName="Generate Data Table From Text" sap:VirtualizedContainerService.HintSize="388,201" sap2010:WorkflowViewState.IdRef="GenerateDataTable_1" Input="[o_student]" UseColumnHeader="True" />
-    <ui:WriteRange AddHeaders="True" DataTable="[dt_datatable]" DisplayName="Write Range Workbook" sap:VirtualizedContainerService.HintSize="388,116" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="Sheet1" StartingCell="A1" WorkbookPath="Result.xlsx" />
+    <ui:ReadTextFile File="{x:Null}" Content="[o_student]" DisplayName="Read Text File - Creating text file with required data and create variable" FileName="Text File.txt" sap:VirtualizedContainerService.HintSize="388,80" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
+    <ui:GenerateDataTable ColumnSizes="{x:Null}" NewLineSeparator="{x:Null}" Positions="{x:Null}" AutoDetectTypes="False" CSVParsing="True" ColumnSeparators=";" DataTable="[dt_datatable]" DisplayName="Generate Data Table From Text - assigning the data from text file to data table" sap:VirtualizedContainerService.HintSize="388,201" sap2010:WorkflowViewState.IdRef="GenerateDataTable_1" Input="[o_student]" UseColumnHeader="True" />
+    <ui:WriteRange AddHeaders="True" DataTable="[dt_datatable]" DisplayName="Write Range Workbook - from datatable we are loading the data to excel sheet" sap:VirtualizedContainerService.HintSize="388,116" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="Sheet1" StartingCell="A1" WorkbookPath="Result.xlsx" />
   </Sequence>
 </Activity>
