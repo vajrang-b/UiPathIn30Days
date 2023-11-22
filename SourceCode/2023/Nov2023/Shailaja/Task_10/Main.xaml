@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="588,963" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="549,1443" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -72,9 +72,9 @@
       <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="" DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="559,1026" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Read the values from the input dailogue box and store the values in Array and write into text file through the index values" DisplayName="SwitchActivity" sap:VirtualizedContainerService.HintSize="559,1378" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
-      <Variable x:TypeArguments="x:Int32" Name="ichoiceinput" />
+      <Variable x:TypeArguments="x:Int32" Name="userinput" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -82,21 +82,25 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:InputDialog Options="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="497,292" sap2010:WorkflowViewState.IdRef="InputDialog_1" IsPassword="False" Label="please enter number between  1 to 7" OptionsString="1;2;3;4;5;6;7" Title="Test choice">
+    <ui:LogMessage DisplayName="logBegin" sap:VirtualizedContainerService.HintSize="497,141" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;POC for Choice statement&quot;]" />
+    <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="IDSelectdayNumber" sap:VirtualizedContainerService.HintSize="497,239" sap2010:WorkflowViewState.IdRef="InputDialog_1" IsPassword="False" Label="[&quot;Please enter number between  1 to 7&quot; +vbNewLine+&quot;1-Sunday&quot;+vbNewLine+&quot;2- Monday&quot;+vbNewLine+&quot;3-Tuesday&quot;+vbNewLine+&quot;4-Wednesday&quot;+vbNewLine+&quot;5-Thursday&quot;+vbNewLine+&quot;6-Friday&quot;+vbNewLine+&quot;7-Saturday&quot;+vbNewLine]" Title="Test choice">
       <ui:InputDialog.Result>
-        <OutArgument x:TypeArguments="x:Int32">[ichoiceinput]</OutArgument>
+        <OutArgument x:TypeArguments="x:Int32">[userinput]</OutArgument>
       </ui:InputDialog.Result>
     </ui:InputDialog>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="497,141" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[ichoiceinput]" />
-    <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="497,85" sap2010:WorkflowViewState.IdRef="MessageBox_2" Text="[ichoiceinput]" />
-    <Switch x:TypeArguments="x:Int32" DisplayName="Switch" Expression="[ichoiceinput]" sap:VirtualizedContainerService.HintSize="497,403" sap2010:WorkflowViewState.IdRef="Switch`1_1">
-      <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" x:Key="1" AutoCloseAfter="00:00:00" sap:VirtualizedContainerService.HintSize="334,85" sap2010:WorkflowViewState.IdRef="MessageBox_3" Text="[&quot;ichoiceinput 1&quot;]" />
-      <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" x:Key="2" AutoCloseAfter="00:00:00" sap:VirtualizedContainerService.HintSize="334,85" sap2010:WorkflowViewState.IdRef="MessageBox_4" Text="[&quot;ichoiceinput 2&quot;]" />
-      <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" x:Key="3" AutoCloseAfter="00:00:00" sap:VirtualizedContainerService.HintSize="334,85" sap2010:WorkflowViewState.IdRef="MessageBox_5" Text="[&quot;ichoiceinput 3&quot;]" />
-      <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" x:Key="4" AutoCloseAfter="00:00:00" sap:VirtualizedContainerService.HintSize="334,85" sap2010:WorkflowViewState.IdRef="MessageBox_6" Text="[&quot;ichoiceinput 4&quot;]" />
-      <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" x:Key="5" AutoCloseAfter="00:00:00" sap:VirtualizedContainerService.HintSize="334,85" sap2010:WorkflowViewState.IdRef="MessageBox_7" Text="[&quot;ichoiceinput 5&quot;]" />
-      <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" x:Key="6" AutoCloseAfter="00:00:00" sap:VirtualizedContainerService.HintSize="334,85" sap2010:WorkflowViewState.IdRef="MessageBox_8" Text="[&quot;ichoiceinput 6&quot;]" />
-      <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" x:Key="7" AutoCloseAfter="00:00:00" sap:VirtualizedContainerService.HintSize="334,85" sap2010:WorkflowViewState.IdRef="MessageBox_9" Text="[&quot;ichoiceinput 7&quot;]" />
+    <ui:LogMessage DisplayName="logUserInput" sap:VirtualizedContainerService.HintSize="497,141" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[userinput]" />
+    <Switch x:TypeArguments="x:Int32" DisplayName="WhenDayNum" Expression="[userinput]" sap:VirtualizedContainerService.HintSize="497,403" sap2010:WorkflowViewState.IdRef="Switch`1_1">
+      <Switch.Default>
+        <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="mbDefault" sap:VirtualizedContainerService.HintSize="334,85" sap2010:WorkflowViewState.IdRef="MessageBox_10" Text="[&quot;You didnt select the specified range value between 1 to 7 &quot;]" />
+      </Switch.Default>
+      <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" x:Key="1" AutoCloseAfter="00:00:00" DisplayName="mb1" sap:VirtualizedContainerService.HintSize="334,85" sap2010:WorkflowViewState.IdRef="MessageBox_3" Text="[&quot;Its Sunday Today&quot;]" />
+      <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" x:Key="2" AutoCloseAfter="00:00:00" DisplayName="mb2" sap:VirtualizedContainerService.HintSize="334,85" sap2010:WorkflowViewState.IdRef="MessageBox_4" Text="[&quot;Its Monday Today&quot;]" />
+      <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" x:Key="3" AutoCloseAfter="00:00:00" DisplayName="mb3" sap:VirtualizedContainerService.HintSize="334,85" sap2010:WorkflowViewState.IdRef="MessageBox_5" Text="[&quot;Its Tuesday Today&quot;]" />
+      <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" x:Key="4" AutoCloseAfter="00:00:00" DisplayName="mb4" sap:VirtualizedContainerService.HintSize="334,85" sap2010:WorkflowViewState.IdRef="MessageBox_6" Text="[&quot;Its Wednesday Today&quot;]" />
+      <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" x:Key="5" AutoCloseAfter="00:00:00" DisplayName="mb5" sap:VirtualizedContainerService.HintSize="334,85" sap2010:WorkflowViewState.IdRef="MessageBox_7" Text="[&quot;Its Thursday Today&quot;]" />
+      <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" x:Key="6" AutoCloseAfter="00:00:00" DisplayName="mb6" sap:VirtualizedContainerService.HintSize="334,85" sap2010:WorkflowViewState.IdRef="MessageBox_8" Text="[&quot;Its Friday Today&quot;]" />
+      <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" x:Key="7" AutoCloseAfter="00:00:00" DisplayName="mb7" sap:VirtualizedContainerService.HintSize="334,85" sap2010:WorkflowViewState.IdRef="MessageBox_9" Text="[&quot;Its Saturday Today&quot;]" />
     </Switch>
+    <ui:LogMessage DisplayName="logEnd" sap:VirtualizedContainerService.HintSize="497,141" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;End of the flow&quot;]" />
   </Sequence>
 </Activity>
