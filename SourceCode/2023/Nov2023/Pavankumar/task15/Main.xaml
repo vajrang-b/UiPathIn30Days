@@ -90,7 +90,7 @@
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="572.8,1007.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
-      <Variable x:TypeArguments="sd:DataTable" Name="Data" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dt_Read" />
       <Variable x:TypeArguments="x:Int32" Name="Index" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
@@ -98,8 +98,8 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:ReadRange AddHeaders="True" DataTable="[Data]" DisplayName="Read Range Workbook" sap:VirtualizedContainerService.HintSize="510.4,88" sap2010:WorkflowViewState.IdRef="ReadRange_1" Range="A1" SheetName="Sheet1" WorkbookPath="Input.xlsx" />
-    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="[Index]" DataTable="[Data]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="510.4,767.2" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+    <ui:ReadRange AddHeaders="True" DataTable="[dt_Read]" DisplayName="Read Range Workbook" sap:VirtualizedContainerService.HintSize="510.4,88" sap2010:WorkflowViewState.IdRef="ReadRange_1" Range="A1" SheetName="Sheet1" WorkbookPath="Input.xlsx" />
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="[Index]" DataTable="[dt_Read]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="510.4,767.2" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd:DataRow">
           <ActivityAction.Argument>
