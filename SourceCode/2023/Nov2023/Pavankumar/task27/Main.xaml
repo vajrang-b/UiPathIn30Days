@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="824,813.6" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="824,844.8" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -70,7 +70,7 @@
       <AssemblyReference>System.Private.Uri</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="696,748.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Guess the Random Number" DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="696,780" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Int32" Name="RandomNumber" />
       <Variable x:TypeArguments="x:Int32" Name="GuessNumber" />
@@ -78,6 +78,7 @@
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <StateMachine InitialState="{x:Reference __ReferenceID2}" DisplayName="State Machine" sap:VirtualizedContainerService.HintSize="633.6,636.8" sap2010:WorkflowViewState.IdRef="StateMachine_1">
@@ -155,9 +156,7 @@
                     <Transition.Action>
                       <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="333.6,85.6" sap2010:WorkflowViewState.IdRef="MessageBox_3" Text="[&quot;Guess Number smaller than the Random Number Try a Greater Value&quot;]" />
                     </Transition.Action>
-                    <Transition.Condition>
-                      <VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="GuessNumber&lt;RandomNumber" />
-                    </Transition.Condition>
+                    <Transition.Condition>[GuessNumber&lt;RandomNumber]</Transition.Condition>
                   </Transition>
                   <Transition DisplayName="Try Smaller" sap:VirtualizedContainerService.HintSize="448.8,510.4" sap2010:WorkflowViewState.IdRef="Transition_4">
                     <sap:WorkflowViewStateService.ViewState>
@@ -173,9 +172,7 @@
                     <Transition.Action>
                       <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="333.6,85.6" sap2010:WorkflowViewState.IdRef="MessageBox_4" Text="[&quot;Guess number is greater than Random number try a smaller value&quot;]" />
                     </Transition.Action>
-                    <Transition.Condition>
-                      <VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="GuessNumber&gt;RandomNumber" />
-                    </Transition.Condition>
+                    <Transition.Condition>[GuessNumber&gt;RandomNumber]</Transition.Condition>
                   </Transition>
                   <Transition DisplayName="Success" sap:VirtualizedContainerService.HintSize="448.8,510.4" sap2010:WorkflowViewState.IdRef="Transition_5">
                     <sap:WorkflowViewStateService.ViewState>
@@ -199,9 +196,7 @@
                     <Transition.Action>
                       <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="333.6,85.6" sap2010:WorkflowViewState.IdRef="MessageBox_5" Text="[&quot;congrats the system generated number is&quot;+RandomNumber.ToString]" />
                     </Transition.Action>
-                    <Transition.Condition>
-                      <VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="GuessNumber=RandomNumber" />
-                    </Transition.Condition>
+                    <Transition.Condition>[GuessNumber=RandomNumber]</Transition.Condition>
                   </Transition>
                 </State.Transitions>
               </State>
