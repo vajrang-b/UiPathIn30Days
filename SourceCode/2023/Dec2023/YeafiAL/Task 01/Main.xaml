@@ -66,7 +66,7 @@
       <AssemblyReference>UiPath.Workflow</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Add Input Dialog Box and give the input&#xD;&#xA;Add Message Box to display the message" sap:VirtualizedContainerService.HintSize="450,524" sap2010:WorkflowViewState.IdRef="Sequence_2">
+  <Sequence sap2010:Annotation.AnnotationText="Add Input Dialog Box and give the input&#xD;&#xA;Add Message Box to display the message" sap:VirtualizedContainerService.HintSize="450,600" sap2010:WorkflowViewState.IdRef="Sequence_2">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="Input" />
     </Sequence.Variables>
@@ -76,11 +76,17 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="388,243.33333333333334" sap2010:WorkflowViewState.IdRef="InputDialog_1" IsPassword="False" Label="Please enter your input" Title="Welcome Message">
+    <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="Input Dialog - Enter WelcomeMessage-Input Variable" sap:VirtualizedContainerService.HintSize="388,243.33333333333334" sap2010:WorkflowViewState.IdRef="InputDialog_1" IsPassword="False" Label="Please enter your input" Title="Welcome Message">
       <ui:InputDialog.Result>
         <OutArgument x:TypeArguments="x:String">[Input]</OutArgument>
       </ui:InputDialog.Result>
     </ui:InputDialog>
-    <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="388,86" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[&quot;Hello! &quot; + Input + &quot; This is Shirley, the chatbot, how may I help you today?&quot;]" />
+    <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" sap2010:Annotation.AnnotationText="Hello! Welcome to Augmedix! (input) + This is Shirley, the chatbot. How may I help you today? - Message to display&#xD;&#xA;" AutoCloseAfter="00:00:00" DisplayName="Message Box -Display WelcomeMessage" sap:VirtualizedContainerService.HintSize="388,162" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[&quot;Hello! &quot; + Input + &quot; This is Shirley, the chatbot, how may I help you today?&quot;]">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:MessageBox>
   </Sequence>
 </Activity>
