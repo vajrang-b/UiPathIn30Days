@@ -14,7 +14,7 @@ using UiPath.UIAutomationNext.API.Models;
 using UiPath.UIAutomationNext.Enums;
 using UiPath.CodedWorkflows.DescriptorIntegration;
 
-namespace TASK20
+namespace Task21
 {
     public partial class CodedWorkflow : CodedWorkflowBase
     {
@@ -31,14 +31,14 @@ namespace TASK20
     }
 }
 
-namespace TASK20.ObjectRepository
+namespace Task21.ObjectRepository
 {
     public static class Descriptors
     {
     }
 }
 
-namespace TASK20._Implementation
+namespace Task21._Implementation
 {
     internal class ScreenDescriptorDefinition : IScreenDescriptorDefinition
     {
