@@ -14,13 +14,13 @@ using UiPath.UIAutomationNext.API.Models;
 using UiPath.UIAutomationNext.Enums;
 using UiPath.CodedWorkflows.DescriptorIntegration;
 
-namespace Task22
+namespace TASK22
 {
     public partial class CodedWorkflow : CodedWorkflowBase
     {
         public CodedWorkflow()
         {
-            _ = new System.Type[]{typeof(UiPath.Testing.API.ITestingService), typeof(UiPath.UIAutomationNext.API.Contracts.IUiAutomationAppService), typeof(UiPath.Core.Activities.API.ISystemService)};
+            _ = new System.Type[]{typeof(UiPath.UIAutomationNext.API.Contracts.IUiAutomationAppService), typeof(UiPath.Core.Activities.API.ISystemService), typeof(UiPath.Testing.API.ITestingService)};
         }
 
         protected UiPath.Core.Activities.API.ISystemService system { get => serviceContainer.Resolve<UiPath.Core.Activities.API.ISystemService>(); }
@@ -31,14 +31,14 @@ namespace Task22
     }
 }
 
-namespace Task22.ObjectRepository
+namespace TASK22.ObjectRepository
 {
     public static class Descriptors
     {
     }
 }
 
-namespace Task22._Implementation
+namespace TASK22._Implementation
 {
     internal class ScreenDescriptorDefinition : IScreenDescriptorDefinition
     {
