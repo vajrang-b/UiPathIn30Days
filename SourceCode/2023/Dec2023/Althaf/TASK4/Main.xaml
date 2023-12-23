@@ -78,7 +78,7 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="387.2,142.4" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;EXECUTION HAS STARTED&quot;]" />
-    <Flowchart sap:VirtualizedContainerService.HintSize="387.2,52.8" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+    <Flowchart DisplayName="Flowchart to find leap year" sap:VirtualizedContainerService.HintSize="387.2,52.8" sap2010:WorkflowViewState.IdRef="Flowchart_1">
       <Flowchart.Variables>
         <Variable x:TypeArguments="x:Int32" Name="YEAR" />
       </Flowchart.Variables>
@@ -97,11 +97,11 @@
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <av:Point x:Key="ShapeLocation">200,113.60000000000001</av:Point>
-            <av:Size x:Key="ShapeSize">211.2,52.8</av:Size>
+            <av:Size x:Key="ShapeSize">200,52.8</av:Size>
             <av:PointCollection x:Key="ConnectorLocation">300,166.4 300,206.4</av:PointCollection>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="INPUT FOR LEAP YEAR" sap:VirtualizedContainerService.HintSize="211.2,52.8" sap2010:WorkflowViewState.IdRef="InputDialog_1" IsPassword="False" Label="PLEASE TYPE THE YEAR" Title="LEAP YEAR">
+        <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="INPUT FOR LEAP YEAR" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="InputDialog_1" IsPassword="False" Label="PLEASE TYPE THE YEAR" Title="LEAP YEAR">
           <ui:InputDialog.Result>
             <OutArgument x:TypeArguments="x:Int32">[YEAR]</OutArgument>
           </ui:InputDialog.Result>
@@ -112,10 +112,7 @@
           </sap:WorkflowViewStateService.ViewState>
         </ui:InputDialog>
         <FlowStep.Next>
-          <FlowDecision x:Name="__ReferenceID0" DisplayName="Flow Decision" sap:VirtualizedContainerService.HintSize="79.2,87.2" sap2010:WorkflowViewState.IdRef="FlowDecision_1">
-            <FlowDecision.Condition>
-              <VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="YEAR mod 4=0" />
-            </FlowDecision.Condition>
+          <FlowDecision x:Name="__ReferenceID0" Condition="[YEAR mod 4=0]" DisplayName="Flow Decision" sap:VirtualizedContainerService.HintSize="79.2,87.2" sap2010:WorkflowViewState.IdRef="FlowDecision_1">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
