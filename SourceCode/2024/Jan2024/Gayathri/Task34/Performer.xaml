@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Performer" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1475,827" sap2010:WorkflowViewState.IdRef="Performer_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Performer" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1153.3333333333333,812.6666666666666" sap2010:WorkflowViewState.IdRef="Performer_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -79,7 +79,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Flowchart sap:VirtualizedContainerService.HintSize="634,637" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+    <Flowchart sap:VirtualizedContainerService.HintSize="634,637.3333333333334" sap2010:WorkflowViewState.IdRef="Flowchart_1">
       <Flowchart.Variables>
         <Variable x:TypeArguments="ui:QueueItem" Name="TransItem" />
       </Flowchart.Variables>
@@ -88,7 +88,7 @@
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
           <av:Point x:Key="ShapeLocation">270,2.5</av:Point>
-          <av:Size x:Key="ShapeSize">60,75</av:Size>
+          <av:Size x:Key="ShapeSize">60,74.66666666666667</av:Size>
           <av:PointCollection x:Key="ConnectorLocation">300,77.5 300,123.5</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
@@ -99,11 +99,11 @@
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <av:Point x:Key="ShapeLocation">200,123.5</av:Point>
-            <av:Size x:Key="ShapeSize">200,52</av:Size>
-            <av:PointCollection x:Key="ConnectorLocation">300,175.5 300,205.50000000000003 294.5,205.50000000000003 294.5,216.5</av:PointCollection>
+            <av:Size x:Key="ShapeSize">200,54</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">300,177.5 300,207.5 335,207.5 335,216.5</av:PointCollection>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <ui:GetQueueItem ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Get Transaction Item" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="GetQueueItem_1" QueueType="TaskInputValues" TransactionItem="[TransItem]">
+        <ui:GetQueueItem ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Get Transaction Item - Fetching Transaction item" sap:VirtualizedContainerService.HintSize="200,54" sap2010:WorkflowViewState.IdRef="GetQueueItem_1" QueueType="TaskInputValues" TransactionItem="[TransItem]">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -111,16 +111,13 @@
           </sap:WorkflowViewStateService.ViewState>
         </ui:GetQueueItem>
         <FlowStep.Next>
-          <FlowDecision x:Name="__ReferenceID1" DisplayName="Flow Decision" sap:VirtualizedContainerService.HintSize="79,87" sap2010:WorkflowViewState.IdRef="FlowDecision_1">
-            <FlowDecision.Condition>
-              <VisualBasicValue x:TypeArguments="x:Boolean" DisplayName="Visual basic value" ExpressionText="TransItem IsNot Nothing" />
-            </FlowDecision.Condition>
+          <FlowDecision x:Name="__ReferenceID1" Condition="[TransItem IsNot Nothing]" DisplayName="Flow Decision- Check for TransItem" sap:VirtualizedContainerService.HintSize="160,86.66666666666667" sap2010:WorkflowViewState.IdRef="FlowDecision_1">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 <av:Point x:Key="ShapeLocation">255,216.5</av:Point>
-                <av:Size x:Key="ShapeSize">79,87</av:Size>
-                <av:PointCollection x:Key="FalseConnector">334,260 480,260 480,363.5</av:PointCollection>
+                <av:Size x:Key="ShapeSize">160,86.66666666666667</av:Size>
+                <av:PointCollection x:Key="FalseConnector">415,259.8333333333333 480,259.8333333333333 480,363.5</av:PointCollection>
                 <av:PointCollection x:Key="TrueConnector">255,260 160,260 160,319.5</av:PointCollection>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
@@ -129,54 +126,43 @@
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <av:Point x:Key="ShapeLocation">60,319.5</av:Point>
-                    <av:Size x:Key="ShapeSize">200,81</av:Size>
-                    <av:PointCollection x:Key="ConnectorLocation">60,360 30,360 30,149.5 200,149.5</av:PointCollection>
+                    <av:Size x:Key="ShapeSize">200,84.66666666666667</av:Size>
+                    <av:PointCollection x:Key="ConnectorLocation">60,361.8333333333333 30,361.8333333333333 30,150.5 200,150.5</av:PointCollection>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <Sequence sap:VirtualizedContainerService.HintSize="450,970" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                <Sequence DisplayName="Sequence - Invoking Addition &amp; Substraction xaml files" sap:VirtualizedContainerService.HintSize="450,987.3333333333335" sap2010:WorkflowViewState.IdRef="Sequence_2">
                   <Sequence.Variables>
-                    <Variable x:TypeArguments="x:Int32" Name="addResult" />
                     <Variable x:TypeArguments="x:Int32" Name="subResult" />
+                    <Variable x:TypeArguments="x:Int32" Name="addResult" />
                   </Sequence.Variables>
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Addition.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Addition.xaml">
+                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Addition.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,115.33333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Addition.xaml">
                     <ui:InvokeWorkflowFile.Arguments>
-                      <InArgument x:TypeArguments="x:Int32" x:Key="In_Num1">
-                        <VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="cint(TransItem.SpecificContent.GetValueOrDefault(&quot;Number1&quot;))" />
-                      </InArgument>
-                      <InArgument x:TypeArguments="x:Int32" x:Key="In_Num2">
-                        <VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="cint(TransItem.SpecificContent.GetValueOrDefault(&quot;Number2&quot;))" />
-                      </InArgument>
-                      <OutArgument x:TypeArguments="x:Int32" x:Key="Out_addResult">
-                        <VisualBasicReference x:TypeArguments="x:Int32" ExpressionText="addResult" />
-                      </OutArgument>
+                      <InArgument x:TypeArguments="x:Int32" x:Key="In_Num1">[cint(TransItem.SpecificContent.GetValueOrDefault("Number1"))]</InArgument>
+                      <InArgument x:TypeArguments="x:Int32" x:Key="In_Num2">[cint(TransItem.SpecificContent.GetValueOrDefault("Number2"))]</InArgument>
+                      <OutArgument x:TypeArguments="x:Int32" x:Key="Out_addResult">[addResult]</OutArgument>
                     </ui:InvokeWorkflowFile.Arguments>
                   </ui:InvokeWorkflowFile>
-                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="388,141" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[addResult]" />
-                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Substraction.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Substraction.xaml">
+                  <ui:LogMessage DisplayName="Log Message - Output Log" sap:VirtualizedContainerService.HintSize="388,144.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[addResult.ToString]" />
+                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Substraction.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,115.33333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Substraction.xaml">
                     <ui:InvokeWorkflowFile.Arguments>
-                      <InArgument x:TypeArguments="x:Int32" x:Key="In_Num1">
-                        <VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="cint(TransItem.SpecificContent.GetValueOrDefault(&quot;Number1&quot;))" />
-                      </InArgument>
-                      <InArgument x:TypeArguments="x:Int32" x:Key="In_Num2">
-                        <VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="cint(TransItem.SpecificContent.GetValueOrDefault(&quot;Number2&quot;))" />
-                      </InArgument>
-                      <OutArgument x:TypeArguments="x:Int32" x:Key="Out_subResult">
-                        <VisualBasicReference x:TypeArguments="x:Int32" ExpressionText="subResult" />
-                      </OutArgument>
+                      <InArgument x:TypeArguments="x:Int32" x:Key="In_Num1">[cint(TransItem.SpecificContent.GetValueOrDefault("Number1"))]</InArgument>
+                      <InArgument x:TypeArguments="x:Int32" x:Key="In_Num2">[cint(TransItem.SpecificContent.GetValueOrDefault("Number2"))]</InArgument>
+                      <OutArgument x:TypeArguments="x:Int32" x:Key="Out_subResult">[subResult]</OutArgument>
                     </ui:InvokeWorkflowFile.Arguments>
                   </ui:InvokeWorkflowFile>
-                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="388,141" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[subResult]" />
-                  <ui:SetTransactionStatus ContinueOnError="{x:Null}" Reason="{x:Null}" ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Set Transaction Status" ErrorType="Business" sap:VirtualizedContainerService.HintSize="388,191" sap2010:WorkflowViewState.IdRef="SetTransactionStatus_1" Status="Successful" TransactionItem="[TransItem]">
+                  <ui:LogMessage DisplayName="Log Message - Output Log" sap:VirtualizedContainerService.HintSize="388,144.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[subResult]" />
+                  <ui:SetTransactionStatus ContinueOnError="{x:Null}" Reason="{x:Null}" ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Set Transaction Status - Status Change" ErrorType="Business" sap:VirtualizedContainerService.HintSize="388,196.66666666666666" sap2010:WorkflowViewState.IdRef="SetTransactionStatus_1" Status="Successful" TransactionItem="[TransItem]">
                     <ui:SetTransactionStatus.Analytics>
                       <scg:Dictionary x:TypeArguments="x:String, InArgument" />
                     </ui:SetTransactionStatus.Analytics>
                     <ui:SetTransactionStatus.Output>
-                      <scg:Dictionary x:TypeArguments="x:String, InArgument" />
+                      <InArgument x:TypeArguments="x:Int32" x:Key="AddResult">[addResult]</InArgument>
+                      <InArgument x:TypeArguments="x:Int32" x:Key="SubResult">[subResult]</InArgument>
                     </ui:SetTransactionStatus.Output>
                   </ui:SetTransactionStatus>
                 </Sequence>
@@ -190,10 +176,10 @@
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <av:Point x:Key="ShapeLocation">380,363.5</av:Point>
-                    <av:Size x:Key="ShapeSize">200,52</av:Size>
+                    <av:Size x:Key="ShapeSize">200,54</av:Size>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Process is Completed&quot;]">
+                <ui:LogMessage DisplayName="Log Message - Confirmation Log" sap:VirtualizedContainerService.HintSize="200,54" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Process is Completed&quot;]">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
