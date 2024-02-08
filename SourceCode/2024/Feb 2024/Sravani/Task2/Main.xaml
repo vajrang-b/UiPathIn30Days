@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="592,1702.6666666666667" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="592,1664" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -70,11 +70,15 @@
       <AssemblyReference>System.Private.Uri</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="To Perform Arithmetic Operations" DisplayName="Arithmetic Operations " sap:VirtualizedContainerService.HintSize="496,1638" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="To Perform Arithmetic Operations" DisplayName="Arithmetic Operations " sap:VirtualizedContainerService.HintSize="540.6666666666666,1599.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Int32" Name="FirstNumber" />
       <Variable x:TypeArguments="x:Int32" Name="SecondNumber" />
       <Variable x:TypeArguments="x:Int32" Name="AdditionValue" />
+      <Variable x:TypeArguments="x:Int32" Name="SubtractionValue" />
+      <Variable x:TypeArguments="x:Int32" Name="MultiplicationValue" />
+      <Variable x:TypeArguments="x:String" Name="variable1" />
+      <Variable x:TypeArguments="x:String" Name="variable2" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -82,7 +86,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" sap2010:Annotation.AnnotationText="To get the First Operand value from User" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="434,276.6666666666667" sap2010:WorkflowViewState.IdRef="InputDialog_1" IsPassword="False" Label="Enter the value for  First Number" Title="Input  Operand1">
+    <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" sap2010:Annotation.AnnotationText="To get the First Operand value from User" DisplayName="Input Dialog-Input FirstNumber" sap:VirtualizedContainerService.HintSize="478.6666666666667,276.6666666666667" sap2010:WorkflowViewState.IdRef="InputDialog_1" IsPassword="False" Label="Enter the value for  First Number" Title="Input  Operand1">
       <ui:InputDialog.Result>
         <OutArgument x:TypeArguments="x:Int32">[FirstNumber]</OutArgument>
       </ui:InputDialog.Result>
@@ -92,7 +96,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:InputDialog>
-    <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" sap2010:Annotation.AnnotationText="To get the Second Operand value from User" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="434,276.6666666666667" sap2010:WorkflowViewState.IdRef="InputDialog_2" IsPassword="False" Label="Enter the value for Second Number" Title="Input Operand2">
+    <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" sap2010:Annotation.AnnotationText="To get the Second Operand value from User" DisplayName="Input Dialog-Input Second Number" sap:VirtualizedContainerService.HintSize="478.6666666666667,276.6666666666667" sap2010:WorkflowViewState.IdRef="InputDialog_2" IsPassword="False" Label="Enter the value for Second Number" Title="Input Operand2">
       <ui:InputDialog.Result>
         <OutArgument x:TypeArguments="x:Int32">[SecondNumber]</OutArgument>
       </ui:InputDialog.Result>
@@ -102,30 +106,51 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:InputDialog>
-    <Assign sap:VirtualizedContainerService.HintSize="434,85.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_1">
-      <Assign.To>
-        <OutArgument x:TypeArguments="x:Int32">[AdditionValue]</OutArgument>
-      </Assign.To>
-      <Assign.Value>
-        <InArgument x:TypeArguments="x:Int32">[FirstNumber+SecondNumber]</InArgument>
-      </Assign.Value>
-    </Assign>
-    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="434,92" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="[&quot;The Value for addition of two numbers is &quot;+AdditionValue.toString()]" />
-    <ui:LogMessage sap2010:Annotation.AnnotationText="Log the result of addition of two operands" DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,175.33333333333334" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[FirstNumber+SecondNumber]">
+    <ui:MultipleAssign DisplayName="Calculation" sap:VirtualizedContainerService.HintSize="478.6666666666667,178.66666666666666" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+      <ui:MultipleAssign.AssignOperations>
+        <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:Int32">[AdditionValue]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:Int32">[FirstNumber+SecondNumber]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:Int32">[SubtractionValue]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:Int32">[FirstNumber-SecondNumber]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_3">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:Int32">[MultiplicationValue]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:Int32">[FirstNumber*SecondNumber]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+        </scg:List>
+      </ui:MultipleAssign.AssignOperations>
+    </ui:MultipleAssign>
+    <ui:LogMessage sap2010:Annotation.AnnotationText="Log the result of addition of two operands" DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="478.6666666666667,175.33333333333334" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;The Addition of given two operands is &quot;+AdditionValue.toString()]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:LogMessage>
-    <ui:LogMessage sap2010:Annotation.AnnotationText="Log the result of Subtraction of two operands" DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,175.33333333333334" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[FirstNumber-SecondNumber]">
+    <ui:LogMessage sap2010:Annotation.AnnotationText="Log the result of Subtraction of two operands" DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="478.6666666666667,175.33333333333334" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;The Subtraction of two operands is &quot;+SubtractionValue.ToString()]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:LogMessage>
-    <ui:LogMessage sap2010:Annotation.AnnotationText="Log the result of multiplication of two operands" DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,175.33333333333334" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[FirstNumber*SecondNumber]">
+    <ui:LogMessage sap2010:Annotation.AnnotationText="Log the result of multiplication of two operands" DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="478.6666666666667,175.33333333333334" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;The Multiplication of given two Operands is &quot;+MultiplicationValue.ToString()]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
