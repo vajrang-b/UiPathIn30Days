@@ -83,11 +83,13 @@
       <AssemblyReference>GlobalVariablesT1PNoYwrqg</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="task9:&#xA;concatinate the first and last name&#xA;step 1: use 2 input dialog boxes&#xA;step 2: store the values in the form of arrey&#xA;step 3 : concanate the values in arrey&#xA;step 4: write the result in to text file" DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="496,1273" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="task9:&#xA;concatinate the first and last name&#xA;step 1: use 2 input dialog boxes&#xA;step 2: stor the values in the form of arrey&#xA;step 3 : concanate the values in arrey&#xA;step 4: write the result in to text file" DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="496,1273" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
-      <Variable x:TypeArguments="s:String[]" Name="firstname" />
-      <Variable x:TypeArguments="s:String[]" Name="lastname" />
+      <Variable x:TypeArguments="x:String" Name="firstname" />
+      <Variable x:TypeArguments="x:String" Name="lastname" />
       <Variable x:TypeArguments="s:String[]" Name="names" />
+      <Variable x:TypeArguments="s:String[]" Name="arr_firstname" />
+      <Variable x:TypeArguments="s:String[]" Name="arr_lastname" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -97,12 +99,12 @@
     </sap:WorkflowViewStateService.ViewState>
     <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="434,279" sap2010:WorkflowViewState.IdRef="InputDialog_1" IsPassword="False" Label="enter the first name" Title="enter information">
       <ui:InputDialog.Result>
-        <OutArgument x:TypeArguments="x:Object">[arr_firstname]</OutArgument>
+        <OutArgument x:TypeArguments="s:String[]">[arr_firstname]</OutArgument>
       </ui:InputDialog.Result>
     </ui:InputDialog>
     <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="434,279" sap2010:WorkflowViewState.IdRef="InputDialog_2" IsPassword="False" Label="enter last name" Title="enter information">
       <ui:InputDialog.Result>
-        <OutArgument x:TypeArguments="s:String[]">[lastname]</OutArgument>
+        <OutArgument x:TypeArguments="s:String[]">[arr_lastname]</OutArgument>
       </ui:InputDialog.Result>
     </ui:InputDialog>
     <Assign sap:VirtualizedContainerService.HintSize="434,122" sap2010:WorkflowViewState.IdRef="Assign_1">
