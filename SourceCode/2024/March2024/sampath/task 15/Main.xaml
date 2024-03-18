@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap2010:Annotation.AnnotationText="UPTF00000088eyI8SGVscExpbms+a19fQmFja2luZ0ZpZWxkIjpudWxsLCI8SW5pdGlhbFRvb2x0aXA+a19fQmFja2luZ0ZpZWxkIjpudWxsLCI8VmVyc2lvbj5rX19CYWNraW5nRmllbGQiOjF9" sap:VirtualizedContainerService.HintSize="680,1124" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap2010:Annotation.AnnotationText="UPTF00000088eyI8SGVscExpbms+a19fQmFja2luZ0ZpZWxkIjpudWxsLCI8SW5pdGlhbFRvb2x0aXA+a19fQmFja2luZ0ZpZWxkIjpudWxsLCI8VmVyc2lvbj5rX19CYWNraW5nRmllbGQiOjF9" sap:VirtualizedContainerService.HintSize="680,1066" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -91,7 +91,7 @@
       <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="step 1:read the input file&#xA; step2: read the values and concatinate it&#xA;step 3: write the result in to excel" DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="592,1059" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Task : 15 : Concatinate the first name, Middle name, Last Name from the input excel and writing the results into full Name Column&#xD;&#xA;step 1:&#xD;&#xA;- create a read range activity and assign the input sheet and create a datatable variable called results&#xD;&#xA;step 2: &#xD;&#xA;- use foreachrow activity and assign full name column by concatinating first middle and last names&#xD;&#xA;step 3:&#xD;&#xA;- use assign activity to assign fullname row &#xD;&#xA;- use write line activity to write full name &#xD;&#xA;step 4:&#xD;&#xA;- use wright cell activity to wright full name in the fullname row" DisplayName="Task : 15 : Concatinate the first name, Middle name, Last Name from the input excel and writing the results into full Name Column" sap:VirtualizedContainerService.HintSize="616,1001" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="results" />
       <Variable x:TypeArguments="x:Int32" Name="cellid" />
@@ -99,17 +99,17 @@
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">False</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[results]" DisplayName="Read Range Workbook" sap:VirtualizedContainerService.HintSize="530,128" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="sheet1" WorkbookPath="input.xlsx" />
-    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="[cellid]" DataTable="[results]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="530,786" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+    <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[results]" DisplayName="Read Range Workbook" sap:VirtualizedContainerService.HintSize="554,128" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="sheet1" WorkbookPath="input.xlsx" />
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="[cellid]" DataTable="[results]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="554,785" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd:DataRow">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="496,599" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Condition" sap:VirtualizedContainerService.HintSize="496,598" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:String" Name="fullname" />
             </Sequence.Variables>
@@ -118,21 +118,16 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <Assign sap:VirtualizedContainerService.HintSize="434,123" sap2010:WorkflowViewState.IdRef="Assign_1">
+            <Assign DisplayName="Assigning full name column" sap:VirtualizedContainerService.HintSize="434,122" sap2010:WorkflowViewState.IdRef="Assign_1">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:String">[fullname]</OutArgument>
               </Assign.To>
               <Assign.Value>
-                <InArgument x:TypeArguments="x:String" xml:space="preserve">[CurrentRow("first_name
-").ToString+CurrentRow("middle_name
-
-").ToString+CurrentRow("full_name
-
-").ToString]</InArgument>
+                <InArgument x:TypeArguments="x:String">[CurrentRow("first_name").ToString+" "+CurrentRow("middle_name").ToString+" "+CurrentRow("last_name").ToString]</InArgument>
               </Assign.Value>
             </Assign>
-            <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="434,130" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[fullname]" />
-            <Assign sap:VirtualizedContainerService.HintSize="434,122" sap2010:WorkflowViewState.IdRef="Assign_2">
+            <WriteLine DisplayName="Full name column" sap:VirtualizedContainerService.HintSize="434,130" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[fullname]" />
+            <Assign DisplayName="to enter in below cell" sap:VirtualizedContainerService.HintSize="434,122" sap2010:WorkflowViewState.IdRef="Assign_2">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:Int32">[cellid]</OutArgument>
               </Assign.To>
@@ -140,7 +135,7 @@
                 <InArgument x:TypeArguments="x:Int32">[cellid+2]</InArgument>
               </Assign.Value>
             </Assign>
-            <ui:WriteCell Cell="[&quot;D&quot;+cellid.ToString]" DisplayName="Write Cell Workbook" sap:VirtualizedContainerService.HintSize="434,139" sap2010:WorkflowViewState.IdRef="WriteCell_1" SheetName="sheet1" Text="[fullname]" WorkbookPath="input.xlsx" />
+            <ui:WriteCell Cell="[&quot;D&quot;+cellid.ToString]" DisplayName="Write  full name in Cell " sap:VirtualizedContainerService.HintSize="434,139" sap2010:WorkflowViewState.IdRef="WriteCell_1" SheetName="sheet1" Text="[fullname]" WorkbookPath="input.xlsx" />
           </Sequence>
         </ActivityAction>
       </ui:ForEachRow.Body>
