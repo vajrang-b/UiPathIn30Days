@@ -93,6 +93,7 @@
       <AssemblyReference>UiPath.Mail.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>GlobalVariablesT1PNoYwrqg</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="Get Password for the emails and display first 5 emails by using for each" sap:VirtualizedContainerService.HintSize="574,792.6666666666666" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -105,7 +106,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence sap2010:Annotation.AnnotationText="step1:use get password to access the mail&#xD;&#xA;step2:use imap to" sap:VirtualizedContainerService.HintSize="512,704.6666666666666" sap2010:WorkflowViewState.IdRef="Sequence_3">
+    <Sequence sap2010:Annotation.AnnotationText="step1:use get password to access the mail&#xD;&#xA;step2:use imap to receive the emails&#xD;&#xA;step3:use for each to get top 5 emails&#xD;&#xA;step4:use message box to display subject" sap:VirtualizedContainerService.HintSize="512,704.6666666666666" sap2010:WorkflowViewState.IdRef="Sequence_3">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -114,7 +115,7 @@
       </sap:WorkflowViewStateService.ViewState>
       <ui:GetPassword DisplayName="Get Password" sap:VirtualizedContainerService.HintSize="450,65.33333333333333" sap2010:WorkflowViewState.IdRef="GetPassword_1" ProtectedPassword="AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAsAfToVenskqynL5ECljkHwAAAAACAAAAAAAQZgAAAAEAACAAAAACUuQYhJYTaU5yu1QFvhAoq6pio1qmddoLB2vF4mtRJgAAAAAOgAAAAAIAACAAAABm6Giy6guLXNwZyc6TICussd6S+xqElpfMkzs5GAoSeCAAAAAsgtghY7rXf69LgRlXEEBam0kqy98YaAsHW7oSgmyIokAAAADcG55Afhf3clfhsXrz2G+ZTlIcznWUa+xV9xlbBWFQPBCqBoJeMYyn5F/+5Dad4BbKGyRIEN9ybfe8jIUpQz4h" Result="[password]" />
       <ui:GetIMAPMailMessages ClientName="{x:Null}" ClientVersion="{x:Null}" FilterExpression="{x:Null}" SecurePassword="{x:Null}" TimeoutMS="{x:Null}" UseOAuth="{x:Null}" DeleteMessages="False" DisplayName="Get IMAP Mail Messages" Email="prudhvi.uk2@gmail.com" EnableSSL="True" FilterExpressionCharacterSet="US-ASCII" sap:VirtualizedContainerService.HintSize="450,65.33333333333333" sap2010:WorkflowViewState.IdRef="GetIMAPMailMessages_1" IgnoreCRL="False" MailFolder="Inbox" MarkAsRead="False" Messages="[getmails]" OnlyUnreadMessages="True" OrderByDate="NewestFirst" Password="[password]" Port="993" SecureConnection="Auto" Server="imap.gmail.com" Top="5" />
-      <ui:ForEach x:TypeArguments="snm:MailMessage" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="450,384.6666666666667" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[getmails]">
+      <ui:ForEach x:TypeArguments="snm:MailMessage" CurrentIndex="{x:Null}" DisplayName="use foeach to get list of emails" sap:VirtualizedContainerService.HintSize="450,384.6666666666667" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[getmails]">
         <ui:ForEach.Body>
           <ActivityAction x:TypeArguments="snm:MailMessage">
             <ActivityAction.Argument>
@@ -126,7 +127,7 @@
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="354,109.33333333333333" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[currentMailMessage.Date]" />
+              <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="use message box to get messages" sap:VirtualizedContainerService.HintSize="354,109.33333333333333" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[currentMailMessage.Date]" />
             </Sequence>
           </ActivityAction>
         </ui:ForEach.Body>
