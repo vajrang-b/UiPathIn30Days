@@ -14,6 +14,7 @@ param (
 . $PSScriptRoot\UiPathAnalyze.ps1
 . $PSScriptRoot\GenerateGptResponse.ps1
 . $PSScriptRoot\GitHubFunctions.ps1
+. $PSScriptRoot\llm.ps1
 
 Write-Host "current System role $systemRole"
 
@@ -70,6 +71,14 @@ if ($count -gt 0 ) {
 
 
         <#  enable this block  if gpt code required#>
+
+        # using local llm 
+
+        $GptComment = GenerateLlmSummary -prompt (($systemRole, $Comment) -join "`n")
+        $Comment = $GptComment
+
+# using local llm ends
+
         $AddCommentResponse = Add-GitHubPRComment -Token $YOUR_PERSONAL_ACCESS_TOKEN -Owner $githubOwner -Repo $githubRepoName -PullRequestId $pull_number -Comment $Comment
         Write-Host $AddCommentResponse
         #downloadProjectDependencies -ProjectJsonPath $ProjectPath
