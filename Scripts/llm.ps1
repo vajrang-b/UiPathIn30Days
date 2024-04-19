@@ -21,7 +21,7 @@
     try {
 
         # Make the POST request
-        $response = Invoke-WebRequest -Uri $url -Method Post -ContentType $contentType -Body $data
+        $response = Invoke-WebRequest -Uri $url -Method Post -ContentType $contentType -Body $data -UseBasicParsing
 
         # Output the raw response content for inspection
         $response.Content
