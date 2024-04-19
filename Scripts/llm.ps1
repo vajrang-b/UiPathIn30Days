@@ -17,7 +17,7 @@
     "stream": false
 }
 "@
-Write-Host $prompt
+    Write-Host $prompt
     # Make the POST request
     $response = Invoke-WebRequest -Uri $url -Method Post -ContentType $contentType -Body $data
 
