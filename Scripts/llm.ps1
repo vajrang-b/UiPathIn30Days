@@ -17,7 +17,7 @@
     "stream": false
 }
 "@
-    Write-Host $prompt66
+    Write-Host $data
     try {
 
         # Make the POST request
