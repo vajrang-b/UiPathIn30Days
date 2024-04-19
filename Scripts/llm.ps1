@@ -1,4 +1,4 @@
-﻿function Invoke-ModelAPI {
+﻿function GenerateLlmSummary {
     param (
         [string]$prompt
     )
