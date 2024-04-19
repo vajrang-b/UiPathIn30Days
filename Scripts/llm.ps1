@@ -23,17 +23,15 @@
         # Make the POST request
         $response = Invoke-WebRequest -Uri $url -Method Post -ContentType $contentType -Body $data -UseBasicParsing
 
-        # Output the raw response content for inspection
-        $response.Content
-
         # Decode the JSON response content
         $responseJson = ConvertFrom-Json $response.Content
-        Write-Host "value from phi $responseJson.response" 
-        # Access the value of the "response" key
-        $responseValue = $responseJson.response
 
-       Write-Host "value from phi"
+        # Access the value of the "response" key and convert it to string
+        $responseValue = $responseJson.response | Out-String
+
+        Write-Host "Value from phi:"
         Write-Host $responseValue
+
         # Return the value of the "response" key
         return $responseValue
     }
