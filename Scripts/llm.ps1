@@ -18,8 +18,13 @@
 }
 "@
     Write-Host $prompt
+
+
     # Make the POST request
     $response = Invoke-WebRequest -Uri $url -Method Post -ContentType $contentType -Body $data
+
+    # Output the raw response content for inspection
+$response.Content
 
     # Decode the JSON response content
     $responseJson = ConvertFrom-Json $response.Content
