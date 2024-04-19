@@ -82,6 +82,7 @@ if ($count -gt 0 ) {
 
         Write-Host "final gpt comment is $GptComment"
         $Comment = $GptComment
+        $comment = $project + $comment
 
         Write-Host "final  comment is $Comment"
 
