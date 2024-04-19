@@ -37,6 +37,6 @@
     }
     catch {
         # Handle any exceptions that occur during the request
-        Write-Error "An error occurred while making the web request: $_"
+        Write-Error "An error occurred while making the web request: $_" 
     }
 }
