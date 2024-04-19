@@ -32,6 +32,8 @@
         # Access the value of the "response" key
         $responseValue = $responseJson.response
 
+       Write-Host "value from phi"
+        Write-Host $responseValue
         # Return the value of the "response" key
         return $responseValue
     }
