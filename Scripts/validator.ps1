@@ -79,6 +79,8 @@ if ($count -gt 0 ) {
         $GptComment = GenerateLlmSummary -prompt (( $Comment) )
         $Comment = $GptComment
 
+        Write-Host "final gpt comment is $Comment"
+
 # using local llm ends
 
         $AddCommentResponse = Add-GitHubPRComment -Token $YOUR_PERSONAL_ACCESS_TOKEN -Owner $githubOwner -Repo $githubRepoName -PullRequestId $pull_number -Comment $Comment
