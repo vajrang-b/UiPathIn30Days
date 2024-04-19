@@ -58,7 +58,7 @@ if ($count -gt 0 ) {
         $Comment = UiPathAnalyze -ProjectJsonPath $ProjectPath
         Write-Host $Comment
        
-       <#  enable this block  if gpt code required#>
+        <#  enable this block  if gpt code required#>
 
 
         # $GptComment = GenerateGptResponse -GptApiKey $GptApiKey -errorDetails  $Comment -systemRole $systemRole
@@ -75,16 +75,16 @@ if ($count -gt 0 ) {
         # using local llm 
 
         # $GptComment = GenerateLlmSummary -prompt (($systemRole, $Comment) -join "|")
-       $comment = $comment -replace "`r|`n", "" -replace '\s+', ' '
+        $comment = $comment -replace "`r|`n", "" -replace '\s+', ' '
 
         $GptComment = GenerateLlmSummary -prompt (( $Comment) )
 
- Write-Host "final gpt comment is $GptComment"
+        Write-Host "final gpt comment is $GptComment"
         $Comment = $GptComment
 
         Write-Host "final  comment is $Comment"
 
-# using local llm ends
+        # using local llm ends
 
         $AddCommentResponse = Add-GitHubPRComment -Token $YOUR_PERSONAL_ACCESS_TOKEN -Owner $githubOwner -Repo $githubRepoName -PullRequestId $pull_number -Comment $Comment
         Write-Host $AddCommentResponse

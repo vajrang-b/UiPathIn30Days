@@ -30,7 +30,7 @@
         $responseJson = ConvertFrom-Json $response.Content
 
         # Access the value of the "response" key
-        $responseValue = $responseJson.response
+        $responseValue = $responseJson.response.value
 
        Write-Host "value from phi"
         Write-Host $responseValue
