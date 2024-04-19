@@ -13,7 +13,7 @@
     $data = @"
 {
     "model": "phi",
-    "prompt": "$($prompt -replace '"', '\"')",
+    "prompt": "Hello",
     "stream": false
 }
 "@
