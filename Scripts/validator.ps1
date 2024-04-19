@@ -76,7 +76,7 @@ if ($count -gt 0 ) {
 
         # $GptComment = GenerateLlmSummary -prompt (($systemRole, $Comment) -join "|")
        
-        $GptComment = GenerateLlmSummary -prompt (( $Comment) )
+        $GptComment = GenerateLlmSummary -prompt (( $Comment) -replace "`r|`n", "" )
         $Comment = $GptComment
 
 # using local llm ends
