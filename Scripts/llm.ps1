@@ -18,13 +18,13 @@
 }
 "@
     Write-Host $prompt
-
+    try {
 
     # Make the POST request
     $response = Invoke-WebRequest -Uri $url -Method Post -ContentType $contentType -Body $data
 
     # Output the raw response content for inspection
-$response.Content
+    $response.Content
 
     # Decode the JSON response content
     $responseJson = ConvertFrom-Json $response.Content
@@ -34,4 +34,7 @@ $response.Content
 
     # Return the value of the "response" key
     return $responseValue
+} catch {
+    # Handle any exceptions that occur during the request
+    Write-Error "An error occurred while making the web request: $_"
 }
