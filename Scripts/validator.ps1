@@ -76,10 +76,13 @@ if ($count -gt 0 ) {
 
         # $GptComment = GenerateLlmSummary -prompt (($systemRole, $Comment) -join "|")
        $comment = $comment -replace "`r|`n", "" -replace '\s+', ' '
+
         $GptComment = GenerateLlmSummary -prompt (( $Comment) )
+
+ Write-Host "final gpt comment is $GptComment"
         $Comment = $GptComment
 
-        Write-Host "final gpt comment is $Comment"
+        Write-Host "final  comment is $Comment"
 
 # using local llm ends
 
