@@ -77,7 +77,7 @@ function CleanAnyalyseResults {
     }
 
     # Convert the hashtable to JSON for the desired format
-    $jsonOutput = $descriptionRecommendations | ConvertTo-Json
+    $jsonOutput = $descriptionRecommendations | ConvertTo-Json -EscapeHandling EscapeHtml
 
     # Output the JSON representation
     return $jsonOutput
