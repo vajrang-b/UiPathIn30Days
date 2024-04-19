@@ -12,7 +12,7 @@
     # Define the data
     $data = @"
 {
-    "model": "phi",
+    "model": "llama2",
     "prompt": "$($prompt)",
     "stream": false
 }
@@ -25,6 +25,7 @@
 
         # Decode the JSON response content
         $responseJson = ConvertFrom-Json $response.Content
+        Write-Host "value from llama2 $responseJson"
 
         # Access the value of the "response" key and convert it to string
         $responseValue = $responseJson.response | Out-String
