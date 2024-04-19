@@ -28,9 +28,9 @@
 
         # Decode the JSON response content
         $responseJson = ConvertFrom-Json $response.Content
-
+        Write-Host "value from phi $responseJson" 
         # Access the value of the "response" key
-        $responseValue = $responseJson.response.value
+        $responseValue = $responseJson.response
 
        Write-Host "value from phi"
         Write-Host $responseValue
