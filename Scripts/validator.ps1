@@ -78,10 +78,11 @@ if ($count -gt 0 ) {
         $comment = $comment -replace "[\r\n{}\[\]`"\\]", "" -replace '\s+', ' '
 
 
-        $GptComment = GenerateLlmSummary -prompt (("generate summary  $Comment") )
+        $GptComment = GenerateLlmSummary -prompt (("$systemRole  $Comment") )
 
         Write-Host "final gpt comment is $GptComment"
         $Comment = $GptComment
+        $comment = "$project`n$comment"
 
         Write-Host "final  comment is $Comment"
 
