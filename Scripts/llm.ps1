@@ -12,7 +12,7 @@
     # Define the data
     $data = @"
 {
-    "model": "llama3",
+    "model": "llama2",
     "prompt": "$($prompt)",
     "stream": false
 }
