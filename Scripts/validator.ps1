@@ -74,7 +74,7 @@ if ($count -gt 0 ) {
 
         # using local llm 
 
-        $GptComment = GenerateLlmSummary -prompt (($systemRole, $Comment) -join "|")
+        $GptComment = GenerateLlmSummary -prompt (($systemRole +" "+$Comment))
         $comment = $comment -replace "[\r\n{}\[\]`"\\]", "" -replace '\s+', ' '
 
 
