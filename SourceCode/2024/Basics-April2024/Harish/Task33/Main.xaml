@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap2010:Annotation.AnnotationText="UPTF00000088eyI8SGVscExpbms+a19fQmFja2luZ0ZpZWxkIjpudWxsLCI8SW5pdGlhbFRvb2x0aXA+a19fQmFja2luZ0ZpZWxkIjpudWxsLCI8VmVyc2lvbj5rX19CYWNraW5nRmllbGQiOjF9" sap:VirtualizedContainerService.HintSize="970,514" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap2010:Annotation.AnnotationText="UPTF00000088eyI8SGVscExpbms+a19fQmFja2luZ0ZpZWxkIjpudWxsLCI8SW5pdGlhbFRvb2x0aXA+a19fQmFja2luZ0ZpZWxkIjpudWxsLCI8VmVyc2lvbj5rX19CYWNraW5nRmllbGQiOjF9" sap:VirtualizedContainerService.HintSize="970,639" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -103,23 +103,53 @@
       <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
       <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.Watcher</AssemblyReference>
+      <AssemblyReference>System.IO.Packaging</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.AccessControl</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.DriveInfo</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="416,328" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="This process is used for Send Email to other Emails with Attachments" DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="496,574" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="Password" />
       <Variable x:TypeArguments="x:String" Name="In_password" />
+      <Variable x:TypeArguments="s:String[]" Name="Arry_Images" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:GetPassword DisplayName="Get Password" sap:VirtualizedContainerService.HintSize="354,65" sap2010:WorkflowViewState.IdRef="GetPassword_2" ProtectedPassword="AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA0pnLt3CjBkGPXDvzhw442QAAAAACAAAAAAAQZgAAAAEAACAAAABkFwDnjEoCQWMCmFbKyk0hIvUylujdlUnn8G1QqCZPxQAAAAAOgAAAAAIAACAAAABobiI18ke3t09Xubg/7aPFrxhzz5eDkGleY3/a0KCDoiAAAAC3KxetUjGjXbau3M6gvMa+SDSboboeCwdyWM2m9RofxEAAAABmD3wEB0aFhCY5mFoZUQ07EceOacrKPcgNVTx/qu8snND7bAlaE4hkt4cVgykOM2GAqd3GnbpSn9d3Qi3uKDMN" Result="[In_password]" />
-    <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" ContinueOnError="{x:Null}" From="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" ReplyTo="{x:Null}" Result="{x:Null}" SecurePassword="{x:Null}" UseOAuth="{x:Null}" Body="Test Mail" DisplayName="Send SMTP Mail Message" Email="harish.bojji@gmail.com" EnableSSL="True" sap:VirtualizedContainerService.HintSize="354,175" sap2010:WorkflowViewState.IdRef="SendMail_2" IgnoreCRL="False" IsBodyHtml="False" Password="[In_password]" Port="587" SecureConnection="Auto" Server="smtp.gmail.com" Subject="Test Mail" TimeoutMS="30000" To="harish.bojji@gmail.com">
+    <ui:GetPassword sap2010:Annotation.AnnotationText="This Activity is used to fetch the App Password " DisplayName="Get Password" sap:VirtualizedContainerService.HintSize="434,96" sap2010:WorkflowViewState.IdRef="GetPassword_2" ProtectedPassword="AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA0pnLt3CjBkGPXDvzhw442QAAAAACAAAAAAAQZgAAAAEAACAAAABkFwDnjEoCQWMCmFbKyk0hIvUylujdlUnn8G1QqCZPxQAAAAAOgAAAAAIAACAAAABobiI18ke3t09Xubg/7aPFrxhzz5eDkGleY3/a0KCDoiAAAAC3KxetUjGjXbau3M6gvMa+SDSboboeCwdyWM2m9RofxEAAAABmD3wEB0aFhCY5mFoZUQ07EceOacrKPcgNVTx/qu8snND7bAlaE4hkt4cVgykOM2GAqd3GnbpSn9d3Qi3uKDMN" Result="[In_password]">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:GetPassword>
+    <Assign sap2010:Annotation.AnnotationText="This Assign activity is used to get the list of attachments" sap:VirtualizedContainerService.HintSize="434,153" sap2010:WorkflowViewState.IdRef="Assign_1">
+      <Assign.To>
+        <OutArgument x:TypeArguments="s:String[]">[Arry_Images]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="s:String[]">[Directory.GetFiles("C:\Users\eharbxx\Downloads\Reports\Daily Reports")]</InArgument>
+      </Assign.Value>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </Assign>
+    <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" ContinueOnError="{x:Null}" From="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" ReplyTo="{x:Null}" Result="{x:Null}" SecurePassword="{x:Null}" UseOAuth="{x:Null}" sap2010:Annotation.AnnotationText="This Activity is used to send the mails with attachments " AttachmentsCollection="[Arry_Images]" Body="Sending with attachments plz check " DisplayName="Send SMTP Mail Message" Email="harish.bojji@gmail.com" EnableSSL="True" sap:VirtualizedContainerService.HintSize="434,206" sap2010:WorkflowViewState.IdRef="SendMail_2" IgnoreCRL="False" IsBodyHtml="False" Password="[In_password]" Port="587" SecureConnection="Auto" Server="smtp.gmail.com" Subject="Test Mail" TimeoutMS="30000" To="harish.bojji@gmail.com">
       <ui:SendMail.Files>
         <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
       </ui:SendMail.Files>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
     </ui:SendMail>
   </Sequence>
 </Activity>
