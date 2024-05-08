@@ -1,0 +1,24 @@
+trigger:
+  branches:
+    exclude:
+    - main
+  paths:
+    exclude:
+    - '*'
+
+pool:
+  name: CloudVM
+
+variables:
+  currentDirectory: '$(System.DefaultWorkingDirectory)'
+
+jobs:
+- job: executeRepositoryScript
+  condition:  or(eq(variables['Build.Reason'], 'PullRequest'), eq(variables['Build.Reason'], 'Manual'))
+  displayName: 'Execute Repository  PowerShell Script'
+  steps:
+  - task: PowerShell@2
+    inputs:
+      targetType: filePath
+      filePath: './Scripts/validator.ps1'
+      arguments: '-pull_number $(System.PullRequest.PullRequestNumber) -YOUR_PERSONAL_ACCESS_TOKEN $(githubPat) -GptApiKey $(openAiGptPat) -currentDirectory "$(currentDirectory)" -systemRole "$(systemRole)"'
