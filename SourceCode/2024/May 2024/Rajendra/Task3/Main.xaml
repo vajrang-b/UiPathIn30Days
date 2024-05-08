@@ -84,7 +84,7 @@
       <AssemblyReference>UiPath.Platform</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Create a DateTime Variable: First, create a variable of type DateTime to store the current date and time. Let’s call it dtCurrent. &#xD;&#xA;&#xD;&#xA;Get Current Date and Time: To get the current date and time, you can use the following expression: &#xD;&#xA;dtCurrent = DateTime.Now &#xD;&#xA; &#xD;&#xA;This will assign the current date and time to the dtCurrent variable. &#xD;&#xA;&#xD;&#xA;Format the DateTime: If you want to print the date and time in a specific format (e.g., “dd/MM/yyyy hh:mm:ss”), you can use the ToString method with the desired format. For example: &#xD;&#xA;DimformattedDateTime AsString= dtCurrent.ToString(&quot;dd/MM/yyyy hh:mm:ss&quot;) &#xD;&#xA; &#xD;&#xA;Here, formattedDateTime will hold the formatted date and time string. &#xD;&#xA;&#xD;&#xA;Write to a Text Document: To write this formatted date and time to a text document, you can use the Write Text File activity. Set the file path and provide the formattedDateTime as the content to be written. " DisplayName="DateTime Variable" sap:VirtualizedContainerService.HintSize="514,2981" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Create a DateTime Variable: First, create a variable of type DateTime to store the current date and time. Let’s call it dtCurrent. &#xA;&#xA;Get Current Date and Time: To get the current date and time, you can use the following expression: &#xA;dtCurrent = DateTime.Now &#xA; &#xA;This will assign the current date and time to the dtCurrent variable. &#xA;&#xA;Format the DateTime: If you want to print the date and time in a specific format (e.g., “dd/MM/yyyy hh:mm:ss”), you can use the ToString method with the desired format. For example: &#xA;DimformattedDateTime AsString= dtCurrent.ToString(&quot;dd/MM/yyyy hh:mm:ss&quot;) &#xA; &#xA;Here, formattedDateTime will hold the formatted date and time string. &#xA;&#xA;Write to a Text Document: To write this formatted date and time to a text document, you can use the Write Text File activity. Set the file path and provide the formattedDateTime as the content to be written. " DisplayName="DateTime Variable" sap:VirtualizedContainerService.HintSize="514,2981" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="s:DateTime" Name="STR_DateandTime" />
     </Sequence.Variables>
@@ -94,7 +94,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Assign DisplayName="DateTime Variable" sap:VirtualizedContainerService.HintSize="452,114" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <Assign DisplayName="Assign current datetime to Variable" sap:VirtualizedContainerService.HintSize="452,114" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="s:DateTime">[STR_DateandTime]</OutArgument>
       </Assign.To>
@@ -118,7 +118,7 @@
     </ui:CommentOut>
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="452,173" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[STR_DateandTime]" />
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="452,173" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[Now]" />
-    <ui:WriteTextFile File="{x:Null}" DisplayName="Write Text File" FileName="Date.txt" sap:VirtualizedContainerService.HintSize="452,165" sap2010:WorkflowViewState.IdRef="WriteTextFile_1" Text="[STR_DateandTime.ToString]" />
+    <ui:WriteTextFile File="{x:Null}" DisplayName="DateTime output to text filr" FileName="Date.txt" sap:VirtualizedContainerService.HintSize="452,165" sap2010:WorkflowViewState.IdRef="WriteTextFile_1" Text="[STR_DateandTime.ToString]" />
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="452,173" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[now.ToLongDateString()]" />
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="452,173" sap2010:WorkflowViewState.IdRef="LogMessage_4" Message="[now.ToLongTimeString()]" />
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="452,173" sap2010:WorkflowViewState.IdRef="LogMessage_11" Message="[now.ToShortDateString()]" />
