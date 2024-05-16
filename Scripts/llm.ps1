@@ -1,4 +1,4 @@
-﻿function GenerateLlmSummary {
+function GenerateLlmSummary {
     param (
         [string]$prompt
     )
@@ -12,7 +12,7 @@
     # Define the data
     $data = @"
 {
-    "model": "phi3",
+    "model": "llama3",
     "prompt": "$($prompt)",
     "stream": false
 }
