@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="850.4,830.4" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="850.4,906.4" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -99,13 +99,14 @@
       <AssemblyReference>WindowsBase</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="512,765.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Extract the data from any website and write into Text File.&#xD;&#xA;1.Use Browser Application  Activity for navigating into website.&#xD;&#xA;2. Get Text Activity for Retriving data from web.&#xD;&#xA;3. Write Text File Activity for Storing Result in Text Format. " DisplayName="Extract data from wed and Stored in Text file" sap:VirtualizedContainerService.HintSize="512,841.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Chrome: india time now - Google Search" sap:VirtualizedContainerService.HintSize="449.6,676.8" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" ScopeGuid="7aff0885-763f-47df-9ded-38cc19a72f6a" Version="V2">
+    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Navigating to Website" sap:VirtualizedContainerService.HintSize="449.6,676.8" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" ScopeGuid="7aff0885-763f-47df-9ded-38cc19a72f6a" Version="V2">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
@@ -120,12 +121,12 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <uix:NGetText DisplayName="Get Text 'The time'" sap:VirtualizedContainerService.HintSize="353.6,189.6" sap2010:WorkflowViewState.IdRef="NGetText_5" ScopeIdentifier="7aff0885-763f-47df-9ded-38cc19a72f6a" TextString="[webdata]" Version="V3">
+            <uix:NGetText DisplayName="Get the text data from web" sap:VirtualizedContainerService.HintSize="353.6,189.6" sap2010:WorkflowViewState.IdRef="NGetText_5" ScopeIdentifier="7aff0885-763f-47df-9ded-38cc19a72f6a" TextString="[webdata]" Version="V3">
               <uix:NGetText.Target>
                 <uix:TargetAnchorable BrowserURL="https://www.google.com/search?q=india+time+now&amp;sca_esv=a8b1485e4aab9472&amp;authuser=1&amp;sxsrf=ADLYWILAlnLdZbKLw4OmRXfo5G3xPc0JkA%3A1716205200847&amp;source=hp&amp;ei=kDZLZvnBMeW-kPIPkvmm4AM&amp;iflsig=AL9hbdgAAAAAZktEoI-iPaX2cUHADyPfcqj5rvAI01_T&amp;oq=india+&amp;gs_lp=Egdnd3Mtd2l6IgZpbmRpYSAqAggBMgsQLhiABBixAxiDATILEAAYgAQYsQMYgwEyCxAAGIAEGLEDGIMBMggQABiABBixAzILEAAYgAQYsQMYgwEyCBAAGIAEGLEDMggQABiABBixAzIFEAAYgAQyBRAAGIAEMgUQABiABEiSOFAAWIsfcAB4AJABAJgBYaABsgSqAQE2uAEByAEA-AEBmAIGoALdBMICChAjGIAEGCcYigXCAg4QABiABBixAxiDARiKBcICDhAuGIAEGLEDGIMBGIoFwgILEC4YgAQY0QMYxwHCAhEQLhiABBixAxjRAxiDARjHAcICDhAuGIAEGLEDGNEDGMcBwgIIEC4YgAQYsQPCAgsQABiABBixAxjJA8ICCxAAGIAEGJIDGIoFwgIIEAAYgAQYkgPCAgUQLhiABMICEBAuGIAEGLEDGIMBGEYY_QHCAhEQLhiABBixAxiDARjHARivAZgDAJIHAzEuNaAHo1Y&amp;sclient=gws-wiz" DesignTimeRectangle="253, 715, 805, 115" DesignTimeScaleFactor="1.25" FullSelectorArgument="&lt;webctrl class='hgKElc' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl class='hgKElc' tag='SPAN' type='' aaname='The time difference between India and the United States (US) is 9 hours and 30 minutes. . If the time in India is 10:00 P.M. then the time in the US is 12:30 P.M. The Time zone for many countries is changing or showing different times.' /&gt;" Guid="f3fd198b-3a2d-4c60-8774-bb5e4ea87976" InformativeScreenshot="979ed8ef4e62959bf47bb42f115c5b98.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='india time now - Google Search' /&gt;" SearchSteps="FuzzySelector" Version="V3" Visibility="Interactive" />
               </uix:NGetText.Target>
             </uix:NGetText>
-            <ui:WriteTextFile File="{x:Null}" DisplayName="Write Text File" FileName="output.txt" sap:VirtualizedContainerService.HintSize="353.6,159.2" sap2010:WorkflowViewState.IdRef="WriteTextFile_1" Text="[webdata]" />
+            <ui:WriteTextFile File="{x:Null}" DisplayName="Storing result in text file." FileName="output.txt" sap:VirtualizedContainerService.HintSize="353.6,159.2" sap2010:WorkflowViewState.IdRef="WriteTextFile_1" Text="[webdata]" />
           </Sequence>
         </ActivityAction>
       </uix:NApplicationCard.Body>
