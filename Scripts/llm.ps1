@@ -1,4 +1,4 @@
-﻿function GenerateLlmSummary {
+function GenerateLlmSummary {
     param (
         [string]$prompt
     )
