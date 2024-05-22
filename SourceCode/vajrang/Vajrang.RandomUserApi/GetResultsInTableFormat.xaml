@@ -3,6 +3,11 @@
     <x:Property Name="dtReport" Type="OutArgument(sd:DataTable)" />
     <x:Property Name="strReport" Type="OutArgument(x:String)" />
     <x:Property Name="in_MaxResults" Type="InArgument(x:String)" />
+    <x:Property Name="in_FolderpathForFiles" Type="InArgument(x:String)">
+      <x:Property.Attributes>
+        <RequiredArgumentAttribute />
+      </x:Property.Attributes>
+    </x:Property>
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
@@ -154,7 +159,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{currentJToken(&quot;name&quot;)(&quot;title&quot;).ToString()+&quot; &quot; +currentJToken(&quot;name&quot;)(&quot;first&quot;).ToString()+&quot; &quot;+currentJToken(&quot;name&quot;)(&quot;last&quot;).ToString(),&#xA;currentJToken(&quot;location&quot;)(&quot;country&quot;),currentJToken(&quot;picture&quot;)(&quot;large&quot;).ToString()}]" DataTable="[dtReport]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="353.6,220" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
-            <ui:HttpClient Body="{x:Null}" ClientCertificate="{x:Null}" ClientCertificatePassword="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResponseAttachment="{x:Null}" ResponseHeaders="{x:Null}" Result="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" StatusCode="{x:Null}" Username="{x:Null}" AcceptFormat="ANY" AuthenticationType="None" BodyFormat="application/xml" DisplayName="HTTP Request" EnableSSLVerification="True" EndPoint="[currentJToken(&quot;picture&quot;)(&quot;large&quot;).ToString()]" sap:VirtualizedContainerService.HintSize="353.6,94.4" sap2010:WorkflowViewState.IdRef="HttpClient_2" Method="GET" ResourcePath="[path.GetFileName(currentJToken(&quot;picture&quot;)(&quot;large&quot;).ToString())]" TimeoutMS="6000">
+            <ui:HttpClient Body="{x:Null}" ClientCertificate="{x:Null}" ClientCertificatePassword="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResponseAttachment="{x:Null}" ResponseHeaders="{x:Null}" Result="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" StatusCode="{x:Null}" Username="{x:Null}" AcceptFormat="ANY" AuthenticationType="None" BodyFormat="application/xml" DisplayName="HTTP Request" EnableSSLVerification="True" EndPoint="[currentJToken(&quot;picture&quot;)(&quot;large&quot;).ToString()]" sap:VirtualizedContainerService.HintSize="353.6,94.4" sap2010:WorkflowViewState.IdRef="HttpClient_2" Method="GET" ResourcePath="[Path.Combine(in_FolderpathForFiles,path.GetFileName(currentJToken(&quot;picture&quot;)(&quot;large&quot;).ToString()))]" TimeoutMS="6000">
               <ui:HttpClient.Attachments>
                 <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
               </ui:HttpClient.Attachments>
