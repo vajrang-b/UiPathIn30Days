@@ -6,7 +6,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>834.4,866.4</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>834.4,1138.4</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Main2_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -107,7 +107,7 @@
       <AssemblyReference>System.IO.FileSystem.DriveInfo</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <StateMachine InitialState="{x:Reference __ReferenceID3}" sap2010:Annotation.AnnotationText="[Process title]&#xA;[Process description]&#xA;[Additional information (e.g., author, contact information and applications involved and required external setup)]" DisplayName="General Business Process" sap:VirtualizedContainerService.HintSize="702.4,801.6" sap2010:WorkflowViewState.IdRef="StateMachine_1">
+  <StateMachine InitialState="{x:Reference __ReferenceID3}" sap2010:Annotation.AnnotationText="[Process title]&#xA;[Process description]&#xA;[Additional information (e.g., author, contact information and applications involved and required external setup)]&#xD;&#xA;&#xD;&#xA;Step 1: Go to the data folder in the project and in the input folder copy  and paste the placeholder files &#xD;&#xA;step 2: In initialization  insert the sequence and add the assign activity and create  variable named  arrfiles and pass the System.io.Directory.GetFiles(&quot;Data/input&quot;) in the value to save &#xD;&#xA;step 3: insert for each row activity and pass the arrfiles in the list of items ,&#xD;&#xA;Step 4: in body add the Add queue Item  and add the Config(&quot;OrchestratorQueueName&quot;).ToString() in the queue name and in the ite information add the file anime and pass the currenttext&#xD;&#xA;Step 5:In the process transaction insert assign activity  create a variable Strfilename and  add Path.GetFileName(in_TransactionItem.SpecificContent(&quot;Filename&quot;).ToString()) in the value to save.&#xD;&#xA;Step 6 : insert if activity and in condition pass the Strfilename.Length Mod 2 =0 and then add the assign activity and create a variable named StrParentfoldername and give as &quot;even&quot; in the value to save&#xD;&#xA;Step 7 in the else add the assign activity and create a variable named StrParentfoldername and give as &quot;Odd&quot; in the value to save.&#xD;&#xA;Step 8 : Insert upload storage file and in destination add StrParentfoldername+&quot;/&quot;+Strfilename and in path give the syntax as in_TransactionItem.SpecificContent(&quot;Filename&quot;).ToString.&#xD;&#xA;Step 9 in the orchestrator in the storage bucket create a new  folder named &quot;May2024&quot; and pass it in the upload storage file -storage bucket name " DisplayName="General Business Process" sap:VirtualizedContainerService.HintSize="702.4,1073.6" sap2010:WorkflowViewState.IdRef="StateMachine_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
