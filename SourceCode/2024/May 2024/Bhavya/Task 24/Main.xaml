@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="850.4,708.8" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="850.4,812.8" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -74,9 +74,10 @@
       <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
       <AssemblyReference>UiPath.Workflow</AssemblyReference>
       <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Assign input value (eg: UiPath Studio) , and replace the word with any other word by using Replace function.&#xA;1. Assign Activity for Assign data into one variable.&#xA;2. Write Line for Display output.&#xA;3. Assign Activity For  Replacing the data." DisplayName="Replacing the Word with Other Word by using Replace Function." sap:VirtualizedContainerService.HintSize="496,644" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Assign input value (eg: UiPath Studio) , and replace the word with any other word by using Replace function.&#xA;1. Assign Activity for Assign data into one variable.&#xA;2. Write Line for Display output.&#xA;3. Assign Activity For  Replacing the data." DisplayName="Replacing the Word with Other Word by using Replace Function." sap:VirtualizedContainerService.HintSize="496,748" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="Str_input" />
       <Variable x:TypeArguments="x:String" Name="Str_Replace" />
@@ -95,7 +96,7 @@
         <InArgument x:TypeArguments="x:String">UiPath Studio</InArgument>
       </Assign.Value>
     </Assign>
-    <WriteLine DisplayName="Results in OutPut pannel " sap:VirtualizedContainerService.HintSize="433.6,122.4" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[Str_input]" />
+    <ui:LogMessage DisplayName="Variable Called" sap:VirtualizedContainerService.HintSize="433.6,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[Str_input]" />
     <Assign DisplayName="Replace Function used" sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_2">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[Str_Replace]</OutArgument>
@@ -104,6 +105,6 @@
         <InArgument x:TypeArguments="x:String">[Str_input.Replace("UiPath", "RPA")]</InArgument>
       </Assign.Value>
     </Assign>
-    <WriteLine DisplayName="Final Result of Replaced String." sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="[Str_Replace]" />
+    <ui:LogMessage DisplayName="Final Result after Replacing the String" sap:VirtualizedContainerService.HintSize="433.6,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[Str_Replace]" />
   </Sequence>
 </Activity>
