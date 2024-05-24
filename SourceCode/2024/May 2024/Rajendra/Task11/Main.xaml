@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="680,801" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="680,1353" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -82,15 +82,24 @@
       <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
       <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
       <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.Watcher</AssemblyReference>
+      <AssemblyReference>System.IO.Packaging</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.AccessControl</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.DriveInfo</AssemblyReference>
+      <AssemblyReference>System.Linq.Async.Queryable</AssemblyReference>
+      <AssemblyReference>System.Linq.Parallel</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>System.Linq.Queryable</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="662,736" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Creating an Input Dialog with Multiple Choices: &#xD;&#xA;&#xD;&#xA;You can use the built-in Input Dialog activity in UiPath to create a dialog box where the user can select from a list of fruits. &#xD;&#xA;&#xD;&#xA;Set the Options property of the Input Dialog to an array of fruit names. If you set it to contain only one element, a textbox will appear for the user to write text. If set to contain 2 or 3 elements, they will appear as radio buttons for selection. If you have more than 3 items, they will appear as a combo box. &#xD;&#xA;&#xD;&#xA;Make sure the Options property supports only String Array variables. &#xD;&#xA;&#xD;&#xA;For example, if you want to provide options for “Apple,” “Banana,” and “Orange,” set the Options property like this: {&quot;Apple&quot;, &quot;Banana&quot;, &quot;Orange&quot;}1. &#xD;&#xA;&#xD;&#xA;Using the Switch Activity: &#xD;&#xA;&#xD;&#xA;After the user selects a fruit, you can use a Switch activity to handle different cases based on their choice. &#xD;&#xA;&#xD;&#xA;Set a variable (e.g., selectedFruit) as the expression for the Switch. &#xD;&#xA;&#xD;&#xA;Add cases for each possible fruit. For example: &#xD;&#xA;&#xD;&#xA;Case “Apple”: Perform actions related to apples. &#xD;&#xA;&#xD;&#xA;Case “Banana”: Perform actions related to bananas. &#xD;&#xA;&#xD;&#xA;Case “Orange”: Perform actions related to oranges. &#xD;&#xA;&#xD;&#xA;Optionally, add a default case if there’s no match for the selected fruit. &#xD;&#xA;&#xD;&#xA; &#xD;&#xA;&#xD;&#xA;Note: you can use syntax (&quot;Select any number&quot; +vbNewLine + &quot;1-Monday&quot; +vbNewLine + &quot;2-Tuesday&quot; + vbNewLine + &quot;3-thursday&quot; +vbNewLine+ &quot;4-friday&quot; + vbNewLine + &quot;5-Satday&quot;)- it allows to give the option to the users &#xD;&#xA;&#xD;&#xA; " DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="662,1288" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Flowchart sap:VirtualizedContainerService.HintSize="740,467" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+    <Flowchart sap:VirtualizedContainerService.HintSize="600,648" sap2010:WorkflowViewState.IdRef="Flowchart_1">
       <Flowchart.Variables>
         <Variable x:TypeArguments="x:Int32" Name="Fruit" />
       </Flowchart.Variables>
@@ -106,7 +115,7 @@
       <Flowchart.StartNode>
         <x:Reference>__ReferenceID3</x:Reference>
       </Flowchart.StartNode>
-      <FlowSwitch x:TypeArguments="x:Int32" x:Name="__ReferenceID0" DisplayName="Flow Switch" sap:VirtualizedContainerService.HintSize="59,59" sap2010:WorkflowViewState.IdRef="FlowSwitch`1_5">
+      <FlowSwitch x:TypeArguments="x:Int32" x:Name="__ReferenceID0" DisplayName="Flow Switch" Expression="[Fruit]" sap:VirtualizedContainerService.HintSize="59,59" sap2010:WorkflowViewState.IdRef="FlowSwitch`1_5">
         <FlowSwitch.Default>
           <FlowStep x:Name="__ReferenceID1">
             <sap:WorkflowViewStateService.ViewState>
@@ -124,9 +133,6 @@
             </ui:MessageBox>
           </FlowStep>
         </FlowSwitch.Default>
-        <FlowSwitch.Expression>
-          <VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="Fruit" />
-        </FlowSwitch.Expression>
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <av:Point x:Key="ShapeLocation">50,220</av:Point>
