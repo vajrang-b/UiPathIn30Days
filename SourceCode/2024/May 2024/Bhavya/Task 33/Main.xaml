@@ -90,7 +90,7 @@
       <AssemblyReference>WindowsBase</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Send Email to other Emails with Attachments.&#xA;1. Get Password Activity for variable created for current email.&#xA;2. Send SMTP Mail Message Activity for changing properties of it." DisplayName="Send Email to other Emails with Attachments." sap:VirtualizedContainerService.HintSize="416,377.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Send Email to other Emails with Attachments.&#xA;1. Get Password Activity for variable created for current email.&#xA;2. Send SMTP Mail Message Activity for changing properties of it.&#xD;&#xA;3. Attach Files for sending the attachements from selected location." DisplayName="Send Email to other Emails with Attachments." sap:VirtualizedContainerService.HintSize="416,393.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="Password" />
     </Sequence.Variables>
@@ -100,13 +100,40 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:GetPassword DisplayName="Get Password" sap:VirtualizedContainerService.HintSize="353.6,56.8" sap2010:WorkflowViewState.IdRef="GetPassword_1" ProtectedPassword="AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA+hGpW3WAVUuRlHxX48p95wAAAAACAAAAAAAQZgAAAAEAACAAAACoG7x2+WUe5tbdkFgaJ/9K2xnWG3sO6v2uQkiyuLs1NQAAAAAOgAAAAAIAACAAAAAULdSyj6CvqZlp75pl8Cm0RBI6bPR1aJHX0PH78J2zXSAAAAAWfR9U/Dj6bRS6fTQahm3vyz/M0AMDs0obleto0hrJ/0AAAAA5kdz7udtcyqpUDJbGiw+MLiYmCnnaTvC1yMicU2xyxYRoPtuAh/L1RRxvXuvZoaJStpA4Yg4yZXY8/xGxKA5D" Result="[Password]" />
-    <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" ContinueOnError="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" ReplyTo="{x:Null}" Result="{x:Null}" SecurePassword="{x:Null}" TimeoutMS="{x:Null}" UseOAuth="{x:Null}" Body="Hi Wellcome To UiPath" DisplayName="Send SMTP Mail Message" Email="bhavyamoparthi1@gmail.com" EnableSSL="True" From="bhavyamoparthi1@gmail.com" sap:VirtualizedContainerService.HintSize="353.6,172" sap2010:WorkflowViewState.IdRef="SendMail_1" IgnoreCRL="False" IsBodyHtml="False" Password="[Password]" Port="587" SecureConnection="Auto" Server="smtp.gmail.com" Subject="Sample" To="bhavyamoparthi1@gmail.com">
+    <ui:GetPassword DisplayName="Get Password" sap:VirtualizedContainerService.HintSize="353.6,56.8" sap2010:WorkflowViewState.IdRef="GetPassword_1" ProtectedPassword="AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA+hGpW3WAVUuRlHxX48p95wAAAAACAAAAAAAQZgAAAAEAACAAAACoG7x2+WUe5tbdkFgaJ/9K2xnWG3sO6v2uQkiyuLs1NQAAAAAOgAAAAAIAACAAAAAULdSyj6CvqZlp75pl8Cm0RBI6bPR1aJHX0PH78J2zXSAAAAAWfR9U/Dj6bRS6fTQahm3vyz/M0AMDs0obleto0hrJ/0AAAAA5kdz7udtcyqpUDJbGiw+MLiYmCnnaTvC1yMicU2xyxYRoPtuAh/L1RRxvXuvZoaJStpA4Yg4yZXY8/xGxKA5D">
+      <ui:GetPassword.Result>
+        <OutArgument x:TypeArguments="x:String">
+          <VisualBasicReference x:TypeArguments="x:String" ExpressionText="Password">
+            <VisualBasicReference.Result>
+              <OutArgument x:TypeArguments="Location(x:String)" />
+            </VisualBasicReference.Result>
+          </VisualBasicReference>
+        </OutArgument>
+      </ui:GetPassword.Result>
+    </ui:GetPassword>
+    <ui:SendMail AttachmentsCollection="{x:Null}" Bcc="{x:Null}" Body="Hi Wellcome To UiPath" Cc="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Send SMTP Mail Message" Email="bhavyamoparthi1@gmail.com" EnableSSL="True" From="bhavyamoparthi1@gmail.com" sap:VirtualizedContainerService.HintSize="353.6,172" sap2010:WorkflowViewState.IdRef="SendMail_1" IgnoreCRL="False" IsBodyHtml="False" MailMessage="{x:Null}" Name="{x:Null}" Port="587" ReplyTo="{x:Null}" Result="{x:Null}" SecureConnection="Auto" SecurePassword="{x:Null}" Server="smtp.gmail.com" Subject="Sample" TimeoutMS="{x:Null}" To="bhavyamoparthi1@gmail.com" UseOAuth="{x:Null}">
       <ui:SendMail.Files>
         <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
-          <InArgument x:TypeArguments="x:String">C:\Users\bhavy\OneDrive\Documents\Marketing Stuff\Sample.pdf</InArgument>
+          <InArgument x:TypeArguments="x:String">
+            <Literal x:TypeArguments="x:String">
+              <Literal.Result>
+                <OutArgument x:TypeArguments="x:String" />
+              </Literal.Result>C:\Users\bhavy\OneDrive\Documents\Marketing Stuff\Sample.pdf</Literal>
+          </InArgument>
+          <InArgument x:TypeArguments="x:String">
+            <Literal x:TypeArguments="x:String">C:\Users\bhavy\OneDrive\Documents\Marketing Stuff\Sample.pdf</Literal>
+          </InArgument>
         </scg:List>
       </ui:SendMail.Files>
+      <ui:SendMail.Password>
+        <InArgument x:TypeArguments="x:String">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="Password">
+            <VisualBasicValue.Result>
+              <OutArgument x:TypeArguments="x:String" />
+            </VisualBasicValue.Result>
+          </VisualBasicValue>
+        </InArgument>
+      </ui:SendMail.Password>
     </ui:SendMail>
   </Sequence>
 </Activity>
