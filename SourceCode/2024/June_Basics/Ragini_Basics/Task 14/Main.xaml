@@ -116,11 +116,11 @@
         <InArgument x:TypeArguments="x:Int32">[NumArray(0)]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:ForEach x:TypeArguments="x:Object" CurrentIndex="{x:Null}" DisplayName="For Each currentItem" sap:VirtualizedContainerService.HintSize="626,1157" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[&quot;currentItem&quot;]">
+    <ui:ForEach x:TypeArguments="x:Int32" CurrentIndex="{x:Null}" DisplayName="For Each currentNumber" sap:VirtualizedContainerService.HintSize="626,1157" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[NumArray]">
       <ui:ForEach.Body>
-        <ActivityAction x:TypeArguments="x:Object">
+        <ActivityAction x:TypeArguments="x:Int32">
           <ActivityAction.Argument>
-            <DelegateInArgument x:TypeArguments="x:Object" Name="currentItem" />
+            <DelegateInArgument x:TypeArguments="x:Int32" Name="currentNumber" />
           </ActivityAction.Argument>
           <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="592,1011" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <sap:WorkflowViewStateService.ViewState>
@@ -128,7 +128,7 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <If Condition="[currentItem&lt;Min]" sap:VirtualizedContainerService.HintSize="530,466" sap2010:WorkflowViewState.IdRef="If_1">
+            <If Condition="[currentNumber&lt;Min]" sap:VirtualizedContainerService.HintSize="530,466" sap2010:WorkflowViewState.IdRef="If_1">
               <If.Then>
                 <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="496,193" sap2010:WorkflowViewState.IdRef="Sequence_3">
                   <sap:WorkflowViewStateService.ViewState>
@@ -141,7 +141,7 @@
                       <OutArgument x:TypeArguments="x:Int32">[Min]</OutArgument>
                     </Assign.To>
                     <Assign.Value>
-                      <InArgument x:TypeArguments="x:Int32">[currentItem]</InArgument>
+                      <InArgument x:TypeArguments="x:Int32">[currentNumber]</InArgument>
                     </Assign.Value>
                   </Assign>
                 </Sequence>
@@ -156,7 +156,7 @@
                 </Sequence>
               </If.Else>
             </If>
-            <If Condition="[currentItem&gt;Max]" sap:VirtualizedContainerService.HintSize="530,457" sap2010:WorkflowViewState.IdRef="If_2">
+            <If Condition="[currentNumber&gt;Max]" sap:VirtualizedContainerService.HintSize="530,457" sap2010:WorkflowViewState.IdRef="If_2">
               <If.Then>
                 <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="496,193" sap2010:WorkflowViewState.IdRef="Sequence_5">
                   <sap:WorkflowViewStateService.ViewState>
@@ -169,7 +169,7 @@
                       <OutArgument x:TypeArguments="x:Int32">[Max]</OutArgument>
                     </Assign.To>
                     <Assign.Value>
-                      <InArgument x:TypeArguments="x:Int32">[currentItem]</InArgument>
+                      <InArgument x:TypeArguments="x:Int32">[currentNumber]</InArgument>
                     </Assign.Value>
                   </Assign>
                 </Sequence>
