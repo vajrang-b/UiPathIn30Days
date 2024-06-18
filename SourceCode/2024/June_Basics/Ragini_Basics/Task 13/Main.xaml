@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1243,1063" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1243,1288" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -98,9 +98,11 @@
       <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
       <AssemblyReference>UiPath.Workflow</AssemblyReference>
       <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Step 1: Open the data table from which data need to be extracted&#xA;Step 2: Use option Table Extraction from Ribbon Tab&#xA;Step 3: A pop up called Table Extraction opens, select the option Select Data to Extract (or) hover over the data table need to be extracted&#xA;Step 4: Select from left the first column only, the headers of all the columns can be viewed in the pop up window of Table extraction and the select Preview to view if all the data is extracted, anew pop up window opens and all the data can be viewed&#xA;Step 5: On Table Extraction windo select Save &amp; Close&#xA;Step 6: Use Application Browser is used which shows the URL of the website from where the data is extracted&#xA;Step 7: The data extracted is automatically stored in the variable ExtractDataTable in the activity of Extract Table Data&#xA;Step 8: Activity Write Range Workbook is used to write extracted data into excel&#xA;Step 9:Result.xlsx is created, name DataTable is given to the excel Sheet and the data from Extract Data Table is written to excel file&#xA;" DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="512,998" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Step 1: Open the data table from which data need to be extracted&#xA;Step 2: Use option Table Extraction from Ribbon Tab&#xA;Step 3: A pop up called Table Extraction opens, select the option Select Data to Extract (or) hover over the data table need to be extracted&#xA;Step 4: Select from left the first column only, the headers of all the columns can be viewed in the pop up window of Table extraction and the select Preview to view if all the data is extracted, anew pop up window opens and all the data can be viewed&#xA;Step 5: On Table Extraction windo select Save &amp; Close&#xA;Step 6: Use Application Browser is used which shows the URL of the website from where the data is extracted&#xA;Step 7: The data extracted is automatically stored in the variable ExtractDataTable in the activity of Extract Table Data&#xA;Step 8: Activity Write Range Workbook is used to write extracted data into excel&#xA;Step 9:Result.xlsx is created, name DataTable is given to the excel Sheet and the data from Extract Data Table is written to excel file&#xD;&#xA;Step 10: Filter Data Table activity is used to filter data from only one column &quot;completed&quot; and of only type &quot;true&quot;&#xA;" DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="512,1223" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Default="[New System.Data.DataTable]" Name="ExtractDataTable" />
     </Sequence.Variables>
@@ -110,13 +112,16 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Application/Browser" sap:VirtualizedContainerService.HintSize="450,658" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" ScopeGuid="9d5adfd2-1874-44e1-a23c-544d59a88a59" Version="V2">
+    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Application/Browser" sap:VirtualizedContainerService.HintSize="450,853" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" ScopeGuid="9d5adfd2-1874-44e1-a23c-544d59a88a59" Version="V2">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="416,418" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="416,613" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="sd:DataTable" Name="DT_FinalResult" />
+            </Sequence.Variables>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -127,7 +132,26 @@
                 <uix:TargetAnchorable BrowserURL="https://www.vajrang.org/challenges/table-data-scraping" DesignTimeRectangle="394, 366, 628, 10115" DesignTimeScaleFactor="1" FullSelectorArgument="&lt;webctrl id='7f5a2e2f4219b8bf_12' tag='IFRAME' /&gt;&lt;webctrl id='innerFrame' tag='IFRAME' /&gt;&lt;webctrl id='userHtmlFrame' tag='IFRAME' /&gt;&lt;webctrl tag='TABLE' /&gt;" Guid="e1c3a617-b0ba-4f90-a2e4-68bf484bb6e2" InformativeScreenshot="ae3f5c649772954445daecb2e9db7022.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='XPERIENCE AI - Table Data Scraping' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" />
               </uix:NExtractData.Target>
             </uix:NExtractData>
-            <ui:WriteRange AddHeaders="False" DataTable="[ExtractDataTable]" DisplayName="Write Range Workbook" sap:VirtualizedContainerService.HintSize="354,141" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="DataTable" StartingCell="A1" WorkbookPath="Result.xlsx" />
+            <ui:FilterDataTable DataTable="[ExtractDataTable]" DisplayName="Filter Data Table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="354,193" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[DT_FinalResult]" SelectColumnsMode="Remove">
+              <ui:FilterDataTable.Filters>
+                <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
+                  <ui:FilterOperationArgument BooleanOperator="And" Operator="EQ">
+                    <ui:FilterOperationArgument.Column>
+                      <InArgument x:TypeArguments="x:String">["completed"]</InArgument>
+                    </ui:FilterOperationArgument.Column>
+                    <ui:FilterOperationArgument.Operand>
+                      <InArgument x:TypeArguments="x:String">["true"]</InArgument>
+                    </ui:FilterOperationArgument.Operand>
+                  </ui:FilterOperationArgument>
+                </scg:List>
+              </ui:FilterDataTable.Filters>
+              <ui:FilterDataTable.SelectColumns>
+                <scg:List x:TypeArguments="InArgument" Capacity="4">
+                  <x:Null />
+                </scg:List>
+              </ui:FilterDataTable.SelectColumns>
+            </ui:FilterDataTable>
+            <ui:WriteRange AddHeaders="False" DataTable="[ExtractDataTable]" DisplayName="Write Range Workbook" sap:VirtualizedContainerService.HintSize="354,141" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="DataTable1" StartingCell="A1" WorkbookPath="Result.xlsx" />
           </Sequence>
         </ActivityAction>
       </uix:NApplicationCard.Body>
