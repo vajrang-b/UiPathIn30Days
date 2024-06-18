@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="653,563" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="653,366" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -25,9 +25,10 @@
       <x:String>System.Windows.Markup</x:String>
       <x:String>GlobalVariablesNamespace</x:String>
       <x:String>GlobalConstantsNamespace</x:String>
-      <x:String>System.Reflection</x:String>
       <x:String>System.Linq.Expressions</x:String>
       <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Numerics</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -38,7 +39,6 @@
       <AssemblyReference>PresentationFramework</AssemblyReference>
       <AssemblyReference>System</AssemblyReference>
       <AssemblyReference>System.Activities</AssemblyReference>
-      <AssemblyReference>System.Collections</AssemblyReference>
       <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
       <AssemblyReference>System.Core</AssemblyReference>
       <AssemblyReference>System.Data</AssemblyReference>
@@ -54,47 +54,65 @@
       <AssemblyReference>System.Xaml</AssemblyReference>
       <AssemblyReference>System.Xml</AssemblyReference>
       <AssemblyReference>System.Xml.Linq</AssemblyReference>
-      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities</AssemblyReference>
       <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
-      <AssemblyReference>UiPath.Workflow</AssemblyReference>
       <AssemblyReference>WindowsBase</AssemblyReference>
-      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
-      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
-      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
       <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
       <AssemblyReference>NPOI</AssemblyReference>
-      <AssemblyReference>System.Memory.Data</AssemblyReference>
       <AssemblyReference>System.Console</AssemblyReference>
       <AssemblyReference>System.Security.Permissions</AssemblyReference>
       <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
       <AssemblyReference>System.ComponentModel</AssemblyReference>
       <AssemblyReference>System.Memory</AssemblyReference>
       <AssemblyReference>System.Private.Uri</AssemblyReference>
-      <AssemblyReference>System.Linq.Async</AssemblyReference>
-      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
-      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
       <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
       <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
       <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
       <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>System.Linq.Async.Queryable</AssemblyReference>
+      <AssemblyReference>System.Linq.Parallel</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>System.Linq.Queryable</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="" sap:VirtualizedContainerService.HintSize="416,498" sap2010:WorkflowViewState.IdRef="Sequence_2">
+  <Sequence sap2010:Annotation.AnnotationText="" DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="496,338" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
-      <Variable x:TypeArguments="x:String" Name="input" />
+      <Variable x:TypeArguments="s:Int32[]" Name="NumArray" />
+      <Variable x:TypeArguments="s:Int32[]" Name="Min" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        <x:Boolean x:Key="IsPinned">False</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="354,271" sap2010:WorkflowViewState.IdRef="InputDialog_1" IsPassword="False" Label="enter your input" Title="welcome message">
-      <ui:InputDialog.Result>
-        <OutArgument x:TypeArguments="x:String">[input]</OutArgument>
-      </ui:InputDialog.Result>
-    </ui:InputDialog>
-    <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="354,108" sap2010:WorkflowViewState.IdRef="MessageBox_6" Text="[&quot;hi&quot; +input + &quot;Welcome to Uipath&quot;]" />
+    <Assign sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_1">
+      <Assign.To>
+        <OutArgument x:TypeArguments="s:Int32[]">[NumArray]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="s:Int32[]">[{4,13,6,35,48,57}]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign sap:VirtualizedContainerService.HintSize="434,105" sap2010:WorkflowViewState.IdRef="Assign_2">
+      <Assign.To>
+        <OutArgument x:TypeArguments="s:Int32[]">[Min]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="s:Int32[]">[NumArray.Zip(Min, Function(n, m) Math.Min(n, m)).ToArray()]</InArgument>
+      </Assign.Value>
+    </Assign>
   </Sequence>
 </Activity>
