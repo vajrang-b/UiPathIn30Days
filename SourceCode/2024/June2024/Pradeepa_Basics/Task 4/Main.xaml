@@ -79,6 +79,7 @@
       <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
       <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
       <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <Sequence sap2010:Annotation.AnnotationText="Find the Leap year and also display the message along with the boolean conditions (flowchart and sequence)  " DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="512,958.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -96,7 +97,7 @@
         <OutArgument x:TypeArguments="x:Int32">[Year]</OutArgument>
       </ui:InputDialog.Result>
     </ui:InputDialog>
-    <If Condition="[Year Mod  4=0]" sap:VirtualizedContainerService.HintSize="449.6,552" sap2010:WorkflowViewState.IdRef="If_1">
+    <If Condition="[((Year Mod 4 = 0) And (Year Mod 100 &lt;&gt; 0)) Or (Year Mod 400 = 0)]" sap:VirtualizedContainerService.HintSize="449.6,552" sap2010:WorkflowViewState.IdRef="If_1">
       <If.Then>
         <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,195.2" sap2010:WorkflowViewState.IdRef="Sequence_2">
           <sap:WorkflowViewStateService.ViewState>
