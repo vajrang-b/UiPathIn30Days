@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1128.8,1612" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="823.2,1796" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -45,6 +45,7 @@
       <x:String>System.Security</x:String>
       <x:String>UiPath.UIAutomationNext.Activities.Models</x:String>
       <x:String>UiPath.Platform.ResourceHandling</x:String>
+      <x:String>System.Numerics</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -108,77 +109,70 @@
       <AssemblyReference>System.Linq.Async</AssemblyReference>
       <AssemblyReference>System.Collections</AssemblyReference>
       <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="688,1547.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="1.Read Range Workbook to read the input file&#xA;&#xA;2.Use Application /Browser activity to browse the uppercase from vajrang.org&#xA; &#xA;3.For Each Row in Data Table to loop all the values from the input file&#xA;&#xA;4.Type Into activity to write into website&#xA;&#xA;5.Get text activity to fetch the results.&#xA; &#xD;&#xA;6. Assign activity to increment the value of the cell.&#xD;&#xA;&#xD;&#xA;7. Write the result into excel." DisplayName="Find the temperature of few cities and print the results into Excel " sap:VirtualizedContainerService.HintSize="688,1731.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="Input" />
       <Variable x:TypeArguments="x:String" Name="Result" />
+      <Variable x:TypeArguments="sd:DataTable" Name="Result_1" />
       <Variable x:TypeArguments="x:Int32" Name="cellid" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:ReadRange DataTable="{x:Null}" AddHeaders="True" DisplayName="Read Range Workbook" sap:VirtualizedContainerService.HintSize="625.6,120" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="Sheet1" WorkbookPath="Input.xlsx">
+    <ui:ReadRange AddHeaders="True" DataTable="[Result_1]" DisplayName="Read Range Workbook to read the input file" sap:VirtualizedContainerService.HintSize="625.6,120" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="Sheet1" WorkbookPath="Input.xlsx">
       <ui:ReadRange.Range>
         <InArgument x:TypeArguments="x:String">
           <Literal x:TypeArguments="x:String" Value="" />
         </InArgument>
       </ui:ReadRange.Range>
     </ui:ReadRange>
-    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Chrome New Tab" sap:VirtualizedContainerService.HintSize="625.6,1338.4" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" ScopeGuid="63295b9f-1610-42c4-aff4-b8f64122502c" Version="V2">
+    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Application /Browser activity to browse the uppercase from vajrang.org" sap:VirtualizedContainerService.HintSize="625.6,1302.4" sap2010:WorkflowViewState.IdRef="NApplicationCard_2" InteractionMode="DebuggerApi" ScopeGuid="6441411a-6bfc-45e6-b344-57a328195b0d" Version="V2">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="592,1098.4" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="592,1062.4" sap2010:WorkflowViewState.IdRef="Sequence_4">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="[cellid]" DataTable="[Input]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="529.6,1008" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+            <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="[cellid]" DataTable="[Result_1]" DisplayName="For Each Row in Data Table to loop all the values from the input file" sap:VirtualizedContainerService.HintSize="529.6,972" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
               <ui:ForEachRow.Body>
                 <ActivityAction x:TypeArguments="sd:DataRow">
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
                   </ActivityAction.Argument>
-                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="496,817.6" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="496,781.6" sap2010:WorkflowViewState.IdRef="Sequence_5">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'chrome-untrusted://new-…'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="433.6,286.4" sap2010:WorkflowViewState.IdRef="NTypeInto_1" InteractionMode="HardwareEvents" ScopeIdentifier="63295b9f-1610-42c4-aff4-b8f64122502c" Text="[CurrentRow(&quot;Cities Names&quot;).ToString + &quot;[k(Enter)][k(Enter)]&quot;]" Version="V3">
+                    <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into activity to write into website" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="433.6,250.4" sap2010:WorkflowViewState.IdRef="NTypeInto_2" InteractionMode="HardwareEvents" ScopeIdentifier="6441411a-6bfc-45e6-b344-57a328195b0d" Text="[CurrentRow(&quot;cities&quot;).ToString + &quot;[k(Enter)]&quot;]" Version="V3">
                       <uix:NTypeInto.Target>
-                        <uix:TargetAnchorable BrowserURL="chrome://newtab/" DesignTimeRectangle="9, 160, 1920, 879" DesignTimeScaleFactor="1.25" FullSelectorArgument="&lt;ctrl name='New Tab' role='document' /&gt;&lt;ctrl idx='2' role='document' /&gt;" FuzzySelectorArgument="&lt;ctrl name='New Tab' role='document' /&gt;&lt;ctrl automationid='' role='document' check:text='chrome-untrusted://new-tab-page/one-google-bar?paramsencoded=' /&gt;" Guid="12ab31e0-0f9f-4623-8106-a4c7b2c37f2a" InformativeScreenshot="d953c2dbd9faef94d32e0787b6786b57.png" ScopeSelectorArgument="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='New Tab - Google Chrome' /&gt;" SearchSteps="FuzzySelector" Version="V4" Visibility="Interactive">
+                        <uix:TargetAnchorable BrowserURL="chrome://newtab/" CVScreenId="a83c1148-7164-4b26-8f81-3be7cee3bf98" CvTextArea="682, 546, 255, 18" CvTextArgument="Search Google or type a URL" CvType="Text" DesignTimeRectangle="618, 527, 702, 56" DesignTimeScaleFactor="1.25" ElementType="DropDown" FullSelectorArgument="&lt;ctrl name='New Tab' role='document' /&gt;&lt;ctrl name='Search Google or type a URL' role='combo box' /&gt;" FuzzySelectorArgument="&lt;ctrl name='New Tab' role='document' /&gt;&lt;ctrl name='Search Google or type a URL' role='combo box' automationid='' /&gt;" Guid="f81954b0-3069-4f0f-a7cb-5bec0f7a43ec" InformativeScreenshot="ee59dac58a4b8de396284e0dacab8a98.png" ScopeSelectorArgument="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='New Tab - Google Chrome' /&gt;" SearchSteps="Selector, FuzzySelector, CV" Version="V4" Visibility="Interactive" />
+                      </uix:NTypeInto.Target>
+                    </uix:NTypeInto>
+                    <uix:NGetText DisplayName="Get text activity to fetch the results." sap:VirtualizedContainerService.HintSize="433.6,189.6" sap2010:WorkflowViewState.IdRef="NGetText_3" ScopeIdentifier="6441411a-6bfc-45e6-b344-57a328195b0d" TextString="[Result]" Version="V3">
+                      <uix:NGetText.Target>
+                        <uix:TargetAnchorable BrowserURL="https://www.google.com/search?q=coimbatore+temperature&amp;oq=&amp;gs_lcrp=EgZjaHJvbWUqCQgAECMYJxjqAjIJCAAQIxgnGOoCMgkIARAjGCcY6gIyCQgCECMYJxjqAjIJCAMQIxgnGOoCMgkIBBAjGCcY6gIyCQgFECMYJxjqAjIJCAYQIxgnGOoCMgkIBxAjGCcY6gLSAQkxNDIwajBqMTWoAgiwAgE&amp;sourceid=chrome&amp;ie=UTF-8" CVScreenId="71dadc89-dfd3-45ee-b599-7ef1f2fe240d" CvTextArea="340, 582, 63, 46" CvType="AnyWordGroup" DesignTimeRectangle="341, 568, 63, 75" DesignTimeScaleFactor="1.25" ElementType="Text" FullSelectorArgument="&lt;webctrl id='wob_tm' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl id='wob_tm' tag='SPAN' type='' class='wob_t q8U8x' /&gt;" Guid="f1262964-edde-47fc-a43e-b733096479da" InformativeScreenshot="6bf74b144ec2b256b8c6cd52cd1764fd.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='coimbatore temperature - Google Search' /&gt;" SearchSteps="FuzzySelector, CV" Version="V4" Visibility="Interactive">
                           <uix:TargetAnchorable.Anchors>
                             <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
-                              <uix:Target CVScreenId="e6dc7afe-f6f7-4960-86f0-44fab4dba02a" CvElementArea="166, 65, 1590, 46" CvType="InputBox" DesignTimeRectangle="205, 72, 1504, 31" ElementType="InputBox" FullSelectorArgument="&lt;ctrl name='New Tab - Google Chrome - Pradeepa.T' role='pane' /&gt;&lt;ctrl name='Address and search bar' role='editable text' /&gt;" FuzzySelectorArgument="&lt;ctrl name='New Tab - Google Chrome - Pradeepa.T' role='pane' /&gt;&lt;ctrl name='Address and search bar' role='editable text' automationid='' /&gt;" Guid="51a7aa6f-14a3-4644-b3ac-16f848e6a5dc" SearchSteps="Selector, FuzzySelector, CV" />
+                              <uix:Target CVScreenId="71dadc89-dfd3-45ee-b599-7ef1f2fe240d" CvTextArea="410, 584, 23, 18" CvTextArgument="°C" CvType="Text" DesignTimeRectangle="411, 582, 23, 22" ElementType="Text" FullSelectorArgument="&lt;webctrl aria-label='°Celsius' aria-role='button' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl aria-label='°Celsius' aria-role='button' tag='SPAN' type='' class='wob_t' aaname='°C' check:innerText='°C' /&gt;" Guid="18471402-5538-4637-b81c-b02f1afac8b7" SearchSteps="FuzzySelector, CV" />
                             </scg:List>
                           </uix:TargetAnchorable.Anchors>
                         </uix:TargetAnchorable>
-                      </uix:NTypeInto.Target>
-                      <uix:NTypeInto.VerifyOptions>
-                        <uix:VerifyExecutionTypeIntoOptions DisplayName="{x:Null}" Mode="Appears">
-                          <uix:VerifyExecutionTypeIntoOptions.Retry>
-                            <InArgument x:TypeArguments="x:Boolean" />
-                          </uix:VerifyExecutionTypeIntoOptions.Retry>
-                          <uix:VerifyExecutionTypeIntoOptions.Timeout>
-                            <InArgument x:TypeArguments="x:Double" />
-                          </uix:VerifyExecutionTypeIntoOptions.Timeout>
-                        </uix:VerifyExecutionTypeIntoOptions>
-                      </uix:NTypeInto.VerifyOptions>
-                    </uix:NTypeInto>
-                    <uix:NGetText DisplayName="Get Text 'Get Text 'combo box''" sap:VirtualizedContainerService.HintSize="433.6,189.6" sap2010:WorkflowViewState.IdRef="NGetText_1" ScopeIdentifier="63295b9f-1610-42c4-aff4-b8f64122502c" TextString="[Result]" Version="V3">
-                      <uix:NGetText.Target>
-                        <uix:TargetAnchorable BrowserURL="chrome://newtab/" CVScreenId="80854a81-2434-4819-8ed3-ad1f9fc15635" ContentHash="S8Q8_dM1Ikyp2rKzmOew6g" CvTextArea="682, 611, 255, 18" CvType="AnyWordGroup" DesignTimeRectangle="618, 592, 702, 56" DesignTimeScaleFactor="1.25" ElementType="DropDown" FullSelectorArgument="&lt;ctrl name='New Tab' role='document' /&gt;&lt;ctrl name='Search Google or type a URL' role='combo box' /&gt;" FuzzySelectorArgument="&lt;ctrl name='New Tab' role='document' /&gt;&lt;ctrl name='Search Google or type a URL' role='combo box' automationid='' /&gt;" Guid="2aad2447-788b-4eac-9ea6-7fe412559a24" InformativeScreenshot="f26326f2e876c447898ecc3b14958152.png" Reference="a1npPSPMi0u_iIPr3gr73w/8iuMo0xVMUeeGh1-rWVxuA" ScopeSelectorArgument="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='New Tab - Google Chrome' /&gt;" SearchSteps="Selector, FuzzySelector, CV" Version="V4" Visibility="Interactive" />
                       </uix:NGetText.Target>
                     </uix:NGetText>
-                    <Assign sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_1">
+                    <Assign DisplayName="Assign to increment the cell value" sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_2">
                       <Assign.To>
                         <OutArgument x:TypeArguments="x:Int32">[cellid]</OutArgument>
                       </Assign.To>
@@ -186,13 +180,7 @@
                         <InArgument x:TypeArguments="x:Int32">[cellid+2]</InArgument>
                       </Assign.Value>
                     </Assign>
-                    <ui:WriteCell DisplayName="Write Cell Workbook" sap:VirtualizedContainerService.HintSize="433.6,139.2" sap2010:WorkflowViewState.IdRef="WriteCell_1" SheetName="Sheet1" Text="[Result]" WorkbookPath="Input.xlsx">
-                      <ui:WriteCell.Cell>
-                        <InArgument x:TypeArguments="x:String">
-                          <Literal x:TypeArguments="x:String" Value="" />
-                        </InArgument>
-                      </ui:WriteCell.Cell>
-                    </ui:WriteCell>
+                    <ui:WriteCell Cell="[&quot;B&quot;+cellid.ToString]" DisplayName="Write Cell Workbook to Write the result into excel." sap:VirtualizedContainerService.HintSize="433.6,139.2" sap2010:WorkflowViewState.IdRef="WriteCell_3" SheetName="sheet1" Text="[Result]" WorkbookPath="Input.xlsx" />
                   </Sequence>
                 </ActivityAction>
               </ui:ForEachRow.Body>
