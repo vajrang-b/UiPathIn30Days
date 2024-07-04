@@ -202,13 +202,13 @@
       <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Step1 : Get the 1st number from User using Input Dialog&#xD;&#xA;Step2 : Get the 2nd number from User using InputDialog&#xD;&#xA;Step3 : Use Assign Activity for addition of 2 numbers and store it in  variable. &#xD;&#xA;Step4:  Use Assign Activity for subtraction of 2 numbers and store it in variable.&#xD;&#xA;Step5 : Use Assign Activity for multiplication of 2 numbers and store it in a variable.&#xD;&#xA;Step6: Use Writeline/LogMessage to print output. " DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="496,1416" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Step1 : Get the 1st number from User using Input Dialog&#xA;Step2 : Get the 2nd number from User using InputDialog&#xA;Step3 : Use Assign Activity for addition of 2 numbers and store it in  variable. &#xA;Step4:  Use Assign Activity for subtraction of 2 numbers and store it in variable.&#xA;Step5 : Use Assign Activity for multiplication of 2 numbers and store it in a variable.&#xA;Step6: Use Writeline/LogMessage to print output. " DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="496,1416" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
-      <Variable x:TypeArguments="x:Int32" Name="Addition" />
-      <Variable x:TypeArguments="x:Int32" Name="Subtraction" />
-      <Variable x:TypeArguments="x:Int32" Name="Multiplication" />
-      <Variable x:TypeArguments="x:Int32" Name="num1" />
-      <Variable x:TypeArguments="x:Int32" Name="num2" />
+      <Variable x:TypeArguments="x:Int32" Name="Int_Addition" />
+      <Variable x:TypeArguments="x:Int32" Name="Int_Subtraction" />
+      <Variable x:TypeArguments="x:Int32" Name="Int_Multiplication" />
+      <Variable x:TypeArguments="x:Int32" Name="Int_num1" />
+      <Variable x:TypeArguments="x:Int32" Name="Int_num2" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -218,40 +218,40 @@
     </sap:WorkflowViewStateService.ViewState>
     <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="Get 1st number from User using Input Dialog" sap:VirtualizedContainerService.HintSize="434,271" sap2010:WorkflowViewState.IdRef="InputDialog_3" IsPassword="False" Label="Input 1st Number" Title="Enter the 1st Number">
       <ui:InputDialog.Result>
-        <OutArgument x:TypeArguments="x:Int32">[num1]</OutArgument>
+        <OutArgument x:TypeArguments="x:Int32">[Int_num1]</OutArgument>
       </ui:InputDialog.Result>
     </ui:InputDialog>
     <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="Get 2nd number from User using Input Dialog" sap:VirtualizedContainerService.HintSize="434,271" sap2010:WorkflowViewState.IdRef="InputDialog_4" IsPassword="False" Label="Input 2nd Num" Title="Enter the 2nd Number">
       <ui:InputDialog.Result>
-        <OutArgument x:TypeArguments="x:Int32">[num2]</OutArgument>
+        <OutArgument x:TypeArguments="x:Int32">[Int_num2]</OutArgument>
       </ui:InputDialog.Result>
     </ui:InputDialog>
     <Assign DisplayName="Assign sum = 1st number + 2nd number" sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
-        <OutArgument x:TypeArguments="x:Int32">[Addition]</OutArgument>
+        <OutArgument x:TypeArguments="x:Int32">[Int_Addition]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="x:Int32">[num1 + num2]</InArgument>
+        <InArgument x:TypeArguments="x:Int32">[Int_num1 + Int_num2]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="434,117" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[&quot;Addition of 2 numbers is :&quot;+Addition.ToString]" />
+    <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="434,117" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[&quot;Addition of 2 numbers is :&quot;+Int_Addition.ToString]" />
     <Assign DisplayName="Assign difference = 1st number - 2nd number" sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_2">
       <Assign.To>
-        <OutArgument x:TypeArguments="x:Int32">[Subtraction]</OutArgument>
+        <OutArgument x:TypeArguments="x:Int32">[Int_Subtraction]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="x:Int32">[num1 - num2]</InArgument>
+        <InArgument x:TypeArguments="x:Int32">[Int_num1 - Int_num2]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="434,117" sap2010:WorkflowViewState.IdRef="MessageBox_2" Text="[&quot;Subtraction of 2 numbers is :&quot;+Subtraction.ToString]" />
+    <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="434,117" sap2010:WorkflowViewState.IdRef="MessageBox_2" Text="[&quot;Subtraction of 2 numbers is :&quot;+Int_Subtraction.ToString]" />
     <Assign DisplayName="Assign product = 1st number * 2nd number" sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_3">
       <Assign.To>
-        <OutArgument x:TypeArguments="x:Int32">[Multiplication]</OutArgument>
+        <OutArgument x:TypeArguments="x:Int32">[Int_Multiplication]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="x:Int32">[num1 * num2]</InArgument>
+        <InArgument x:TypeArguments="x:Int32">[Int_num1 * Int_num2]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="434,108" sap2010:WorkflowViewState.IdRef="MessageBox_3" Text="[&quot;Multiplication of 2 numbers is :&quot;+Multiplication.ToString]" />
+    <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="434,108" sap2010:WorkflowViewState.IdRef="MessageBox_3" Text="[&quot;Multiplication of 2 numbers is :&quot;+Int_Multiplication.ToString]" />
   </Sequence>
 </Activity>
