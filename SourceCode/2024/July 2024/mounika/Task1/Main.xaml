@@ -60,17 +60,17 @@
       <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
       <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
       <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
-      <AssemblyReference>NPOI</AssemblyReference>
       <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
       <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
       <AssemblyReference>System.Console</AssemblyReference>
       <AssemblyReference>System.Security.Permissions</AssemblyReference>
       <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
       <AssemblyReference>System.ComponentModel</AssemblyReference>
       <AssemblyReference>System.Memory</AssemblyReference>
       <AssemblyReference>System.Private.Uri</AssemblyReference>
-      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
       <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
       <AssemblyReference>System.Collections</AssemblyReference>
       <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
       <AssemblyReference>System.Linq.Expressions</AssemblyReference>
@@ -81,20 +81,26 @@
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="416,762" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
-      <Variable x:TypeArguments="x:String" Name="Userinput" />
+      <Variable x:TypeArguments="x:String" Name="Username" />
+      <Variable x:TypeArguments="x:String" Name="input" />
+      <Variable x:TypeArguments="x:String" Name="Input" />
+      <Variable x:TypeArguments="x:String" Name="UserName" />
+      <Variable x:TypeArguments="x:String" Name="Name" />
+      <Variable x:TypeArguments="x:String" Name="User" />
+      <Variable x:TypeArguments="x:String" Name="StrUserName" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="354,271" sap2010:WorkflowViewState.IdRef="InputDialog_1" IsPassword="False" Label="Enter your input" Title="Enter your name">
+    <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="354,271" sap2010:WorkflowViewState.IdRef="InputDialog_2" IsPassword="False" Label="Enter your input" Title="Enter your name">
       <ui:InputDialog.Result>
-        <OutArgument x:TypeArguments="x:String">[Userinput]</OutArgument>
+        <OutArgument x:TypeArguments="x:String">[StrUserName]</OutArgument>
       </ui:InputDialog.Result>
     </ui:InputDialog>
-    <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="354,117" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[&quot;Hi mounika welcome to uipath&quot;]" />
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="354,173" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Hi mounika welcome to uipath&quot;]" />
-    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="354,113" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="Hi mounika welcome to uipath" />
+    <ui:MessageBox Caption="{x:Null}" AutoCloseAfter="00:00:00" ChosenButton="[User]" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="354,117" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[&quot;Hii &quot;+StrUserName+&quot;,welcome to uipath&quot;]" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="354,173" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Hii &quot;+StrUserName+&quot;,welcome to uipath&quot;]" />
+    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="354,113" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[&quot;Hii &quot;+StrUserName+&quot;,welcome to uipath&quot;]" />
   </Sequence>
 </Activity>
