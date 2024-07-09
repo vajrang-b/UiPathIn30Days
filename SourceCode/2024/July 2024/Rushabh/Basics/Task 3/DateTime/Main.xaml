@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="780.8,536" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="830.4,1697.6" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -28,7 +28,7 @@
       <x:String>System.Linq.Expressions</x:String>
       <x:String>System.Runtime.Serialization</x:String>
       <x:String>System.Reflection</x:String>
-      <x:String>System.Numerics</x:String>
+      <x:String>UiPath.Platform.ResourceHandling</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -58,15 +58,18 @@
       <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
       <AssemblyReference>WindowsBase</AssemblyReference>
       <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
-      <AssemblyReference>System.Memory.Data</AssemblyReference>
       <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
       <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
       <AssemblyReference>System.Console</AssemblyReference>
       <AssemblyReference>System.Security.Permissions</AssemblyReference>
       <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
       <AssemblyReference>System.ComponentModel</AssemblyReference>
       <AssemblyReference>System.Memory</AssemblyReference>
       <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.CodeDom</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Forms</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
       <AssemblyReference>System.Linq.Expressions</AssemblyReference>
       <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
       <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
@@ -78,24 +81,29 @@
       <AssemblyReference>System.Linq.Async</AssemblyReference>
       <AssemblyReference>System.Collections</AssemblyReference>
       <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
-      <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="416,471.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Below are the multiple formats which can be used to display date and time if different format. For ex dd:mm:yyyy, ddd, etc." DisplayName="Different Format Of Date &amp; Time" sap:VirtualizedContainerService.HintSize="416,1300" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
-      <Variable x:TypeArguments="x:String" Name="StrUserinput" />
-      <Variable x:TypeArguments="x:String" Name="input" />
+      <Variable x:TypeArguments="x:String" Name="dt_Now" />
+      <Variable x:TypeArguments="x:String" Name="dt_ToLongDate" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="353.6,273.6" sap2010:WorkflowViewState.IdRef="InputDialog_1" IsPassword="False" Label="Please enter input" Title="Enter your name">
-      <ui:InputDialog.Result>
-        <OutArgument x:TypeArguments="x:String">[input]</OutArgument>
-      </ui:InputDialog.Result>
-    </ui:InputDialog>
-    <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="353.6,108.8" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[&quot;Hi &quot;  +  input  + &quot;  &quot;]" />
+    <ui:MessageBox Caption="{x:Null}" AutoCloseAfter="00:00:00" ChosenButton="[dt_Now]" DisplayName="dd/mm/yyyy HH:MM:SS" sap:VirtualizedContainerService.HintSize="353.6,117.6" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[Now]" />
+    <ui:MessageBox Caption="{x:Null}" AutoCloseAfter="00:00:00" ChosenButton="[dt_ToLongDate]" DisplayName="Week Name, dd Month YYYY" sap:VirtualizedContainerService.HintSize="353.6,117.6" sap2010:WorkflowViewState.IdRef="MessageBox_2" Text="[Now.ToLongDateString()]" />
+    <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="dd/mm/yyyy" sap:VirtualizedContainerService.HintSize="353.6,117.6" sap2010:WorkflowViewState.IdRef="MessageBox_7" Text="[Now.ToShortDateString()]" />
+    <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="HH:MM:SS" sap:VirtualizedContainerService.HintSize="353.6,117.6" sap2010:WorkflowViewState.IdRef="MessageBox_3" Text="[Now.ToLongTimeString()]" />
+    <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="MM:SS" sap:VirtualizedContainerService.HintSize="353.6,117.6" sap2010:WorkflowViewState.IdRef="MessageBox_4" Text="[Now.ToShortTimeString()]" />
+    <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Week Name Short SUN" sap:VirtualizedContainerService.HintSize="353.6,117.6" sap2010:WorkflowViewState.IdRef="MessageBox_6" Text="[Now.ToString(&quot;ddd&quot;)]" />
+    <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Week Name Long" sap:VirtualizedContainerService.HintSize="353.6,117.6" sap2010:WorkflowViewState.IdRef="MessageBox_11" Text="[Now.ToString(&quot;dddd&quot;)]" />
+    <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="PM/AM" sap:VirtualizedContainerService.HintSize="353.6,117.6" sap2010:WorkflowViewState.IdRef="MessageBox_10" Text="[Now.ToString(&quot;tt &quot;)]" />
+    <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="YYYY" sap:VirtualizedContainerService.HintSize="353.6,117.6" sap2010:WorkflowViewState.IdRef="MessageBox_5" Text="[Now.ToString(&quot;yyyy&quot;)]" />
+    <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="YY" sap:VirtualizedContainerService.HintSize="353.6,108.8" sap2010:WorkflowViewState.IdRef="MessageBox_9" Text="[Now.ToString(&quot;yy&quot;)]" />
   </Sequence>
 </Activity>
