@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="689,1196" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="601,1298" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -81,48 +81,46 @@
       <AssemblyReference>UiPath.Platform</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="496,1131" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Step1:Get the first name from user using input dialog box&#xD;&#xA;Step2:Get the second name from user using input dialog box&#xD;&#xA;Step3:Use Assign activity to store the indexnames in Array variable.&#xD;&#xA;Step4:Use Assign activity to concatenate those indexnames.&#xD;&#xA;Step5:Use message box to print output&#xD;&#xA;Step6:Use write text file to print output in file" DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="496,1233" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
-      <Variable x:TypeArguments="x:String" Name="Firstvalue" />
-      <Variable x:TypeArguments="s:String[]" Name="Secondvalue" />
-      <Variable x:TypeArguments="s:String[]" Name="Fullnames" />
-      <Variable x:TypeArguments="s:String[]" Name="sFirstvalue" />
-      <Variable x:TypeArguments="s:String[]" Name="sSecondvalue" />
-      <Variable x:TypeArguments="s:String[]" Name="sName" />
-      <Variable x:TypeArguments="s:String[]" Name="sFullname" />
+      <Variable x:TypeArguments="x:String" Name="sFirstname" />
+      <Variable x:TypeArguments="x:String" Name="sSecondname" />
+      <Variable x:TypeArguments="s:String[]" Name="sFullnames" />
+      <Variable x:TypeArguments="x:String" Name="sNames" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="434,271" sap2010:WorkflowViewState.IdRef="InputDialog_1" IsPassword="False" Label="Enter first name" Title="Firstname">
       <ui:InputDialog.Result>
-        <OutArgument x:TypeArguments="s:String[]">[sFirstvalue]</OutArgument>
+        <OutArgument x:TypeArguments="x:String">[sFirstname]</OutArgument>
       </ui:InputDialog.Result>
     </ui:InputDialog>
     <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="434,271" sap2010:WorkflowViewState.IdRef="InputDialog_2" IsPassword="False" Label="Enter second name" Title="Second name">
       <ui:InputDialog.Result>
-        <OutArgument x:TypeArguments="s:String[]">[sSecondvalue]</OutArgument>
+        <OutArgument x:TypeArguments="x:String">[sSecondname]</OutArgument>
       </ui:InputDialog.Result>
     </ui:InputDialog>
-    <Assign sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <Assign sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_3">
       <Assign.To>
-        <OutArgument x:TypeArguments="s:String[]">[sFullname]</OutArgument>
+        <OutArgument x:TypeArguments="s:String[]">[sFullnames]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="s:String[]">[{sFirstvalue,sSecondvalue}]</InArgument>
+        <InArgument x:TypeArguments="s:String[]">[{sFirstname,sSecondname}]</InArgument>
       </Assign.Value>
     </Assign>
-    <Assign sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_2">
+    <Assign sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_5">
       <Assign.To>
-        <OutArgument x:TypeArguments="s:String[]">[sName]</OutArgument>
+        <OutArgument x:TypeArguments="x:String">[sNames]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="s:String[]">[sFullname(0)+""+sFullname(1)]</InArgument>
+        <InArgument x:TypeArguments="x:String">[sFullnames(0)+" "+sFullnames(1)]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="434,117" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[sName]" />
-    <ui:WriteTextFile File="{x:Null}" DisplayName="Write Text File" FileName="Name.txt" sap:VirtualizedContainerService.HintSize="434,156" sap2010:WorkflowViewState.IdRef="WriteTextFile_1" Text="[sName]" />
+    <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="434,117" sap2010:WorkflowViewState.IdRef="MessageBox_2" Text="[sNames]" />
+    <ui:WriteTextFile File="{x:Null}" DisplayName="Write Text File" FileName="sNames.txt" sap:VirtualizedContainerService.HintSize="434,156" sap2010:WorkflowViewState.IdRef="WriteTextFile_2" Text="[sNames]" />
   </Sequence>
 </Activity>
