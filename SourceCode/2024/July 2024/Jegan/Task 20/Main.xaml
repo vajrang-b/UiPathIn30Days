@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="811.2,596.8" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="811.2,1817.6" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -115,25 +115,25 @@
       <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="This project is to read excel data and check the upper case value from vajrang.org and write to the same excel in column b" DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="688,1616.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="This project is to read excel data and check the upper case value from vajrang.org and write to the same excel in column b" DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="688,1752.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="Dtinput" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
-        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         <x:Boolean x:Key="IsPinned">False</x:Boolean>
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[Dtinput]" DisplayName="Read Range Workbook" sap:VirtualizedContainerService.HintSize="625.6,120" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="Sheet1" WorkbookPath="Inputt.xlsx" />
-    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Chrome: XPERIENCE AI - Uppercase" sap:VirtualizedContainerService.HintSize="625.6,1376.8" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" OpenMode="IfNotOpen" ScopeGuid="fd65466c-8c19-43ad-829b-62c58dd934db" Version="V2">
+    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Chrome: XPERIENCE AI - Uppercase" sap:VirtualizedContainerService.HintSize="625.6,1512.8" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" OpenMode="IfNotOpen" ScopeGuid="fd65466c-8c19-43ad-829b-62c58dd934db" Version="V2">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="592,1096.8" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="592,1272.8" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:Int32" Name="indrow" />
             </Sequence.Variables>
@@ -142,6 +142,7 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="529.6,176" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Task 20 started&quot;]" />
             <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="[indrow]" DataTable="[Dtinput]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="529.6,1008" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
               <ui:ForEachRow.Body>
                 <ActivityAction x:TypeArguments="sd:DataRow">
@@ -162,7 +163,7 @@
                       <uix:NTypeInto.Target>
                         <uix:TargetAnchorable BrowserURL="https://www.vajrang.org/challenges/uppercase" CVScreenId="9ea29d58-dc37-4cf7-9532-484bb18c5128" CvElementArea="741, 651, 444, 56" CvType="InputBox" DesignTimeRectangle="745, 653, 438, 52" DesignTimeScaleFactor="1.25" ElementType="InputBox" FullSelectorArgument="&lt;webctrl id='5e51ed3ccc33c7e1_13' tag='IFRAME' /&gt;&lt;webctrl id='innerFrame' tag='IFRAME' /&gt;&lt;webctrl id='userHtmlFrame' tag='IFRAME' /&gt;&lt;webctrl id='Name' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl id='5e51ed3ccc33c7e1_13' tag='IFRAME' /&gt;&lt;webctrl id='innerFrame' tag='IFRAME' /&gt;&lt;webctrl id='userHtmlFrame' tag='IFRAME' /&gt;&lt;webctrl id='Name' tag='INPUT' type='text' class='fcf-form-control' aaname='Convert To Upper' /&gt;" Guid="619a468a-af2f-4091-8b43-87aa5589900a" InformativeScreenshot="fbb96edb3081f5b9cff87110bb1695d9.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='XPERIENCE AI - Uppercase' /&gt;" SearchSteps="FuzzySelector, CV" Version="V4" Visibility="Interactive">
                           <uix:TargetAnchorable.Anchors>
-                            <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                            <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
                               <uix:Target CVScreenId="9ea29d58-dc37-4cf7-9532-484bb18c5128" CvTextArea="743, 625, 147, 21" CvTextArgument="Convert To Upper" CvType="Text" DesignTimeRectangle="745, 623, 145, 22" ElementType="Text" FullSelectorArgument="&lt;webctrl id='5e51ed3ccc33c7e1_13' tag='IFRAME' /&gt;&lt;webctrl id='innerFrame' tag='IFRAME' /&gt;&lt;webctrl id='userHtmlFrame' tag='IFRAME' /&gt;&lt;webctrl tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl id='5e51ed3ccc33c7e1_13' tag='IFRAME' /&gt;&lt;webctrl id='innerFrame' tag='IFRAME' /&gt;&lt;webctrl id='userHtmlFrame' tag='IFRAME' /&gt;&lt;webctrl tag='LABEL' type='' class='fcf-label' aaname='Convert To Upper' check:innerText='Convert To Upper' /&gt;" Guid="2bf4ad8b-12de-4a55-b020-cb2fd3a47207" SearchSteps="FuzzySelector, CV" />
                             </scg:List>
                           </uix:TargetAnchorable.Anchors>
@@ -183,7 +184,7 @@
                       <uix:NGetText.Target>
                         <uix:TargetAnchorable BrowserURL="https://www.vajrang.org/challenges/uppercase" CVScreenId="9ea29d58-dc37-4cf7-9532-484bb18c5128" CvElementArea="741, 753, 443, 56" CvType="InputBox" DesignTimeRectangle="745, 756, 438, 52" DesignTimeScaleFactor="1.25" ElementType="InputBox" FullSelectorArgument="&lt;webctrl id='5e51ed3ccc33c7e1_13' tag='IFRAME' /&gt;&lt;webctrl id='innerFrame' tag='IFRAME' /&gt;&lt;webctrl id='userHtmlFrame' tag='IFRAME' /&gt;&lt;webctrl id='result' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl id='5e51ed3ccc33c7e1_13' tag='IFRAME' /&gt;&lt;webctrl id='innerFrame' tag='IFRAME' /&gt;&lt;webctrl id='userHtmlFrame' tag='IFRAME' /&gt;&lt;webctrl id='result' tag='INPUT' type='text' class='fcf-form-control' aaname='Converted Result' /&gt;" Guid="7dc50e76-624e-41e2-9a08-fa171c7a67fb" InformativeScreenshot="ab4cd8fe5989add6600b68275a2d1efd.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='XPERIENCE AI - Uppercase' /&gt;" SearchSteps="FuzzySelector, CV" Version="V4" Visibility="Interactive">
                           <uix:TargetAnchorable.Anchors>
-                            <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                            <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
                               <uix:Target CVScreenId="9ea29d58-dc37-4cf7-9532-484bb18c5128" CvTextArea="743, 727, 140, 17" CvTextArgument="Converted Result" CvType="Text" DesignTimeRectangle="745, 725, 140, 22" ElementType="Text" FullSelectorArgument="&lt;webctrl id='5e51ed3ccc33c7e1_13' tag='IFRAME' /&gt;&lt;webctrl id='innerFrame' tag='IFRAME' /&gt;&lt;webctrl id='userHtmlFrame' tag='IFRAME' /&gt;&lt;webctrl aaname='Converted Result' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl id='5e51ed3ccc33c7e1_13' tag='IFRAME' /&gt;&lt;webctrl id='innerFrame' tag='IFRAME' /&gt;&lt;webctrl id='userHtmlFrame' tag='IFRAME' /&gt;&lt;webctrl aaname='Converted Result' tag='LABEL' type='' class='fcf-label' check:innerText='Converted Result' /&gt;" Guid="23ee9a06-3946-4cfb-8c6e-6f4e236d1b75" SearchSteps="FuzzySelector, CV" />
                             </scg:List>
                           </uix:TargetAnchorable.Anchors>
