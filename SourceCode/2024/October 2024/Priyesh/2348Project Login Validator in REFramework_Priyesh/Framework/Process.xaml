@@ -1,0 +1,260 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Process" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property sap2010:Annotation.AnnotationText="Transaction item to be processed." Name="in_TransactionItem" Type="InArgument(ui:QueueItem)" />
+    <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>818.4,454.4</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="50">
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Windows.Forms</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Platform.SyncObjects</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.CV</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities.Services.RuntimeAnalyze</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities.Models</x:String>
+      <x:String>System.Reflection</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="80">
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.Windows.Forms</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="894.6666666666666,2310" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message Process Start" sap:VirtualizedContainerService.HintSize="502,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Started Process&quot;]" />
+    <ui:Comment DisplayName="Comment (placeholder)" sap:VirtualizedContainerService.HintSize="502,88.66666666666667" sap2010:WorkflowViewState.IdRef="Comment_1" Text="//  Invoke steps of the process" />
+    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Edge: Login Validator - Sample Apps Vajrang" sap:VirtualizedContainerService.HintSize="502,1943.3333333333333" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" ScopeGuid="9249e065-833e-44e5-b200-bccbce533011" Version="V2">
+      <uix:NApplicationCard.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="468,1701.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:String" Name="strhashkey" />
+              <Variable x:TypeArguments="x:String" Default="purpledog500" Name="strUserName" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Username'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="434,292.6666666666667" sap2010:WorkflowViewState.IdRef="NTypeInto_1" ScopeIdentifier="9249e065-833e-44e5-b200-bccbce533011" Text="[in_TransactionItem.SpecificContent(&quot;userId&quot;).ToString]" Version="V4">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable BrowserURL="https://sampleapps.vajrang.org/Login%20Validator/" CVScreenId="bbe3ed0a-88a0-4791-b26d-4889630a6ef2" CvTextArea="605, 797, 144, 19" CvTextArgument="Enter Username" CvType="Text" DesignTimeRectangle="602, 794, 234, 27" DesignTimeScaleFactor="1.5" ElementType="InputBox" FullSelectorArgument="&lt;webctrl id='uname' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl id='uname' tag='INPUT' type='text' class='' placeholder='Enter Username' aaname='Username' /&gt;" Guid="8be17c60-1075-4b51-99a6-8d015ad32d6b" InformativeScreenshot="5f27cd7245054acc7ddac49d9fbd9877.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Login Validator - Sample Apps Vajrang' /&gt;" SearchSteps="FuzzySelector, CV" Version="V4" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target CVScreenId="bbe3ed0a-88a0-4791-b26d-4889630a6ef2" CvTextArea="485, 794, 114, 22" CvTextArgument="Username" CvType="Text" DesignTimeRectangle="486, 791, 110, 29" ElementType="Text" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;div&amp;gt;main&amp;gt;div&amp;gt;div&amp;gt;article&amp;gt;div&amp;gt;form&amp;gt;label' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl type='' tag='LABEL' class='' aaname='' check:innerText='Username' /&gt;" Guid="60040fd5-0b20-4f68-b989-6932b525512e" SearchSteps="FuzzySelector, CV" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NTypeInto.Target>
+              <uix:NTypeInto.VerifyOptions>
+                <uix:VerifyExecutionTypeIntoOptions DisplayName="{x:Null}" Mode="Appears">
+                  <uix:VerifyExecutionTypeIntoOptions.Retry>
+                    <InArgument x:TypeArguments="x:Boolean" />
+                  </uix:VerifyExecutionTypeIntoOptions.Retry>
+                  <uix:VerifyExecutionTypeIntoOptions.Timeout>
+                    <InArgument x:TypeArguments="x:Double" />
+                  </uix:VerifyExecutionTypeIntoOptions.Timeout>
+                </uix:VerifyExecutionTypeIntoOptions>
+              </uix:NTypeInto.VerifyOptions>
+            </uix:NTypeInto>
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Password'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="434,292.6666666666667" sap2010:WorkflowViewState.IdRef="NTypeInto_2" ScopeIdentifier="9249e065-833e-44e5-b200-bccbce533011" Text="[in_TransactionItem.SpecificContent(&quot;Password&quot;).ToString]" Version="V4">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable BrowserURL="https://sampleapps.vajrang.org/Login%20Validator/" CVScreenId="bbe3ed0a-88a0-4791-b26d-4889630a6ef2" CvTextArea="654, 545, 187, 22" CvTextArgument="will turn &quot;Verified&quot;" CvType="Text" DesignTimeRectangle="598, 787, 234, 27" DesignTimeScaleFactor="1.5" ElementType="InputBoxPassword" FuzzySelectorArgument="&lt;webctrl id='psw' tag='INPUT' type='password' class='' placeholder='Enter Password' aaname='Password' /&gt;" Guid="4098722b-5098-4a1c-bd5c-ac55074367eb" InformativeScreenshot="7f9bfe648b7317bc861350381d91fb14.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Login Validator - Sample Apps Vajrang' /&gt;" SearchSteps="FuzzySelector, CV" Version="V4" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                      <uix:Target CVScreenId="bbe3ed0a-88a0-4791-b26d-4889630a6ef2" CvTextArea="528, 545, 44, 22" CvTextArgument="- All" CvType="Text" DesignTimeRectangle="486, 784, 106, 29" ElementType="Text" FuzzySelectorArgument="&lt;webctrl type='' tag='LABEL' class='' aaname='' check:innerText='Password' /&gt;" Guid="d5370cdf-73d8-4c9a-95c7-9023904af55b" SearchSteps="FuzzySelector, CV" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NTypeInto.Target>
+              <uix:NTypeInto.VerifyOptions>
+                <uix:VerifyExecutionTypeIntoOptions DisplayName="{x:Null}" Mode="Appears">
+                  <uix:VerifyExecutionTypeIntoOptions.Retry>
+                    <InArgument x:TypeArguments="x:Boolean" />
+                  </uix:VerifyExecutionTypeIntoOptions.Retry>
+                  <uix:VerifyExecutionTypeIntoOptions.Timeout>
+                    <InArgument x:TypeArguments="x:Double" />
+                  </uix:VerifyExecutionTypeIntoOptions.Timeout>
+                </uix:VerifyExecutionTypeIntoOptions>
+              </uix:NTypeInto.VerifyOptions>
+            </uix:NTypeInto>
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'ValidatePassword'" sap:VirtualizedContainerService.HintSize="434,229.33333333333334" sap2010:WorkflowViewState.IdRef="NClick_1" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="9249e065-833e-44e5-b200-bccbce533011" Version="V4">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="https://sampleapps.vajrang.org/Login%20Validator/" DesignTimeRectangle="486, 568, 193, 29" DesignTimeScaleFactor="1.5" ElementType="Button" FullSelectorArgument="&lt;webctrl id='ValidatePassword' tag='BUTTON' /&gt;" FuzzySelectorArgument="&lt;webctrl id='ValidatePassword' tag='BUTTON' type='submit' class='' aaname='ValidatePassword' check:innerText='ValidatePassword' /&gt;" Guid="b2051cf9-a199-49fc-9129-460aaa3a0d38" InformativeScreenshot="5eb3a58025ea0dbd600324d4b20e56e2.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Login Validator - Sample Apps Vajrang' /&gt;" SearchSteps="FuzzySelector" Version="V4" Visibility="Interactive" />
+              </uix:NClick.Target>
+              <uix:NClick.VerifyOptions>
+                <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                  <uix:VerifyExecutionOptions.Retry>
+                    <InArgument x:TypeArguments="x:Boolean" />
+                  </uix:VerifyExecutionOptions.Retry>
+                  <uix:VerifyExecutionOptions.Timeout>
+                    <InArgument x:TypeArguments="x:Double" />
+                  </uix:VerifyExecutionOptions.Timeout>
+                </uix:VerifyExecutionOptions>
+              </uix:NClick.VerifyOptions>
+            </uix:NClick>
+            <uix:NGetText DisplayName="Get Text '4e9c836d7387962db7d8630…'" sap:VirtualizedContainerService.HintSize="434,191.33333333333334" sap2010:WorkflowViewState.IdRef="NGetText_1" ScopeIdentifier="9249e065-833e-44e5-b200-bccbce533011" TextString="[strhashkey]" Version="V4">
+              <uix:NGetText.Target>
+                <uix:TargetAnchorable BrowserURL="https://sampleapps.vajrang.org/Login%20Validator/" CVScreenId="8426cd18-5839-4a49-8d06-deb16bdcf5ee" DesignTimeRectangle="613, 588, 536, 29" DesignTimeScaleFactor="1.5" ElementType="Text" FullSelectorArgument="&lt;webctrl id='loginResult' tag='LABEL' /&gt;" Guid="9042bb55-a1c9-44b9-982e-9a9e3a9103f3" ImageBase64="" InformativeScreenshot="323d6aebcc1b8f90bf53206be80ae15d.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Login Validator - Sample Apps Vajrang' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" />
+              </uix:NGetText.Target>
+            </uix:NGetText>
+            <Assign sap:VirtualizedContainerService.HintSize="434,117.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_1">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[strUserName]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[in_TransactionItem.SpecificContent("userID").ToString]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'INPUT'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="434,292.6666666666667" sap2010:WorkflowViewState.IdRef="NTypeInto_3" ScopeIdentifier="9249e065-833e-44e5-b200-bccbce533011" Text="[strhashkey]" Version="V4">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable BrowserURL="https://sampleapps.vajrang.org/Login%20Validator/" DesignTimeRectangle="772, 365, 234, 27" DesignTimeScaleFactor="1.5" ElementType="InputBox" FullSelectorArgument="[string.Format(&quot;&lt;webctrl tag='TABLE' /&gt;&lt;webctrl tableRow='2' tag='TD' /&gt;&lt;nav up='1' /&gt;&lt;webctrl tag='INPUT' colName='Hash' parentclass='md-typeset__table' rowName='{0}' /&gt;&quot;, strUserName)]" Guid="0a125be4-4d3d-47b9-8a43-6a394664daa9" InformativeScreenshot="321682368a3b1d0c9583138a0f9a8a01.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Login Validator - Sample Apps Vajrang' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive" />
+              </uix:NTypeInto.Target>
+              <uix:NTypeInto.VerifyOptions>
+                <uix:VerifyExecutionTypeIntoOptions DisplayName="{x:Null}" Mode="Appears">
+                  <uix:VerifyExecutionTypeIntoOptions.Retry>
+                    <InArgument x:TypeArguments="x:Boolean" />
+                  </uix:VerifyExecutionTypeIntoOptions.Retry>
+                  <uix:VerifyExecutionTypeIntoOptions.Timeout>
+                    <InArgument x:TypeArguments="x:Double" />
+                  </uix:VerifyExecutionTypeIntoOptions.Timeout>
+                </uix:VerifyExecutionTypeIntoOptions>
+              </uix:NTypeInto.VerifyOptions>
+            </uix:NTypeInto>
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Verify'" sap:VirtualizedContainerService.HintSize="434,222.66666666666666" sap2010:WorkflowViewState.IdRef="NClick_2" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="9249e065-833e-44e5-b200-bccbce533011" Version="V4">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="https://sampleapps.vajrang.org/Login%20Validator/" CVScreenId="8426cd18-5839-4a49-8d06-deb16bdcf5ee" CvTextArea="1137, 737, 52, 24" CvTextArgument="Verify" CvType="Text" DesignTimeRectangle="1139, 736, 49, 23" DesignTimeScaleFactor="1.5" ElementType="Button" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='' tag='BUTTON' class='' aaname='Verify' check:innerText='Verify' /&gt;" Guid="63f82798-9112-4988-b4ae-8bd36d703ca4" InformativeScreenshot="8440f67f2168240946a403dbcd8d9f34.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Login Validator - Sample Apps Vajrang' /&gt;" SearchSteps="FuzzySelector, CV" Version="V4" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                      <uix:Target DesignTimeRectangle="487, 714, 196, 68" ElementType="Text" FullSelectorArgument="[string.Format(&quot;&lt;webctrl tag='TABLE' /&gt;&lt;webctrl tag='TD' aaname='{0}' /&gt;&quot;, strUserName)]" Guid="ab0c2d70-a745-48b4-9ca5-ded52daeaab5" SearchSteps="Selector" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NClick.Target>
+              <uix:NClick.VerifyOptions>
+                <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                  <uix:VerifyExecutionOptions.Retry>
+                    <InArgument x:TypeArguments="x:Boolean" />
+                  </uix:VerifyExecutionOptions.Retry>
+                  <uix:VerifyExecutionOptions.Timeout>
+                    <InArgument x:TypeArguments="x:Double" />
+                  </uix:VerifyExecutionOptions.Timeout>
+                </uix:VerifyExecutionOptions>
+              </uix:NClick.VerifyOptions>
+            </uix:NClick>
+          </Sequence>
+        </ActivityAction>
+      </uix:NApplicationCard.Body>
+      <uix:NApplicationCard.TargetApp>
+        <uix:TargetApp Area="0, 0, 0, 0" BrowserType="Edge" IconBase64="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" InformativeScreenshot="8ca1da005e6062df4558b8d1b7484254.jpg" Selector="&lt;html app='msedge.exe' title='Login Validator - Sample Apps Vajrang' /&gt;" Title="Login Validator - Sample Apps Vajrang" Url="https://sampleapps.vajrang.org/Login%20Validator/" />
+      </uix:NApplicationCard.TargetApp>
+    </uix:NApplicationCard>
+  </Sequence>
+</Activity>
